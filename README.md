@@ -1,4 +1,3 @@
-
-Repository to host Blogs, Tutorials, Techdocs for Cisco IOS-XR's Model (YANG) Driven Programmability Infrastructure.
-
-Access the website on github-pages at: https://xrdocs.github.io/programmability
+# Cloud Scale Networking 
+Repository to host Blogs, tutorials and Technical Documentation on IOS-XR's Software Management and ZTP capabilities. 
+Access the link on github-pages at: https://xrdocs.github.io/software-management
