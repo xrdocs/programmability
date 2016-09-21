@@ -10,9 +10,9 @@ position: hidden
 
 In a previous [blog post](https://xrdocs.github.io/programmability/blogs/2016-09-12-model-driven-programmability/), we described how the Cisco IOS XR programmability framework is based on data models.  But, What format do they have?  where are the models published?  How many are available?  How are they grouped?
 
-If you are completely new to data models, all you need to understand at this point is that data models mostly specify the configuration and operational state that a device supports.  Models are defined as text files using the YANG modeling language ([RFC 7950](https://tools.ietf.org/html/rfc7950)) and they structure all data in a tree format.  While data models are human readable, their strength comes from the fact that their well-defined syntax and semantics facilitate the development of software tools to process them.  In this tutorial, we will not dig into YANG specifics.
+If you are completely new to data models, all you need to understand at this point is that data models mostly specify the configuration and operational state that a device supports.  Models are defined as text files using the YANG modeling language ([RFC 7950](https://tools.ietf.org/html/rfc7950)) and they arrange data in a tree structure.  While data models are human readable, their strength comes from the fact that they have well-defined syntax and semantics that facilitate the development of software tools to process them.  They simplify network automation and orchestration.  In this tutorial, we will not dig into YANG specifics.  Instead, we will overview the organization and naming of XR native models.
 
-The YANG files that define the data models are shipped with the device.  Those embedded models are ultimately the authoritative list of models that the device supports.  You can programmatically retrieve them using a management protocol (e.g. NETCONF, gRPC, RESTCONF).  In addition, we make the XR models publicly available for download on GitHub.  In this tutorial, we will use this repository to explore XR data models.
+XR devices ship with the YANG files that define the data models they support.  Using a management protocol (e.g. NETCONF, gRPC, RESTCONF), you can programmatically query a device for the list of models it supports and  retrieve the model files.  In addition, the XR models are made publicly available for download on GitHub.  In this tutorial, we will use this repository to explore the XR native models.
 
 Let's create a directory to host the YANG files and clone the git repository:
 
@@ -38,7 +38,7 @@ The name of XR data models use the following notation:
 Cisco-IOS-XR-<platform><technology><suffix>
 ```
 
-XR models start with the prefix `Cisco-IOS-XR`, are followed by an optional platform substring (e.g. `ncs5500`, `asr9k`, etc), followed by a technology substring (e.g. `ipv4-bgp`) and finally ending with a suffix that indicates whether the model defines configuration data (`cfg`), operational data (`oper`) or an action (`act`).  Note that a YANG model can specify multiple types of data simultaneously.  XR models separates configuration, operational data and actions to improve usability.
+XR models start with the prefix `Cisco-IOS-XR`, are followed by an optional platform substring (e.g. `ncs5500`, `asr9k`, etc), followed by a technology substring (e.g. `ipv4-bgp`) and finally ending with a suffix that indicates whether the model defines configuration data (`cfg`), operational data (`oper`) or an action (`act`).  Note that a YANG model can specify multiple types of data simultaneously.  However, Cisco IOS XR defines separate models for configuration, operational data and actions to improve usability.
 
 If we examine the directory for the XR 6.0.1 release, we see that there are 428 YANG files that define XR data models. The actual number of models is lower.  In reality, each YANG file defines a module or submodule. One or more modules and submodules define each model. Submodules are partial modules that contribute definitions to a module:
 
@@ -76,7 +76,7 @@ If we take a look at the number of operational models, we find initially 107 fil
 601/$
 ```
 
-Similar the approach we used to identify the BGP configuration model, we can see that the BGP operational model is platform independent (no platform substring), is defined in file `Cisco-IOS-XR-ipv4-bgp-oper.yang` and has a corresponding name `Cisco-IOS-XR-ipv4-bgp-oper`:
+If we look for the BGP operational model, we can see that the BGP operational model is platform independent (no platform substring), is defined in file `Cisco-IOS-XR-ipv4-bgp-oper.yang` and has a corresponding name `Cisco-IOS-XR-ipv4-bgp-oper`:
 
 ```
 601/$ ls *bgp*oper.yang
@@ -87,7 +87,7 @@ module Cisco-IOS-XR-ipv4-bgp-oper {
 601/$
 ```
 
-At this point we have account for 230 of the initial list of 428.  What about the other 198 YANG files?  As mentioned above, data models are defined by one of more modules and submodules. Some operational models are defined using submodels.  Those files have suffix `oper-sub` followed by a sequence number.  We find 180 files that define submodules:
+At this point we have account for 230 of the initial list of 428 YANG files.  What about the other 198 files?  As mentioned above, data models are defined by one of more modules and submodules. Some operational models are defined using submodels.  Those files use the suffix `oper-sub` followed by a sequence number.  We find 180 files that define submodules:
 
 ```
 601/$ ls Cisco-IOS-XR-*oper-sub[1-9].yang | wc -l
@@ -107,14 +107,14 @@ submodule Cisco-IOS-XR-ipv4-bgp-oper-sub1 {
 601/$
 ```
 
-Now we have accounted for 410 YANG files,  what about the remaining 18?  They define data types used in models:
+Now we have accounted for 410 YANG files,  what about the remaining 18 files?:
 
 ```
 601/$ ls *types.yang | wc -l
 18
 ```
 
-YANG defines some basic data types (e.g. boolean, uint32, string, etc.) that can be used as primitives to define more detailed types (e.g. interface name, BGP ASN, etc.). One of these files actually corresponds to new data types for BGP.  It defines some of the address families used by BGP models:
+They define data types used in models.  The YANG language has some built-in data types (e.g. boolean, uint32, string, etc.) that can be used as primitives to define more elaborate types (e.g. interface name, BGP ASN, etc.). One of these files actually corresponds to new data types for BGP.  It defines some of the address families used by BGP models:
 
 ```
 601/$ ls *bgp-datatypes.yang
@@ -122,7 +122,7 @@ Cisco-IOS-XR-ipv4-bgp-datatypes.yang
 601/$
 ```
 
-What about the other nine YANG files that we have been conveniently ignoring in this discussion?  Those file do not define XR native data models, instead, they provide implementation details for non-native models:
+What about the other nine YANG files that we have been conveniently ignoring in this discussion?  Those file do not define XR native data models.  Instead, they provide implementation details for non-native models:
 
 ```
 601/$ ls *.yang | grep -v Cisco-IOS-XR | wc -l
@@ -145,4 +145,4 @@ We will discuss them in detail in a future posting.  There are additional open m
 # In Summary
 - XR native data models follow a specific naming convention (`Cisco-IOS-XR-<platform><technology><suffix>`)
 - Each model provides a single type of definition (configuration data, operational state or action)
-- The definition of a model may be involve multiple YANG files where each specifies a YANG module or submodule
+- The definition of a model may be involve multiple YANG files where each file specifies a YANG module or submodule
