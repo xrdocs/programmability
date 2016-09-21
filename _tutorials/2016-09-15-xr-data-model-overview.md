@@ -32,14 +32,16 @@ xr/$ ls
 xr/$
 ```
 
-The name of XR data models use the following  notation:
+The name of XR data models use the following notation:
+
 ```
 Cisco-IOS-XR-<platform><technology><suffix>
 ```
 
 XR models start with the prefix `Cisco-IOS-XR`, are followed by an optional platform substring (e.g. `ncs5500`, `asr9k`, etc), followed by a technology substring (e.g. `ipv4-bgp`) and finally ending with a suffix that indicates whether the model defines configuration data (`cfg`), operational data (`oper`) or an action (`act`).  Note that a YANG model can specify multiple types of data simultaneously.  XR models separates configuration, operational data and actions to improve usability.
 
-If we examine the directory for the XR 6.0.1 release, we see that there are 428 YANG files that define XR data models. The actual number of models is lower.  In reality, each YANG file defines a module or submodule. One or more modules and submodules define each model. Submodules are partial modules that contribute definitions to a module.
+If we examine the directory for the XR 6.0.1 release, we see that there are 428 YANG files that define XR data models. The actual number of models is lower.  In reality, each YANG file defines a module or submodule. One or more modules and submodules define each model. Submodules are partial modules that contribute definitions to a module:
+
 ```
 xr/$ cd 601
 601/$ ls Cisco-IOS-XR-*.yang | wc -l
@@ -48,6 +50,7 @@ xr/$ cd 601
 ```
 
 Based on the naming convention above, we identify 123 configuration models:
+
 ```
 601/$ ls Cisco-IOS-XR-*cfg.yang | wc -l
 123
@@ -55,6 +58,7 @@ Based on the naming convention above, we identify 123 configuration models:
 ```
 
 If we look for the BGP configuration model, we can see that it is platform independent (no platform substring), is defined in file `Cisco-IOS-XR-ipv4-bgp-cfg.yang` and has a corresponding name `Cisco-IOS-XR-ipv4-bgp-cfg`:
+
 ```
 601/$ ls *bgp*cfg.yang
 Cisco-IOS-XR-ipv4-bgp-cfg.yang
@@ -65,6 +69,7 @@ module Cisco-IOS-XR-ipv4-bgp-cfg {
 ```
 
 If we take a look at the number of operational models, we find initially 107 files associated with these models:
+
 ```
 601/$ ls Cisco-IOS-XR-*oper.yang | wc -l
 107
@@ -72,6 +77,7 @@ If we take a look at the number of operational models, we find initially 107 fil
 ```
 
 Similar the approach we used to identify the BGP configuration model, we can see that the BGP operational model is platform independent (no platform substring), is defined in file `Cisco-IOS-XR-ipv4-bgp-oper.yang` and has a corresponding name `Cisco-IOS-XR-ipv4-bgp-oper`:
+
 ```
 601/$ ls *bgp*oper.yang
 Cisco-IOS-XR-ipv4-bgp-oper.yang
@@ -82,6 +88,7 @@ module Cisco-IOS-XR-ipv4-bgp-oper {
 ```
 
 At this point we have account for 230 of the initial list of 428.  What about the other 198 YANG files?  As mentioned above, data models are defined by one of more modules and submodules. Some operational models are defined using submodels.  Those files have suffix `oper-sub` followed by a sequence number.  We find 180 files that define submodules:
+
 ```
 601/$ ls Cisco-IOS-XR-*oper-sub[1-9].yang | wc -l
 180
@@ -89,6 +96,7 @@ At this point we have account for 230 of the initial list of 428.  What about th
 ```
 
 One of those submodules is actually associated with the BGP operational model (`Cisco-IOS-XR-ipv4-bgp-oper`) that we identified before:
+
 ```
 601/$ ls Cisco-IOS-XR-*bgp*oper-sub[1-9].yang
 Cisco-IOS-XR-ipv4-bgp-oper-sub1.yang
@@ -100,12 +108,14 @@ submodule Cisco-IOS-XR-ipv4-bgp-oper-sub1 {
 ```
 
 Now we have accounted for 410 YANG files,  what about the remaining 18?  They define data types used in models:
+
 ```
 601/$ ls *types.yang | wc -l
 18
 ```
 
-YANG defines some basic data types (e.g. boolean, uint32, string, etc.) that can be used as primitives to define more detailed types (e.g. interface name, BGP ASN, etc.):
+YANG defines some basic data types (e.g. boolean, uint32, string, etc.) that can be used as primitives to define more detailed types (e.g. interface name, BGP ASN, etc.). One of these files actually corresponds to new data types for BGP.  It defines some of the address families used by BGP models:
+
 ```
 601/$ ls *bgp-datatypes.yang
 Cisco-IOS-XR-ipv4-bgp-datatypes.yang
@@ -113,6 +123,7 @@ Cisco-IOS-XR-ipv4-bgp-datatypes.yang
 ```
 
 What about the other nine YANG files that we have been conveniently ignoring in this discussion?  Those file do not define XR native data models, instead, they provide implementation details for non-native models:
+
 ```
 601/$ ls *.yang | grep -v Cisco-IOS-XR | wc -l
 9
