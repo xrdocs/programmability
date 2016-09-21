@@ -15,6 +15,7 @@ If you are completely new to data models, all you need to understand at this poi
 The YANG files that define the data models are shipped with the device.  Those embedded models are ultimately the authoritative list of models that the device supports.  You can programmatically retrieve them using a management protocol (e.g. NETCONF, gRPC, RESTCONF).  In addition, we make the XR models publicly available for download on GitHub.  In this tutorial, we will use this repository to explore XR data models.
 
 Let's create a directory to host the YANG files and clone the git repository:
+
 ```
 ~/$ mkdir -p ~/yang/modules/YangModels
 ~/$ cd ~/yang/modules/YangModels
@@ -23,6 +24,7 @@ YangModels/$
 ```
 
 If we take a closer look at the XR files, we see that they are grouped by software release:
+
 ```
 YangModels/$ cd yang/vendor/cisco/xr/
 xr/$ ls
