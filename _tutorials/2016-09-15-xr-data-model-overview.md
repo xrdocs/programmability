@@ -68,7 +68,7 @@ module Cisco-IOS-XR-ipv4-bgp-cfg {
 601/$
 ```
 
-If we take a look at the number of operational models, we find initially 107 files associated with these models:
+Following the naming convention described earlier, we find initially 107 files associated with operational models:
 
 ```
 601/$ ls Cisco-IOS-XR-*oper.yang | wc -l
@@ -87,7 +87,7 @@ module Cisco-IOS-XR-ipv4-bgp-oper {
 601/$
 ```
 
-At this point we have account for 230 of the initial list of 428 YANG files.  What about the other 198 files?  As mentioned above, data models are defined by one of more modules and submodules. Some operational models are defined using submodels.  Those files use the suffix `oper-sub` followed by a sequence number.  We find 180 files that define submodules:
+At this point we have accounted for 230 of the initial list of 428 YANG files.  What about the other 198 files?  As mentioned above, data models are defined by one of more modules and submodules. Some operational models are defined using submodels.  Those files use the suffix `oper-sub` followed by a sequence number.  We find 180 files that define submodules:
 
 ```
 601/$ ls Cisco-IOS-XR-*oper-sub[1-9].yang | wc -l
