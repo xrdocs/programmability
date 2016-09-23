@@ -94,7 +94,7 @@ module Cisco-IOS-XR-ipv4-bgp-oper {
 601/$
 ```
 
-At this point we have accounted for 230 of the initial list of 428 YANG files.  What about the other 198 files?  As mentioned above, data models are defined by one of more modules and submodules. Some operational models are defined using submodels.  Those files use the suffix `oper-sub` followed by a sequence number.  We find 180 files that define submodules:
+At this point we have accounted for 230 of the initial list of 428 YANG files.  What about the other 198 files?  As mentioned above, data models are defined by one or more modules and submodules. Some operational models are defined using submodels.  Those files use the suffix `oper-sub` followed by a sequence number.  We find 180 files that define submodules:
 
 ```
 601/$ ls Cisco-IOS-XR-*oper-sub[1-9].yang | wc -l
@@ -114,17 +114,17 @@ submodule Cisco-IOS-XR-ipv4-bgp-oper-sub1 {
 601/$
 ```
 
-Now we have accounted for 410 YANG files,  what about the remaining 18 files?:
+Now we have accounted for 410 YANG files,  what about the remaining 18 files?  They define data types used in models.  The YANG language has some built-in data types (e.g. boolean, uint32, string, etc.) that can be used as primitives to define more elaborate types (e.g. interface name, BGP ASN, etc.). Those files use the suffix `types`:
 
 ```
 601/$ ls *types.yang | wc -l
 18
 ```
 
-They define data types used in models.  The YANG language has some built-in data types (e.g. boolean, uint32, string, etc.) that can be used as primitives to define more elaborate types (e.g. interface name, BGP ASN, etc.). One of these files actually corresponds to new data types for BGP.  It defines some of the address families used by BGP models:
+One of these files actually corresponds to data types for BGP.  It defines some of the address families used by BGP models:
 
 ```
-601/$ ls *bgp-datatypes.yang
+601/$ ls *bgp*types.yang
 Cisco-IOS-XR-ipv4-bgp-datatypes.yang
 601/$
 ```
