@@ -8,11 +8,11 @@ published: true
 position: hidden
 ---
 
-In a previous [blog post](https://xrdocs.github.io/programmability/blogs/2016-09-12-model-driven-programmability/), we described how the Cisco IOS XR programmability framework is based on data models.  But, What format do they have?  where are the models published?  How many are available?  How are they grouped?
+In a previous [blog post](https://xrdocs.github.io/programmability/blogs/2016-09-12-model-driven-programmability/), we described how the Cisco IOS XR programmability framework is based on data models.  But, what format do they have?  where are the models published?  how many are available?  how are they grouped?
 
 If you are completely new to data models, all you need to understand at this point is that data models mostly specify the configuration and operational state that a device supports.  Models are defined as text files using the YANG modeling language ([RFC 7950](https://tools.ietf.org/html/rfc7950)) and they arrange data in a tree structure.  While data models are human readable, their strength comes from the fact that they have well-defined syntax and semantics that facilitate the development of software tools to process them.  They simplify network automation and orchestration.  In this tutorial, we will not dig into YANG specifics.  Instead, we will overview the organization and naming of XR native models.
 
-XR devices ship with the YANG files that define the data models they support.  Using a management protocol (e.g. NETCONF, gRPC, RESTCONF), you can programmatically query a device for the list of models it supports and  retrieve the model files.  In addition, the XR models are made publicly available for download on GitHub.  In this tutorial, we will use this repository to explore the XR native models.
+XR devices ship with the YANG files that define the data models they support.  Using a management protocol (e.g. NETCONF, gRPC, RESTCONF), you can programmatically query a device for the list of models it supports and  retrieve the model files.  In addition, the XR models are made publicly available for download on GitHub.  In this tutorial, we will use that repository to explore the XR native models.
 
 Let's create a directory to host the YANG files and clone the git repository:
 
@@ -20,6 +20,13 @@ Let's create a directory to host the YANG files and clone the git repository:
 ~/$ mkdir -p ~/yang/modules/YangModels
 ~/$ cd ~/yang/modules/YangModels
 YangModels/$ git clone git@github.com:YangModels/yang.git
+Cloning into 'yang'...
+remote: Counting objects: 4150, done.
+remote: Compressing objects: 100% (12/12), done.
+remote: Total 4150 (delta 2), reused 0 (delta 0), pack-reused 4138
+Receiving objects: 100% (4150/4150), 9.09 MiB | 1.93 MiB/s, done.
+Resolving deltas: 100% (2059/2059), done.
+Checking connectivity... done.
 YangModels/$
 ```
 
@@ -40,7 +47,7 @@ Cisco-IOS-XR-<platform><technology><suffix>
 
 XR models start with the prefix `Cisco-IOS-XR`, are followed by an optional platform substring (e.g. `ncs5500`, `asr9k`, etc), followed by a technology substring (e.g. `ipv4-bgp`) and finally ending with a suffix that indicates whether the model defines configuration data (`cfg`), operational data (`oper`) or an action (`act`).  Note that a YANG model can specify multiple types of data simultaneously.  However, Cisco IOS XR defines separate models for configuration, operational data and actions to improve usability.
 
-If we examine the directory for the XR 6.0.1 release, we see that there are 428 YANG files that define XR data models. The actual number of models is lower.  In reality, each YANG file defines a module or submodule. One or more modules and submodules define each model. Submodules are partial modules that contribute definitions to a module:
+If we examine the directory for the XR 6.0.1 release, we see that there are 428 YANG files that define XR data models. The actual number of models is lower.  Each YANG file defines a module or submodule. Submodules are partial modules that contribute definitions to a module.  One or more modules and submodules define a model:
 
 ```
 xr/$ cd 601
@@ -49,7 +56,7 @@ xr/$ cd 601
 601/$
 ```
 
-Based on the naming convention above, we identify 123 configuration models:
+Based on the naming convention above, we identify 123 configuration models in this release:
 
 ```
 601/$ ls Cisco-IOS-XR-*cfg.yang | wc -l
