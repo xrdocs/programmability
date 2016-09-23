@@ -4,14 +4,6 @@ permalink: /
 author_profile: true
 author: "Cisco Web Team"
 
-feature_row1:
-  - image_path: techdoc.jpg
-    alt: "fully responsive"
-    title: "Technical Documentation"
-    excerpt: 'Detailed Technical Documentation on YANG based Model Driven Programmability Infrastructure of IOS-XR'
-    url: "/techdocs/"
-    btn_label: "Check out the docs!"
-    btn_class: "btn--inverse"
 feature_row2:
   - image_path: blog.png
     alt: "fully responsive"
