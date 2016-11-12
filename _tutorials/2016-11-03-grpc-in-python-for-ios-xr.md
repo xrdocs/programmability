@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2016-11-03 11:28 -0700'
-title: gRPC in Python for IOS-XR
+title: Programming IOS-XR over GRPC
 excerpt: gRPC in Python for IOS-XR
 author: Karthik Kumaravel
 ---
