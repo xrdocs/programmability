@@ -11,7 +11,7 @@ author: Karthik Kumaravel
 The goal of this tutorial is to set up gRPC in Python to send gRPC commands to an IOS-XR box. This tutorial assumes that you have gone through the XR Toolbox Series before. If you haven't checked out the earlier parts to the XR toolbox Series, then you can do so here:  
 
 >
-[XR Toolbox Series]({{ base_path }}/tags/#xr-toolbox)
+[XR Toolbox Series]({{ site.url }}/application-hosting/tags/#xr-toolbox)
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ Before we begin, let's make sure you've set up your development environment.
 If you haven't checked it out, go through the "App-Development Topology" tutorial here:  
 
 >
-[XR Toolbox, Part 3: App Development Topology]({{ base_path }}/tutorials/2016-06-06-xr-toolbox-app-development-topology)  
+[XR Toolbox, Part 3: App Development Topology]({{ site.url }}/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology)  
   
 Follow the instructions to get your topology up and running as shown below:  
 
