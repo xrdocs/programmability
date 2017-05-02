@@ -8,7 +8,7 @@ tags:
   - programmability
 ---
 
-One of the most exciting enhancements we introduced to Cisco IOS XR last year was a much improved programmability framework based on data models.  While you have had access to a diverse number of management interfaces in the past, they did not always provide a cohesive framework to manage the device and treat it as a programmable platform.  Quite often, the command line interface acted as the grand unifying interface.  With the growing support for data models, a rich stack opens the door for new ways to manage and program devices making the most of software automation.
+In 2015, one of the most exciting enhancements we introduced to Cisco IOS XR was a much improved programmability framework based on data models.  While you have had access to a diverse number of management interfaces in the past, they did not always provide a cohesive framework to manage the device and treat it as a programmable platform.  Quite often, the command line interface acted as the grand unifying interface.  With the growing support for data models, a rich stack opens the door for new ways to manage and program devices making the most of software automation.
  ![xr-mdp.png]({{site.baseurl}}/images/xr-mdp.png)
  
 What are the benefits of model-driven programmability?  Numerous and all pretty valuable:
