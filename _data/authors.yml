@@ -24,6 +24,14 @@ Akshat Sharma:
   avatar      : "akshat_bio_photo.jpeg"
   twitter     : "irakshat"
 
+
+Nicolas Leiva:
+  name        : "Nicolas Leiva"
+  github      : "nleiva"
+  email       : "nleiva@cisco.com"
+  bio         : "Architect, Solutions Integration, Cisco."
+  avatar      : "nleiva.png"
+
 Mike Korshunov:
   name        : "Mike Korshunov"
   github      : "maikor"
