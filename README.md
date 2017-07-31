@@ -1,2 +1,1 @@
-# Programmability
-Documentation on Cisco IOS XR programmability.  Content is accessed from https://xrdocs.github.io/programmability
+Base-Template Repository for xrdocs sub-websites
