@@ -37,7 +37,7 @@ We will use this [Vagrantfile](https://github.com/nleiva/xrgrpc/blob/master/exam
 
 ![topology](https://xrdocs.github.io/xrdocs-images/assets/images/grpc.png)
 
-So you basically need to make sure you download the IOS-XRv image as describe here: [IOS-XR Vagrant Quick Start]({{ site.url }}/application-hosting/tutorials/iosxr-vagrant-quickstart) and install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). 
+So you basically need to make sure you download the IOS-XRv image as described here: [IOS-XR Vagrant Quick Start]({{ site.url }}/application-hosting/tutorials/iosxr-vagrant-quickstart) and install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). 
 
 Then run `vagrant up` in the folder where you have the [Vagrantfile](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/Vagrantfile).
 
@@ -197,44 +197,44 @@ We will document a complete walk-through in a following tutorial. Well, if you a
 
 In this example we basically did four things.
 
-1. Parse the [YANG path input](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L28). If none, the default is `../input/yangpaths.json`.
+  1. Parse the [YANG path input](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L28). If none, the default is `../input/yangpaths.json`.
 
-```go
-ypath := flag.String("ypath", "../input/yangpaths.json", "YANG path arguments")
-flag.Parse()
-```
+  ```go
+  ypath := flag.String("ypath", "../input/yangpaths.json", "YANG path arguments")
+  flag.Parse()
+  ```
 
-2. Identify the [target](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L37). IP address, user credentials, cert file location and a timeout.
+  2. Identify the [target](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L37). IP address, user credentials, cert file location and a timeout.
 
-```go
-router, err := xr.BuildRouter(
-	xr.WithUsername("vagrant"),
-	xr.WithPassword("vagrant"),
-	xr.WithHost("192.0.2.1:57344"),
-	xr.WithCreds("ems.pem"),
-	xr.WithTimeout(5),
-)
-```
+  ```go
+  router, err := xr.BuildRouter(
+      xr.WithUsername("vagrant"),
+      xr.WithPassword("vagrant"),
+      xr.WithHost("192.0.2.1:57344"),
+      xr.WithCreds("ems.pem"),
+      xr.WithTimeout(5),
+  )
+  ```
 
-3. [Connect](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L49) to the device. This has to be done just once for all the following RPC calls. In this example we are just making one, but this connection can be re-used to configure the device, generate a telemetry stream or program the RIB/FIB.
+  3. [Connect](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L49) to the device. This has to be done just once for all the following RPC calls. In this example we are just making one, but this connection can be re-used to configure the device, generate a telemetry stream or program the RIB/FIB.
 
-```go
-conn, ctx, err := xr.Connect(*router)
-if err != nil {
-	log.Fatalf("Could not setup a client connection to %s, %v", router.Host, err)
-}
-defer conn.Close()
-```
+  ```go
+  conn, ctx, err := xr.Connect(*router)
+  if err != nil {
+      log.Fatalf("Could not setup a client connection to %s, %v", router.Host, err)
+  }
+  defer conn.Close()
+  ```
 
-4. Make the [GetConfig](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L60) call and print out the response.
+  4. Make the [GetConfig](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L60) call and print out the response.
 
-```go
-output, err = xr.GetConfig(ctx, conn, string(js), id)
-if err != nil {
-	log.Fatalf("Could not get the config from %s, %v", router.Host, err)
-}
-fmt.Printf("\nConfig from %s\n %s\n", router.Host, output)
-```
+  ```go
+  output, err = xr.GetConfig(ctx, conn, string(js), id)
+  if err != nil {
+      log.Fatalf("Could not get the config from %s, %v", router.Host, err)
+  }
+  fmt.Printf("\nConfig from %s\n %s\n", router.Host, output)
+  ```
 
 This concludes this tutorial/example. Stay tuned for more!.
 
