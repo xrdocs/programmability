@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2017-08-04 15:16 -0400'
 title: Programming IOS-XR with gRPC and Go
 position: hidden
