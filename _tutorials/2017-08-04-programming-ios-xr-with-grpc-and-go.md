@@ -250,3 +250,4 @@ This concludes this tutorial/example. Stay tuned for more!.
 Some useful links below:
 
 [gRPC Getting Started](https://github.com/CiscoDevNet/grpc-getting-started)
+[gRPC and GPB for Networking Engineers](https://github.com/nleiva/gmessaging)
