@@ -35,7 +35,7 @@ This tutorial assumes that you have gone through the XR Toolbox Series before. I
 
 We will use this [Vagrantfile](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/Vagrantfile) to setup and run the topology as shown below:  
 
-![topology](https://github.com/xrdocs/xrdocs-images/blob/gh-pages/assets/images/grpc.png)
+![topology](https://xrdocs.github.io/xrdocs-images/assets/images/grpc.png)
 
 So you basically need to make sure you download the IOS-XRv image as describe here: [IOS-XR Vagrant Quick Start]({{ site.url }}/application-hosting/tutorials/iosxr-vagrant-quickstart) and install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). 
 
