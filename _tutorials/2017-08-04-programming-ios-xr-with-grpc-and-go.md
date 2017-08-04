@@ -109,7 +109,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 ```
 
-You can verify the intall as follows:
+You can verify the installation as follows:
 
 ```shell
 ubuntu@vm-1:~$ go version
@@ -160,7 +160,7 @@ Let's just compile the code ([main.go](https://github.com/nleiva/xrgrpc/tree/mas
 go build
 ```
 
-And execute it can now execute the binary file created.
+And now you can run the binary file created.
 
 ```shell
 ubuntu@vm-1:~/go/src/github.com/nleiva/xrgrpc/example/definetarget4$ ./definetarget4
