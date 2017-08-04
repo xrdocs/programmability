@@ -138,6 +138,15 @@ That's it!. All the code and [dependencies](https://github.com/golang/dep) are n
 
 In this example we will use the [GetConfig](https://github.com/nleiva/xrgrpc/blob/master/proto/ems/ems_grpc.proto#L10) RPC to request the config of the IOS-XRv device for the [YANG](https://github.com/YangModels/yang/tree/master/vendor/cisco/xr) paths specified in [yangpaths.json](https://github.com/nleiva/xrgrpc/blob/master/example/input/yangpaths.json).
 
+```json
+{	
+    "Cisco-IOS-XR-ifmgr-cfg:interface-configurations": [null],
+    "Cisco-IOS-XR-telemetry-model-driven-cfg:telemetry-model-driven": [null],
+    "Cisco-IOS-XR-ipv4-bgp-cfg:bgp": [null],
+    "Cisco-IOS-XR-clns-isis-cfg:isis": [null]
+}
+```
+
 For this purpose we go to the `definetarget4` example folder and copy the content of certificate file we obtained previously.
 
 ```shell
@@ -197,14 +206,14 @@ We will document a complete walk-through in a following tutorial. Well, if you a
 
 In this example we basically did four things.
 
-  1. Parse the [YANG path input](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L28). If none, the default is `../input/yangpaths.json`.
+  1) Parse the [YANG path input](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L28). If none, the default is `../input/yangpaths.json`.
 
   ```go
   ypath := flag.String("ypath", "../input/yangpaths.json", "YANG path arguments")
   flag.Parse()
   ```
 
-  2. Identify the [target](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L37). IP address, user credentials, cert file location and a timeout.
+  2) Identify the [target](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L37). IP address, user credentials, cert file location and a timeout.
 
   ```go
   router, err := xr.BuildRouter(
@@ -216,7 +225,7 @@ In this example we basically did four things.
   )
   ```
 
-  3. [Connect](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L49) to the device. This has to be done just once for all the following RPC calls. In this example we are just making one, but this connection can be re-used to configure the device, generate a telemetry stream or program the RIB/FIB.
+  3) [Connect](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L49) to the device. This has to be done just once for all the following RPC calls. In this example we are just making one, but this connection can be re-used to configure the device, generate a telemetry stream or program the RIB/FIB.
 
   ```go
   conn, ctx, err := xr.Connect(*router)
@@ -226,7 +235,7 @@ In this example we basically did four things.
   defer conn.Close()
   ```
 
-  4. Make the [GetConfig](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L60) call and print out the response.
+  4) Make the [GetConfig](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/main.go#L60) call and print out the response.
 
   ```go
   output, err = xr.GetConfig(ctx, conn, string(js), id)
