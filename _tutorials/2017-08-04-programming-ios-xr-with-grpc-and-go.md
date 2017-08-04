@@ -24,7 +24,7 @@ excerpt: >-
 The goal of this tutorial is to demonstrate how to program an IOS XR device using the gRPC framework. For this purpose, we will use a [gRPC library for Cisco IOS XR](https://github.com/nleiva/xrgrpc) written in [Go](https://golang.org/).
 The objective is to have a single interface/connection to retrieve info from the device, apply configs to it, generate telemetry streams, program the RIB/FIB and so on.
 
-We picked the [Go](https://golang.org/) programming language, due its simplicity, [readability](https://talks.golang.org/2015/simplicity-is-complicated.slide#15), portability and [concurrency](https://github.com/nleiva/xrgrpc#cli-config-multiple-routers-simultaneously-merge) primitives.
+We picked [Go](https://golang.org/), due its simplicity, [readability](https://talks.golang.org/2015/simplicity-is-complicated.slide#15), portability and [concurrency](https://github.com/nleiva/xrgrpc#cli-config-multiple-routers-simultaneously-merge) primitives.
 
 This tutorial assumes that you have gone through the XR Toolbox Series before. If you haven't checked out the earlier parts to the XR toolbox Series, then you can do so here:  
 
@@ -84,7 +84,7 @@ First login to the Ubuntu VM.
 vagrant ssh vm-1
 ```
 
-Let's start by installing a [Go](https://golang.org/) as described in the [Go Wiki](https://github.com/golang/go/wiki/Ubuntu).
+Let's start by installing [Go](https://golang.org/) as described in the [Go Wiki](https://github.com/golang/go/wiki/Ubuntu).
 
 ```shell
 sudo add-apt-repository ppa:longsleep/golang-backports
@@ -251,4 +251,3 @@ Some useful links below:
 
 - [gRPC Getting Started](https://github.com/CiscoDevNet/grpc-getting-started)
 - [gRPC and GPB for Networking Engineers](https://github.com/nleiva/gmessaging)
-
