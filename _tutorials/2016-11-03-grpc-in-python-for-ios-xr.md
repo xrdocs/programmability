@@ -3,7 +3,7 @@ published: true
 date: '2016-11-03 11:28 -0700'
 title: Programming IOS-XR over GRPC
 excerpt: gRPC in Python for IOS-XR
-author: Nicolas Leiva
+author: Karthik Kumaravel
 tags:
   - iosxr
   - cisco
