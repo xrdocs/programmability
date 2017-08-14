@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2017-08-14 18:01 -0400'
 title: Validate the intent of network config changes
 position: hidden
