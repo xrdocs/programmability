@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2017-08-14 18:01 -0400'
 title: Validate the intent of network config changes
 position: hidden
@@ -206,6 +206,7 @@ Manually cancelled the session to 192.0.2.2:57344
 
 1) We applied a BGP neighbor config to routers 192.0.2.2 and 192.0.2.3, using a template based on the BGP OpenConfig model: [bgpoctemplate4.json](https://github.com/nleiva/xrgrpc/blob/master/example/input/bgpoctemplate4.json).
 
+{% raw %}
 ```shell
 { "openconfig-bgp:bgp": {
    "global": {
@@ -225,6 +226,7 @@ Manually cancelled the session to 192.0.2.2:57344
       }
 <snip>
 ```
+{% endraw %}
 
 ```shell
 Config merged on 192.0.2.2:57344 -> Request ID: 1000, Response ID: 1000
