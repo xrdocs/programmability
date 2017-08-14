@@ -34,6 +34,8 @@ We will use a [gRPC library for Cisco IOS XR](https://github.com/nleiva/xrgrpc) 
 
 3) Subscribe to a telemetry stream to track status changes.
 
+In this oportunity, we will setup a BGP session between two devices with gRPC and leverage Streaming Telemetry (gRPC as well) to track BGP Neighbor status.
+
 This tutorial assumes that you have gone through the previous gRPC tutorial. If you haven't checked it out, then you can do so here:  
 
 >
@@ -204,6 +206,7 @@ Manually cancelled the session to 192.0.2.2:57344
 
 1) We applied a BGP neighbor config to routers 192.0.2.2 and 192.0.2.3, using a template based on the BGP OpenConfig model: [bgpoctemplate4.json](https://github.com/nleiva/xrgrpc/blob/master/example/input/bgpoctemplate4.json).
 
+{% raw %}
 ```shell
 { "openconfig-bgp:bgp": {
    "global": {
@@ -223,6 +226,7 @@ Manually cancelled the session to 192.0.2.2:57344
       }
 <snip>
 ```
+{% endraw %}
 
 ```shell
 Config merged on 192.0.2.2:57344 -> Request ID: 1000, Response ID: 1000
