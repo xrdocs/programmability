@@ -2,7 +2,7 @@
 published: true
 date: '2017-08-14 18:01 -0400'
 title: Validate the intent of network config changes
-position: hidden
+position: top
 author: Nicolas Leiva
 excerpt: >-
   The goal of this tutorial is not only to demonstrate how to config an IOS XR
