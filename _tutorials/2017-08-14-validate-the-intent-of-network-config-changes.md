@@ -96,6 +96,8 @@ vim $GOPATH/src/github.com/nleiva/xrgrpc/example/configvalidate4/ems2.pem
 exit
 ```
 
+You can verify the port to use with `vagrant port <vm name>` before running `ssh -p <port no>`
+{: .notice--warning}
 
 ## Compile the example
 
