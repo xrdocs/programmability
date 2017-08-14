@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 date: '2017-08-14 18:01 -0400'
 title: Validate the intent of network config changes
 position: hidden
@@ -29,7 +29,9 @@ The goal of this tutorial is not only to demonstrate how to config an IOS XR dev
 We will use a [gRPC library for Cisco IOS XR](https://github.com/nleiva/xrgrpc) written in [Go](https://golang.org/) to:
 
 1) Submit network config changes to the devices using [OpenConfig YANG models](https://github.com/openconfig/public/tree/master/release/models).
+
 2) Request the running configuration on the targets to validate the change submitted was actually applied.
+
 3) Subscribe to a telemetry stream to track status changes.
 
 This tutorial assumes that you have gone through the previous gRPC tutorial. If you haven't checked it out, then you can do so here:  
@@ -51,14 +53,14 @@ To make this possible, we will use all the files in this [folder](https://github
 
 ## Setup the topology
 
-You can either manually download the files on the [folder](https://github.com/nleiva/xrgrpc/tree/master/example/configvalidate4) or clone the repo: `git clone https://github.com/nleiva/xrgrpc.git`.
+You can either manually download the files in this [folder](https://github.com/nleiva/xrgrpc/tree/master/example/configvalidate4) or clone the repo: `git clone https://github.com/nleiva/xrgrpc.git`.
 
 If you cloned the repo, you need to drill down to the files: `cd xrgrpc/example/configvalidate4`. Either if you did this or downloaded the files to another folder, you simply need to run `vagrant up` where the files are.
 
 This process might take several minutes, so feel free to multitask.
 
 
-## Copy the public credential from the routers
+## Copy the public credential file from the routers
 
 In order to establish secure gRPC connections, we need to get this file from the target.
 
@@ -103,7 +105,7 @@ cd $GOPATH/src/github.com/nleiva/xrgrpc/example/configvalidate4
 go build
 ```
 
-That's it! [Go](https://golang.org/) we are all set to run the example.
+That's it! We are all set to run the example.
 {: .notice--success}  
 
 
@@ -197,7 +199,8 @@ BGP Neighbor; IP: 203.0.113.3, ASN: 64512, State bgp-st-estab
 Manually cancelled the session to 192.0.2.2:57344
 ```
 
-...Wait, what did just happend?..
+...Wait!, what did just happend?..
+{: .notice--warning}
 
 1) We applied a BGP neighbor config to routers 192.0.2.2 and 192.0.2.3, using a template based on the BGP OpenConfig model: [bgpoctemplate4.json](https://github.com/nleiva/xrgrpc/blob/master/example/input/bgpoctemplate4.json).
 
@@ -228,6 +231,7 @@ Config merged on 192.0.2.2:57344 -> Request ID: 1000, Response ID: 1000
 Config merged on 192.0.2.3:57344 -> Request ID: 1000, Response ID: 1000
 ```
 
+
 2) We request the running configuration on one of the targets to validate it was actually applied.
 
 ```shell
@@ -250,6 +254,7 @@ BGP Config from 192.0.2.2:57344
        "enabled": true
 <snip>
 ```
+
 
 3) We subscribed to BGP neighbor telemetry stream to track status changes **every two seconds**. You can see how the session went from active, idle and opensent to established.
 
@@ -297,6 +302,7 @@ if err != nil {
 }
 ```
 
+
   2) Define BGP parameters for each device.
   
 ```go
@@ -308,6 +314,7 @@ neighbor1 := &NeighborConfig{
 	LocalAddress:    "203.0.113.2",
 }
 ```
+
 
   3) Connect to both routers.
 
@@ -323,6 +330,7 @@ if err != nil {
 }
 ```
  
+ 
    4) Apply the configs to the routers.
   
 ```go
@@ -335,6 +343,7 @@ if err != nil {
 }
 ```
 
+
    5) Get the BGP config from router1.
   
 ```go
@@ -346,6 +355,7 @@ if err != nil {
 fmt.Printf("\nBGP Config from %s\n\n", router1.Host)
 fmt.Printf("\n%s\n", output)
 ```
+
 
    6) Subscribe to the telemetry stream and parse the output.
   
@@ -363,6 +373,7 @@ if err != nil {
 	// fmt.Printf("\n\n%v\n\n\n", hex.Dump(content))
 	fmt.Printf("BGP Neighbor; IP: %v, ASN: %v, State %s \n\n", raddr, rasn, state)
 ```
+
 
 Simple, isn't it?.
 
