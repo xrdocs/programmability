@@ -52,6 +52,8 @@ This time, we will automate the [installation of Go](https://xrdocs.github.io/pr
 
 To make this possible, we will use all the files in this [folder](https://github.com/nleiva/xrgrpc/tree/master/example/configvalidate4). You need to have [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) installed. 
 
+Request access to the Vagrant box by filling up the form [here]({{ site.url }}/getting-started/iosxr-vagrant-beta)
+{: .notice--warning}
 
 ## Setup the topology
 
@@ -387,5 +389,6 @@ This concludes this tutorial/example. Stay tuned for more!.
 
 Some useful links below:
 
+- **Part 1**: - [Programming IOS-XR with gRPC and Go]({{ site.url }}/programmability/tutorials/2017-08-04-programming-ios-xr-with-grpc-and-go/)
 - [gRPC Getting Started](https://github.com/CiscoDevNet/grpc-getting-started)
 - [gRPC and GPB for Networking Engineers](https://github.com/nleiva/gmessaging)
