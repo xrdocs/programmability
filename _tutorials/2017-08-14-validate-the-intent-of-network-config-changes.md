@@ -389,6 +389,6 @@ This concludes this tutorial/example. Stay tuned for more!.
 
 Some useful links below:
 
-- **Part 1**: - [Programming IOS-XR with gRPC and Go]({{ site.url }}/programmability/tutorials/2017-08-04-programming-ios-xr-with-grpc-and-go/)
+- **Part 1**: [Programming IOS-XR with gRPC and Go]({{ site.url }}/programmability/tutorials/2017-08-04-programming-ios-xr-with-grpc-and-go/)
 - [gRPC Getting Started](https://github.com/CiscoDevNet/grpc-getting-started)
 - [gRPC and GPB for Networking Engineers](https://github.com/nleiva/gmessaging)
