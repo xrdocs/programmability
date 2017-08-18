@@ -41,16 +41,16 @@ So you basically need to make sure you download the IOS-XRv image as described h
 
 Then run `vagrant up` in the folder where you have the [Vagrantfile](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/Vagrantfile).
 
+Request access to the Vagrant box by filling up the form [here]({{ site.url }}/getting-started/iosxr-vagrant-beta)
+{: .notice--warning}
+
 ## Configuring the router for secure gRPC connections
 
-First login to the router.
+First login to the router (password: vagrant).
 
 ```shell
 ssh -p 2223 vagrant@localhost
 ```
-
-**Note the password would be vagrant**
-{: .notice--warning}
 
 Apply the following gRPC and interface config.
 
@@ -120,7 +120,7 @@ bin  pkg  src
 ubuntu@vm-1:~/go$
 ```
 
-That's it! [Go](https://golang.org/) is installed on the Ubuntu VM.
+That's it! [Go](https://golang.org/) is installed in the Ubuntu VM.
 {: .notice--success}  
 
 ## Getting the gRPC library for Cisco IOS XR
@@ -249,5 +249,6 @@ This concludes this tutorial/example. Stay tuned for more!.
 
 Some useful links below:
 
+- **Part 2**: [Validate the intent of network config changes]({{ site.url }}/programmability/tutorials/2017-08-14-validate-the-intent-of-network-config-changes/)
 - [gRPC Getting Started](https://github.com/CiscoDevNet/grpc-getting-started)
 - [gRPC and GPB for Networking Engineers](https://github.com/nleiva/gmessaging)
