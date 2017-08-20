@@ -48,11 +48,11 @@ We will use this [Vagrantfile](https://github.com/nleiva/xrgrpc/blob/master/exam
 
 ![topology](https://xrdocs.github.io/xrdocs-images/assets/images/configbgp.png)
 
-This time, we will automate the [installation of Go](https://xrdocs.github.io/programmability/tutorials/2017-08-04-programming-ios-xr-with-grpc-and-go/#installing-go-on-the-ubuntu-vm) and provide basic configs to the routers to enable connectivity.
+This time, we will automate the [installation of Go](https://xrdocs.github.io/programmability/tutorials/2017-08-04-programming-ios-xr-with-grpc-and-go/#installing-go-on-the-ubuntu-vm) and basic configuration of the routers to enable connectivity between them and the Ubuntu VM.
 
 To make this possible, we will use all the files in this [folder](https://github.com/nleiva/xrgrpc/tree/master/example/configvalidate4). You need to have [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) installed. 
 
-Request access to the Vagrant box by filling up the form [here]({{ site.url }}/getting-started/iosxr-vagrant-beta)
+Request access to the IOS XRv Vagrant box by filling up the form [here]({{ site.url }}/getting-started/iosxr-vagrant-beta). This example was run with IOS XR version 6.1.2.
 {: .notice--warning}
 
 ## Setup the topology
