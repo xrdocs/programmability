@@ -37,11 +37,11 @@ We will use this [Vagrantfile](https://github.com/nleiva/xrgrpc/blob/master/exam
 
 ![topology](https://xrdocs.github.io/xrdocs-images/assets/images/grpc.png)
 
-So you basically need to make sure you download the IOS-XRv image as described here: [IOS-XR Vagrant Quick Start]({{ site.url }}/application-hosting/tutorials/iosxr-vagrant-quickstart) and install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). 
+So you basically need to make sure you download the IOS XRv image as described here: [IOS-XR Vagrant Quick Start]({{ site.url }}/application-hosting/tutorials/iosxr-vagrant-quickstart) and install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads). 
 
 Then run `vagrant up` in the folder where you have the [Vagrantfile](https://github.com/nleiva/xrgrpc/blob/master/example/definetarget4/Vagrantfile).
 
-Request access to the Vagrant box by filling up the form [here]({{ site.url }}/getting-started/iosxr-vagrant-beta)
+Request access to the IOS XRv Vagrant box by filling up the form [here]({{ site.url }}/getting-started/iosxr-vagrant-beta). This example was run with IOS XR version 6.1.2.
 {: .notice--warning}
 
 ## Configuring the router for secure gRPC connections
