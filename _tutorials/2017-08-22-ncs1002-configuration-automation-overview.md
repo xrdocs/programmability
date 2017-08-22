@@ -53,25 +53,25 @@ All three models are required to fully configure a slice.
 
 OpenConfig models give you many levels of hierarchy, but how does this apply to NCS1002? In the figures below, you can find logical representations of five slice modes implemented on NCS1002 using OpenConfig models (Slice0 is used as an example). 
 
-### 1. OpenConfig configuration for 2x100GE → 2x100G slice mode
+### 1.OpenConfig configuration for 2x100GE → 2x100G slice mode
 
 ![](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/vosipchu/2_100_2_100.png)
 
 This is the simplest mode supported in NCS1002. The speed of each line port equals the speed of any client port. In this mode, you have direct 1-to-1 mappings between client ports and line (trunk) ports. Because of this, the OpenConfig configuration is very straightforward and transparent. 
 
-### 2. OpenConfig configuration for 4x100GE → 2x200G slice mode
+### 2.OpenConfig configuration for 4x100GE → 2x200G slice mode
 
 ![](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/vosipchu/4_100_2_200.png)
 
 In this mode, the line port 16-QAM modulation allows you to have two client ports mapped to a single line port. In other words, 2x100GE client ports go to a single 200G line port and a slice has two groups in total. OpenConfig configuration is also simple; you just need to make sure that each pair of client ports is mapped to the same line port. 
 
-### 3. OpenConfig configuration for 5x100GE → 2x250G slice mode
+### 3.OpenConfig configuration for 5x100GE → 2x250G slice mode
 
 ![](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/vosipchu/5_100_2_250.png)
 
 The 5x100GE → 2x250G mode gives you possibility to fill the spectrum in the densest way, as you can put all five clients into two standard-grid wavelengths. OpenConfig configuration is a bit trickier here. As in the previous mode, you need to map channels equally across both line ports. Mapping of “border” client ports (first, second, forth and fifth) is transparent. You just need to map each group into a single line port as explained in the second slide mode described above. However, the third channel needs to be mapped into both line ports in a 50/50 ratio.
 
-### 4. OpenConfig configuration for 10G client ports
+### 4.OpenConfig configuration for 10G client ports
 
 In addition to 100G client ports, 10G client ports are also very popular. NCS1002 supports two different modes for mapping 10G clients into line ports: 
 
