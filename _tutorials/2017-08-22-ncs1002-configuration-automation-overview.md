@@ -12,6 +12,8 @@ tags:
   - XR optical
 excerpt: NCS1002 Configuration Automation Overview
 ---
+{% include toc icon="table" title="NCS1002 Configuration Automation Overview" %}
+
 This tutorial will be the first in a series of posts related to the automation of configuration for Cisco Optical products. In this tutorial, I will explain how to use [OpenConfig](http://openconfig.net/) models to configure an optical device.
 Cisco Optical products include [NCS1002 (terminal device)](http://www.cisco.com/c/en/us/products/collateral/optical-networking/network-convergence-system-1000-series/datasheet-c78-733699.html) and [NCS1001 (line amplifier)](http://www.cisco.com/c/en/us/products/collateral/optical-networking/network-convergence-system-1000-series/datasheet-c78-738782.html). NCS1002 and NCS1001 are complementary to each other and essential elements of Cisco highly scaled and reliable multi-terabit DCI solution. NCS1002 configuration automation will be covered first, following with details for NCS1001 in later posts.
 
