@@ -26,7 +26,7 @@ tags:
 ## Introduction
 The goal of this tutorial is not only to demonstrate how to config an IOS XR device using the gRPC framework and [OpenConfig YANG models](https://github.com/openconfig/public/tree/master/release/models), but also validate the changes by subscribing to a telemetry stream from the device.
 
-We will use a [gRPC library for Cisco IOS XR](https://github.com/nleiva/xrgrpc) written in [Go](https://golang.org/) to:
+We will use a [gRPC library for Cisco IOS XR](https://nleiva.github.io/xrgrpc/) written in [Go](https://golang.org/) to:
 
 1) Submit network config changes to the devices using [OpenConfig YANG models](https://github.com/openconfig/public/tree/master/release/models).
 
@@ -291,7 +291,7 @@ BGP Neighbor; IP: 203.0.113.3, ASN: 64512, State bgp-st-estab
 
 ## A few pointers on the code
 
-We will document a complete walk-through in a following tutorial. Well, if you are impatient like me, you can take a look at other examples documented in the [repo](https://github.com/nleiva/xrgrpc) in the meantime.
+We will document a complete walk-through in a following tutorial. Well, if you are impatient like me, you can take a look at other examples documented in the [repo](https://nleiva.github.io/xrgrpc/) in the meantime.
 
 In this example we basically did six things.
 
