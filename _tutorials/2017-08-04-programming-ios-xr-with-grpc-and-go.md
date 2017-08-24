@@ -21,7 +21,7 @@ excerpt: >-
 {% include toc icon="table" title="Programming IOS-XR with gRPC and Go" %}
 
 ## Introduction
-The goal of this tutorial is to demonstrate how to program an IOS XR device using the gRPC framework. For this purpose, we will use a [gRPC library for Cisco IOS XR](https://github.com/nleiva/xrgrpc) written in [Go](https://golang.org/).
+The goal of this tutorial is to demonstrate how to program an IOS XR device using the gRPC framework. For this purpose, we will use a [gRPC library for Cisco IOS XR](https://nleiva.github.io/xrgrpc/) written in [Go](https://golang.org/).
 The objective is to have a single interface/connection to retrieve info from the device, apply configs to it, generate telemetry streams, program the RIB/FIB and so on.
 
 We picked [Go](https://golang.org/), due its simplicity, [readability](https://talks.golang.org/2015/simplicity-is-complicated.slide#15), portability and [concurrency](https://github.com/nleiva/xrgrpc#cli-config-multiple-routers-simultaneously-merge) primitives.
@@ -202,7 +202,7 @@ Config from 192.0.2.1:57344
 
 ## A few pointers on the code
 
-We will document a complete walk-through in a following tutorial. Well, if you are impatient like me, you can take a look at other examples documented in the [repo](https://github.com/nleiva/xrgrpc) in the meantime.
+We will document a complete walk-through in a following tutorial. Well, if you are impatient like me, you can take a look at other examples documented in the [repo](https://nleiva.github.io/xrgrpc/) in the meantime.
 
 In this example we basically did four things.
 
