@@ -320,6 +320,9 @@ prose:
     - CHANGELOG.md
     - README.md
     - feed.xml
+    - .gitignore
+    - _data
+    - .travis.yml
   metadata:
     _blogs:
       - name: "title"
