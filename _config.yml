@@ -320,7 +320,7 @@ prose:
     - CHANGELOG.md
     - README.md
     - feed.xml
-    - .gitignore
+    - .gitmodules
     - _data
     - .travis.yml
   metadata:
