@@ -65,7 +65,8 @@ google_ad_slot           :
 author:
   name             : "Cisco SP Routing Team"
   avatar           : "programmability-team.png"
-  bio              :  “A Team of coders and network engineers determined to build the best architectures & technology for Service Providers.”  location         : "San jose, California"
+  bio              :  “A Team of coders and network engineers determined to build the best architectures & technology for Service Providers.”  
+  location         : "San jose, California"
   email            :
   uri              :
   bitbucket        :
