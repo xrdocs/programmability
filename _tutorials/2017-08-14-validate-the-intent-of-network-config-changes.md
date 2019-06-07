@@ -208,7 +208,7 @@ Manually cancelled the session to 192.0.2.2:57344
 ...Wait!, what did just happend?..
 {: .notice--warning}
 
-1) We applied a BGP neighbor config to routers 192.0.2.2 and 192.0.2.3, using a template based on the BGP OpenConfig model: [bgpoctemplate4.json](https://github.com/nleiva/xrgrpc/blob/master/example/input/bgpoctemplate4.json).
+1) We applied a BGP neighbor config to routers 192.0.2.2 and 192.0.2.3, using a template based on the BGP OpenConfig model: [bgpoctemplate4.json](https://github.com/nleiva/xrgrpc/blob/fb3f023c2cf822babbb8503a1d1fcac400c57f95/example/input/bgpoctemplate4.json).
 
 {% raw %}
 ```shell
