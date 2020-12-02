@@ -1,3 +1,11 @@
+---
+published: True
+position: hidden
+date: '2020-12-02 18:01 -0400'
+title: Nornir Overview
+position: top
+author: Neelima Parakala
+---
 **Are you looking for a flexible, scalable and efficient network automation framework, where all tasks are written in Python programming language? If yes, then you are at the right place! And it is NORNIR !!!**
 
 **Ok! Now what is NORNIR?**  
