@@ -24,6 +24,7 @@ Nornir is a multi-threaded network automation framework which abstracts inventor
 - You can effectively manage the hosts and groups separately part of the inventory
 
 **So, how does it work?**
+
 If you would like to isolate the dependencies of Nornir from the system, you can create a python virtual environment.
 
 Install virtualenv package using pip. pip is a package installer for python.
