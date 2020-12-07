@@ -119,6 +119,7 @@ results = nr.run(
 
 print_result(results)
 ```
+This is the main file where you initialize Nornir with InitNornir function and provide the configuration file. In the next step call run method and provide the tasks to be executed, it executes the tasks over all the hosts provided in the inventory and return the results. 
 
 Execute **nornir_main.py** file and retrieve the results.
 ```
