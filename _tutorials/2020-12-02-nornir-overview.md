@@ -47,7 +47,7 @@ Install Nornir plugin nornir-napalm. It provides napalm connections through whic
 ```
 pip install nornir-napalm
 ```
-Install Nornir plugin **nornir-utils**.  It provides inventory, functions, processors and tasks.
+Install Nornir plugin **nornir-utils**.  It provides inventory, functions, processors, and tasks.
 ```
 pip install nornir-utils
 ```
@@ -84,7 +84,7 @@ ios:
 username: admin
 password: admin
 ```
-Now come out of the inventory directory and create a config file which provides information about the inventory and runner to the main file.
+Now come out of the inventory directory and create a config file that provides information about the inventory and runner to the main file.
 
 **config.yaml**
 ```
