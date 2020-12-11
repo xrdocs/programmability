@@ -39,7 +39,7 @@ Now activate the virtual environment.
 ```
 source ~/nornir_venv/bin/activate
 ```
-In “nornir_venv” virtual environment, install **nornir**.
+In the “nornir_venv” virtual environment, install **nornir**.
 ```
 pip install nornir
 ```
@@ -53,7 +53,7 @@ pip install nornir-utils
 ```
 Once you have all the required packages installed, go ahead and write the code to retrieve, configure or validate device data.
 
-Create a directory called inventory and in that create the inventory files hosts.yaml, groups.yaml and defaults.yaml
+Create a directory called inventory and in that create the inventory files hosts.yaml, groups.yaml, and defaults.yaml
 
 **hosts.yaml**
 ```
