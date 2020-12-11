@@ -5,7 +5,7 @@ date: '2020-12-02 18:01 -0400'
 title: Nornir Overview
 author: Neelima Parakala
 ---
-**Are you looking for a flexible, scalable and efficient network automation framework, where all tasks are written in Python programming language? If yes, then you are at the right place! And it is NORNIR !!!**
+*Are you looking for a flexible, scalable and efficient network automation framework, where all tasks are written in Python programming language? If yes, then you are at the right place! And it is NORNIR !!!*
 
 **Ok! Now what is NORNIR?**  
 Nornir is a multi-threaded network automation framework which abstracts inventory and task execution. It helps to automate your network tasks efficiently. You can execute the tasks like configuring the devices, validating the operational data and enabling the services on the provided hosts which are part of the inventory. As it is multithreaded, it allows you to manage configuration of multiple network devices concurrently. It is an open source project, completely written in python and easy to use. You should write a simple python code to make use of NORNIR features.
