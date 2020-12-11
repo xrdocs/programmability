@@ -196,6 +196,12 @@ results = nr.run(
 
 print_result(results)
 ```
+
+Execute **nornir_main.py** file and retrieve the results.
+```
+python nornir_main.py
+```
+
 **output**
 
 ```
