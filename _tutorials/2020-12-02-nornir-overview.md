@@ -191,7 +191,7 @@ from nornir_napalm.plugins.tasks import napalm_cli
 nr = InitNornir()
 
 results = nr.run(
-    task=napalm_cli, commands=["show interfaces"]
+    task=napalm_cli, commands=["show interfaces summary"]
 )
 
 print_result(results)
