@@ -30,11 +30,12 @@ Install virtualenv package using pip. pip is a package installer for python.
 ```
 pip install virtualenv
 ```
-Using virtualenv package create a python virtual environment
+Using virtualenv package, create a python virtual environment.
+Refer [Creation of python virtual environments](https://docs.python.org/3/library/venv.html)
 ```
 virtualenv nornir_venv
 ```
-Now activate the virtual environment
+Now activate the virtual environment.
 ```
 source ~/nornir_venv/bin/activate
 ```
