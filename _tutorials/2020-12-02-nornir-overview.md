@@ -5,12 +5,12 @@ date: '2020-12-02 18:01 -0400'
 title: Nornir Overview
 author: Neelima Parakala
 ---
-*Are you looking for a flexible, scalable and efficient network automation framework, where all tasks are written in Python programming language? If yes, then you are at the right place! And it is NORNIR !!!*
+*Are you looking for a flexible, scalable and efficient network automation framework, where all tasks are written in Python programming language? If yes, then you are at the right place! And it is Nornir !!!*
 
-**Ok! Now what is NORNIR?**  
-Nornir is a multi-threaded network automation framework which abstracts inventory and task execution. It helps to automate your network tasks efficiently. You can execute the tasks like configuring the devices, validating the operational data and enabling the services on the provided hosts which are part of the inventory. As it is multithreaded, it allows you to manage configuration of multiple network devices concurrently. It is an open source project, completely written in python and easy to use. You should write a simple python code to make use of NORNIR features.
+**Ok! Now what is Nornir?**  
+Nornir is a multi-threaded network automation framework which abstracts inventory and task execution. It helps to automate your network tasks efficiently. You can execute the tasks like configuring the devices, validating the operational data and enabling the services on the provided hosts which are part of the inventory. As it is multithreaded, it allows you to manage configuration of multiple network devices concurrently. It is an open source project, completely written in python and easy to use. You should write a simple python code to make use of Nornir features.
 
-**Well, why NORNIR?**
+**Well, why Nornir?**
 - Firstly, it  is an open-source project, hence it is free to use and you can develop features on top of Nornir framework based on your requirement.
 - It has an active community and well maintained documentation.
 - As Nornir is completely written in python, it is easy to
@@ -252,3 +252,8 @@ vvvv napalm_cli ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
                              '0         0         0         0'}
 ^^^^ END napalm_cli ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
+
+**Resources**
+
+- [Nornir Documentaion](https://nornir.readthedocs.io/en/latest/)
+- [Nornir github repository](https://github.com/nornir-automation/nornir)
