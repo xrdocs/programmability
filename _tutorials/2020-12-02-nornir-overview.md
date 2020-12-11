@@ -5,22 +5,22 @@ date: '2020-12-02 18:01 -0400'
 title: Nornir Overview
 author: Neelima Parakala
 ---
-*Are you looking for a flexible, scalable and efficient network automation framework, where all tasks are written in Python programming language? If yes, then you are at the right place! And it is Nornir !!!*
+*Are you looking for a flexible, scalable, efficient network automation framework, where all tasks are written in Python programming language? If yes, then you are at the right place! And it is Nornir !!!*
 
-**Ok! Now what is Nornir?**  
-Nornir is a multi-threaded network automation framework which abstracts inventory and task execution. It helps to automate your network tasks efficiently. You can execute the tasks like configuring the devices, validating the operational data and enabling the services on the provided hosts which are part of the inventory. As it is multithreaded, it allows you to manage configuration of multiple network devices concurrently. It is an open source project, completely written in python and easy to use. You should write a simple python code to make use of Nornir features.
+**Ok! Now, what is Nornir?**  
+Nornir is a multi-threaded network automation framework that abstracts inventory and task execution. It helps to automate your network tasks efficiently. You can execute the tasks like configuring the devices, validating the operational data, and enabling the services on the provided hosts which are part of the inventory. As it is multithreaded, it allows you to manage the configuration of multiple network devices concurrently. It is an open-source project, completely written in python and easy to use. You should write a simple python code to make use of Nornir features.
 
 **Well, why Nornir?**
-- Firstly, it  is an open-source project, hence it is free to use and you can develop features on top of Nornir framework based on your requirement.
-- It has an active community and well maintained documentation.
+- Firstly, it is an open-source project, hence it is free to use and you can develop features on top of the Nornir framework based on your requirement.
+- It has an active community and well-maintained documentation.
 - As Nornir is completely written in python, it is easy to
 	- install
 	- use
-	- integrate with any other python frameworks (Flask, Django, pytest)
+	- integrate with any other python frameworks (Flask, Django, Pytest)
 	- troubleshoot and debug the issues using python debug tools
-- It reuses existing python libraries like netmiko and napalm to connect and manage the devices.
-- Use of multithreads, greatly optimizes execution time of the tasks.
-- You can effectively manage the hosts and groups separately part of the inventory
+- It reuses existing python libraries like Netmiko and Napalm to connect and manage the devices.
+- The use of multithreading greatly optimizes the execution time of the tasks.
+- You can effectively manage the hosts and groups separately as part of the inventory.
 
 **So, how does it work?**
 
@@ -43,7 +43,7 @@ In “nornir_venv” virtual environment, install **nornir**.
 ```
 pip install nornir
 ```
-Install Nornir plugin **nornir-napalm**.  It provides napalm connections through which you connect to the device and tasks like napalm_cli, napalm_configure, napalm_get, napalm_ping and napalm_validate.
+Install Nornir plugin nornir-napalm. It provides napalm connections through which you connect to the device and tasks like napalm_cli, napalm_configure, napalm_get, napalm_ping, and napalm_validate.
 ```
 pip install nornir-napalm
 ```
@@ -101,7 +101,7 @@ runner:
        options:
             num_workers: 2
 ```
-Config file provides inventory and task parallelization information to the main file. Nornir will use a ``different thread for each host`` to concurrently execute the tasks of the hosts. You can provide the number of threads to be used by your code in ```num_workers``` option of runner plugin. If ``num_workers == 1``, tasks of the hosts are executed one after the other in a simple loop. This case helps to troubleshoot or debug the issues. Generally you can provide a number greater than 1 to ``num_workers`` else it defaults to 20. In my case I am assigning value 2 to ``num_workers``, as I am dealing with two hosts.
+Config file provides inventory and task parallelization information to the main file. Nornir will use a different thread for each host to concurrently execute the tasks of the hosts. You can provide the number of threads to be used by your code in the num_workers option of the runner plugin. If num_workers == 1, tasks of the hosts are executed one after the other in a simple loop. This case helps to troubleshoot or debug the issues. Generally, you can provide a number greater than 1 to num_workers else it defaults to 20. In my case, I am assigning value 2 to num_workers, as I am dealing with two hosts.
 
 **nornir_main.py**
 ```
@@ -119,7 +119,7 @@ results = nr.run(
 
 print_result(results)
 ```
-This is the main file where you initialize Nornir with InitNornir function and provide the configuration file. In the next step, call run method and provide the tasks to be executed, here I provided napalm_get imported from nornir_napalm plugin. It executes the provided napalm getters over all the hosts provided in the inventory and return the results. 
+This is the main file where you initialize Nornir with the InitNornir function and provide the configuration file. In the next step, call a run method and provide the tasks to be executed, here I provided napalm_get imported from the nornir_napalm plugin. It executes the provided napalm getters over all the hosts provided in the inventory and returns the results.
 
 Execute **nornir_main.py** file and retrieve the results.
 ```
