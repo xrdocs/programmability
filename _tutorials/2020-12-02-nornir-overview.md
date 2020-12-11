@@ -118,7 +118,7 @@ results = nr.run(
 
 print_result(results)
 ```
-This is the main file where you initialize Nornir with InitNornir function and provide the configuration file. In the next step call run method and provide the tasks to be executed, it executes the tasks over all the hosts provided in the inventory and return the results. 
+This is the main file where you initialize Nornir with InitNornir function and provide the configuration file. In the next step, call run method and provide the tasks to be executed, here I provided napalm_get imported from nornir_napalm plugin. It executes the provided napalm getters over all the hosts provided in the inventory and return the results. 
 
 Execute **nornir_main.py** file and retrieve the results.
 ```
@@ -159,3 +159,290 @@ vvvv napalm_get ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 ^^^^ END napalm_get ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
  
+ **Execute tasks without config file**
+ 
+ In this case you just need to create a hosts file and nornir main file.
+ 
+ **hosts.yaml**
+ 
+ ```
+ # hosts.yaml
+---
+rt1:
+    hostname: pavarotti
+    platform: 'iosxr'
+    username: admin
+    password: admin
+
+rt2:
+    hostname: placido
+    platform: 'ios'
+    username: admin
+    password: admin
+```
+
+**nornir_main.py**
+
+```
+from nornir import InitNornir
+from nornir_utils.plugins.functions import print_result
+from nornir_napalm.plugins.tasks import napalm_cli
+
+nr = InitNornir()
+
+results = nr.run(
+    task=napalm_cli, commands=["show interfaces"]
+)
+
+print_result(results)
+```
+**output**
+
+```
+napalm_cli**********************************************************************
+* rt1 ** changed : False *******************************************************
+vvvv napalm_cli ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO
+{ 'show interfaces': 'Loopback0 is up, line protocol is up \n'
+                     '  Interface state transitions: 1\n'
+                     '  Hardware is Loopback interface(s)\n'
+                     '  Description: PRIMARY ROUTER LOOPBACK-TEST-Replace\n'
+                     '  Internet address is 172.16.255.2/32\n'
+                     '  MTU 1500 bytes, BW 0 Kbit\n'
+                     '     reliability Unknown, txload Unknown, rxload '
+                     'Unknown\n'
+                     '  Encapsulation Loopback,  loopback not set,\n'
+                     '  Last link flapped 30w6d\n'
+                     '  Last input Unknown, output Unknown\n'
+                     '  Last clearing of "show interface" counters Unknown\n'
+                     '  Input/output data rate is disabled.\n'
+                     '\n'
+                     'Null0 is up, line protocol is up \n'
+                     '  Interface state transitions: 1\n'
+                     '  Hardware is Null interface\n'
+                     '  Internet address is Unknown\n'
+                     '  MTU 1500 bytes, BW 0 Kbit\n'
+                     '     reliability 255/255, txload Unknown, rxload '
+                     'Unknown\n'
+                     '  Encapsulation Null,  loopback not set,\n'
+                     '  Last link flapped 30w6d\n'
+                     '  Last input never, output never\n'
+                     '  Last clearing of "show interface" counters never\n'
+                     '  5 minute input rate 0 bits/sec, 0 packets/sec\n'
+                     '  5 minute output rate 0 bits/sec, 0 packets/sec\n'
+                     '     0 packets input, 0 bytes, 0 total input drops\n'
+                     '     0 drops for unrecognized upper-level protocol\n'
+                     '     Received 0 broadcast packets, 0 multicast packets\n'
+                     '     0 packets output, 0 bytes, 0 total output drops\n'
+                     '     Output 0 broadcast packets, 0 multicast packets\n'
+                     '\n'
+                     'MgmtEth0/RP0/CPU0/0 is up, line protocol is up \n'
+                     '  Interface state transitions: 1\n'
+                     '  Hardware is Management Ethernet, address is '
+                     '5254.00a4.1409 (bia 5254.00a4.1409)\n'
+                     '  Description: *** MANAGEMENT INTERFACE ***\n'
+                     '  Internet address is 10.30.110.86/23\n'
+                     '  MTU 1514 bytes, BW 1000000 Kbit (Max: 1000000 Kbit)\n'
+                     '     reliability 255/255, txload 0/255, rxload 0/255\n'
+                     '  Encapsulation ARPA,\n'
+                     '  Full-duplex, 1000Mb/s, EX, link type is '
+                     'autonegotiation\n'
+                     '  output flow control is off, input flow control is off\n'
+                     '  loopback not set,\n'
+                     '  Last link flapped 30w6d\n'
+                     '  ARP type ARPA, ARP timeout 04:00:00\n'
+                     '  Last input 00:00:00, output 00:00:00\n'
+                     '  Last clearing of "show interface" counters never\n'
+                     '  5 minute input rate 0 bits/sec, 1 packets/sec\n'
+                     '  5 minute output rate 1000 bits/sec, 0 packets/sec\n'
+                     '     385136892 packets input, 32366312259 bytes, 1600594 '
+                     'total input drops\n'
+                     '     0 drops for unrecognized upper-level protocol\n'
+                     '     Received 78089 broadcast packets, 9717802 multicast '
+                     'packets\n'
+                     '              0 runts, 0 giants, 0 throttles, 0 parity\n'
+                     '     97 input errors, 0 CRC, 0 frame, 0 overrun, 0 '
+                     'ignored, 0 abort\n'
+                     '     373742434 packets output, 32010334625 bytes, 30518 '
+                     'total output drops\n'
+                     '     Output 0 broadcast packets, 0 multicast packets\n'
+                     '     0 output errors, 0 underruns, 0 applique, 0 resets\n'
+                     '     0 output buffer failures, 0 output buffers swapped '
+                     'out\n'
+                     '     1 carrier transitions\n'
+                     '\n'
+                     'GigabitEthernet0/0/0/0 is up, line protocol is up \n'
+                     '  Interface state transitions: 3\n'
+                     '  Hardware is GigabitEthernet, address is 5254.00ae.d917 '
+                     '(bia 5254.00ae.d917)\n'
+                     '  Description: CONNECTS TO LER1 (g0/0/0/1)\n'
+                     '  Internet address is 172.16.0.1/31\n'
+                     '  MTU 1514 bytes, BW 1000000 Kbit (Max: 1000000 Kbit)\n'
+                     '     reliability 255/255, txload 0/255, rxload 0/255\n'
+                     '  Encapsulation ARPA,\n'
+                     '  Duplex unknown, 1000Mb/s, link type is force-up\n'
+                     '  output flow control is off, input flow control is off\n'
+                     '  loopback not set,\n'
+                     '  Last link flapped 30w6d\n'
+                     '  ARP type ARPA, ARP timeout 04:00:00\n'
+                     '  Last input 8w3d, output 00:00:00\n'
+                     '  Last clearing of "show interface" counters never\n'
+                     '  5 minute input rate 0 bits/sec, 0 packets/sec\n'
+                     '  5 minute output rate 1000 bits/sec, 0 packets/sec\n'
+                     '     228456 packets input, 212477801 bytes, 3 total '
+                     'input drops\n'
+                     '     0 drops for unrecognized upper-level protocol\n'
+                     '     Received 0 broadcast packets, 0 multicast packets\n'
+                     '              0 runts, 0 giants, 0 throttles, 0 parity\n'
+                     '     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 '
+                     'ignored, 0 abort\n'
+                     '     2947992 packets output, 3359901634 bytes, 0 total '
+                     'output drops\n'
+                     '     Output 4 broadcast packets, 0 multicast packets\n'
+                     '     0 output errors, 0 underruns, 0 applique, 0 resets\n'
+                     '     0 output buffer failures, 0 output buffers swapped '
+                     'out\n'
+                     '     0 carrier transitions\n'
+                     '\n'
+                     'GigabitEthernet0/0/0/1 is up, line protocol is up \n'
+                     '  Interface state transitions: 11\n'
+                     '  Hardware is GigabitEthernet, address is 5254.009c.5644 '
+                     '(bia 5254.009c.5644)\n'
+                     '  Description: CONNECTS TO LSR1 (g0/0/0/0)\n'
+                     '  Internet address is 172.16.0.2/31\n'
+                     '  MTU 1514 bytes, BW 1000000 Kbit (Max: 1000000 Kbit)\n'
+                     '     reliability 255/255, txload 0/255, rxload 0/255\n'
+                     '  Encapsulation ARPA,\n'
+                     '  Duplex unknown, 1000Mb/s, link type is force-up\n'
+                     '  output flow control is off, input flow control is off\n'
+                     '  loopback not set,\n'
+                     '  Last link flapped 1d00h\n'
+                     '  ARP type ARPA, ARP timeout 04:00:00\n'
+                     '  Last input 00:00:00, output 00:00:00\n'
+                     '  Last clearing of "show interface" counters never\n'
+                     '  5 minute input rate 1000 bits/sec, 0 packets/sec\n'
+                     '  5 minute output rate 1000 bits/sec, 0 packets/sec\n'
+                     '     2986024 packets input, 3290896911 bytes, 43 total '
+                     'input drops\n'
+                     '     0 drops for unrecognized upper-level protocol\n'
+                     '     Received 5 broadcast packets, 0 multicast packets\n'
+                     '              0 runts, 0 giants, 0 throttles, 0 parity\n'
+                     '     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 '
+                     'ignored, 0 abort\n'
+                     '     3603284 packets output, 3384198762 bytes, 0 total '
+                     'output drops\n'
+                     '     Output 10 broadcast packets, 0 multicast packets\n'
+                     '     0 output errors, 0 underruns, 0 applique, 0 resets\n'
+                     '     0 output buffer failures, 0 output buffers swapped '
+                     'out\n'
+                     '     0 carrier transitions'}
+^^^^ END napalm_cli ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* rt2 ** changed : False *******************************************************
+vvvv napalm_cli ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO
+{ 'show interfaces': 'GigabitEthernet1 is up, line protocol is up \n'
+                     '  Hardware is CSR vNIC, address is 5254.00df.1325 (bia '
+                     '5254.00df.1325)\n'
+                     '  Description: *** MANAGEMENT INTERFACE ***\n'
+                     '  Internet address is 10.30.110.87/23\n'
+                     '  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \n'
+                     '     reliability 255/255, txload 1/255, rxload 1/255\n'
+                     '  Encapsulation ARPA, loopback not set\n'
+                     '  Keepalive set (10 sec)\n'
+                     '  Full Duplex, 1000Mbps, link type is auto, media type '
+                     'is Virtual\n'
+                     '  output flow-control is unsupported, input flow-control '
+                     'is unsupported\n'
+                     '  ARP type: ARPA, ARP Timeout 04:00:00\n'
+                     '  Last input 00:00:00, output 00:00:00, output hang '
+                     'never\n'
+                     '  Last clearing of "show interface" counters never\n'
+                     '  Input queue: 3/375/0/0 (size/max/drops/flushes); Total '
+                     'output drops: 0\n'
+                     '  Queueing strategy: fifo\n'
+                     '  Output queue: 0/40 (size/max)\n'
+                     '  5 minute input rate 0 bits/sec, 0 packets/sec\n'
+                     '  5 minute output rate 0 bits/sec, 0 packets/sec\n'
+                     '     15884405591 packets input, 1445989033603 bytes, 0 '
+                     'no buffer\n'
+                     '     Received 0 broadcasts (0 IP multicasts)\n'
+                     '     0 runts, 0 giants, 0 throttles \n'
+                     '     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 '
+                     'ignored\n'
+                     '     0 watchdog, 0 multicast, 0 pause input\n'
+                     '     1448247 packets output, 292267844 bytes, 0 '
+                     'underruns\n'
+                     '     0 output errors, 0 collisions, 0 interface resets\n'
+                     '     848333 unknown protocol drops\n'
+                     '     0 babbles, 0 late collision, 0 deferred\n'
+                     '     0 lost carrier, 0 no carrier, 0 pause output\n'
+                     '     0 output buffer failures, 0 output buffers swapped '
+                     'out\n'
+                     'GigabitEthernet2 is administratively down, line protocol '
+                     'is down \n'
+                     '  Hardware is CSR vNIC, address is 5254.00e7.29f9 (bia '
+                     '5254.00e7.29f9)\n'
+                     '  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \n'
+                     '     reliability 255/255, txload 1/255, rxload 1/255\n'
+                     '  Encapsulation ARPA, loopback not set\n'
+                     '  Keepalive set (10 sec)\n'
+                     '  Full Duplex, 1000Mbps, link type is auto, media type '
+                     'is Virtual\n'
+                     '  output flow-control is unsupported, input flow-control '
+                     'is unsupported\n'
+                     '  ARP type: ARPA, ARP Timeout 04:00:00\n'
+                     '  Last input never, output 1y20w, output hang never\n'
+                     '  Last clearing of "show interface" counters never\n'
+                     '  Input queue: 0/375/0/0 (size/max/drops/flushes); Total '
+                     'output drops: 0\n'
+                     '  Queueing strategy: fifo\n'
+                     '  Output queue: 0/40 (size/max)\n'
+                     '  5 minute input rate 0 bits/sec, 0 packets/sec\n'
+                     '  5 minute output rate 0 bits/sec, 0 packets/sec\n'
+                     '     2 packets input, 214 bytes, 0 no buffer\n'
+                     '     Received 0 broadcasts (0 IP multicasts)\n'
+                     '     0 runts, 0 giants, 0 throttles \n'
+                     '     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 '
+                     'ignored\n'
+                     '     0 watchdog, 0 multicast, 0 pause input\n'
+                     '     6 packets output, 912 bytes, 0 underruns\n'
+                     '     0 output errors, 0 collisions, 0 interface resets\n'
+                     '     0 unknown protocol drops\n'
+                     '     0 babbles, 0 late collision, 0 deferred\n'
+                     '     1 lost carrier, 0 no carrier, 0 pause output\n'
+                     '     0 output buffer failures, 0 output buffers swapped '
+                     'out\n'
+                     'GigabitEthernet3 is administratively down, line protocol '
+                     'is down \n'
+                     '  Hardware is CSR vNIC, address is 5254.005e.0f63 (bia '
+                     '5254.005e.0f63)\n'
+                     '  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \n'
+                     '     reliability 255/255, txload 1/255, rxload 1/255\n'
+                     '  Encapsulation ARPA, loopback not set\n'
+                     '  Keepalive set (10 sec)\n'
+                     '  Full Duplex, 1000Mbps, link type is auto, media type '
+                     'is Virtual\n'
+                     '  output flow-control is unsupported, input flow-control '
+                     'is unsupported\n'
+                     '  ARP type: ARPA, ARP Timeout 04:00:00\n'
+                     '  Last input 1y20w, output 1y20w, output hang never\n'
+                     '  Last clearing of "show interface" counters never\n'
+                     '  Input queue: 0/375/0/0 (size/max/drops/flushes); Total '
+                     'output drops: 0\n'
+                     '  Queueing strategy: fifo\n'
+                     '  Output queue: 0/40 (size/max)\n'
+                     '  5 minute input rate 0 bits/sec, 0 packets/sec\n'
+                     '  5 minute output rate 0 bits/sec, 0 packets/sec\n'
+                     '     17 packets input, 20690 bytes, 0 no buffer\n'
+                     '     Received 0 broadcasts (0 IP multicasts)\n'
+                     '     0 runts, 0 giants, 0 throttles \n'
+                     '     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 '
+                     'ignored\n'
+                     '     0 watchdog, 0 multicast, 0 pause input\n'
+                     '     6 packets output, 912 bytes, 0 underruns\n'
+                     '     0 output errors, 0 collisions, 0 interface resets\n'
+                     '     2 unknown protocol drops\n'
+                     '     0 babbles, 0 late collision, 0 deferred\n'
+                     '     1 lost carrier, 0 no carrier, 0 pause output\n'
+                     '     0 output buffer failures, 0 output buffers swapped '
+                     'out'}
+^^^^ END napalm_cli ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+```
