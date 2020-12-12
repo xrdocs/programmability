@@ -26,7 +26,7 @@ Nornir is a multi-threaded network automation framework that abstracts inventory
 
 If you would like to isolate the dependencies of Nornir from the system, you can create a python virtual environment.
 
-Install virtualenv package using pip. pip is a package installer for python.
+Install virtualenv package using pip. pip is a package installer for Python. Here I am using Python 3.7.3 version.
 ```
 pip install virtualenv
 ```
@@ -39,11 +39,14 @@ Now activate the virtual environment.
 ```
 source ~/nornir_venv/bin/activate
 ```
-In the “nornir_venv” virtual environment, install **nornir**.
+In the “nornir_venv” virtual environment, install **nornir**. Here I installed nornir 3.0.0 version.
 ```
 pip install nornir
 ```
-Install Nornir plugin nornir-napalm. It provides napalm connections through which you connect to the device and tasks like napalm_cli, napalm_configure, napalm_get, napalm_ping, and napalm_validate.
+Install Nornir plugin nornir-napalm. It provides napalm connections through which you connect to the device and execute tasks like napalm_cli, napalm_configure, napalm_get, napalm_ping, and napalm_validate. 
+
+If you assign task=napalm_cli in nornir, then you can execute napalm cli method with the provided cli commmand. For example command=["show interfaces"].
+Similarly if you assign task=napalm_configure 
 ```
 pip install nornir-napalm
 ```
