@@ -15,7 +15,7 @@ Nornir is a multi-threaded network automation framework that abstracts inventory
 - It has an active community and well-maintained documentation.
 - As Nornir is completely written in python, it is easy to
 	- install
-	- use
+	- write code
 	- integrate with any other python frameworks (Flask, Django, Pytest)
 	- troubleshoot and debug the issues using python debug tools
 - It reuses existing python libraries like Netmiko and Napalm to connect and manage the devices.
@@ -39,26 +39,26 @@ Now activate the virtual environment.
 ```
 source ~/nornir_venv/bin/activate
 ```
-In the “nornir_venv” virtual environment, install **nornir**. Here I installed nornir 3.0.0 version.
+In the “nornir_venv” virtual environment, install **nornir**. Here I installed Nornir 3.0.0 version.
 ```
 pip install nornir
 ```
 Install Nornir plugin nornir-napalm. It provides napalm `connections` through which you connect to the device and execute `tasks` like `napalm_cli`, `napalm_configure`, `napalm_get`, `napalm_ping`, and `napalm_validate`. 
 
-- If you assign `task=napalm_cli` in nornir, then you can execute napalm cli method with the provided cli commmands. For example `commands=["show interfaces"]`.
+- If you assign `task=napalm_cli` in nornir, then you can execute the napalm CLI method with the provided CLI commands. For example `commands=["show interfaces"]`.
 - If you assign `task=napalm_configure`, you can configure the devices with the provided configuration or filename. For example `configuration="hostname nornir"`.
-- If you assign `task=napalm_get`, you can execute napalm getters with the provided getters methods. For example `getters=["interfaces"]`.
-- If you assign `task=napalm_ping`, you can execute napalm ping method with the provided destination address. For example `dest="172.11.4.5"`.
+- If you assign `task=napalm_get`, you can execute napalm getters with the provided getter methods. For example `getters=["interfaces"]`.
+- If you assign `task=napalm_ping`, you can execute the napalm ping method with the provided destination address. For example `dest="172.11.4.5"`.
 - If you assign `task=napalm_validate`, you can validate device configuration with the provided validation source or filename. For example `validation_source=[{"get_interfaces": {"GigabitEthernet1": {"description": ""}}}]`.
 ```
 pip install nornir-napalm
 ```
 Install Nornir plugin **nornir-utils**. It provides plugins like `inventory`, `functions`, `processors`, and `tasks`.
 
-- Inventory offers `YAMLInventory` plugin to load data from YAML files.
+- The inventory offers a `YAMLInventory` plugin to load data from YAML files.
 - Functions offer `print_result`, `print_title` helper functions to format and print the result/title as the output.
 - Processors offer `PrintResult` addon to print information of task execution.
-- Tasks offer addons like `echo_data` to echo the data passed to it, `load_json` to load json file, `load_yaml` to load yaml file and `write_file` to write content to the file.
+- Tasks offer addons like `echo_data` to echo the data passed to it, `load_json` to load JSON file, `load_yaml` to load YAML file and `write_file` to write content to the file.
 ```
 pip install nornir-utils
 ```
@@ -193,7 +193,7 @@ rt2:
     username: admin
     password: admin
 ```
-If the inventory is not provided while initializing Nornir, It checks for a hosts.yaml file with all the information of the hosts, hence all the details of the hosts are provided in a single hosts.yaml file.
+If the inventory is not provided while initializing Nornir, It checks for hosts.yaml file with all the information of the hosts, hence all the details of the hosts are provided in a single hosts.yaml file.
 
 **nornir_main.py**
 
@@ -210,7 +210,7 @@ results = nr.run(
 
 print_result(results)
 ```
-This is the main file where you initialize Nornir with the `InitNornir` function and not provide the configuration file. In the next step, call a run method and provide the tasks to be executed, here I provided `napalm_cli` imported from the `nornir_napalm` plugin. It executes the provided napalm cli command over all the hosts provided in the hosts.yaml file and returns the results. As threading information is not provided in `InitNornir()`, here `num_workers` defaults to 20.
+This is the main file where you initialize Nornir with the `InitNornir` function and do not provide the configuration file. In the next step, call a run method and provide the tasks to be executed, here I provided `napalm_cli` imported from the `nornir_napalm` plugin. It executes the provided napalm CLI command over all the hosts provided in the hosts.yaml file and returns the results. As threading information is not provided in `InitNornir()`, here `num_workers` defaults to 20.
 
 Execute **nornir_main.py** file and retrieve the results.
 ```
