@@ -170,7 +170,8 @@ vvvv napalm_get ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
              'vendor': 'Cisco'}}
 ^^^^ END napalm_get ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
- 
+The ouput shows the facts (napalm getter) retrieved from the hosts provided in the inventory. For every host the tasks are executed separately by a thread, hence the results are shown per host. It returns a dictionary with key being the napalm getter name and value being the result of executing the getter method.
+
  **Execute tasks without config file**
  
  In this case you just need to create a hosts file and nornir main file.
@@ -192,6 +193,7 @@ rt2:
     username: admin
     password: admin
 ```
+If the inventory is not provided while initializing Nornir, It checks for a hosts.yaml file with all the information of the hosts, hence all the details of the hosts are provided in a single hosts.yaml file.
 
 **nornir_main.py**
 
@@ -208,6 +210,7 @@ results = nr.run(
 
 print_result(results)
 ```
+This is the main file where you initialize Nornir with the `InitNornir` function and not provide the configuration file. In the next step, call a run method and provide the tasks to be executed, here I provided `napalm_cli` imported from the `nornir_napalm` plugin. It executes the provided napalm cli command over all the hosts provided in the hosts.yaml file and returns the results. As threading information is not provided in `InitNornir()`, here `num_workers` defaults to 20.
 
 Execute **nornir_main.py** file and retrieve the results.
 ```
@@ -264,6 +267,7 @@ vvvv napalm_cli ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
                              '0         0         0         0'}
 ^^^^ END napalm_cli ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
+The ouput shows the interfaces summary retrieved from the hosts provided in the hosts.yaml file. For every host the tasks are executed separately by a thread, hence the results are shown per host. It returns a dictionary with key being the cli command and value being the result of executing the cli command.
 
 **Resources**
 
