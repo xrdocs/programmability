@@ -43,28 +43,28 @@ In the “nornir_venv” virtual environment, install **nornir**. Here I install
 ```
 pip install nornir
 ```
-Install Nornir plugin nornir-napalm. It provides napalm connections through which you connect to the device and execute tasks like napalm_cli, napalm_configure, napalm_get, napalm_ping, and napalm_validate. 
+Install Nornir plugin nornir-napalm. It provides napalm `connections` through which you connect to the device and execute `tasks` like `napalm_cli`, `napalm_configure`, `napalm_get`, `napalm_ping`, and `napalm_validate`. 
 
-- If you assign task=napalm_cli in nornir, then you can execute napalm cli method with the provided cli commmands. For example commands=["show interfaces"].
-- If you assign task=napalm_configure, you can configure the devices with the provided configuration or filename. For example configuration="hostname nornir".
-- If you assign task=napalm_get, you can execute napalm getters with the provided getters methods. For example getters=["interfaces"].
-- If you assign task=napalm_ping, you can execute napalm ping method with the provided destination address. For example dest="172.11.4.5".
-- If you assign task=napalm_validate, you can validate device configuration with the provided validation source or filename. For example validation_source=[{"get_interfaces": {"GigabitEthernet1": {"description": ""}}}].
+- If you assign `task=napalm_cli` in nornir, then you can execute napalm cli method with the provided cli commmands. For example `commands=["show interfaces"]`.
+- If you assign `task=napalm_configure`, you can configure the devices with the provided configuration or filename. For example `configuration="hostname nornir"`.
+- If you assign `task=napalm_get`, you can execute napalm getters with the provided getters methods. For example `getters=["interfaces"]`.
+- If you assign `task=napalm_ping`, you can execute napalm ping method with the provided destination address. For example `dest="172.11.4.5"`.
+- If you assign `task=napalm_validate`, you can validate device configuration with the provided validation source or filename. For example `validation_source=[{"get_interfaces": {"GigabitEthernet1": {"description": ""}}}]`.
 ```
 pip install nornir-napalm
 ```
-Install Nornir plugin **nornir-utils**. It provides plugins like inventory, functions, processors, and tasks.
+Install Nornir plugin **nornir-utils**. It provides plugins like `inventory`, `functions`, `processors`, and `tasks`.
 
-- Inventory offers YAMLInventory plugin to load data from YAML files.
-- Functions offer print_result, print_title helper functions to format and print the result/title as the output.
-- Processors offer PrintResult addon to print information of task execution.
-- Tasks offer addons like echo_data to echo the data passed to it, load_json to load json file, load_yaml to load yaml file and write_file to write content to the file.
+- Inventory offers `YAMLInventory` plugin to load data from YAML files.
+- Functions offer `print_result`, `print_title` helper functions to format and print the result/title as the output.
+- Processors offer `PrintResult` addon to print information of task execution.
+- Tasks offer addons like `echo_data` to echo the data passed to it, `load_json` to load json file, `load_yaml` to load yaml file and `write_file` to write content to the file.
 ```
 pip install nornir-utils
 ```
 Once you have all the required packages installed, go ahead and write the code to retrieve, configure or validate device data.
 
-Create a directory called inventory and in that create the inventory files hosts.yaml, groups.yaml, and defaults.yaml.
+Create a directory called inventory and in that create the inventory files `hosts.yaml`, `groups.yaml`, and `defaults.yaml`.
 
 **hosts.yaml**
 ```
@@ -112,7 +112,7 @@ runner:
        options:
             num_workers: 2
 ```
-Config file provides inventory and task parallelization information to the main file. Nornir will use a different thread for each host to concurrently execute the tasks of the hosts. You can provide the number of threads to be used by your code in the num_workers option of the runner plugin. If num_workers == 1, tasks of the hosts are executed one after the other in a simple loop. This case helps to troubleshoot or debug the issues. Generally, you can provide a number greater than 1 to num_workers else it defaults to 20. In my case, I am assigning value 2 to num_workers, as I am dealing with two hosts.
+Config file provides inventory and task parallelization information to the main file. Nornir will use a different thread for each host to concurrently execute the tasks of the hosts. You can provide the number of threads to be used by your code in the `num_workers` option of the runner plugin. If `num_workers == 1`, tasks of the hosts are executed one after the other in a simple loop. This case helps to troubleshoot or debug the issues. Generally, you can provide a number greater than 1 to `num_workers` else it defaults to 20. In my case, I am assigning value 2 to `num_workers`, as I am dealing with two hosts.
 
 **nornir_main.py**
 ```
@@ -130,7 +130,7 @@ results = nr.run(
 
 print_result(results)
 ```
-This is the main file where you initialize Nornir with the InitNornir function and provide the configuration file. In the next step, call a run method and provide the tasks to be executed, here I provided napalm_get imported from the nornir_napalm plugin. It executes the provided napalm getters over all the hosts provided in the inventory and returns the results.
+This is the main file where you initialize Nornir with the `InitNornir` function and provide the configuration file. In the next step, call a run method and provide the tasks to be executed, here I provided `napalm_get` imported from the `nornir_napalm` plugin. It executes the provided napalm getters over all the hosts provided in the inventory and returns the results.
 
 Execute **nornir_main.py** file and retrieve the results.
 ```
