@@ -271,5 +271,5 @@ The output shows the "interfaces summary" retrieved from the hosts provided in t
 
 **Resources**
 
-- [Nornir Documentaion](https://nornir.readthedocs.io/en/latest/)
-- [Nornir github repository](https://github.com/nornir-automation/nornir)
+- [Nornir Documentation](https://nornir.readthedocs.io/en/latest/)
+- [Nornir GitHub repository](https://github.com/nornir-automation/nornir)
