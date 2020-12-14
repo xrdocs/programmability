@@ -170,7 +170,7 @@ vvvv napalm_get ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
              'vendor': 'Cisco'}}
 ^^^^ END napalm_get ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
-The ouput shows the facts (napalm getter) retrieved from the hosts provided in the inventory. For every host the tasks are executed separately by a thread, hence the results are shown per host. It returns a dictionary with key being the napalm getter name and value being the result of executing the getter method.
+The ouput shows the facts (napalm getter) retrieved from the hosts provided in the inventory. For every host the tasks are executed separately by a thread, hence the results are shown per host. It returns a dictionary for each host, with key being the napalm getter name and value being the result of executing the getter method.
 
  **Execute tasks without config file**
  
@@ -267,7 +267,7 @@ vvvv napalm_cli ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
                              '0         0         0         0'}
 ^^^^ END napalm_cli ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
-The ouput shows the interfaces summary retrieved from the hosts provided in the hosts.yaml file. For every host the tasks are executed separately by a thread, hence the results are shown per host. It returns a dictionary with key being the cli command and value being the result of executing the cli command.
+The ouput shows the interfaces summary retrieved from the hosts provided in the hosts.yaml file. For every host the tasks are executed separately by a thread, hence the results are shown per host. It returns a dictionary for each host, with key being the cli command and value being the result of executing the cli command.
 
 **Resources**
 
