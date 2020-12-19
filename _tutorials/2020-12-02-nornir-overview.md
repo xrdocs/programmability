@@ -22,7 +22,7 @@ Nornir is a multi-threaded network automation framework that abstracts inventory
 - The use of multithreading greatly optimizes the execution time of the tasks.
 - You can effectively manage the hosts and groups separately as part of the inventory.
 
-## So, how does it work?**
+## So, how does it work?
 
 ### Setup virtual environment(Optional)
 
