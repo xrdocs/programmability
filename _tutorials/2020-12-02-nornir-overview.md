@@ -7,10 +7,10 @@ author: Neelima Parakala
 ---
 *Are you looking for a flexible, scalable, efficient network automation framework, where all tasks are written in Python programming language? If yes, then you are at the right place! And it is Nornir !!!*
 
-**Ok! Now, what is Nornir?**  
+## Ok! Now, what is Nornir?
 Nornir is a multi-threaded network automation framework that abstracts inventory and task execution. It helps to automate your network tasks efficiently. You can execute the tasks like configuring the devices, validating the operational data, and enabling the services on the provided hosts which are part of the inventory. As it is multithreaded, it allows you to manage the configuration of multiple network devices concurrently. It is an open-source project, completely written in python and easy to use. You should write a simple python code to make use of Nornir features.
 
-**Well, why Nornir?**
+## Well, why Nornir?
 - Firstly, it is an open-source project, hence it is free to use and you can develop features on top of the Nornir framework based on your requirement.
 - It has an active community and well-maintained documentation.
 - As Nornir is completely written in python, it is easy to
@@ -22,7 +22,9 @@ Nornir is a multi-threaded network automation framework that abstracts inventory
 - The use of multithreading greatly optimizes the execution time of the tasks.
 - You can effectively manage the hosts and groups separately as part of the inventory.
 
-**So, how does it work?**
+## So, how does it work?**
+
+### Setup virtual environment(Optional)
 
 If you would like to isolate the dependencies of Nornir from the system, you can create a python virtual environment.
 
@@ -39,6 +41,8 @@ Now activate the virtual environment.
 ```
 source ~/nornir_venv/bin/activate
 ```
+### Install Nornir and its plugins
+
 In the “nornir_venv” virtual environment, install **nornir**. Here I installed Nornir 3.0.0 version.
 ```
 pip install nornir
@@ -63,6 +67,10 @@ Install Nornir plugin **nornir-utils**. It provides plugins like `inventory`, `f
 pip install nornir-utils
 ```
 Once you have all the required packages installed, go ahead and write the code to retrieve, configure or validate device data.
+
+### Write code to automate your network
+
+#### Example 1
 
 Create a directory called inventory and in that create the inventory files `hosts.yaml`, `groups.yaml`, and `defaults.yaml`.
 
@@ -172,6 +180,8 @@ vvvv napalm_get ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 ```
 The output shows the facts (napalm getter) retrieved from the hosts provided in the inventory. For every host the tasks are executed separately by a thread, hence the results are shown per host. It returns a dictionary for each host, with the key being the napalm getter name and value being the result of executing the getter method.
 
+#### Example 2
+
  **Execute tasks without config file**
  
  In this case you just need to create a hosts file and nornir main file.
@@ -217,7 +227,7 @@ Execute **nornir_main.py** file and retrieve the results.
 python nornir_main.py
 ```
 
-**output**
+**Output**
 
 ```
 napalm_cli**********************************************************************
@@ -269,7 +279,9 @@ vvvv napalm_cli ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 ```
 The output shows the "interfaces summary" retrieved from the hosts provided in the hosts.yaml file. For every host the tasks are executed separately by a thread, hence the results are shown per host. It returns a dictionary for each host, with the key being the CLI command and value being the result of executing the CLI command.
 
-**Resources**
+# Conclusion
+
+# Resources
 
 - [Nornir Documentation](https://nornir.readthedocs.io/en/latest/)
 - [Nornir GitHub repository](https://github.com/nornir-automation/nornir)
