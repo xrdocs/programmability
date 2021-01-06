@@ -103,7 +103,7 @@ ios:
 username: admin
 password: admin
 ```
-Execute below python code to understand the schema of the objects (hosts, groups, defaults).
+FYI, execute below python code to understand the schema of the objects (hosts, groups, defaults).
 ```
 from nornir.core.inventory import Host, Group, Defaults
 import json
