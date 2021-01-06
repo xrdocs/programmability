@@ -68,7 +68,7 @@ pip install nornir-utils
 ```
 Once you have all the required packages installed, go ahead and write the code to retrieve, configure or validate device data.
 
-### Write code to automate your network
+### Write a few lines of code to automate your network
 
 #### Example 1
 
@@ -279,6 +279,145 @@ vvvv napalm_cli ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 ```
 The output shows the "interfaces summary" retrieved from the hosts provided in the hosts.yaml file. For every host the tasks are executed separately by a thread, hence the results are shown per host. It returns a dictionary for each host, with the key being the CLI command and value being the result of executing the CLI command.
 
+#### Example 2
+
+**Execute multiple napalm tasks**
+
+**nornir_main.py**
+```
+#!/usr/bin/env python3
+  
+from nornir import InitNornir
+from nornir_utils.plugins.functions import print_result
+from nornir_napalm.plugins.tasks import napalm_get, napalm_cli, napalm_configure
+
+nr = InitNornir(
+    config_file="config.yaml", dry_run=True
+)
+
+def multiple_tasks(task):
+    task.run(
+        task=napalm_cli, commands=["show interfaces brief"]
+    )
+
+    task.run(
+        task=napalm_configure, dry_run=False, configuration="interface loopback 1000"
+    )
+
+    task.run(
+        task=napalm_get, getters=["interfaces"]
+    )
+
+results = nr.run(
+    task=multiple_tasks
+)
+
+print_result(results)
+```
+
+Execute **nornir_main.py** file and retrieve the results.
+```
+./nornir_main.py
+```
+**Output**
+```
+multiple_tasks******************************************************************
+* rt1 ** changed : True ********************************************************
+vvvv multiple_tasks ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO
+---- napalm_cli ** changed : False --------------------------------------------- INFO
+{ 'show interfaces brief': 'Intf       Intf        LineP              Encap  '
+                           'MTU        BW\n'
+                           '               Name       State       '
+                           'State               Type (byte)    (Kbps)\n'
+                           '--------------------------------------------------------------------------------\n'
+                           '                Lo0          up          '
+                           'up           Loopback  1500          0\n'
+                           '     Mg0/RP0/CPU0/0          up          '
+                           'up               ARPA  1514    1000000\n'}
+---- napalm_configure ** changed : True ---------------------------------------- INFO
+--- 
++++ 
+@@ -66,6 +66,8 @@
+ interface Loopback0
+  description PRIMARY ROUTER
++!
++interface Loopback1000
+ !
+ interface MgmtEth0/RP0/CPU0/0
+  description *** MANAGEMENT INTERFACE ***
+---- napalm_get ** changed : False --------------------------------------------- INFO
+{ 'interfaces': { 'Loopback0': { 'description': 'PRIMARY ROUTER ',
+                                 'is_enabled': True,
+                                 'is_up': True,
+                                 'last_flapped': -1.0,
+                                 'mac_address': '',
+                                 'mtu': 1500,
+                                 'speed': 0},
+                  'Loopback1000': { 'description': '',
+                                    'is_enabled': True,
+                                    'is_up': True,
+                                    'last_flapped': -1.0,
+                                    'mac_address': '',
+                                    'mtu': 1500,
+                                    'speed': 0},
+                  'MgmtEth0/RP0/CPU0/0': { 'description': '*** MANAGEMENT '
+                                                          'INTERFACE ***',
+                                           'is_enabled': True,
+                                           'is_up': True,
+                                           'last_flapped': -1.0,
+                                           'mac_address': '52:54:00:A4:14:09',
+                                           'mtu': 1514,
+                                           'speed': 1000}}}
+^^^^ END multiple_tasks ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* rt2 ** changed : True ********************************************************
+vvvv multiple_tasks ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO
+---- napalm_cli ** changed : False --------------------------------------------- INFO
+{ 'show interfaces brief': 'Intf       Intf        LineP              Encap  '
+                           'MTU        BW\n'
+                           '               Name       State       '
+                           'State               Type (byte)    (Kbps)\n'
+                           '--------------------------------------------------------------------------------\n
+                           '               Lo10          up          '
+                           'up           Loopback  1500          0\n'
+                           '     Mg0/RP0/CPU0/0          up          '
+                           'up               ARPA  1514          0\n'}
+---- napalm_configure ** changed : True ---------------------------------------- INFO
+--- 
++++ 
+@@ -61,6 +61,8 @@
+ !
+ interface Loopback10
+  description LOOPBACK 10
++!
++interface Loopback1000
+ !
+ interface MgmtEth0/RP0/CPU0/0
+  description *** MANAGEMENT INTERFACE ***
+---- napalm_get ** changed : False --------------------------------------------- INFO
+{ 'interfaces': { 'Loopback10': { 'description': 'LOOPBACK 10',
+                                  'is_enabled': True,
+                                  'is_up': True,
+                                  'last_flapped': -1.0,
+                                  'mac_address': '',
+                                  'mtu': 1500,
+                                  'speed': 0},
+                  'Loopback1000': { 'description': '',
+                                    'is_enabled': True,
+                                    'is_up': True,
+                                    'last_flapped': -1.0,
+                                    'mac_address': '',
+                                    'mtu': 1500,
+                                    'speed': 0},
+                  'MgmtEth0/RP0/CPU0/0': { 'description': '*** MANAGEMENT '
+                                                          'INTERFACE ***',
+                                           'is_enabled': True,
+                                           'is_up': True,
+                                           'last_flapped': -1.0,
+                                           'mac_address': '52:54:00:DE:B5:58',
+                                           'mtu': 1514,
+                                           'speed': 0}}}
+^^^^ END multiple_tasks ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+```
 # Conclusion
 
 # Resources
