@@ -430,7 +430,7 @@ vvvv multiple_tasks ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
                                            'speed': 0}}}
 ^^^^ END multiple_tasks ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
-The output shows the result of `show interfaces brief`, does the configuration of adding `interface loopback 1000` and shows the configuration changes before commiting it, then it retrieves inferfaces information from the napalm interfaces getter methodd. These 3 tasks are executed on all the hosts provided in the hosts.yaml file. For every host the tasks are executed separately by a thread, hence the results are shown per host. 
+The output shows the result of `show interfaces brief`, does the configuration of adding `interface loopback 1000` and shows the configuration changes before commiting it, then it retrieves interfaces information from the napalm interfaces getter methodd. These 3 tasks are executed on all the hosts provided in the hosts.yaml file. For every host the tasks are executed separately by a thread, hence the results are shown per host. 
 
 # Conclusion
 
