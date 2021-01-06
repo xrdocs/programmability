@@ -103,6 +103,16 @@ ios:
 username: admin
 password: admin
 ```
+Execute below python code to understand the schema of the objects (hosts, groups, defaults).
+```
+from nornir.core.inventory import Host, Group, Defaults
+import json
+
+print(json.dumps(Host.schema(), indent=4))
+print(json.dumps(Group.schema(), indent=4))
+print(json.dumps(Defaults.schema(), indent=4))                                           
+```
+
 Now come out of the inventory directory and create a config file that provides information about the inventory and runner to the main file.
 
 **config.yaml**
@@ -138,7 +148,7 @@ results = nr.run(
 
 print_result(results)
 ```
-This is the main file where you initialize Nornir with the `InitNornir` function and provide the configuration file. In the next step, call a run method and provide the tasks to be executed, here I provided `napalm_get` imported from the `nornir_napalm` plugin. It executes the provided napalm getters over all the hosts provided in the inventory and returns the results.
+This is the main file where you initialize Nornir with the `InitNornir` function and provide the configuration file. In the next step, call a run method and provide the tasks to be executed, here we provided `napalm_get`, imported from the `nornir_napalm` plugin. It executes the provided napalm getters over all the hosts provided in the inventory and returns the results.
 
 Execute **nornir_main.py** file and retrieve the results.
 ```
@@ -220,7 +230,7 @@ results = nr.run(
 
 print_result(results)
 ```
-This is the main file where you initialize Nornir with the `InitNornir` function and do not provide the configuration file. In the next step, call a run method and provide the tasks to be executed, here I provided `napalm_cli` imported from the `nornir_napalm` plugin. It executes the provided napalm CLI command over all the hosts provided in the hosts.yaml file and returns the results. As threading information is not provided in `InitNornir()`, here `num_workers` defaults to 20.
+This is the main file where you initialize Nornir with the `InitNornir` function and do not provide the configuration file. In the next step, call a run method and provide the tasks to be executed, here we provided `napalm_cli` imported from the `nornir_napalm` plugin. It executes the provided napalm CLI command over all the hosts provided in the hosts.yaml file and returns the results. As threading information is not provided in `InitNornir()`, here `num_workers` defaults to 20.
 
 Execute **nornir_main.py** file and retrieve the results.
 ```
@@ -279,7 +289,7 @@ vvvv napalm_cli ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 ```
 The output shows the "interfaces summary" retrieved from the hosts provided in the hosts.yaml file. For every host the tasks are executed separately by a thread, hence the results are shown per host. It returns a dictionary for each host, with the key being the CLI command and value being the result of executing the CLI command.
 
-#### Example 2
+#### Example 3
 
 **Execute multiple napalm tasks**
 
@@ -290,12 +300,13 @@ The output shows the "interfaces summary" retrieved from the hosts provided in t
 from nornir import InitNornir
 from nornir_utils.plugins.functions import print_result
 from nornir_napalm.plugins.tasks import napalm_get, napalm_cli, napalm_configure
+from nornir.core.task import Task
 
 nr = InitNornir(
     config_file="config.yaml", dry_run=True
 )
 
-def multiple_tasks(task):
+def multiple_tasks(task: Task):
     task.run(
         task=napalm_cli, commands=["show interfaces brief"]
     )
@@ -314,6 +325,7 @@ results = nr.run(
 
 print_result(results)
 ```
+This is the main file where we initialize Nornir with the `InitNornir` function and provide the configuration file. In the next step, create a method(`multiple_tasks`) with Task object as its argument and provide the multiple tasks to be executed. Here we are calling run method of Task object and providing the tasks (`napalm_cli`, `napalm_configure`, `napalm_get`) which retrieves results of `show interfaces brief`, configures `interface loopback 1000` and retrieves interfaces. Then call a run method of nornir and provide the task to be executed, here we provided `multiple_tasks` which has diffrent tasks in it. It executes the tasks over all the hosts provided in the inventory and returns the results.
 
 Execute **nornir_main.py** file and retrieve the results.
 ```
@@ -418,7 +430,10 @@ vvvv multiple_tasks ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
                                            'speed': 0}}}
 ^^^^ END multiple_tasks ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
+The output shows the result of `show interfaces brief`, does the configuration of adding `interface loopback 1000` and shows the configuration changes before commiting it, then it retrieves inferfaces information from the napalm interfaces getter methodd. These 3 tasks are executed on all the hosts provided in the hosts.yaml file. For every host the tasks are executed separately by a thread, hence the results are shown per host. 
+
 # Conclusion
+
 
 # Resources
 
