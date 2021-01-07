@@ -54,15 +54,23 @@ Enough talking, how do YOU start using pyATS?
 
 ## pyATS requirements
 
-pyATS is lightweight and scalable. As per the documentation, you only need 1GB of RAM and 1 vCPU to start your network automation (no excuse!).
+Full requirements can be found in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/prereqs/prerequisites.html).
+
+### Hardware
+
+pyATS is lightweight and scalable. As per the documentation, you need:
+- 1GB of RAM,
+- 1 vCPU.
+
+### Operating System
  
-It rusn in a Linux and Linux-like environments, such as Ubuntu, CentOS, Fedora and macOS. The pyATS ecosystem does not support Windows. 
+It rusn in a Linux and Linux-like environments, such as Ubuntu, CentOS, Fedora and macOS. The pyATS ecosystem does **not** support Windows.
+
+### Python version
 
 As of January 2021, it requires Python version between 3.5 and 3.8. Version 3.9 is NOT yet supported.
 
-Full requirements can be found in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/prereqs/prerequisites.html).
-
-![pyats_ready.png]({{site.baseurl}}/images/pyats_ready.png)
+![pyats_ready.png]({{site.baseurl}}/images/pyats_ready.png){: .align-center}
 
 ## pyATS installation
 
