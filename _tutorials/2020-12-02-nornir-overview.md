@@ -438,7 +438,9 @@ The output shows the result of `show interfaces brief`, does the configuration o
 
 **Execute multiple napalm tasks on the selected hosts from the inventory, using the filter.**
 
-```
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
 #!/usr/bin/env python3
   
 from nornir import InitNornir
@@ -450,7 +452,7 @@ nr = InitNornir(
     config_file="config.yaml", dry_run=True
 )
 
-rt1 = nr.filter(name="rt1")
+<mark>rt1 = nr.filter(name="rt1")</mark>
 
 def multiple_tasks(task: Task):
     task.run(
@@ -465,12 +467,15 @@ def multiple_tasks(task: Task):
         task=napalm_get, getters=["interfaces"]
     )
 
-results = rt1.run(
+<mark>results = rt1.run(
     task=multiple_tasks
-)
+)</mark>
 
 print_result(results)
-```
+</code>
+</pre>
+</div>
+
 This is same as Example 3, the only difference is, we are applying filter to the nornir object so that it executes all the tasks on a specific host of the inventory that is provided in the filter. 
 
 Execute **nornir_main.py** file and retrieve the results.
