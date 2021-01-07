@@ -430,10 +430,15 @@ vvvv multiple_tasks ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
                                            'speed': 0}}}
 ^^^^ END multiple_tasks ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
-The output shows the result of `show interfaces brief`, does the configuration of adding `interface loopback 1000` and shows the configuration changes before commiting it, then it retrieves interfaces information from the napalm interfaces getter methodd. These 3 tasks are executed on all the hosts provided in the hosts.yaml file. For every host the tasks are executed separately by a thread, hence the results are shown per host. 
+The output shows the result of `show interfaces brief`, does the configuration of adding `interface loopback 1000` and shows the configuration changes before commiting it, then it retrieves interfaces information from the napalm interfaces getter method. These 3 tasks are executed on all the hosts provided in the hosts.yaml file. For every host the tasks are executed separately by a thread, hence the results are shown per host. 
+
+# Why not other python libraries like napalm, netmiko, ansible, salt, ncclient?
+
 
 # Conclusion
-
+Nornir is a python based multi-threaded network automation framework that provides a way to automate your network tasks efficiently. Being an open-sourced project written in python, makes it easy for the user to debug and troubleshoot. Above all its time efficient, free and easy to use. Write simple lines of python code to execute your network tasks on lot of your network devices quickly!! 
+*Stay stuned to learn about another network automation tool in our next post.*
+*Please do comment below, your questions and what you would like to learn about network automation!!*
 
 # Resources
 
