@@ -327,7 +327,7 @@ results = nr.run(
 
 print_result(results)
 ```
-This is the main file where we initialize Nornir with the `InitNornir` function and provide the configuration file. In the next step, create a method(`multiple_tasks`) with Task object as its argument and provide the multiple tasks to be executed. Here we are calling a run method of Task object and providing the tasks (`napalm_cli`, `napalm_configure`, `napalm_get`) which retrieves results of `show interfaces brief`, configures `interface loopback 1000`, and retrieves interfaces. Then call a run method of nornir and provide the task to be executed, here we provided `multiple_tasks` which has different tasks in it. It executes the tasks over all the hosts provided in the inventory and returns the results.
+This is the main file where we initialize Nornir with the `InitNornir` function and provide the configuration file. In the next step, create a method(`multiple_tasks`) with Task object as its argument and provide the multiple tasks to be executed. Here we are calling a `run` method of `Task` object and providing the tasks (`napalm_cli`, `napalm_configure`, `napalm_get`) which retrieves results of `show interfaces brief`, configures `interface loopback 1000`, and retrieves interfaces. Then call a run method of nornir and provide the task to be executed, here we provided `multiple_tasks` which has different tasks in it. It executes the tasks over all the hosts provided in the inventory and returns the results.
 
 Execute **nornir_main.py** file and retrieve the results.
 ```
