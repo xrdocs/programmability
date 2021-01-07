@@ -94,3 +94,19 @@ pip install pyats
 </pre>
 </div>
 
+## Your first pyATS use case: getting a CLI output from a device
+
+In this first use case, we are going to see step by step how we can get a **simple CLI output** (`show ip interface brief`) from a IOS XR device. This first use case do **not** demonstrates the full power of pyATS but should be a good example to cover the basics.
+
+In order for everyone to be able to run the code, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Feel free to adapt the code to use your own device(s). Below the sandbox information.
+
+| Key               	| Value                    	|
+|-------------------	|--------------------------	|
+| IOS XRv 9000 host 	| sbx-iosxr-mgmt.cisco.com 	|
+|     SSH Port      	|     8181                 	|
+|     Username      	|     admin                	|
+|     Password      	|     C1sco12345           	|
+
+## Building a testbed
+
+The simplest way to connect to a device is through a pyATS testbed file, written in YAML. This information will be used by **Unicon** to connect to the device and send/get the requested commands.
