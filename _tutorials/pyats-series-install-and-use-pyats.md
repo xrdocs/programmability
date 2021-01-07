@@ -199,8 +199,6 @@ In order for everyone to be able to run the code, we will use the [IOS XR always
 The simplest way to connect to a device is through a pyATS testbed file, written in YAML. This information will be used by **Unicon** to connect to the device and send/get the requested commands.
 
 **testbed.yaml**
-<div class="highlighter-rouge">
-<pre class="highlight">
 <code>
 <div class="highlight"><pre><span></span><span class="nt">devices</span><span class="p">:</span>
   <span class="nt">iosxr1</span><span class="p">:</span>
@@ -217,8 +215,6 @@ The simplest way to connect to a device is through a pyATS testbed file, written
         <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8181</span>
 </pre></div>
 </code>
-</pre>
-</div>
 
 
 test
