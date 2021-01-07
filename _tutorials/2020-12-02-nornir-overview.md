@@ -432,6 +432,102 @@ vvvv multiple_tasks ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 ```
 The output shows the result of `show interfaces brief`, does the configuration of adding `interface loopback 1000` and shows the configuration changes before commiting it, then it retrieves interfaces information from the napalm interfaces getter method. These 3 tasks are executed on all the hosts provided in the hosts.yaml file. For every host the tasks are executed separately by a thread, hence the results are shown per host. 
 
+#### Example 4
+
+**Execute multiple napalm tasks on the selected hosts from the inventory, using the filter.**
+
+```
+#!/usr/bin/env python3
+  
+from nornir import InitNornir
+from nornir_utils.plugins.functions import print_result
+from nornir_napalm.plugins.tasks import napalm_get, napalm_cli, napalm_configure
+from nornir.core.task import Task
+
+nr = InitNornir(
+    config_file="config.yaml", dry_run=True
+)
+
+rt1 = nr.filter(name="rt1")
+
+def multiple_tasks(task: Task):
+    task.run(
+        task=napalm_cli, commands=["show interfaces brief"]
+    )
+
+    task.run(
+        task=napalm_configure, dry_run=False, configuration="interface loopback 1000"
+    )
+
+    task.run(
+        task=napalm_get, getters=["interfaces"]
+    )
+
+results = rt1.run(
+    task=multiple_tasks
+)
+
+print_result(results)
+```
+This is same as Example 3, the only difference is, we are applying filter to the nornir object so that it executes all the tasks on a specific host of the inventory that is provided in the filter. 
+
+Execute **nornir_main.py** file and retrieve the results.
+```
+./nornir_main.py
+```
+**Output**
+```
+multiple_tasks******************************************************************
+* rt1 ** changed : True ********************************************************
+vvvv multiple_tasks ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO
+---- napalm_cli ** changed : False --------------------------------------------- INFO
+{ 'show interfaces brief': 'Intf       Intf        LineP              Encap  '
+                           'MTU        BW\n'
+                           '               Name       State       '
+                           'State               Type (byte)    (Kbps)\n'
+                           '--------------------------------------------------------------------------------\n'
+                           '                Lo0          up          '
+                           'up           Loopback  1500          0\n'
+                           '     Mg0/RP0/CPU0/0          up          '
+                           'up               ARPA  1514    1000000\n'}
+---- napalm_configure ** changed : True ---------------------------------------- INFO
+--- 
++++ 
+@@ -66,6 +66,8 @@
+ interface Loopback0
+  description PRIMARY ROUTER
++!
++interface Loopback1000
+ !
+ interface MgmtEth0/RP0/CPU0/0
+  description *** MANAGEMENT INTERFACE ***
+---- napalm_get ** changed : False --------------------------------------------- INFO
+{ 'interfaces': { 'Loopback0': { 'description': 'PRIMARY ROUTER ',
+                                 'is_enabled': True,
+                                 'is_up': True,
+                                 'last_flapped': -1.0,
+                                 'mac_address': '',
+                                 'mtu': 1500,
+                                 'speed': 0},
+                  'Loopback1000': { 'description': '',
+                                    'is_enabled': True,
+                                    'is_up': True,
+                                    'last_flapped': -1.0,
+                                    'mac_address': '',
+                                    'mtu': 1500,
+                                    'speed': 0},
+                  'MgmtEth0/RP0/CPU0/0': { 'description': '*** MANAGEMENT '
+                                                          'INTERFACE ***',
+                                           'is_enabled': True,
+                                           'is_up': True,
+                                           'last_flapped': -1.0,
+                                           'mac_address': '52:54:00:A4:14:09',
+                                           'mtu': 1514,
+                                           'speed': 1000}}}
+^^^^ END multiple_tasks ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+```
+Though there are 2 hosts available in the inventory, the output shows the result of executed tasks on only one host i.e `rt1`, as we have added a filter to do so.
+
 # Why not other python libraries like napalm, netmiko, ansible, salt, ncclient?
 
 
