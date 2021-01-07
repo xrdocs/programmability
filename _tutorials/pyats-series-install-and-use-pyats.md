@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2021-01-07 22:40 +0100'
 title: pyATS series - Install and use pyATS
 author: Antoine Orsoni
@@ -63,8 +63,3 @@ As of January 2021, it requires Python version between 3.5 and 3.8. Version 3.9 
 Full requirements can be found in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/prereqs/prerequisites.html).
 
 ![pyats_ready.png]({{site.baseurl}}/images/pyats_ready.png){: .align-center}
-
-
-
-
-
