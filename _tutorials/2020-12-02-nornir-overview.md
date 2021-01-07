@@ -526,10 +526,7 @@ vvvv multiple_tasks ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
                                            'speed': 1000}}}
 ^^^^ END multiple_tasks ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
-Though there are 2 hosts available in the inventory, the output shows the result of executed tasks on only one host i.e `rt1`, as we have added a filter to do so.
-
-# Why not other python libraries like napalm, netmiko, ansible, salt, ncclient?
-
+Though there are 2 hosts available in the inventory, the output shows the result of executed tasks on only one host i.e. `rt1`, as we have added a filter to do so.
 
 # Conclusion
 Nornir is a python based multi-threaded network automation framework that provides a way to automate your network tasks efficiently. Being an open-sourced project written in python, makes it easy for the user to debug and troubleshoot. Above all its time efficient, free and easy to use. Write simple lines of python code to execute your network tasks on lot of your network devices quickly!! 
