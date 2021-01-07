@@ -28,7 +28,7 @@ pyATS is made of three main building blocks:
 - **pyATS libraries** (also known as Genie) which provides everything you need for network testing such as parsers, triggers and APIs. 
 - **XPRESSO**, the pyATS Web UI Dashboard.
 
-![pyATS ecosystem]({{site.baseurl}}/https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/_images/layers.png)
+![pyATS ecosystem]({{site.baseurl}}/https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/_images/layers.png){: .align-center}
 
 You can read more about pyATS ecosystem in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/intro/introduction.html).
 
@@ -62,4 +62,27 @@ As of January 2021, it requires Python version between 3.5 and 3.8. Version 3.9 
 
 Full requirements can be found in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/prereqs/prerequisites.html).
 
-![pyats_ready.png]({{site.baseurl}}/images/pyats_ready.png){: .align-center}
+![pyats_ready.png]({{site.baseurl}}/images/pyats_ready.png)
+
+## pyATS installation
+
+pyATS ecosystem can be installed in two ways: in a docker container or in a virtual environment. Today, we will focus on the second option. Remember, you need a Python version between 3.5 and 3.8 to use pyATS.
+
+Full installation documentation for Docker and Virtual Environment can be found [here](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/install/installpyATS.html).
+
+Let’s start! Open a bash terminal and run the below three commands. It will:
+- Create a virtual environment.
+- Activate the virtual environment.
+- Install pyATS and its dependencies.
+
+**From your bash terminal**
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+python -m venv venv
+source venv/bin/activate
+pip install pyats
+</code>
+</pre>
+</div>
+
