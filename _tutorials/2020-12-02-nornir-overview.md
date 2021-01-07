@@ -196,7 +196,7 @@ The output shows the facts (napalm getter) retrieved from the hosts provided in 
 
  **Execute tasks without config file**
  
- In this case you just need to create a hosts file and nornir main file.
+ In this case, you just need to create a host file and nornir main file.
  
  **hosts.yaml**
  
