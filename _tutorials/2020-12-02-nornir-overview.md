@@ -327,7 +327,7 @@ results = nr.run(
 
 print_result(results)
 ```
-This is the main file where we initialize Nornir with the `InitNornir` function and provide the configuration file. In the next step, create a method(`multiple_tasks`) with Task object as its argument and provide the multiple tasks to be executed. Here we are calling run method of Task object and providing the tasks (`napalm_cli`, `napalm_configure`, `napalm_get`) which retrieves results of `show interfaces brief`, configures `interface loopback 1000` and retrieves interfaces. Then call a run method of nornir and provide the task to be executed, here we provided `multiple_tasks` which has diffrent tasks in it. It executes the tasks over all the hosts provided in the inventory and returns the results.
+This is the main file where we initialize Nornir with the `InitNornir` function and provide the configuration file. In the next step, create a method(`multiple_tasks`) with Task object as its argument and provide the multiple tasks to be executed. Here we are calling a run method of Task object and providing the tasks (`napalm_cli`, `napalm_configure`, `napalm_get`) which retrieves results of `show interfaces brief`, configures `interface loopback 1000`, and retrieves interfaces. Then call a run method of nornir and provide the task to be executed, here we provided `multiple_tasks` which has different tasks in it. It executes the tasks over all the hosts provided in the inventory and returns the results.
 
 Execute **nornir_main.py** file and retrieve the results.
 ```
@@ -531,9 +531,9 @@ vvvv multiple_tasks ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 Though there are 2 hosts available in the inventory, the output shows the result of executed tasks on only one host i.e. `rt1`, as we have added a filter to do so.
 
 # Conclusion
-Nornir is a python based multi-threaded network automation framework that provides a way to automate your network tasks efficiently. Being an open-sourced project written in python, makes it easy for the user to debug and troubleshoot. Above all its time efficient, free and easy to use. Write simple lines of python code to execute your network tasks on lot of your network devices quickly!! 
-*Stay stuned to learn about another network automation tool in our next post.*
-*Please do comment below, your questions and what you would like to learn about network automation!!*
+Nornir is a python based multi-threaded network automation framework that provides a way to automate your network tasks efficiently. Being an open-sourced project written in python makes it easy for the user to debug and troubleshoot. Above all, it's time-efficient, free, and easy to use. Write simple lines of python code to execute your network tasks on a lot of your network devices quickly!! 
+*Stay tuned to learn about another network automation tool in our next post.*
+*Please do comment below, your questions, and what you would like to learn about network automation!!*
 
 # Resources
 
