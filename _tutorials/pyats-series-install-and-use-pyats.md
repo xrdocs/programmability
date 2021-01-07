@@ -110,3 +110,25 @@ In order for everyone to be able to run the code, we will use the [IOS XR always
 ## Building a testbed
 
 The simplest way to connect to a device is through a pyATS testbed file, written in YAML. This information will be used by **Unicon** to connect to the device and send/get the requested commands.
+
+**testbed.yaml**
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+devices:
+  iosxr1:
+    type: iosxr-devnet
+    os: iosxr
+    credentials:
+      default:
+        username: admin
+        password: C1sco12345
+    connections:
+      vty:
+        protocol: ssh
+        ip: sbx-iosxr-mgmt.cisco.com
+        port: 8181
+
+</code>
+</pre>
+</div>
