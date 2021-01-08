@@ -308,7 +308,7 @@ Let's now explain the building blocks of the Python script. The parts below will
 
 Here is an output example of the above script. It might slightly vary according to the configuration of the device.
 
-**From your bash terminal**
+**Python console**
 {: .notice--primary}
 <div class="highlighter-rouge">
 <pre class="highlight">
