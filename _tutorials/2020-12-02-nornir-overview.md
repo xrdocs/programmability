@@ -3,6 +3,7 @@ published: True
 position: top
 date: '2021-01-08 10:00 -0400'
 title: Nornir Overview
+excerpt: Nornir is the new automation framework which grabbed the attention of network engineers. Learn more about it and take a look how you could manage Cisco devices with it.
 author: Neelima Parakala
 ---
 {% include toc icon="table" title="Nornir Overview" %}
