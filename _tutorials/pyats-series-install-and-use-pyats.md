@@ -97,7 +97,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
   </style>
 </head>
-![pyats_hello.jpg]({{site.baseurl}}/images/pyats_hello.jpg){: .align-center}
+![pyats_hello2.jpg]({{site.baseurl}}/images/pyats_hello2.jpg)
 # pyATS overview
 
 Ever dreamed of a test framework that could be used across multiple platforms, OS and vendors, which could do regression, sanity and feature testing; already used by thousands of engineers and developers worldwide? Guess what, **it exists, it’s free, and you can start using it right now!**
