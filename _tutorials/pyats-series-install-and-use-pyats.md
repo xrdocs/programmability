@@ -97,7 +97,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
   </style>
 </head>
-![pyats_hello2.jpg]({{site.baseurl}}/images/pyats_hello2.jpg)
+![pyats_hello2.jpg]({{site.baseurl}}/images/pyats_hello2.jpg){: .align-center}
 # pyATS overview
 
 Ever dreamed of a test framework that could be used across multiple platforms, OS and vendors, which could do regression, sanity and feature testing; already used by thousands of engineers and developers worldwide? Guess what, **it exists, it’s free, and you can start using it right now!**
@@ -139,7 +139,7 @@ This solution is built and thought from the ground up to be an **agnostic ecosys
 
 # Getting your hands dirty
 
-Enough talking, do **YOU** want to start using pyATS? [Yes](#link){: .btn}
+Enough talking, do **YOU** want to start using pyATS? [Yes](){: .btn}
 
 ## pyATS requirements
 
