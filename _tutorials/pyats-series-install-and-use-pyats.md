@@ -235,7 +235,7 @@ You can find the complete documentation on how to build a testbed [here](https:/
 </pre></div>
 {: .notice}
 
-The testbed.yaml file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/tree/master/0_get_cli_show).
+The `testbed.yaml` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/tree/master/0_get_cli_show).
 {: .notice--info}
 
 Let's now explain the building blocks of the testbed. The parts below will refer to each inline comment of the code block above.
@@ -270,4 +270,36 @@ If you do not want the device in your testbed to match the hostname, please refe
 You could add many more connections, such as **NETCONF** or **RESTCONF**. 
 {: .notice--info}
 
-Now that you have a testbed which works, let’s make your first pyATS python script.
+Now that you have a testbed which works, let’s make your **first** pyATS python script.
+
+## Getting your first CLI output with pyATS
+
+Let’s take a simple use case: we are going to connect to the device and collect a CLI output of the `show ip interface brief` command. This first example will not demonstrate the full power of pyAST but will be useful to understand its core functions. More to come in the next posts.
+
+**0_execute_cli_show.py**
+{: .notice--primary}
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyats.topology</span> <span class="kn">import</span> <span class="n">loader</span>
+
+<span class="c1"># Step 0: load the testbed</span>
+<span class="n">testbed</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./testbed.yaml&#39;</span><span class="p">)</span>
+
+<span class="c1"># Step 1: testbed is a dictionnary. Extract the device iosxr1</span>
+<span class="n">iosxr1</span> <span class="o">=</span> <span class="n">testbed</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="s2">&quot;iosxr1&quot;</span><span class="p">]</span>
+
+<span class="c1"># Step 2: Connect to the device</span>
+<span class="n">iosxr1</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">init_exec_commands</span><span class="o">=</span><span class="p">[],</span> <span class="n">init_config_commands</span><span class="o">=</span><span class="p">[],</span> <span class="n">log_stdout</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Step 3: saving the `show ip interface brief` output in a variable</span>
+<span class="n">show_interface</span> <span class="o">=</span> <span class="n">iosxr1</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;show ip interface brief&#39;</span><span class="p">)</span>
+
+<span class="c1"># Step 4: pritting the `show interface brief` output</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">show_interface</span><span class="p">)</span>
+
+<span class="c1"># Step 5: disconnect from the device</span>
+<span class="n">iosxr1</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
+
+The `0_execute_cli_show.py` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/tree/master/0_get_cli_show).
+{: .notice--info}
+
+Let's now explain the building blocks of the Python script. The parts below will refer to each inline comment of the code block above.
