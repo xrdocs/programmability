@@ -106,6 +106,9 @@ This blog post will be the first one of a series on pyATS. Today, we will explai
 
 The code used for each blog post can be found [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats). This link will include the code for all posts. Today’s part will refer to the `0_get_cli_show` folder of the repo.
 
+![pyats_hello.jpg]({{site.baseurl}}/images/pyats_hello.jpg){: .align-center}
+
+
 ## Building blocks
 
 pyATS is made of three main building blocks:
