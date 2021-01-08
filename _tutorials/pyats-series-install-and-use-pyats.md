@@ -10,7 +10,6 @@ tags:
   - pyATS
 position: hidden
 ---
-
 <head>
   <title></title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -97,7 +96,6 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
   </style>
 </head>
-
 # pyATS overview
 
 Ever dreamed of a test framework that could be used across multiple platforms, OS and vendors, which could do regression, sanity and feature testing; already used by thousands of engineers and developers worldwide? Guess what, it exists, it’s free, and you can start using it right now!
