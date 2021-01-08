@@ -162,7 +162,7 @@ The pyATS ecosystem does **not** support Windows.
 
 As of January 2021, it requires Python version between 3.5 and 3.8. 
 
-Python version 3.9 is NOT yet supported.
+Python version 3.9 is **not** yet supported.
 {: .notice--warning}
 
 ![pyats_ready.png]({{site.baseurl}}/images/pyats_ready.png){: .align-center}
