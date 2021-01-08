@@ -125,7 +125,7 @@ You can read more about pyATS ecosystem in the [official documentation](https://
 
 This solution is built and thought from the ground up to be an **agnostic ecosystem**. As of January 2021, it comes out of the box with libraries for the below OS:
 
-- IOSXR ,
+- IOS XR,
 - IOS XE,
 - IOS,
 - NXOS,
