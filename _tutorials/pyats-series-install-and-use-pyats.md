@@ -245,7 +245,7 @@ Let's now explain the building blocks of the testbed. The parts below will refer
 This line starts a **list of devices**. Here, I have one device: `iosxr1`. I could have many devices.
 
 By default (i.e. if you do not change pyATS default settings), this name (`iosxr1`) will **need to exactly match the hostname of your device**. It is case sensitive.
-{: .notice}
+{: .notice--warning}
 
 If you do not want the device in your testbed to match the hostname, please refer to the documentation [here](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html), in the `learn_hostname` section.
 {: .notice}
