@@ -302,6 +302,18 @@ Let’s take a simple use case: we are going to connect to the device and collec
 The `0_execute_cli_show.py` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/tree/master/0_get_cli_show).
 {: .notice--info}
 
+You can run the script by entering the below command in your bash terminal.
+
+**From your bash terminal**
+{: .notice--primary}
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+python 0_execute_cli_show.py
+</code>
+</pre>
+</div>
+
 Let's now explain the building blocks of the Python script. The parts below will refer to each inline comment of the code block above.
 
 ### Output example
