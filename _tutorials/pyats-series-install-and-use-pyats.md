@@ -351,7 +351,7 @@ We load the `testbed` information, stored in our `testbed.yaml` file. We assign 
 
 `testbed` is a Python dictionary. We are extracting the device `iosxr1` information. We assign it to an object: `iosxr1`.
 
-You can name the object with the name you want. This one does not need to match the hostname of.
+You can name the object with the name you want. The object name does not need to match the hostname of.
 {: .notice--info}
 
 ### Step 2: connect to the device
