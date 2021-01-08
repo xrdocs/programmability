@@ -303,3 +303,83 @@ The `0_execute_cli_show.py` file is available [here](https://github.com/AntoineO
 {: .notice--info}
 
 Let's now explain the building blocks of the Python script. The parts below will refer to each inline comment of the code block above.
+
+### Output example
+
+Here is an output example of the above script. It might slightly vary according to the configuration of the device.
+
+**From your bash terminal**
+{: .notice--primary}
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+Interface                      IP-Address      Status          Protocol Vrf-Name
+Loopback100                    1.1.1.100       Up              Up       default 
+Loopback200                    1.1.1.200       Up              Up       default 
+Loopback999                    unassigned      Up              Up       default 
+MgmtEth0/RP0/CPU0/0            10.10.20.175    Up              Up       default 
+GigabitEthernet0/0/0/0         unassigned      Shutdown        Down     default 
+GigabitEthernet0/0/0/1         unassigned      Shutdown        Down     default 
+GigabitEthernet0/0/0/2         unassigned      Shutdown        Down     default 
+GigabitEthernet0/0/0/3         unassigned      Shutdown        Down     default 
+GigabitEthernet0/0/0/4         unassigned      Shutdown        Down     default 
+GigabitEthernet0/0/0/5         unassigned      Shutdown        Down     default 
+GigabitEthernet0/0/0/6         unassigned      Shutdown        Down     default
+</code>
+</pre>
+</div>
+
+### Step 0: load the testbed
+
+From the `pyats.topology` module, we import the `loader()` function. This function will be used to load the testbed file we have created.
+
+We load the `testbed` information, stored in our `testbed.yaml` file. We assign it to an object: `testbed`.
+
+### Step 1: extract device information
+
+`testbed` is a Python dictionary. We are extracting the device `iosxr1` information. We assign it to an object: `iosxr1`.
+
+You can name the object with the name you want. This one does not need to match the hostname of.
+{: .notice--info}
+
+### Step 2: connect to the device
+
+We use the `connect()` method on the `iosxr1` object to connect to the device.
+
+By default, pyATS will send exec and configuration commands to the device (such as terminal length 0 and show version). To avoid such behavior, we are passing arguments to the `conect()` method. We are also disabling the logging to standard output.
+More information in the [documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html)
+{: .notice--info}
+
+### Step 3: saving the CLI output
+
+We send the command to the device with the `execute()` method. We save the output (a `string`) in a variable: `show_interface`.
+
+Instead of `show ip interface brief`, you could send any command supported by your device.
+{: .notice--info}
+
+### Step 4: printing the output
+
+We `print` the output to the console.
+
+### Step 5: disconnect from the device
+
+We use the `disconnect()` method to properly disconnect from the device. 
+
+It’s important to do so, otherwise the vty connection will remain opened on the device, until it timeouts.
+{: .notice--info}
+
+# Conclusion
+
+In this first post of the pyATS series, we learnt how to build a `testbed` and how to collect your first CLI output from the device. In the next post, we will see how to parse the output to transform this big `string` into a `dictionary`.
+
+The code used for each blog post can be found [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats). This link will include the code for all posts.
+{: .notice--info}
+
+# Resources
+
+Below a few useful pyATS resources.
+
+- [The official pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/getting_started/index.html),
+- [List of Unicon supported platforms](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/supported_platforms.html),
+- [Devnet code exchange](https://developer.cisco.com/codeexchange/),
+- [Join the Webex space with the pyATS community](https://eurl.io/#r18UzrQVr).
