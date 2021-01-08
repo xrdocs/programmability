@@ -114,7 +114,7 @@ Today’s part will refer to the `0_get_cli_show` folder of the repo.
 ## Building blocks
 
 pyATS is made of three main building blocks:
-- **pyATS**, the core block of this ecosystem. It’s a Python framework which leverages multiple Python libraries such as [Unicon](https://pypi.org/project/unicon/), providing a simplified connection experience to network devices. It supports CLI, NETCONF and RESTCONF. It enables network engineers and developers to start with small and simple test cases 
+- **pyATS**, the core block of this ecosystem. It’s a Python framework which leverages multiple Python libraries such as [Unicon](https://pypi.org/project/unicon/), providing a simplified connection experience to network devices. It supports **CLI**, **NETCONF** and **RESTCONF**. It enables network engineers and developers to start with small and simple test cases.
 - **pyATS libraries** (also known as Genie) which provides everything you need for network testing such as parsers, triggers and APIs. 
 - **XPRESSO**, the pyATS Web UI Dashboard.
 
