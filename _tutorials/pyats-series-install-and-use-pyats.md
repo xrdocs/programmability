@@ -139,7 +139,7 @@ This solution is built and thought from the ground up to be an **agnostic ecosys
 
 # Getting your hands dirty
 
-Enough talking, how do **YOU** start using pyATS?
+Enough talking, how do **YOU** start using pyATS? [Yes](#link){: .btn}
 
 ## pyATS requirements
 
