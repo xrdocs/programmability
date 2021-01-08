@@ -106,7 +106,8 @@ pyATS was first created as an internal project, to ease the validation of two OS
 
 This blog post will be the first one of a series on pyATS. Today, we will explain what’s pyATS, install pyATS and cover a basic use case (getting a CLI output from a XR device). More use cases are going to be covered in the next posts. 
 
-The code used for each blog post can be found [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats). This link will include the code for all posts.{: .notice}
+The code used for each blog post can be found [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats). This link will include the code for all posts.
+{: .notice}
 
 Today’s part will refer to the `0_get_cli_show` folder of the repo.
 
@@ -117,15 +118,16 @@ pyATS is made of three main building blocks:
 - **pyATS libraries** (also known as Genie) which provides everything you need for network testing such as parsers, triggers and APIs. 
 - **XPRESSO**, the pyATS Web UI Dashboard.
 
-You can read more about pyATS ecosystem in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/intro/introduction.html).{: .notice}
+You can read more about pyATS ecosystem in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/intro/introduction.html).
+{: .notice}
 
 ## Supported OS
 
-This solution is built and thought from the ground up to be an agnostic ecosystem. As of January 2021, it comes out of the box with libraries for the below OS:
+This solution is built and thought from the ground up to be an **agnostic ecosystem**. As of January 2021, it comes out of the box with libraries for the below OS:
 
-- IOS,
+- IOSXR ,
 - IOS XE,
-- IOS XR,
+- IOS,
 - NXOS,
 - ASA,
 - Linux,
@@ -138,6 +140,7 @@ This solution is built and thought from the ground up to be an agnostic ecosyste
 # Getting your hands dirty
 
 Enough talking, how do YOU start using pyATS?
+{: .notice--warning}
 
 ## pyATS requirements
 
@@ -153,13 +156,15 @@ pyATS is lightweight and scalable. As per the documentation, you need:
  
 It rusn in a Linux and Linux-like environments, such as Ubuntu, CentOS, Fedora and macOS. 
 
-The pyATS ecosystem does **not** support Windows.{: .notice--info}
+The pyATS ecosystem does **not** support Windows.
+{: .notice--warning}
 
 ### Python version
 
 As of January 2021, it requires Python version between 3.5 and 3.8. 
 
-Python version 3.9 is NOT yet supported.{: .notice--info}
+Python version 3.9 is NOT yet supported.
+{: .notice--warning}
 
 ![pyats_ready.png]({{site.baseurl}}/images/pyats_ready.png){: .align-center}
 
@@ -189,7 +194,8 @@ pip install pyats
 
 In this first use case, we are going to see step by step how we can get a **simple CLI output** (`show ip interface brief`) from a IOS XR device. 
 
-This first use case do **not** demonstrates the full power of pyATS but should be a good example to cover the basics.{: .notice}
+This first use case do **not** demonstrates the full power of pyATS but should be a good example to cover the basics.
+{: .notice}
 
 In order for everyone to be able to run the code, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Feel free to adapt the code to use your own device(s). Below the sandbox information.
 
@@ -204,7 +210,8 @@ In order for everyone to be able to run the code, we will use the [IOS XR always
 
 The simplest way to connect to a device is through a pyATS testbed file, written in YAML. This information will be used by **Unicon** to connect to the device and send/get the requested commands.
 
-You can find the complete documentation on how to build a testbed [here](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).{: .notice}
+You can find the complete documentation on how to build a testbed [here](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
+{: .notice}
 
 **testbed.yaml**
 <div class="highlight"><pre><span></span><span class="c1"># Step 0: list of devices</span>
@@ -228,6 +235,7 @@ You can find the complete documentation on how to build a testbed [here](https:/
 </pre></div>  
 
 The testbed.yaml file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/tree/master/0_get_cli_show).
+{: .notice}
 
 Let's now explain the building blocks of the testbed. The parts below will refer to each inline comment of the code block above.
 
@@ -237,6 +245,7 @@ This line starts a **list of devices**. Here, I have one device: `iosxr1`. I cou
 By default (i.e. if you do not change pyATS default settings), this name (`iosxr1`) will **need to exactly match the hostname of your device**. It is case sensitive.
 
 If you do not want the device in your testbed to match the hostname, please refer to the documentation [here](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html), in the `learn_hostname` section.
+{: .notice}
 
 ### Step 1: OS and type
 
