@@ -257,16 +257,17 @@ If you do not want the device in your testbed to match the hostname, please refe
 
 ### Step 2: credentials
 
-**credentials** starts a list of credentials for this device. `default` will be checked first, if not specified otherwise in your script.  
+**credentials** starts a list of credentials for this device. `username` and `password` are the credentials of your device.
 
-`username` and `password` are the credentials of your device.
+`default` will be checked first, if not specified otherwise in your script.
+{: .notice}
+
 
 ### Step 3: connection parameters
 
-`connections` starts a list of possible connections for the device. If not specified otherwise, pyATS will try to use the `vty` connection.   
-
-You need to specify a protocol, the ip of the device, and the port. 
+`connections` starts a list of possible connections for the device. If not specified otherwise, pyATS will try to use the `vty` connection. You need to specify a protocol, the ip of the device, and the port. 
 
 You could add many more connections, such as **NETCONF** or **RESTCONF**. 
+{: .notice}
 
 Now that you have a testbed which works, let’s make your first pyATS python script.
