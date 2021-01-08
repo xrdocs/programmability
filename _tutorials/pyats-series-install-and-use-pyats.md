@@ -217,6 +217,7 @@ You can find the complete documentation on how to build a testbed [here](https:/
         <span class="nt">protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ssh</span>
         <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sbx-iosxr-mgmt.cisco.com</span>
         <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8181</span>
+        <br>
 </pre></div>  
 
 The testbed.yaml file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/tree/master/0_get_cli_show).
