@@ -372,7 +372,7 @@ We send the command to the device with the `execute()` method. We save the outpu
 Instead of `show ip interface brief`, you could send any command supported by your device.
 {: .notice--info}
 
-### Step 4: printing the output
+### Step 4: print the output
 
 We `print` the output to the console.
 
