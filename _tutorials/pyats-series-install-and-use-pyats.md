@@ -99,9 +99,9 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 ![pyats_hello.jpg]({{site.baseurl}}/images/pyats_hello.jpg){: .align-center}
 # pyATS overview
 
-Ever dreamed of a test framework that could be used across multiple platforms, OS and vendors, which could do regression, sanity and feature testing; already used by thousands of engineers and developers worldwide? Guess what, it exists, it’s free, and you can start using it right now!
+Ever dreamed of a test framework that could be used across multiple platforms, OS and vendors, which could do regression, sanity and feature testing; already used by thousands of engineers and developers worldwide? Guess what, **it exists, it’s free, and you can start using it right now!**
 
-pyATS was first created as an internal project, to ease the validation of two OS versions. It has been made public in 2017 through Cisco Devnet.
+pyATS was first created as an internal project, to ease the validation of two OS versions. It has been made public in 2017 through **Cisco Devnet**.
 
 This blog post will be the first one of a series on pyATS. Today, we will explain what’s pyATS, install pyATS and cover a basic use case (getting a CLI output from a XR device). More use cases are going to be covered in the next posts. 
 
