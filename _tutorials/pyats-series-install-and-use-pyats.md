@@ -198,57 +198,57 @@ In order for everyone to be able to run the code, we will use the [IOS XR always
 
 The simplest way to connect to a device is through a pyATS testbed file, written in YAML. This information will be used by **Unicon** to connect to the device and send/get the requested commands.
 
+You can find the complete documentation on how to build a testbed [here](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
+
 **testbed.yaml**
-<code>
-<div class="highlight"><pre><span></span><span class="nt">devices</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><span class="c1"># Step 0: list of devices</span>
+<span class="nt">devices</span><span class="p">:</span>
   <span class="nt">iosxr1</span><span class="p">:</span>
+    <span class="c1"># Step 1: OS and Type</span>
     <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">iosxr-devnet</span>
     <span class="nt">os</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">iosxr</span>
+    <span class="c1"># Step 2: credentials</span>
     <span class="nt">credentials</span><span class="p">:</span>
       <span class="nt">default</span><span class="p">:</span>
         <span class="nt">username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">admin</span>
         <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">C1sco12345</span>
+    <span class="c1"># Step 3: connection parameters</span>
     <span class="nt">connections</span><span class="p">:</span>
       <span class="nt">vty</span><span class="p">:</span>
         <span class="nt">protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ssh</span>
         <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sbx-iosxr-mgmt.cisco.com</span>
         <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8181</span>
 </pre></div>
-</code>
 
 
-test
+The testbed.yaml file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/tree/master/0_get_cli_show).
 
+Let's now explain the building blocks of the testbed. The parts below will refer to each inline comment of the code block above.
 
+### Step 0: list of devices
 
+This line starts a **list of devices**. Here, I have one device: `iosxr1`. I could have many devices.
+By default (i.e. if you do not change pyATS default settings), this name (`iosxr1`) will **need to exactly match the hostname of your device**. It is case sensitive.
 
+If you do not want the device in your testbed to match the hostname, please refer to the documentation [here](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html), in the `learn_hostname` section.
 
+### Step 1: OS and type
 
-----
+**type** is mandatory, and is used for clarity (i.e. its value doesn’t matter).
+**os** is the OS type of the device, as per the [Unicon documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/supported_platforms.html).
 
+### Step 2: credentials
 
+**credentials** starts a list of credentials for this device. `default` will be checked first, if not specified otherwise in your script.  
 
-<body>
-<h2></h2>
+`username` and `password` are the credentials of your device.
 
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyats.topology</span> <span class="kn">import</span> <span class="n">loader</span>
+### Step 3: connection parameters
 
-<span class="c1"># Step 0: load the testbed</span>
-<span class="n">testbed</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./testbed.yaml&#39;</span><span class="p">)</span>
+`connections` starts a list of possible connections for the device. If not specified otherwise, pyATS will try to use the `vty` connection.   
 
-<span class="c1"># Step 1: testbed is a dictionnary. Extract the device iosxr1</span>
-<span class="n">iosxr1</span> <span class="o">=</span> <span class="n">testbed</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="s2">&quot;iosxr1&quot;</span><span class="p">]</span>
+You need to specify a protocol, the ip of the device, and the port. 
 
-<span class="c1"># Step 2: Connect to the device</span>
-<span class="n">iosxr1</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">init_exec_commands</span><span class="o">=</span><span class="p">[],</span> <span class="n">init_config_commands</span><span class="o">=</span><span class="p">[],</span> <span class="n">log_stdout</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+You could add many more connections, such as **NETCONF** or **RESTCONF**. 
 
-<span class="c1"># Step 3: saving the `show ip interface brief` output in a variable</span>
-<span class="n">show_interface</span> <span class="o">=</span> <span class="n">iosxr1</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;show ip interface brief&#39;</span><span class="p">)</span>
-
-<span class="c1"># Step 4: pritting the `show interface brief` output</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">show_interface</span><span class="p">)</span>
-
-<span class="c1"># Step 5: disconnect from the device</span>
-<span class="n">iosxr1</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
-</pre></div>
-</body>
+Now that you have a testbed which works, let’s make your first pyATS python script.
