@@ -192,7 +192,7 @@ pip install pyats
 
 ## Your first pyATS use case: getting a CLI output from a device
 
-In this first use case, we are going to see step by step how we can get a **simple CLI output** (`show ip interface brief`) from a IOS XR device. 
+In this first use case, we are going to see step by step how we can get a **simple CLI output** (`show ip interface brief`) from an IOS XR device. 
 
 This first use case do **not** demonstrates the full power of pyATS but should be a good example to cover the basics.
 {: .notice--info}
@@ -244,7 +244,7 @@ Let's now explain the building blocks of the testbed. The parts below will refer
 
 This line starts a **list of devices**. Here, I have one device: `iosxr1`. I could have many devices.
 
-By default (i.e. if you do not change pyATS default settings), this name (`iosxr1`) will **need to exactly match the hostname of your device**. It is case sensitive.
+By default (i.e. if you does not change pyATS default settings), this name (`iosxr1`) will **need to exactly match the hostname of your device**. It is case sensitive.
 {: .notice--warning}
 
 If you do not want the device in your testbed to match the hostname, please refer to the documentation [here](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html), in the `learn_hostname` section.
@@ -270,7 +270,7 @@ If you do not want the device in your testbed to match the hostname, please refe
 You could add many more connections, such as **NETCONF** or **RESTCONF**. 
 {: .notice--info}
 
-Now that you have a testbed which works, let’s make your **first** pyATS python script.
+Now that our testbed is ready, let’s make our **first** pyATS python script.
 
 ## Getting your first CLI output with pyATS
 
