@@ -96,6 +96,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 
   </style>
 </head>
+![pyats_hello.jpg]({{site.baseurl}}/images/pyats_hello.jpg){: .align-center}
 # pyATS overview
 
 Ever dreamed of a test framework that could be used across multiple platforms, OS and vendors, which could do regression, sanity and feature testing; already used by thousands of engineers and developers worldwide? Guess what, it exists, it’s free, and you can start using it right now!
@@ -105,9 +106,6 @@ pyATS was first created as an internal project, to ease the validation of two OS
 This blog post will be the first one of a series on pyATS. Today, we will explain what’s pyATS, install pyATS and cover a basic use case (getting a CLI output from a XR device). More use cases are going to be covered in the next posts. 
 
 The code used for each blog post can be found [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats). This link will include the code for all posts. Today’s part will refer to the `0_get_cli_show` folder of the repo.
-
-![pyats_hello.jpg]({{site.baseurl}}/images/pyats_hello.jpg){: .align-center}
-
 
 ## Building blocks
 
@@ -219,8 +217,7 @@ You can find the complete documentation on how to build a testbed [here](https:/
         <span class="nt">protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ssh</span>
         <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sbx-iosxr-mgmt.cisco.com</span>
         <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8181</span>
-</pre></div>
-
+</pre></div>  
 
 The testbed.yaml file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/tree/master/0_get_cli_show).
 
