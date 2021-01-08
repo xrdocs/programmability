@@ -1,7 +1,7 @@
 ---
 published: True
-position: hidden
-date: '2020-12-02 18:01 -0400'
+position: top
+date: '2021-01-08 10:00 -0400'
 title: Nornir Overview
 author: Neelima Parakala
 ---
