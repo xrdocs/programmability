@@ -377,7 +377,7 @@ We `print` the output to the console.
 
 We use the `disconnect()` method to properly disconnect from the device. 
 
-It’s important to do so, otherwise the vty connection will remain opened on the device, until it timeouts.
+It’s important to do so, otherwise the vty connection will remain open on the device, until it timeouts.
 {: .notice--info}
 
 # Conclusion
