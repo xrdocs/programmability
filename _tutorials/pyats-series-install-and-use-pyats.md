@@ -8,7 +8,7 @@ tags:
   - iosxr
   - cisco
   - pyATS
-position: hidden
+position: top
 ---
 {% include toc icon="table" title="Table of Contents" %}
 <head>
