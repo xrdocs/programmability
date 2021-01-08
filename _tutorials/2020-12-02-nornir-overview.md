@@ -7,7 +7,7 @@ author: Neelima Parakala
 ---
 {% include toc icon="table" title="Nornir Overview" %}
 
-*Are you looking for a flexible, scalable, efficient network automation framework, where all tasks are written in Python programming language? If yes, then you are at the right place! And it is Nornir !!!*
+Are you looking for a flexible, scalable, efficient network automation framework, where all tasks are written in Python programming language? If yes, then you are at the right place! And it is Nornir !!!
 
 ## Ok! Now, what is Nornir?
 Nornir is a multi-threaded network automation framework that abstracts inventory and task execution. It helps to automate your network tasks efficiently. You can execute the tasks like configuring the devices, validating the operational data, and enabling the services on the provided hosts which are part of the inventory. As it is multithreaded, it allows you to manage the configuration of multiple network devices concurrently. It is an open-source project, completely written in python and easy to use. You should write a simple python code to make use of Nornir features.
@@ -45,7 +45,7 @@ source ~/nornir_venv/bin/activate
 ```
 ### Install Nornir and its plugins
 
-In the “nornir_venv” virtual environment, install **nornir**. Here I installed Nornir 3.0.0 version.
+In the “nornir_venv” virtual environment, install **nornir**. At the moment of producing this tutorial latest version of nornir is 3.0.0.
 ```
 pip install nornir
 ```
