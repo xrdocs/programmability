@@ -153,7 +153,7 @@ pyATS is lightweight and scalable. As per the documentation, you need:
 
 ### Operating System
  
-It rusn in a Linux and Linux-like environments, such as Ubuntu, CentOS, Fedora and macOS. 
+It runs in a Linux and Linux-like environments, such as Ubuntu, CentOS, Fedora and macOS. 
 
 The pyATS ecosystem does **not** support Windows.
 {: .notice--warning}
