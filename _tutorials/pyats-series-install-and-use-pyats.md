@@ -314,6 +314,9 @@ python 0_execute_cli_show.py
 </pre>
 </div>
 
+In this example, the `testbed.yaml` file need to be in the same folder as the `0_get_cli_show.py` file. You need to execute the Python script in the folder where you have the python script.
+{: .notice--info}
+
 Let's now explain the building blocks of the Python script. The parts below will refer to each inline comment of the code block above.
 
 ### Output example
