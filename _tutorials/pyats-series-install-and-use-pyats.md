@@ -302,7 +302,7 @@ Let’s take a simple use case: we are going to connect to the device and collec
 The `0_execute_cli_show.py` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/tree/master/0_get_cli_show).
 {: .notice--info}
 
-You can run the script by entering the below command in your bash terminal.
+### Executing the script
 
 **From your bash terminal**
 {: .notice--primary}
