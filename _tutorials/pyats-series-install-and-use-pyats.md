@@ -214,7 +214,7 @@ You can find the complete documentation on how to build a testbed [here](https:/
 {: .notice--info}
 
 **testbed.yaml**
-{: .notice--primary}
+{: .notice--success}
 <div class="highlight"><pre><span></span><span class="c1"># Step 0: list of devices</span>
 <span class="nt">devices</span><span class="p">:</span>
   <span class="nt">iosxr1</span><span class="p">:</span>
@@ -234,7 +234,7 @@ You can find the complete documentation on how to build a testbed [here](https:/
         <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8181</span>
         <br>
 </pre></div>
-{: .notice}
+{: .notice--primary}
 
 The testbed.yaml file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/tree/master/0_get_cli_show).
 {: .notice--info}
