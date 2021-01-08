@@ -382,7 +382,7 @@ It’s important to do so, otherwise the vty connection will remain open on the 
 
 # Conclusion
 
-In this first post of the pyATS series, we learnt how to build a `testbed` and how to collect your first CLI output from the device. In the next post, we will see how to parse the output to transform this big `string` into a `dictionary`.
+In this first post of the pyATS series, we learnt how to build a `testbed` and how to collect our first CLI output from the device. In the next post, we will see how to parse the output to transform this big `string` into a `dictionary`.
 
 The code used for each blog post can be found [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats). This link will include the code for all posts.
 {: .notice--info}
