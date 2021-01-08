@@ -179,6 +179,7 @@ Let’s start! Open a bash terminal and run the below three commands. It will:
 - Install pyATS and its dependencies.
 
 **From your bash terminal**
+{: .notice--primary}
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
