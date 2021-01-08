@@ -10,7 +10,7 @@ tags:
   - pyATS
 position: hidden
 ---
-{% include toc %}
+{% include toc icon="table" title="Table of Contents" %}
 <head>
   <title></title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
