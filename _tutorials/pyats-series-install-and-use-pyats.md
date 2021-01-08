@@ -214,6 +214,7 @@ You can find the complete documentation on how to build a testbed [here](https:/
 {: .notice}
 
 **testbed.yaml**
+{: .notice--primary}
 <div class="highlight"><pre><span></span><span class="c1"># Step 0: list of devices</span>
 <span class="nt">devices</span><span class="p">:</span>
   <span class="nt">iosxr1</span><span class="p">:</span>
