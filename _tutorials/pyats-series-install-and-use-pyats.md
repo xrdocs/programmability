@@ -361,7 +361,7 @@ You can name the object with the name you want. The object name does not need to
 
 We use the `connect()` method on the `iosxr1` object to connect to the device.
 
-By default, pyATS will send exec and configuration commands to the device (such as terminal length 0 and show version). To avoid such behavior, we are passing arguments to the `conect()` method. We are also disabling the logging to standard output.
+By default, pyATS will send exec and configuration commands to the device (such as `terminal length 0` and `show version`). To avoid such behavior, we are passing arguments to the `conect()` method. We are also disabling the logging to standard output.
 More information in the [documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html)
 {: .notice--info}
 
