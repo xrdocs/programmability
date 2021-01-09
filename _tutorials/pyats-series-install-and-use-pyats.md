@@ -194,7 +194,7 @@ pip install pyats
 
 In this first use case, we are going to see step by step how we can get a **simple CLI output** (`show ip interface brief`) from an IOS XR device. 
 
-This first use case do **not** demonstrates the full power of pyATS but should be a good example to cover the basics.
+This first use case does **not** demonstrate the full power of pyATS but should be a good example to cover the basics.
 {: .notice--info}
 
 In order for everyone to be able to run the code, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Feel free to adapt the code to use your own device(s). Below the sandbox information.
