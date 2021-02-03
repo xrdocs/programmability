@@ -193,7 +193,7 @@ pip install pyats
 </pre>
 </div>
 
-A **Python Virtual Environment** is a best pratice when you have different projects with different libraries requirements. A Python Virtual Environment creates a folder (here, named `venv`) containing all the necessary executables and libraries for a project.
+A **Python Virtual Environment** is a best pratice when you have different projects with different python module requirements. A Python Virtual Environment creates a folder (here, named `venv`) containing all the necessary executables and libraries for a project.
 
 ![venv.png]({{site.baseurl}}/images/venv.png)
 
