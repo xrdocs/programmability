@@ -195,6 +195,8 @@ pip install pyats
 
 A **Python Virtual Environment** is a best pratice when you have different projects with different libraries requirements. A Python Virtual Environment creates a folder (here, named `venv`) containing all the necessary executables and libraries for a project.
 
+![venv.png]({{site.baseurl}}/images/venv.png)
+
 ## Your first pyATS use case: getting a CLI output from a device
 
 In this first use case, we are going to see step by step how we can get a **simple CLI output** (`show ip interface brief`) from an IOS XR device. 
