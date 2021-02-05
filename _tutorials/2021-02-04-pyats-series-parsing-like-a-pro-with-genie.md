@@ -125,12 +125,12 @@ pyATS is made of three main building blocks:
 - **pyATS libraries** (also known as Genie) which provides everything you need for network testing such as parsers, triggers and APIs. 
 - **XPRESSO**, the pyATS Web UI Dashboard.
 
-You can read more about pyATS ecosystem in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/intro/introduction.html).
+You can read more about **pyATS ecosystem** in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/intro/introduction.html).
 {: .notice--info}
 
 pyATS libraries are the pyATS **SDK** (**S**oftware **D**evelopment **K**it, a big toolbox) which contains all the tools that you need for **Network Test Automation**. It has been used internally at Cisco since 2010 for our automated testing. Yes! You can use the same tools that we use to automate the validation of your network.
 
-You can read more about pyATS librairies in the [official documentation](https://developer.cisco.com/docs/genie-docs/).
+You can read more about **pyATS librairies** in the [official documentation](https://developer.cisco.com/docs/genie-docs/).
 {: .notice--info}
 
 ## pyATS libraries in a nutshell
