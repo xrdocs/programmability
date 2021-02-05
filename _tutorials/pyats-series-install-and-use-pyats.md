@@ -118,7 +118,7 @@ pyATS is made of three main building blocks:
 - **pyATS libraries** (also known as Genie) which provides everything you need for network testing such as parsers, triggers and APIs. 
 - **XPRESSO**, the pyATS Web UI Dashboard.
 
-You can read more about pyATS ecosystem in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/intro/introduction.html).
+You can read more about **pyATS ecosystem** in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/intro/introduction.html).
 {: .notice--info}
 
 ## Supported OS
