@@ -128,7 +128,7 @@ pyATS is made of three main building blocks:
 You can read more about pyATS ecosystem in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/intro/introduction.html).
 {: .notice--info}
 
-pyATS libraries are the pyATS **SDK** (**S**oftware **D**evelopment **K**it, a big toolbox) which contains all the tools that you need for Network Test Automation. It has been used internally at Cisco since 2010 for our automated testing. Yes! You can use the same tools that we use to automate the validation of your network.
+pyATS libraries are the pyATS **SDK** (**S**oftware **D**evelopment **K**it, a big toolbox) which contains all the tools that you need for **Network Test Automation**. It has been used internally at Cisco since 2010 for our automated testing. Yes! You can use the same tools that we use to automate the validation of your network.
 
 You can read more about pyATS librairies in the [official documentation](https://developer.cisco.com/docs/genie-docs/).
 {: .notice--info}
@@ -143,3 +143,10 @@ You can read more about pyATS librairies in the [official documentation](https:/
 
 You can find supported **parsers** and **models** in the [official documentation](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/).
 {: .notice--info}
+
+## Getting your hands dirty
+
+Enough talking, let's code!
+
+![keyboard cat.png]({{site.baseurl}}/images/keyboard cat.png){: .align-center}
+
