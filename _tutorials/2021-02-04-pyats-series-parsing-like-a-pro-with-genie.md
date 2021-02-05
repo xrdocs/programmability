@@ -118,7 +118,28 @@ You've missed the first episode? You would like to read more? Below the list of 
 
 # pyATS librairies overview
 
+## pyATS building blocks
+
+pyATS is made of three main building blocks:
+- **pyATS**, the core block of this ecosystem. It’s a Python framework which leverages multiple Python libraries such as [Unicon](https://pypi.org/project/unicon/), providing a simplified connection experience to network devices. It supports **CLI**, **NETCONF** and **RESTCONF**. It enables network engineers and developers to start with small and simple test cases.
+- **pyATS libraries** (also known as Genie) which provides everything you need for network testing such as parsers, triggers and APIs. 
+- **XPRESSO**, the pyATS Web UI Dashboard.
+
+You can read more about pyATS ecosystem in the [official documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/intro/introduction.html).
+{: .notice--info}
+
+pyATS libraries are the pyATS **SDK** (**S**oftware **D**evelopment **K**it, a big toolbox) which contains all the tools that you need for Network Test Automation. It has been used internally at Cisco since 2010 for our automated testing. Yes! You can use the same tools that we use to automate the validation of your network.
+
+You can read more about pyATS librairies in the [official documentation](https://developer.cisco.com/docs/genie-docs/).
+{: .notice--info}
+
+## pyATS libraries in a nutshell
+
+* **1200** parsers accross 11 OS (as of February 2021),
+* **32** supported models (more to come about them in a coming episode),
+* Multiple tools for Test Harness such as triggers or traffic,
+* Ansible and Robot libraries for easy integration with other tools.
 
 
-
-
+You can find supported **parsers** and **models** in the [official documentation](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/).
+{: .notice--info}
