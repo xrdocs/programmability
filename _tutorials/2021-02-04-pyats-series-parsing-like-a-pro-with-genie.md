@@ -148,6 +148,5 @@ You can find supported **parsers** and **models** in the [official documentation
 
 Enough talking, let's code!
 
-![keyboard cat_small.png]({{site.baseurl}}/images/keyboard cat_small.png)
-
+![keyboard cat_small2.png]({{site.baseurl}}/images/keyboard cat_small2.png){: .align-center}
 
