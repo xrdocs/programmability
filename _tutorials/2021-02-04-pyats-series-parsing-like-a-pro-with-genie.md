@@ -199,4 +199,36 @@ You can find the complete documentation on how to build a testbed [here](https:/
 The `testbed.yaml` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/1_structured_output/).
 {: .notice--info}
 
-The **testbed construction** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Have a look to understand how to build a testbed from scratch.
+The **testbed construction** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Have a look to understand how to build a testbed from scratch
+
+## Collecting and parsing your first CLI output with pyATS libraries
+
+Now, you know how to get a CLI output using pyATS. Getting a specific information in this big text output is easy for a human; but what about a computer? You got it, that's the power of the **pyATS libraries**: converting this big output **string** into a **dictionnary** where you can easily get a value by accessing a specific key.
+
+Let's take an example.
+
+**Raw CLI output**
+{: .notice--primary}
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+{
+    "interface": {
+        "Loopback100": {
+            "ip_address": "1.1.1.100",
+            "interface_status": "Up",
+            "protocol_status": "Up",
+            "vrf_name": "default",
+        },
+        "Loopback200": {
+            "ip_address": "1.1.1.200",
+            "interface_status": "Up",
+            "protocol_status": "Up",
+            "vrf_name": "default",
+        }
+}
+</code>
+</pre>
+</div>
+
+And now, the same output parsed with pyATS libraries.
