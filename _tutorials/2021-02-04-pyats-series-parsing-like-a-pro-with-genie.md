@@ -201,7 +201,7 @@ The `testbed.yaml` file is available [here](https://github.com/AntoineOrsoni/xrd
 
 The **testbed construction** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Have a look to understand how to build a testbed from scratch
 
-## Collecting and parsing your first CLI output with pyATS libraries
+## Raw output vs Parsed output
 
 Now, you know how to get a CLI output using pyATS. Getting a specific information in this big text output is easy for a human; but what about a computer? You got it, that's the power of the **pyATS libraries**: converting this big output **string** into a **dictionnary** where you can easily get a value by accessing a specific key.
 
@@ -244,3 +244,36 @@ And now, the same output, of the same CLI command `show ip interface brief`, par
 </code>
 </pre>
 </div>
+
+## Collecting and parsing your first CLI output with pyATS libraries
+
+Now that we understand the difference between a **raw output** (a string) and a **parsed output** (a dictionnary), let's look at the code. It will be further detailed and explained below.
+
+**1_structured_output.py**
+{: .notice--primary}
+<div class="highlight"><pre><span></span><span class="c1"># New module! Now using genie!</span>
+<span class="kn">from</span> <span class="nn">genie.testbed</span> <span class="kn">import</span> <span class="n">load</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Step 0: load the testbed</span>
+<span class="n">testbed</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;./testbed.yaml&#39;</span><span class="p">)</span>
+
+<span class="c1"># Step 1: testbed is a dictionnary. Extract the device iosxr1</span>
+<span class="n">iosxr1</span> <span class="o">=</span> <span class="n">testbed</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="s2">&quot;iosxr1&quot;</span><span class="p">]</span>
+
+<span class="c1"># Step 2: Connect to the device</span>
+<span class="n">iosxr1</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">init_exec_commands</span><span class="o">=</span><span class="p">[],</span> <span class="n">init_config_commands</span><span class="o">=</span><span class="p">[],</span> <span class="n">log_stdout</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Step 3: saving the `show ip interface brief` output in a variable</span>
+<span class="n">show_interface</span> <span class="o">=</span> <span class="n">iosxr1</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;show ip interface brief&#39;</span><span class="p">)</span>
+
+<span class="c1"># Step 4: iterating through the parsed output. Extracting interface name and IP</span>
+<span class="k">for</span> <span class="n">interface</span> <span class="ow">in</span> <span class="n">show_interface</span><span class="p">[</span><span class="s1">&#39;interface&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">interface</span><span class="si">}</span><span class="s2"> -- </span><span class="si">{</span><span class="n">show_interface</span><span class="p">[</span><span class="s1">&#39;interface&#39;</span><span class="p">][</span><span class="n">interface</span><span class="p">][</span><span class="s1">&#39;ip_address&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Step 5: disconnect from the device</span>
+<span class="n">iosxr1</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+
+The `1_structured_output.py` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/1_structured_output/).
+{: .notice--info}
+
