@@ -195,7 +195,7 @@ You can find the complete documentation on how to build a testbed [here](https:/
         <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8181</span>
 </pre></div>
 
-The `testbed.yaml` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/1_structured_output/).
+The `testbed.yaml` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/1_parsed_output/).
 {: .notice--info}
 
 The **testbed construction** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Have a look to understand how to build a testbed from scratch
@@ -250,7 +250,7 @@ And now, the same output, of the same CLI command `show ip interface brief`, par
 
 Now that we understand the difference between a **raw output** (a string) and a **parsed output** (a dictionnary), let's look at the code. It will be further detailed and explained below.
 
-**1_structured_output.py**
+**1_parsed_output.py**
 {: .notice--primary}
 <div class="highlight"><pre><span></span><span class="c1"># New module! Now using Genie!</span>
 <span class="kn">from</span> <span class="nn">genie</span> <span class="kn">import</span> <span class="n">testbed</span>
@@ -275,6 +275,22 @@ Now that we understand the difference between a **raw output** (a string) and a 
 <span class="n">iosxr1</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
 </pre></div>
 
-The `1_structured_output.py` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/1_structured_output/).
+The `1_parsed_output.py` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/1_parsed_output/).
 {: .notice--info}
 
+### Executing the script
+
+**From your bash terminal**
+{: .notice--primary}
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+python 1_parsed_output.py
+</code>
+</pre>
+</div>
+
+In this example, the `testbed.yaml` file need to be in the same folder as the `0_get_cli_show.py` file. Also, you need to execute the Python script in the folder where you have these two files.
+{: .notice--info}
+
+Let's now explain the building blocks of the Python script. The parts below will refer to each inline comment of the code block above.
