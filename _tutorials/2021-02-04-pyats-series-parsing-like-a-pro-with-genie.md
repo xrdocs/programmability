@@ -114,7 +114,7 @@ You've missed the first episode? You would like to read more? Below the list of 
 | Episode 	| URL                                                                                              	| What's covered                                        	|
 |---------	|--------------------------------------------------------------------------------------------------	|-------------------------------------------------------	|
 | **1 - Install and use pyATS**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/){: .btn}  	|  What's pyATS, Install pyATS, Collect a CLI output 	|
-| **2 - Parsing like  a pro**       	| [Link](https://xrdocs.io/programmability/tutorials/2021-02-04-pyats-series-parsing-like-a-pro-with-genie/) {: .btn} 	|  Explore pyATS libraries, Collect and parse a CLI output        	|
+| **2 - Parsing like  a pro**       	| [Link](https://xrdocs.io/programmability/tutorials/2021-02-04-pyats-series-parsing-like-a-pro-with-genie/){: .btn} 	|  Explore pyATS libraries, Collect and parse a CLI output        	|
 
 # pyATS librairies overview
 
