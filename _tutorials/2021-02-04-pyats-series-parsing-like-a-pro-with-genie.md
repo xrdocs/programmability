@@ -253,11 +253,10 @@ Now that we understand the difference between a **raw output** (a string) and a 
 **1_structured_output.py**
 {: .notice--primary}
 <div class="highlight"><pre><span></span><span class="c1"># New module! Now using Genie!</span>
-<span class="kn">from</span> <span class="nn">genie.testbed</span> <span class="kn">import</span> <span class="n">load</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">genie</span> <span class="kn">import</span> <span class="n">testbed</span>
 
 <span class="c1"># Step 0: load the testbed</span>
-<span class="n">testbed</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;./testbed.yaml&#39;</span><span class="p">)</span>
+<span class="n">testbed</span> <span class="o">=</span> <span class="n">testbed</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;./testbed.yaml&#39;</span><span class="p">)</span>
 
 <span class="c1"># Step 1: testbed is a dictionnary. Extract the device iosxr1</span>
 <span class="n">iosxr1</span> <span class="o">=</span> <span class="n">testbed</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="s2">&quot;iosxr1&quot;</span><span class="p">]</span>
