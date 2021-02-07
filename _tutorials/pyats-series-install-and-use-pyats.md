@@ -98,7 +98,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
   </style>
 </head>
 ![pyats_hello2.jpg]({{site.baseurl}}/images/pyats_hello2.jpg){: .align-center}
-# pyATS overview
+# Introduction
 
 Ever dreamed of a test framework that could be used across multiple platforms, OS and vendors, which could do regression, sanity and feature testing; already used by thousands of engineers and developers worldwide? Guess what, **it exists, it’s free, and you can start using it right now!**
 
@@ -110,6 +110,17 @@ The code used for each blog post can be found [here](https://github.com/AntoineO
 {: .notice--info}
 
 Today’s part will refer to the `0_get_cli_show` folder of the repo.
+
+# Other pyATS episodes
+
+You've missed the first episode? You would like to read more? Below the list of published episodes:
+
+| Episode 	| URL                                                                                              	| What's covered                                        	|
+|---------	|--------------------------------------------------------------------------------------------------	|-------------------------------------------------------	|
+| **1 - Install and use pyATS**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/){: .btn}  	|  What's pyATS, Install pyATS, Collect a raw CLI output 	|
+| **2 - Parsing like  a pro**       	| [Link](https://xrdocs.io/programmability/tutorials/2021-02-04-pyats-series-parsing-like-a-pro-with-genie/){: .btn} 	|  Explore pyATS libraries, Collect and parse a CLI output        	|
+
+# pyATS overview
 
 ## Building blocks
 
