@@ -212,6 +212,20 @@ Let's take an example.
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
+Interface                      IP-Address      Status          Protocol Vrf-Name
+Loopback100                    1.1.1.100       Up              Up       default 
+Loopback200                    1.1.1.200       Down            Down     Red 
+</code>
+</pre>
+</div>
+
+And now, the same output parsed with pyATS libraries.
+
+**Parsed CLI output**
+{: .notice--primary}
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
 {
     "interface": {
         "Loopback100": {
@@ -222,13 +236,11 @@ Let's take an example.
         },
         "Loopback200": {
             "ip_address": "1.1.1.200",
-            "interface_status": "Up",
-            "protocol_status": "Up",
-            "vrf_name": "default",
+            "interface_status": "Down",
+            "protocol_status": "Down",
+            "vrf_name": "Red",
         }
 }
 </code>
 </pre>
 </div>
-
-And now, the same output parsed with pyATS libraries.
