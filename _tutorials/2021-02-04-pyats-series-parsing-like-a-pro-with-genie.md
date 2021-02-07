@@ -202,7 +202,7 @@ The **testbed construction** has been covered in the [First episode](https://xrd
 
 ## Raw output vs Parsed output
 
-Now, you know how to get a CLI output using pyATS. Getting a specific information in this big text output is easy for a human; but what about a computer? You got it, that's the power of the **pyATS libraries**: converting this **raw output** (string) into a **parsed output** (dictionnary) where you can easily get a value by accessing a specific key.
+Now, you know how to get a CLI output using pyATS. Getting a specific information in this big text output is easy for a human; but what about a computer? You got it, that's the power of the **pyATS libraries**: converting this **raw output** (string) into a **parsed output** (dictionary) where you can easily get a value by accessing a specific key.
 
 ![raw_parsed_output_small.png]({{site.baseurl}}/images/raw_parsed_output_small.png){: .align-center}
 
@@ -248,7 +248,7 @@ And now, the same output, of the same CLI command `show ip interface brief`, par
 
 ## Collecting and parsing your first CLI output with pyATS libraries
 
-Now that we understand the difference between a **raw output** (a string) and a **parsed output** (a dictionnary), let's look at the code. It will be further detailed and explained below.
+Now that we understand the difference between a **raw output** (a string) and a **parsed output** (a dictionary), let's look at the code. This script will collect a parsed output of the `show ip interface brief` command. It will extract the interface `name` and the interface `ip address` from the dictionary, then print each couple. The script  will be further detailed and explained below.
 
 **1_parsed_output.py**
 {: .notice--primary}
@@ -258,7 +258,7 @@ Now that we understand the difference between a **raw output** (a string) and a 
 <span class="c1"># Step 0: load the testbed</span>
 <span class="n">testbed</span> <span class="o">=</span> <span class="n">testbed</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;./testbed.yaml&#39;</span><span class="p">)</span>
 
-<span class="c1"># Step 1: testbed is a dictionnary. Extract the device iosxr1</span>
+<span class="c1"># Step 1: testbed is a dictionary. Extract the device iosxr1</span>
 <span class="n">iosxr1</span> <span class="o">=</span> <span class="n">testbed</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="s2">&quot;iosxr1&quot;</span><span class="p">]</span>
 
 <span class="c1"># Step 2: Connect to the device</span>
@@ -290,7 +290,58 @@ python 1_parsed_output.py
 </pre>
 </div>
 
-In this example, the `testbed.yaml` file need to be in the same folder as the `0_get_cli_show.py` file. Also, you need to execute the Python script in the folder where you have these two files.
+In this example, the `testbed.yaml` file need to be in the same folder as the `1_parsed_output.py` file. Also, you need to execute the Python script in the folder where you have these two files.
 {: .notice--info}
 
 Let's now explain the building blocks of the Python script. The parts below will refer to each inline comment of the code block above.
+
+### Output example
+
+Here is an output example of the above script. It might slightly vary according to the configuration of the device.
+
+**Python console**
+{: .notice--primary}
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+Loopback333 -- 3.3.3.3
+Loopback99 -- 99.99.99.99
+Loopback11 -- 1.2.3.1
+GigabitEthernet2 -- Unassigned
+GigabitEthernet1 -- 10.10.20.48
+GigabitEthernet3 -- Unassigned
+</code>
+</pre>
+</div>
+
+### Step 0: load the testbed
+
+From the `genie` module, we import the `testbed.load()` function. This function will be used to load the testbed file we have created.
+
+We load the `testbed` information, stored in our `testbed.yaml` file. We assign it to an object: `testbed`.
+
+### Step 1: extract device information
+
+`testbed` is a Python dictionary. We are extracting the device `iosxr1` information. We assign it to an object: `iosxr1`.
+
+You can name the object with the name you want. The object name does not need to match the hostname of you device.
+{: .notice--info}
+
+### Step 2: connect to the device
+
+We use the `connect()` method on the `iosxr1` object to connect to the device.
+
+By default, pyATS will send exec and configuration commands to the device (such as `terminal length 0` and `show version`). To avoid such behavior, we are passing arguments to the `conect()` method. We are also disabling the logging to standard output.
+More information in the [documentation].(https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html)
+{: .notice--info}
+
+### Step 3: saving the `show ip interface brief` output in a variable
+
+This step is the most important step in our script. It will collect the `show ip interface brief` output and parse it. Each information of the CLI output will be mapped either as a dictionary key or a value.
+
+To do so, we are using the `parse()` method on the `device` object. The parse method takes a string as parameter, which is the IOS XR command we would like to collect and parse. We are saving this parsed output in a variable `show_interface`.
+
+You can find all available pyATS parsers in the [documentation].(More information in the [documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
+{: .notice--info}
+
+A parsed output example (i.e. the dictionary saved in the variable `show_interface`) can be seen in a previous section of this article. 
