@@ -337,11 +337,51 @@ More information in the [documentation].(https://pubhub.devnetcloud.com/media/un
 
 ### Step 3: saving the `show ip interface brief` output in a variable
 
-This step is the most important step in our script. It will collect the `show ip interface brief` output and parse it. Each information of the CLI output will be mapped either as a dictionary key or a value.
+This step is the most important step in our script. It will collect the `show ip interface brief` output and parse it. Each information of the CLI output will be mapped either as a dictionary key or a value. There should be no entropy loss between the raw CLI output and the parsed output.
 
 To do so, we are using the `parse()` method on the `device` object. The parse method takes a string as parameter, which is the IOS XR command we would like to collect and parse. We are saving this parsed output in a variable `show_interface`.
 
 You can find all available pyATS parsers in the [documentation].(More information in the [documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
 {: .notice--info}
 
-A parsed output example (i.e. the dictionary saved in the variable `show_interface`) can be seen in a previous section of this article. 
+A parsed output example (i.e. the dictionary saved in the variable `show_interface`) can be seen in **Step 4**. 
+
+# Step 4: Python logic to print interface name and IP
+
+Below an example of parsed output for the `show ip interface brief` command. Most interfaces are **missing**, for conciseness.
+
+**Parsed CLI output**
+{: .notice--primary}
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+{
+    "interface": {
+        "Loopback100": {
+            "ip_address": "1.1.1.100",
+            "interface_status": "Up",
+            "protocol_status": "Up",
+            "vrf_name": "default",
+        },
+        "Loopback200": {
+            "ip_address": "1.1.1.200",
+            "interface_status": "Down",
+            "protocol_status": "Down",
+            "vrf_name": "Red",
+        }
+}
+</code>
+</pre>
+</div>
+
+In the above output, we have a list of interfaces: `Loopback100` and `Loopback200`. We are iterating through this list. For each interface, we are accessing the `ip_address` value. We're then printting the interface `name` and `IP`. 
+
+It might not be useful in a real life use case. Goal here is to take a concise example, to show how easy it is to extract values of a CLI output when parsed with pyATS libraries.
+{: .notice--info}
+
+### Step 5: disconnect from the device
+
+We use the `disconnect()` method to properly disconnect from the device. 
+
+It’s important to properly disconnect from the device, otherwise the vty connection will remain open on the device, until it times out.
+{: .notice--info}
