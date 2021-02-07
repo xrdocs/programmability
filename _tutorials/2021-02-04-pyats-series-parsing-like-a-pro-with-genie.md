@@ -252,7 +252,7 @@ Now that we understand the difference between a **raw output** (a string) and a 
 
 **1_structured_output.py**
 {: .notice--primary}
-<div class="highlight"><pre><span></span><span class="c1"># New module! Now using genie!</span>
+<div class="highlight"><pre><span></span><span class="c1"># New module! Now using Genie!</span>
 <span class="kn">from</span> <span class="nn">genie.testbed</span> <span class="kn">import</span> <span class="n">load</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
