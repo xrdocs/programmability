@@ -205,7 +205,7 @@ The **testbed construction** has been covered in the [First episode](https://xrd
 
 Now, you know how to get a CLI output using pyATS. Getting a specific information in this big text output is easy for a human; but what about a computer? You got it, that's the power of the **pyATS libraries**: converting this big output **string** into a **dictionnary** where you can easily get a value by accessing a specific key.
 
-Let's take an example.
+Let's take an example. Below the CLI output you would get by typing `show ip interface brief`. 
 
 **Raw CLI output**
 {: .notice--primary}
@@ -219,7 +219,7 @@ Loopback200                    1.1.1.200       Down            Down     Red
 </pre>
 </div>
 
-And now, the same output parsed with pyATS libraries.
+And now, the same output, of the same CLI command `show ip interface brief`, parsed with pyATS libraries. Please not that you can see the **exact same information** compared to the raw output above. Nothing more, nothing less.
 
 **Parsed CLI output**
 {: .notice--primary}
