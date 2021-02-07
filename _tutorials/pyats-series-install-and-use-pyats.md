@@ -113,7 +113,7 @@ Today’s part will refer to the `0_get_cli_show` folder of the repo.
 
 # Other pyATS episodes
 
-You've missed the first episode? You would like to read more? Below the list of published episodes:
+You've missed an episode? You would like to read more? Below the list of published episodes:
 
 | Episode 	| URL                                                                                              	| What's covered                                        	|
 |---------	|--------------------------------------------------------------------------------------------------	|-------------------------------------------------------	|
