@@ -220,7 +220,7 @@ Loopback200                    1.1.1.200       Down            Down     Red
 </pre>
 </div>
 
-And now, the same output, of the same CLI command `show ip interface brief`, parsed with pyATS libraries. Please not that you can see the **exact same information** compared to the raw output above. Nothing more, nothing less.
+And now, the same output, of the same CLI command `show ip interface brief`, parsed with pyATS libraries. Note that you can see the **exact same information** compared to the raw output above. Nothing more, nothing less.
 
 **Parsed CLI output**
 {: .notice--primary}
