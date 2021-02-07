@@ -335,7 +335,7 @@ By default, pyATS will send exec and configuration commands to the device (such 
 More information in the [documentation].(https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html)
 {: .notice--info}
 
-### Step 3: saving the `"show ip interface brief"` output in a variable
+### Step 3: save the `"show ip interface brief"` output in a variable
 
 This step is the most important step in our script. It will collect the `show ip interface brief` output and parse it. Each information of the CLI output will be mapped either as a dictionary key or a value. There should be no entropy loss between the raw CLI output and the parsed output.
 
