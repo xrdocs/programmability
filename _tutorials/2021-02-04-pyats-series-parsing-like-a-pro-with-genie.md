@@ -203,7 +203,9 @@ The **testbed construction** has been covered in the [First episode](https://xrd
 
 ## Raw output vs Parsed output
 
-Now, you know how to get a CLI output using pyATS. Getting a specific information in this big text output is easy for a human; but what about a computer? You got it, that's the power of the **pyATS libraries**: converting this big output **string** into a **dictionnary** where you can easily get a value by accessing a specific key.
+Now, you know how to get a CLI output using pyATS. Getting a specific information in this big text output is easy for a human; but what about a computer? You got it, that's the power of the **pyATS libraries**: converting this **raw output** (string) into a **parsed output** (dictionnary) where you can easily get a value by accessing a specific key.
+
+![raw_parsed_output.png]({{site.baseurl}}/images/raw_parsed_output.png){: .align-center}
 
 Let's take an example. Below the CLI output you would get by typing `show ip interface brief`. 
 
