@@ -385,3 +385,27 @@ We use the `disconnect()` method to properly disconnect from the device.
 
 It’s important to properly disconnect from the device, otherwise the vty connection will remain open on the device, until it times out.
 {: .notice--info}
+
+# Conclusion
+
+In this second episode of the pyATS series, we learnt:
+
+- The difference between a raw and parsed output,
+- Why pyATS libraries are powerful,
+- How to collect and parse a CLI output from a device,
+- How to get a value from a parsed output.
+
+In the next post, we will learn what's a **Model**, why it's powerful when parsing from multiple OS at once and how to use them.
+
+The code used for each blog post can be found [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats). This link will include the code for all posts.
+{: .notice--info}
+
+# Resources
+
+Below a few useful pyATS resources.
+
+- [List of supported pyATS parsers](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/)
+- [The official pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/getting_started/index.html),
+- [List of Unicon supported platforms](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/supported_platforms.html),
+- [Devnet code exchange](https://developer.cisco.com/codeexchange/),
+- [Join the Webex space with the pyATS community](https://eurl.io/#r18UzrQVr).
