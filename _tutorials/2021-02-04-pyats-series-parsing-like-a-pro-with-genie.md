@@ -194,7 +194,6 @@ You can find the complete documentation on how to build a testbed [here](https:/
         <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sbx-iosxr-mgmt.cisco.com</span>
         <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8181</span>
 </pre></div>
-{: .notice}
 
 The `testbed.yaml` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/1_structured_output/).
 {: .notice--info}
@@ -275,6 +274,7 @@ Now that we understand the difference between a **raw output** (a string) and a 
 
 <span class="c1"># Step 5: disconnect from the device</span>
 <span class="n">iosxr1</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
 
 The `1_structured_output.py` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/1_structured_output/).
 {: .notice--info}
