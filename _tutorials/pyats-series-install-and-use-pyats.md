@@ -290,7 +290,7 @@ Let’s take a simple use case: we are going to connect to the device and collec
 <span class="c1"># Step 0: load the testbed</span>
 <span class="n">testbed</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./testbed.yaml&#39;</span><span class="p">)</span>
 
-<span class="c1"># Step 1: testbed is a dictionnary. Extract the device iosxr1</span>
+<span class="c1"># Step 1: testbed is a dictionary. Extract the device iosxr1</span>
 <span class="n">iosxr1</span> <span class="o">=</span> <span class="n">testbed</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="s2">&quot;iosxr1&quot;</span><span class="p">]</span>
 
 <span class="c1"># Step 2: Connect to the device</span>
