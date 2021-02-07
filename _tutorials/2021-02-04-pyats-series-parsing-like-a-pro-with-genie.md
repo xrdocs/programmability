@@ -196,7 +196,7 @@ You can find the complete documentation on how to build a testbed [here](https:/
 </pre></div>
 {: .notice}
 
-The `testbed.yaml` file is available [here]https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/1_structured_output/).
+The `testbed.yaml` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/1_structured_output/).
 {: .notice--info}
 
 The testbed construction has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Have a look to understand how to build a testbed from scratch.
