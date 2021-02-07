@@ -135,7 +135,7 @@ You can read more about **pyATS librairies** in the [official documentation](htt
 
 ## pyATS libraries in a nutshell
 
-* **1200** parsers accross 11 OS (as of February 2021),
+* **1200** parsers accross **11** OS (as of February 2021),
 * **32** supported models (more to come about them in a coming episode),
 * Multiple tools for Test Harness such as triggers or traffic,
 * Ansible and Robot libraries for easy integration with other tools.
