@@ -125,7 +125,7 @@ You've missed an episode? You would like to read more? Below the list of publish
 ## Building blocks
 
 pyATS is made of three main building blocks:
-- **pyATS**, the core block of this ecosystem. It’s a Python framework which leverages multiple Python libraries such as [Unicon](https://pypi.org/project/unicon/), providing a simplified connection experience to network devices. It supports **CLI**, **NETCONF** and **RESTCONF**. It enables network engineers and developers to start with small and simple test cases.
+- **pyATS**, the core block of this ecosystem. It’s a Python framework which leverages multiple Python libraries such as [Unicon](https://pypi.org/project/unicon/), providing a simplified connection experience to network devices. It supports **CLI**, **NETCONF**, **RESTCONF** and **gRPC**. It enables network engineers and developers to start with small and simple test cases.
 - **pyATS libraries** (also known as Genie) which provides everything you need for network testing such as parsers, triggers and APIs. 
 - **XPRESSO**, the pyATS Web UI Dashboard.
 
