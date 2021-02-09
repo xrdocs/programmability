@@ -346,7 +346,7 @@ You can find all available pyATS parsers in the [documentation].(More informatio
 
 A parsed output example (i.e. the dictionary saved in the variable `show_interface`) can be seen in **Step 4**. 
 
-# Step 4: Python logic to print interface name and IP
+### Step 4: Python logic to print interface name and IP
 
 Below an example of parsed output for the `show ip interface brief` command. Most interfaces are **missing**, for conciseness.
 
