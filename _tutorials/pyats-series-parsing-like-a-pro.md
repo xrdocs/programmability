@@ -154,7 +154,7 @@ Enough talking, let's code!
 
 ## Parsing a CLI output from a device
 
-In this first use case, we saw how we can get a **simple CLI output** (`show ip interface brief`) from an IOS XR device. 
+In the first use case, we saw how we can get a **simple CLI output** (`show ip interface brief`) from an IOS XR device. 
 
 In this second use case, we are going to see how we can **collect and parse a CLI output** (`show ip interface brief`).
 
