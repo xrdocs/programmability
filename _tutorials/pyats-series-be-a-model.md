@@ -147,34 +147,6 @@ You can read more about **pyATS librairies** in the [official documentation](htt
 You can find supported **parsers** and **models** in the [official documentation](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/).
 {: .notice--info}
 
-## Why do models exist?
-
-Now, what if you have to collect this output from **multiple devices** running **different OS**? The output might be slightly different. On one operating system (OS), a key could be missing, renamed and/or require an additional command to be correctly populated.
-
-Genie has a tool called `Learn` to accomplish validation accross multiple devices which could be running different OS.
-
-For each `feature`, the operational information is collected by executing **multiple show-commands**, after which that output is parsed and stored into a **Python datastructure**. This structure will be the **same** for any OS supported by the model. Said differently, the Python structure between two OS supported by the model will have the same **nested structure** and the same **keys** (ex: `description`); but probably not the same **values** (ex: `Configured using NETCONF!`).
-
-Below, a diagram of the show-commands sent to the device to fully populate the `Interface` model, for each supported OS.
-
-![pyats_interface_model.png]({{site.baseurl}}/images/pyats_interface_model.png){: .align-center}
-
-You can find supported **models** in the [official documentation](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/models).
-{: .notice--info}
-
-## When to use models?
-
-When should you be using `Learn` and when should you be using `Parse`? It all depends of your use case. The below lines should make you be able to choose the best tool, depending of the situation.
-
-Use a `Learn` when:
-* you have a testbed with multiple devices, running **different OS**,
-* you want a single **consistent** output.
-
-Use `Parse` when:
-* you have a testbed with a **single OS**,
-* you care about **efficiency** (remember, `Learn` will send multiple show-commands in order to always be consistent. It could take a long time if run of a big testbed.)
-
-
 # Getting your hands dirty
 
 Enough talking, let's code!
@@ -255,51 +227,32 @@ The `testbed.yaml` file is available [here](https://github.com/AntoineOrsoni/xrd
 
 The **testbed construction** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Have a look to understand how to build a testbed from scratch
 
-## Raw output vs Parsed output
+## Why do models exist?
 
-Now, you know how to get a CLI output using pyATS. Getting a specific information in this big text output is easy for a human; but what about a computer? You got it, that's the power of the **pyATS libraries**: converting this **raw output** (string) into a **parsed output** (dictionary) where you can easily get a value by accessing a specific key.
+Now, what if you have to collect this output from **multiple devices** running **different OS**? The output might be slightly different. On one operating system (OS), a key could be missing, renamed and/or require an additional command to be correctly populated.
 
-![raw_parsed_output_small.png]({{site.baseurl}}/images/raw_parsed_output_small.png){: .align-center}
+Genie has a tool called `Learn` to accomplish validation accross multiple devices which could be running different OS.
 
-Let's take an example. Below the CLI output you would get by typing `show ip interface brief`. 
+For each `feature`, the operational information is collected by executing **multiple show-commands**, after which that output is parsed and stored into a **Python datastructure**. This structure will be the **same** for any OS supported by the model. Said differently, the Python structure between two OS supported by the model will have the same **nested structure** and the same **keys** (ex: `description`); but probably not the same **values** (ex: `Configured using NETCONF!`).
 
-**Raw CLI output**
-{: .notice--primary}
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-Interface                      IP-Address      Status          Protocol Vrf-Name
-Loopback100                    1.1.1.100       Up              Up       default 
-Loopback200                    1.1.1.200       Down            Down     Red 
-</code>
-</pre>
-</div>
+Below, a diagram of the show-commands sent to the device to fully populate the `Interface` model, for each supported OS.
 
-And now, the same output, of the same CLI command `show ip interface brief`, parsed with pyATS libraries. Note that you can see the **exact same information** compared to the raw output above. Nothing more, nothing less.
+![pyats_interface_model.png]({{site.baseurl}}/images/pyats_interface_model.png){: .align-center}
 
-**Parsed CLI output**
-{: .notice--primary}
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-{
-    "interface": {
-        "Loopback100": {
-            "ip_address": "1.1.1.100",
-            "interface_status": "Up",
-            "protocol_status": "Up",
-            "vrf_name": "default",
-        },
-        "Loopback200": {
-            "ip_address": "1.1.1.200",
-            "interface_status": "Down",
-            "protocol_status": "Down",
-            "vrf_name": "Red",
-        }
-}
-</code>
-</pre>
-</div>
+You can find supported **models** in the [official documentation](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/models).
+{: .notice--info}
+
+## When to use models?
+
+When should you be using `Learn` and when should you be using `Parse`? It all depends of your use case. The below lines should make you be able to choose the best tool, depending of the situation.
+
+Use a `Learn` when:
+* you have a testbed with multiple devices, running **different OS**,
+* you want a single **consistent** output.
+
+Use `Parse` when:
+* you have a testbed with a **single OS**,
+* you care about **efficiency** (remember, `Learn` will send multiple show-commands in order to always be consistent. It could take a long time if run of a big testbed.)
 
 ## Collecting and parsing your first CLI output with pyATS libraries
 
