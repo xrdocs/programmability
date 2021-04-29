@@ -429,12 +429,12 @@ It’s important to properly disconnect from the device, otherwise the vty conne
 
 In this second episode of the pyATS series, we learnt:
 
-- The difference between a raw and parsed output,
-- Why pyATS libraries are powerful,
-- How to collect and parse a CLI output from a device,
+- The difference between pyATS `Learn` and `Parse` capabilities,
+- Why pyATS models are powerful,
+- How to collect and parse a CLI output from multiple devices using pyATS `Learn`,
 - How to get a value from a parsed output.
 
-In the next post, we will learn what's a **Model**, why it's powerful when parsing from multiple OS at once and how to use them.
+In the next post, we will learn more about pyATS **Dq** (dictionnary querry) and how pyATS can find a key/value for your in a nested structure. Yes, it even supports regex!
 
 The code used for each blog post can be found [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats). This link will include the code for all posts.
 {: .notice--info}
