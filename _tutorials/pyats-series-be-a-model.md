@@ -179,7 +179,7 @@ Use `Parse` when:
 
 Enough talking, let's code!
 
-![i was born ready.jpeg]({{site.baseurl}}/images/i was born ready.jpeg){: .align-center}
+{: .align-center}
 
 **pyATS installation** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Check it out to learn how to install pyATS.
 
