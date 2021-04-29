@@ -167,12 +167,12 @@ You can find supported **models** in the [official documentation](https://pubhub
 When should you be using `Learn` and when should you be using `Parse`? It all depends of your use case. The below lines should make you be able to choose the best tool, depending of the situation.
 
 Use a `Learn` when:
-* you have a testbed with multiple devices, running different OS,
-* you want a single consistent output.
+* you have a testbed with multiple devices, running **different OS**,
+* you want a single **consistent** output.
 
 Use `Parse` when:
-* you have a testbed with a single OS,
-* you care about efficiency (remember, `Learn` will send multiple show-commands in order to always be consistent. It could take a long time if run of a big testbed.)
+* you have a testbed with a **single OS**,
+* you care about **efficiency** (remember, `Learn` will send multiple show-commands in order to always be consistent. It could take a long time if run of a big testbed.)
 
 
 # Getting your hands dirty
