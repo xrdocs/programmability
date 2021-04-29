@@ -151,6 +151,8 @@ You can find supported **parsers** and **models** in the [official documentation
 
 Now, what if you have to collect this output from **multiple devices** running **different OS**? The output might be slightly different. On one operating system (OS), a key could be missing, renamed and/or require an additional command to be correctly populated.
 
+Genie has a tool called `Learn` to accomplish validation accross multiple devices which could be running different OS.
+
 For each `feature`, the operational information is collected by executing **multiple show-commands**, after which that output is parsed and stored into a **Python datastructure**. This structure will be the **same** for any OS supported by the model. Said differently, the Python structure between two OS supported by the model will have the same **nested structure** and the same **keys** (ex: `description`); but probably not the same **values** (ex: `Configured using NETCONF!`).
 
 Below, a diagram of the show-commands sent to the device to fully populate the `Interface` model, for each supported OS.
@@ -161,6 +163,16 @@ You can find supported **models** in the [official documentation](https://pubhub
 {: .notice--info}
 
 ## When to use models?
+
+When should you be using `Learn` and when should you be using `Parse`? It all depends of your use case. The below lines should make you be able to choose the best tool, depending of the situation.
+
+Use a `Learn` when:
+* you have a testbed with multiple devices, running different OS,
+* you want a single consistent output.
+
+Use `Parse` when:
+* you have a testbed with a single OS,
+* you care about efficiency (remember, `Learn` will send multiple show-commands in order to always be consistent. It could take a long time if run of a big testbed.)
 
 
 # Getting your hands dirty
