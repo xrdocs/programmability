@@ -148,6 +148,13 @@ You can read more about **pyATS librairies** in the [official documentation](htt
 You can find supported **parsers** and **models** in the [official documentation](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/).
 {: .notice--info}
 
+## Why do models exist?
+
+Now, what if you have to collect this output from multiple devices running different OS? The output might be slightly different. On one OS, a key could be missing, renamed and/or require an additional command to be correctly populated.
+
+![pyats_interface_model.png]({{site.baseurl}}/images/pyats_interface_model.png){: .align-center}
+
+
 # Getting your hands dirty
 
 Enough talking, let's code!
@@ -156,11 +163,9 @@ Enough talking, let's code!
 
 **pyATS installation** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Check it out to learn how to install pyATS.
 
-## Parsing a CLI output from a device
+## Parsing a CLI output from a device 
 
-In this first use case, we saw how we can get a **simple CLI output** (`show ip interface brief`) from an IOS XR device. 
-
-In this second use case, we are going to see how we can **collect and parse a CLI output** (`show ip interface brief`).
+In the previous use case, we saw how we can **collect and parse a CLI output** (`show ip interface brief`). 
 
 In order for everyone to be able to run the code, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Feel free to adapt the code to use your own device(s). Below the sandbox information.
 
