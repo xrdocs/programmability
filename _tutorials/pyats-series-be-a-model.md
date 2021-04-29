@@ -179,7 +179,7 @@ Use `Parse` when:
 
 Enough talking, let's code!
 
-![keyboard cat_small2.png]({{site.baseurl}}/images/keyboard cat_small2.png){: .align-center}
+![i was born ready.jpeg]({{site.baseurl}}/images/i was born ready.jpeg){: .align-center}
 
 **pyATS installation** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Check it out to learn how to install pyATS.
 
