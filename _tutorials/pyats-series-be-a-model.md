@@ -233,9 +233,24 @@ You can find the complete documentation on how to build a testbed [here](https:/
         <span class="nt">protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ssh</span>
         <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sbx-iosxr-mgmt.cisco.com</span>
         <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8181</span>
+  <span class="nt">csr1000v</span><span class="p">:</span>
+    <span class="c1"># Step 1: OS and Type</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">iosxe-devnet</span>
+    <span class="nt">os</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">iosxe</span>
+    <span class="c1"># Step 2: credentials</span>
+    <span class="nt">credentials</span><span class="p">:</span>
+      <span class="nt">default</span><span class="p">:</span>
+        <span class="nt">username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">developer</span>
+        <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">C1sco12345</span>
+    <span class="c1"># Step 3: connection parameters</span>
+    <span class="nt">connections</span><span class="p">:</span>
+      <span class="nt">vty</span><span class="p">:</span>
+        <span class="nt">protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ssh</span>
+        <span class="nt">ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ios-xe-mgmt.cisco.com</span>
+        <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8181</span>
 </pre></div>
 
-The `testbed.yaml` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/1_parsed_output/).
+The `testbed.yaml` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/2_multi_os/).
 {: .notice--info}
 
 The **testbed construction** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Have a look to understand how to build a testbed from scratch
