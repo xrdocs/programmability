@@ -293,12 +293,12 @@ The `2_multi_os.py` file is available [here](https://github.com/AntoineOrsoni/xr
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-python 1_parsed_output.py
+python 2_multi_os.py
 </code>
 </pre>
 </div>
 
-In this example, the `testbed.yaml` file need to be in the same folder as the `1_parsed_output.py` file. Also, you need to execute the Python script in the folder where you have these two files.
+In this example, the `testbed.yaml` file need to be in the same folder as the `2_multi_os.py` file. Also, you need to execute the Python script in the folder where you have these two files.
 {: .notice--info}
 
 Let's now explain the building blocks of the Python script. The parts below will refer to each inline comment of the code block above.
@@ -312,12 +312,31 @@ Here is an output example of the above script. It might slightly vary according 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-Loopback333 -- 3.3.3.3
-Loopback99 -- 99.99.99.99
-Loopback11 -- 1.2.3.1
-GigabitEthernet2 -- Unassigned
+-----------------------------------
+-- Connected on device: iosxr1 --
+-----------------------------------
+Loopback200 -- 1.1.1.200
+Loopback100 -- 1.1.1.100
+GigabitEthernet0/0/0/6 -- Unassigned
+GigabitEthernet0/0/0/5 -- Unassigned
+GigabitEthernet0/0/0/4 -- Unassigned
+GigabitEthernet0/0/0/3 -- Unassigned
+GigabitEthernet0/0/0/2 -- Unassigned
+GigabitEthernet0/0/0/1 -- Unassigned
+GigabitEthernet0/0/0/0 -- Unassigned
+MgmtEth0/RP0/CPU0/0 -- 10.10.20.175
+Null0 -- Unassigned
+
+
+-----------------------------------
+-- Connected on device: csr1000v --
+-----------------------------------
+Loopback3 -- 8.8.8.8
+GigabitEthernet3 -- 7.7.7.7
+GigabitEthernet2 -- 10.10.10.1
 GigabitEthernet1 -- 10.10.20.48
-GigabitEthernet3 -- Unassigned
+Loopback6 -- 99.99.48.20
+Loopback5 -- 3.3.3.3
 </code>
 </pre>
 </div>
