@@ -185,7 +185,7 @@ Enough talking, let's code!
 
 ## Parsing a CLI output from a device 
 
-In the previous use case, we saw how we can **collect and parse a CLI output** (`show ip interface brief`). 
+In the previous use case, we saw how we can **collect and parse a CLI output** (`show ip interface brief`). Today, we will see how to **use pyATS models** in order to retrieve a **consistent output** when polling devices running different OS.
 
 In order for everyone to be able to run the code, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Below the sandbox information.
 
