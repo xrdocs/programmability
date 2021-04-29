@@ -263,24 +263,37 @@ Now that we understand when to use `Learn` (models) and when to use `Parse`, let
 <div class="highlight"><pre><span></span><span class="c1"># New module! Now using Genie!</span>
 <span class="kn">from</span> <span class="nn">genie</span> <span class="kn">import</span> <span class="n">testbed</span>
 
-<span class="c1"># Step 0: load the testbed</span>
+<span class="c1"># Step 0: Load the testbed</span>
 <span class="n">testbed</span> <span class="o">=</span> <span class="n">testbed</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;./testbed.yaml&#39;</span><span class="p">)</span>
 
-<span class="c1"># Step 1: testbed is a dictionary. Extract the device iosxr1</span>
-<span class="n">iosxr1</span> <span class="o">=</span> <span class="n">testbed</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="s2">&quot;iosxr1&quot;</span><span class="p">]</span>
+<span class="c1"># Step 1: Iterate through each device in the testbed</span>
+<span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">testbed</span><span class="p">:</span>
 
-<span class="c1"># Step 2: Connect to the device</span>
-<span class="n">iosxr1</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">init_exec_commands</span><span class="o">=</span><span class="p">[],</span> <span class="n">init_config_commands</span><span class="o">=</span><span class="p">[],</span> <span class="n">log_stdout</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
-<span class="c1"># Step 3: saving the `show ip interface brief` output in a variable</span>
-<span class="n">show_interface</span> <span class="o">=</span> <span class="n">iosxr1</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;show ip interface brief&#39;</span><span class="p">)</span>
+    <span class="c1"># Step 2: Connect on the device and print its name</span>
+    <span class="n">device</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">init_exec_commands</span><span class="o">=</span><span class="p">[],</span> <span class="n">init_config_commands</span><span class="o">=</span><span class="p">[],</span> <span class="n">log_stdout</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------------&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-- Connected on device: </span><span class="si">{device}</span><span class="s1"> --&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="o">.</span><span class="n">alias</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----------------------------------&#39;</span><span class="p">)</span>
 
-<span class="c1"># Step 4: iterating through the parsed output. Extracting interface name and IP</span>
-<span class="k">for</span> <span class="n">interface</span> <span class="ow">in</span> <span class="n">show_interface</span><span class="p">[</span><span class="s1">&#39;interface&#39;</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">interface</span><span class="si">}</span><span class="s2"> -- </span><span class="si">{</span><span class="n">show_interface</span><span class="p">[</span><span class="s1">&#39;interface&#39;</span><span class="p">][</span><span class="n">interface</span><span class="p">][</span><span class="s1">&#39;ip_address&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Step 3: Learn interface model from the device</span>
+    <span class="n">show_interface</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="s1">&#39;interface&#39;</span><span class="p">)</span>
 
-<span class="c1"># Step 5: disconnect from the device</span>
-<span class="n">iosxr1</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">interface</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">show_interface</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+        <span class="c1"># Step 4: What if the key &#39;ipv4&#39; doesn&#39;t exist (= no assigned IPv4)?</span>
+        <span class="k">if</span> <span class="s1">&#39;ipv4&#39;</span> <span class="ow">in</span> <span class="n">info</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ip</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;ipv4&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{interface}</span><span class="s1"> -- </span><span class="si">{ip}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">interface</span><span class="o">=</span><span class="n">interface</span><span class="p">,</span> <span class="n">ip</span><span class="o">=</span><span class="n">value</span><span class="p">[</span><span class="s1">&#39;ip&#39;</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{interface}</span><span class="s1"> -- Unassigned&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">interface</span><span class="o">=</span><span class="n">interface</span><span class="p">))</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Step 5: Disconnect from the device</span>
+    <span class="n">device</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
 </pre></div>
 
 The `2_multi_os.py` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/2_multi_os/).
