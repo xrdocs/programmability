@@ -254,11 +254,11 @@ Use `Parse` when:
 * you have a testbed with a **single OS**,
 * you care about **efficiency** (remember, `Learn` will send multiple show-commands in order to always be consistent. It could take a long time if run of a big testbed.)
 
-## Collecting and parsing your first CLI output with pyATS libraries
+## Collecting and parsing a CLI output with pyATS libraries models
 
-Now that we understand the difference between a **raw output** (a string) and a **parsed output** (a dictionary), let's look at the code. This script will collect a parsed output of the `show ip interface brief` command. It will extract the interface `name` and the interface `ip address` from the dictionary, then print each couple. The script  will be further detailed and explained below.
+Now that we understand when to use `Learn` (models) and when to use `Parse`, let's look at the code. This script will collect the `Inteface` model of two devices. One running IOS XR, the other running IOS XE. It will extract the interface `name` and the interface `ip address` from the dictionary, then print each couple. The script  will be further detailed and explained below.
 
-**1_parsed_output.py**
+**2_multi_os.py**
 {: .notice--primary}
 <div class="highlight"><pre><span></span><span class="c1"># New module! Now using Genie!</span>
 <span class="kn">from</span> <span class="nn">genie</span> <span class="kn">import</span> <span class="n">testbed</span>
@@ -283,7 +283,7 @@ Now that we understand the difference between a **raw output** (a string) and a 
 <span class="n">iosxr1</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
 </pre></div>
 
-The `1_parsed_output.py` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/1_parsed_output/).
+The `2_multi_os.py` file is available [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats/blob/master/2_multi_os/).
 {: .notice--info}
 
 ### Executing the script
