@@ -149,11 +149,11 @@ You can find supported **parsers** and **models** in the [official documentation
 
 ## Why do models exist?
 
-Now, what if you have to collect this output from multiple devices running different OS? The output might be slightly different. On one operating system (OS), a key could be missing, renamed and/or require an additional command to be correctly populated.
+Now, what if you have to collect this output from **multiple devices** running **different OS**? The output might be slightly different. On one operating system (OS), a key could be missing, renamed and/or require an additional command to be correctly populated.
 
-For each `feature`, the operational information is collected by executing multiple show-commands, after which that output is parsed and stored into a Python datastructure. This structure will be the same for any OS supported by the model. Said differently, the Python structure between two OS supported by the model will have the same nested structure and the same keys (ex: `description`); but probably not the same values (ex: `Configured using NETCONF!`).
+For each `feature`, the operational information is collected by executing **multiple show-commands**, after which that output is parsed and stored into a **Python datastructure**. This structure will be the **same** for any OS supported by the model. Said differently, the Python structure between two OS supported by the model will have the same **nested structure** and the same **keys** (ex: `description`); but probably not the same **values** (ex: `Configured using NETCONF!`).
 
-Below, a diagram of the show-commands sent to the device to fully populate the `Interface` model, depending of the OS.
+Below, a diagram of the show-commands sent to the device to fully populate the `Interface` model, for each supported OS.
 
 ![pyats_interface_model.png]({{site.baseurl}}/images/pyats_interface_model.png){: .align-center}
 
