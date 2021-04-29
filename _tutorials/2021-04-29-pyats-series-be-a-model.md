@@ -157,6 +157,9 @@ Below, a diagram of the show-commands sent to the device to fully populate the `
 
 ![pyats_interface_model.png]({{site.baseurl}}/images/pyats_interface_model.png){: .align-center}
 
+You can find supported **models** in the [official documentation](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/models).
+{: .notice--info}
+
 ## When to use models?
 
 
