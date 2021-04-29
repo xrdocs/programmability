@@ -187,7 +187,7 @@ Enough talking, let's code!
 
 In the previous use case, we saw how we can **collect and parse a CLI output** (`show ip interface brief`). 
 
-In order for everyone to be able to run the code, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Feel free to adapt the code to use your own device(s). Below the sandbox information.
+In order for everyone to be able to run the code, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Below the sandbox information.
 
 | Key               	| Value                    	|
 |-------------------	|--------------------------	|
@@ -195,6 +195,17 @@ In order for everyone to be able to run the code, we will use the [IOS XR always
 |     SSH Port      	|     8181                 	|
 |     Username      	|     admin                	|
 |     Password      	|     C1sco12345           	|
+
+Today, to demonstrate the `Learn` capability, we will use a sandbox running another operating system: [IOS XE always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/27d9747a-db48-4565-8d44-df318fce37ad?diagramType=Topology). Below, the sandbox information.
+
+| Key               	| Value                    	|
+|-------------------	|--------------------------	|
+| IOS XE host 	        | ios-xe-mgmt.cisco.com 	|
+|     SSH Port      	|     8181                 	|
+|     Username      	|     developer            	|
+|     Password      	|     C1sco12345           	|
+
+Feel free to adapt the code to use your own device(s).
 
 ## Building a testbed
 
