@@ -426,7 +426,7 @@ Below an example of parsed output for the `interface` model. Most interfaces are
 
 In the above output, we have a list of interfaces: `GigabitEthernet0/0/0/0` (others are **not** shown for conciseness). We are iterating through this list. For each interface, we are accessing the `ip_address` value. We're then printting the interface `name` and `IP`. 
 
-The `info` attribute of the `Interface` object returns a Python dictionnary. We are iterating through this dictionnary items. It's return all the `tuples` of `key: values` of this dictionnary.
+The `info` attribute of the `Interface` object returns a Python dictionnary. We iterate through this dictionnary items. It returns all the `tuples` of `key: values` of this dictionnary.
 
 It might not be useful in a real life use case. Goal here is to take a concise example, to show how easy it is to extract values of a CLI output when parsed with pyATS libraries.
 {: .notice--info}
