@@ -325,9 +325,9 @@ Here is an output example of the above script. It might slightly vary according 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-----------------------------------
+---------------------------------
 -- Connected on device: iosxr1 --
-----------------------------------
+---------------------------------
 Loopback200 -- 1.1.1.200
 Loopback100 -- 1.1.1.100
 GigabitEthernet0/0/0/6 -- Unassigned
