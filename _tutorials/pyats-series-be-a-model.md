@@ -9,7 +9,7 @@ tags:
   - pyATS
   - Python
 author: Antoine Orsoni
-excerpt: What a pyATS model and when to use it
+excerpt: What's a pyATS model and when to use it
 ---
 {% include toc icon="table" title="Table of Contents" %}
 <head>
