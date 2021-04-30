@@ -2,7 +2,7 @@
 published: true
 date: '2021-04-29 15:02 +0200'
 title: pyATS series - Be a model
-position: hidden
+position: top
 tags:
   - iosxr
   - cisco
@@ -456,7 +456,7 @@ The code used for each blog post can be found [here](https://github.com/AntoineO
 
 Below a few useful pyATS resources.
 
-- [List of supported pyATS parsers](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/)
+- [List of supported pyATS parsers](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/),
 - [The official pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/getting_started/index.html),
 - [List of Unicon supported platforms](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/supported_platforms.html),
 - [Devnet code exchange](https://developer.cisco.com/codeexchange/),
