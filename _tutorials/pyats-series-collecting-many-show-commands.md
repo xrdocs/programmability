@@ -135,7 +135,7 @@ You can find supported **parsers** and **models** in the [official documentation
 
 Enough talking, let's code!
 
-![collecting_show_commands.jpeg]({{site.baseurl}}/images/collecting_show_commands.jpeg){: .align-center}
+![collecting_show_commands_2.jpeg]({{site.baseurl}}/images/collecting_show_commands_2.jpeg){: .align-center}
 
 **pyATS installation** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Check it out to learn how to install pyATS.
 
@@ -153,5 +153,5 @@ The below diagram presents the high level code. In a nutshell:
 * 2) extract the show commands
 * 3) python logic to collect each command and write the output
 
-![high_level_code.jpg]({{site.baseurl}}/images/high_level_code.jpg){: .align-center}
+![high_level_code_v2.jpg]({{site.baseurl}}/images/high_level_code_v2.jpg){: .align-center}
 
