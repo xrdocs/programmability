@@ -447,7 +447,7 @@ In this second episode of the pyATS series, we learnt:
 - How to collect and parse a CLI output from multiple devices using pyATS `Learn`,
 - How to get a value from a parsed output.
 
-In the next post, we will learn more about pyATS **Dq** (dictionnary querry) and how pyATS can find a pair of `key: value` in a nested structure. Yes, it even supports regex!
+In the next post, we will see our first use case: how to collect many `show commands` on many devices. Stay tunned!
 
 The code used for each blog post can be found [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats). This link will include the code for all posts.
 {: .notice--info}
