@@ -138,3 +138,17 @@ Enough talking, let's code!
 ![collecting_show_commands.jpeg]({{site.baseurl}}/images/collecting_show_commands.jpeg){: .align-center}
 
 **pyATS installation** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Check it out to learn how to install pyATS.
+
+
+Today's code will be available [here](https://github.com/AntoineOrsoni/pyats-collect-show). We will first explain the code in a high level view. We will then explain each file individually.
+
+## High level code
+
+The below diagram presents the high level code. In a nutshell:
+* 0) extract the IP address of each device
+* 1) generate the testbed using Jinja2
+* 3) extract the show commands
+* 4) python logic to collect each command and write the output
+
+![high_level_code.jpg]({{site.baseurl}}/images/high_level_code.jpg){: .align-center}
+
