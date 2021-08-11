@@ -155,3 +155,4 @@ The below diagram presents the high level code. In a nutshell:
 
 ![high_level_code_v2.jpg]({{site.baseurl}}/images/high_level_code_v2.jpg){: .align-center}
 
+## Extract the IP address of each device
