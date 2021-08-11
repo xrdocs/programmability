@@ -238,7 +238,6 @@ The below outputs presents the Jinja2 logic used for our pyATS testbed. For brie
 <pre class="highlight">
 <code>
 devices:
-{% for ip, id in list_ip_id %}
   Node_{{id}}:
     type: iosxr-devnet
     os: iosxr
