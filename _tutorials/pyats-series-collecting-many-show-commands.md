@@ -307,3 +307,18 @@ The **connect()** method has been covered in the [First episode](https://xrdocs.
 
 ### Collecting CLI output
 
+Last, we need to collect each CLI output and write it in a file. In case a command is invalid, Unicon will send a `SubCommandFailure` exception. We are cathing this error, to tell in the terminal which command failed. We will still iterate through the other `show commands`, as long as we have `show commands` in the `list_show`. Feel free to change this behavior if needed.
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./outputs/</span><span class="si">{</span><span class="n">device</span><span class="o">.</span><span class="n">hostname</span><span class="si">}</span><span class="s1">.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+
+        <span class="c1"># Collect and write each output</span>
+        <span class="k">for</span> <span class="n">show</span> <span class="ow">in</span> <span class="n">list_show</span><span class="p">:</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;--- </span><span class="si">{</span><span class="n">show</span><span class="si">}</span><span class="s1"> ---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">show</span><span class="p">))</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">SubCommandFailure</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  /!\ `</span><span class="si">{</span><span class="n">show</span><span class="si">}</span><span class="s1">` invalid command. Skipping.&#39;</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;show commands successfuly collected.&#39;</span><span class="p">)</span>
+
