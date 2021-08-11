@@ -145,6 +145,15 @@ Today's code will be available [here](https://github.com/AntoineOrsoni/pyats-col
 
 We will first explain the code in a high level view. We will then explain each file individually.
 
+In order for everyone to be able to run the code, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Below the sandbox information.
+
+| Key               	| Value                    	|
+|-------------------	|--------------------------	|
+| IOS XRv 9000 host 	| sandbox-iosxr-1.cisco.com |
+|     SSH Port      	|     22                 	|
+|     Username      	|     admin                	|
+|     Password      	|     C1sco12345           	|
+
 ## High level code
 
 The below diagram presents the high level code. In a nutshell:
