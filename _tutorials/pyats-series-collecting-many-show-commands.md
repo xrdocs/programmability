@@ -276,4 +276,4 @@ In Python, the zip() function takes iterables (can be zero or more), aggregates 
 
 The list of IP addresses is stored in [templates/list_show.yaml](https://github.com/AntoineOrsoni/pyats-collect-show/blob/master/templates/list_show.yaml). Same as before, we are using `PyYAML` to create a list out of a yaml file.
 
-## 
+## Collect and write the outputs
