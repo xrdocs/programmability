@@ -108,6 +108,9 @@ pyATS (**Py**thon **A**utomated **T**est **S**ystems, to be pronounced "py A. T.
 
 This is the 4th blog post of the pyATS series. Today, we will cover our first use case: how to collect many show commands on many devices?
 
+Today's code will be available [here](https://github.com/AntoineOrsoni/pyats-collect-show).
+{: .notice--info}
+
 More use cases are going to be covered in the next posts.
 
 # Other pyATS episodes
@@ -138,7 +141,6 @@ Enough talking, let's code!
 ![collecting_show_commands_2.jpeg]({{site.baseurl}}/images/collecting_show_commands_2.jpeg){: .align-center}
 
 **pyATS installation** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Check it out to learn how to install pyATS.
-
 
 Today's code will be available [here](https://github.com/AntoineOrsoni/pyats-collect-show).
 {: .notice--info}
