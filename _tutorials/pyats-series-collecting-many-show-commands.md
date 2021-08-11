@@ -326,3 +326,23 @@ Last, we need to collect each CLI output and write it in a file. In case a comma
             <span class="k">except</span> <span class="n">SubCommandFailure</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  /!\ `</span><span class="si">{</span><span class="n">show</span><span class="si">}</span><span class="s1">` invalid command. Skipping.&#39;</span><span class="p">)</span>
 </pre></div>
+
+# Conclusion
+
+In this fourth episode of the pyATS series, we learnt:
+
+- How to extract a list from a YAML file,
+- How to use Jinja2 logic to generate a testbed,
+- How to catch exceptions to modify the default python behavior.
+
+In the next post, we will learn more about pyATS **Dq** (dictionnary querry) and how pyATS can find a pair of `key: value` in a nested structure. Yes, it even supports regex!
+
+# Resources
+
+Below a few useful pyATS resources.
+
+- [List of supported pyATS parsers](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/),
+- [The official pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/getting_started/index.html),
+- [List of Unicon supported platforms](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/supported_platforms.html),
+- [Devnet code exchange](https://developer.cisco.com/codeexchange/),
+- [Join the Webex space with the pyATS community](https://eurl.io/#r18UzrQVr).
