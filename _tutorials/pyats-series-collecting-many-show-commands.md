@@ -186,7 +186,7 @@ The list of IP addresses is stored in [templates/list_ip.yaml](https://github.co
 
 To create a list out of a yaml file, we are using the `PyYAML` package. 
 
-**Extracting a list of IP from a YAML file**
+**Extract a list of IP from a YAML file**
 {: .notice--primary}
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yaml</span>
 
