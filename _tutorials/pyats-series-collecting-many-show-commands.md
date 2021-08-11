@@ -147,8 +147,8 @@ Today's code will be available [here](https://github.com/AntoineOrsoni/pyats-col
 The below diagram presents the high level code. In a nutshell:
 * 0) extract the IP address of each device
 * 1) generate the testbed using Jinja2
-* 3) extract the show commands
-* 4) python logic to collect each command and write the output
+* 2) extract the show commands
+* 3) python logic to collect each command and write the output
 
 ![high_level_code.jpg]({{site.baseurl}}/images/high_level_code.jpg){: .align-center}
 
