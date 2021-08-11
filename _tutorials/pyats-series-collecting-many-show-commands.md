@@ -271,3 +271,9 @@ Now, we need to write Python logic to give this `list_ip_id` to Jinja2 template.
 </pre></div>
 
 In Python, the zip() function takes iterables (can be zero or more), aggregates them in a tuple, and returns it. More information [here](https://www.programiz.com/python-programming/methods/built-in/zip).
+
+## Extract the list of show commands
+
+The list of IP addresses is stored in [templates/list_show.yaml](https://github.com/AntoineOrsoni/pyats-collect-show/blob/master/templates/list_show.yaml). Same as before, we are using `PyYAML` to create a list out of a yaml file.
+
+## 
