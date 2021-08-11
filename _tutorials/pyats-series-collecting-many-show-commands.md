@@ -140,7 +140,9 @@ Enough talking, let's code!
 **pyATS installation** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Check it out to learn how to install pyATS.
 
 
-Today's code will be available [here](https://github.com/AntoineOrsoni/pyats-collect-show). We will first explain the code in a high level view. We will then explain each file individually.
+Today's code will be available [here](https://github.com/AntoineOrsoni/pyats-collect-show).{: .notice--info}
+
+We will first explain the code in a high level view. We will then explain each file individually.
 
 ## High level code
 
