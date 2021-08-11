@@ -194,12 +194,8 @@ To create a list out of a yaml file, we are using the `PyYAML` package.
     <span class="n">list_ip</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">FullLoader</span><span class="p">)</span>
 </pre></div>
 
-testantoine
-
 You can find PyYAML documentation [here](https://pyyaml.org/wiki/PyYAMLDocumentation).
 {: .notice--info}
-
-testantoine
 
 ## Generate the testbed using Jinja2
 
