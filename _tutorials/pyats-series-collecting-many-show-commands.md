@@ -120,3 +120,21 @@ You've missed the first episode? You would like to read more? Below the list of 
 | **2 - Parsing like  a pro**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-parsing-like-a-pro/){: .btn} 	|  Explore pyATS libraries, Collect and parse a CLI output        	|
 | **3 - Be a model**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-be-a-model/){: .btn} 	|  What a pyATS model and when to use it   
 | **4 - Collecting many show commands**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-collecting-many-show-commands/){: .btn} 	|  How to collect many show commands on many devices?   
+
+# pyATS libraries in a nutshell
+
+* **2800+** parsers accross **11** OS (as of April 2021),
+* **32** supported models (more to come about them in a coming episode),
+* Multiple tools for Test Harness such as triggers or traffic,
+* Ansible and Robot libraries for easy integration with other tools.
+
+You can find supported **parsers** and **models** in the [official documentation](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/).
+{: .notice--info}
+
+# Getting your hands dirty
+
+Enough talking, let's code!
+
+![collecting_show_commands.jpeg]({{site.baseurl}}/images/collecting_show_commands.jpeg){: .align-center}
+
+**pyATS installation** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Check it out to learn how to install pyATS.
