@@ -145,7 +145,7 @@ Enough talking, let's code!
 Today's code will be available [here](https://github.com/AntoineOrsoni/pyats-collect-show).
 {: .notice--info}
 
-We will first explain the code in a high level view. We will then explain each file individually.
+We will first explain the code in a high level view. We will then explain each building block individually.
 
 In order for everyone to be able to run the code, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Below the sandbox information.
 
