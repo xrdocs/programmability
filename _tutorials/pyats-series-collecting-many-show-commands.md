@@ -302,3 +302,6 @@ First, we need to connect to each device. In case we cannot connect to a device,
 
 The **connect()** method has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Have a look to understand how it works.
 {: .notice--info}
+
+### Collecting CLI output
+
