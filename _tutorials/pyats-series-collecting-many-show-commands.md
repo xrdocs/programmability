@@ -162,8 +162,25 @@ The below diagram presents the high level code. In a nutshell:
 * 0) extract the IP address of each device
 * 1) generate the testbed using Jinja2
 * 2) extract the show commands
-* 3) python logic to collect each command and write the output
+* 3) python logic to collect each `show command` and write the output
+
+For each device, we will have an output file with the `show commands` collected.
 
 ![high_level_code_v2.jpg]({{site.baseurl}}/images/high_level_code_v2.jpg){: .align-center}
 
 ## Extract the IP address of each device
+
+The list of IP addresses is stored in `templates/list_ip.yaml`. We can add extra IP addresses by adding a new item in the yaml file, as below.
+
+{: .notice--primary}
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+- ip_1
+- ip_2
+- ip_n
+</code>
+</pre>
+</div>
+
+
