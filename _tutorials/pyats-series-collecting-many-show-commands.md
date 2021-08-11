@@ -272,8 +272,33 @@ Now, we need to write Python logic to give this `list_ip_id` to Jinja2 template.
 
 In Python, the zip() function takes iterables (can be zero or more), aggregates them in a tuple, and returns it. More information [here](https://www.programiz.com/python-programming/methods/built-in/zip).
 
+The testbed information is specific to the Devnet sandbox: login, password, protocol, operating system... Feel free to change it.
+{: .notice--info}
+
 ## Extract the list of show commands
 
 The list of IP addresses is stored in [templates/list_show.yaml](https://github.com/AntoineOrsoni/pyats-collect-show/blob/master/templates/list_show.yaml). Same as before, we are using `PyYAML` to create a list out of a yaml file.
 
 ## Collect and write the outputs
+
+### Connect to each device
+
+First, we need to connect to each device. In case we cannot connect to a device, Unicon will send a `ConnectionError`. We are catching such error to print in the terminal if we cannot connect to a device. In the below logic, if we cannot connect to a device, it doesn't fail the script. We will still iterate through the other devices, as long as we have devices in the testbed. Feel free to change this behavior if needed.
+
+**Python logic to connect to each device**
+{: .notice--primary}
+<span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">testbed</span><span class="p">:</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">device</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">learn_hostname</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">init_exec_commands</span><span class="o">=</span><span class="p">[],</span>
+                    <span class="n">init_config_commands</span><span class="o">=</span><span class="p">[],</span>
+                    <span class="n">log_stdout</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-- ERROR --&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Can&#39;t connect to </span><span class="si">{</span><span class="n">device</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">vty</span><span class="o">.</span><span class="n">ip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">continue</span>
+</pre></div>
+
+The **connect()** method has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Have a look to understand how it works.
+{: .notice--info}
