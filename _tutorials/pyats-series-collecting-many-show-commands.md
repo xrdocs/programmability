@@ -156,6 +156,14 @@ In order for everyone to be able to run the code, we will use the [IOS XR always
 |     Username      	|     admin                	|
 |     Password      	|     C1sco12345           	|
 
+## Use case
+
+I had this use case a couple of months ago. We had a thermal issue on a device. We wanted to know if the other devices (4000) also suffered the same root cause. To verify, the TAC Engineer asked us to collect 4 show commands on 400 devices.
+
+How long would it take to do it manually? 60 seconds per device?
+
+Without optimizing the script (ex: using threads) it took us 20 minutes to collect such outputs. We were more than ready when the Engineer asked for a couple more commands.
+
 ## High level code
 
 The below diagram presents the high level code. In a nutshell:
