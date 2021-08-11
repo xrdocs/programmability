@@ -197,4 +197,77 @@ To create a list out of a yaml file, we are using the `PyYAML` package.
 You can find PyYAML documentation [here](https://pyyaml.org/wiki/PyYAMLDocumentation).
 {: .notice--info}
 
+## Generate the testbed using Jinja2
 
+Jinja2 is a templating engine. You can create a sample structure with keywords. Jinja2 will find and replace these keywords with your own values. For example, you could have these sample IOS XR interface template.
+
+**Jinja2 IOS XR interface template**
+{: .notice--primary}
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+interface {{name}}
+ ipv6 address {{ipv6}}/{{mask}}
+!
+</code>
+</pre>
+</div>
+
+In the above example, you would give Jinja2 three arguments: `name`, `ipv6` and `mask`.
+
+What's interesting with Jinja2 is that it can have its **own logic such as condition, loops and blocks**. Using a Jinja2 loop, the above interface template could be reused multiple times. You could loop 50 times, to create 50 loopbacks with a unique ID (name) and a unique IPv6 address.
+
+Here, we are using Jinja2 to create a template for our pyATS testbed. You can find the pyATS testbed template in [templates/testbed.tpl](https://github.com/AntoineOrsoni/pyats-collect-show/blob/master/templates/testbed.tpl).
+
+The **testbed construction** has been covered in the [First episode](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/). Have a look to understand how to build a testbed from scratch.
+{: .notice--info}
+
+The below outputs presents the Jinja2 logic used for our pyATS testbed. For brievity, we are **not** showing the full template file.
+
+**Jinja2 logic with pyATS testbed**
+{: .notice--primary}
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+devices:
+{% for ip, id in list_ip_id %}
+  Node_{{id}}:
+    type: iosxr-devnet
+    os: iosxr
+    connections:
+      vty:
+        protocol: ssh
+        ip: {{ip}}
+        settings:
+          GRACEFUL_DISCONNECT_WAIT_SEC: 0
+          POST_DISCONNECT_WAIT_SEC: 0
+        arguments:
+          connection_timeout: 10
+{% endfor %}
+</code>
+</pre>
+</div>
+
+We are giving Jinja2 a list of lists: `list_ip_id`. Each sub-list contains the `ip` address of a device and a unique `id` to identify the node name in the testbed. This value has to be **unique**. For each list in `list_ip_id` we will create a new node `id` and populate its `ip`.
+
+Now, we need to write Python logic to give this `list_ip_id` to Jinja2 template. That's how you do it.
+
+**Python logic to populate Jinja2 template**
+{: .notice--primary}
+<span class="c1"># Where&#39;s the folder with my templates (or my folders, if multiple)</span>
+<span class="n">template_loader</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">searchpath</span><span class="o">=</span><span class="s2">&quot;./templates&quot;</span><span class="p">)</span>
+
+<span class="c1"># Instance of the Environment class. Gives the loader (above), optionally parameters like</span>
+<span class="c1"># block strings, variable strings etc.</span>
+<span class="n">template_env</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">template_loader</span><span class="p">)</span>
+
+<span class="c1"># Which file is my template</span>
+<span class="n">template</span> <span class="o">=</span> <span class="n">template_env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s2">&quot;testbed.tpl&quot;</span><span class="p">)</span>
+
+<span class="c1"># We give the template two lists:</span>
+<span class="c1"># - list_ip: the IP of our devices</span>
+<span class="c1"># - range(len(list_ip)), the id (from 0 to the max device) that will be used in device.name to make it unique</span>
+<span class="n">testbed</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">list_ip_id</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list_ip</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list_ip</span><span class="p">)))))</span>
+</pre></div>
+
+In Python, the zip() function takes iterables (can be zero or more), aggregates them in a tuple, and returns it. More information [here](https://www.programiz.com/python-programming/methods/built-in/zip).
