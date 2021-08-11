@@ -172,6 +172,7 @@ For each device, we will have an output file with the `show commands` collected.
 
 The list of IP addresses is stored in `templates/list_ip.yaml`. We can add extra IP addresses by adding a new item in the yaml file, as below.
 
+** List example in YAML **
 {: .notice--primary}
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -182,5 +183,16 @@ The list of IP addresses is stored in `templates/list_ip.yaml`. We can add extra
 </code>
 </pre>
 </div>
+
+To create a list out of a yaml file, we are using the `PyYAML` package. 
+
+** Extracting a list of IP from a YAML file **
+{: .notice--primary}
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yaml</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./templates/list_ip.yaml&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">list_ip</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">FullLoader</span><span class="p">)</span>
+
+You can find PyYAML documentation [here](https://pyyaml.org/wiki/PyYAMLDocumentation).
+{: .notice--info}
 
 
