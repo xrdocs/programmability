@@ -319,6 +319,5 @@ Last, we need to collect each CLI output and write it in a file. In case a comma
                 <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
             <span class="k">except</span> <span class="n">SubCommandFailure</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  /!\ `</span><span class="si">{</span><span class="n">show</span><span class="si">}</span><span class="s1">` invalid command. Skipping.&#39;</span><span class="p">)</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;show commands successfuly collected.&#39;</span><span class="p">)</span>
+</pre></div>
 
