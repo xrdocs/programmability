@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2021-08-11 10:43 +0200'
 title: pyATS series - Collecting many show commands
 position: hidden
