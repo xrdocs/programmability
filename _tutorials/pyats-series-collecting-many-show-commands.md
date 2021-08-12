@@ -234,27 +234,9 @@ The below outputs presents the Jinja2 logic used for our pyATS testbed. For brie
 
 **Jinja2 logic with pyATS testbed**
 {: .notice--primary}
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-devices:
-{% for ip, id in list_ip_id %}
-  Node_{{id}}:
-    type: iosxr-devnet
-    os: iosxr
-    connections:
-      vty:
-        protocol: ssh
-        ip: {{ip}}
-        settings:
-          GRACEFUL_DISCONNECT_WAIT_SEC: 0
-          POST_DISCONNECT_WAIT_SEC: 0
-        arguments:
-          connection_timeout: 10
-{% endfor %}
-</code>
-</pre>
-</div>
+
+<script src="https://gist.github.com/Maikor/620eb06f168d137aad906c1209e4b006.js"></script>
+
 
 We are giving Jinja2 a list of lists: `list_ip_id`. Each sub-list contains the `ip` address of a device and a unique `id` to identify the node name in the testbed. This value has to be **unique**. For each list in `list_ip_id` we will create a new node `id` and populate its `ip`.
 
