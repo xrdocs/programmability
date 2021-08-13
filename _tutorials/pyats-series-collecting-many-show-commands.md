@@ -211,15 +211,8 @@ Jinja2 is a templating engine. You can create a sample structure with keywords. 
 
 **Jinja2 IOS XR interface template**
 {: .notice--primary}
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-interface {{name}}
- ipv6 address {{ipv6}}/{{mask}}
-!
-</code>
-</pre>
-</div>
+
+<script src="https://gist.github.com/AntoineOrsoni/19abd9a1d3763e92d1ec0b479f053fd0.js"></script>
 
 In the above example, you would give Jinja2 three arguments: `name`, `ipv6` and `mask`.
 
@@ -234,7 +227,6 @@ The below outputs presents the Jinja2 logic used for our pyATS testbed. For brie
 
 **Jinja2 logic with pyATS testbed**
 {: .notice--primary}
-
 <script src="https://gist.github.com/Maikor/620eb06f168d137aad906c1209e4b006.js"></script>
 
 
