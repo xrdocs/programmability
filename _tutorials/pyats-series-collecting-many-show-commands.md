@@ -289,7 +289,7 @@ The **connect()** method has been covered in the [First episode](https://xrdocs.
 
 ### Collecting CLI output
 
-Last, we need to collect each CLI output and write it in a file. In case a command is invalid, Unicon will send a `SubCommandFailure` exception. We are cathing this error, to tell in the terminal which command failed. We will still iterate through the other `show commands`, as long as we have `show commands` in the `list_show`. Feel free to change this behavior if needed.
+Last, we need to collect each CLI output and write it in a file. In case a command is invalid, Unicon will send a `SubCommandFailure`. We are cathing this error, to tell in the terminal which command failed. We will still iterate through the other `show commands`, as long as we have `show commands` in the `list_show`. Feel free to change this behavior if needed.
 
 <div class="highlight"><pre><span></span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./outputs/</span><span class="si">{</span><span class="n">device</span><span class="o">.</span><span class="n">hostname</span><span class="si">}</span><span class="s1">.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
