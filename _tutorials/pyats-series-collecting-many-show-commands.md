@@ -100,7 +100,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 </head>
 ![pyats_hello2.jpg]({{site.baseurl}}/images/pyats_hello2.jpg){: .align-center}
 
-## Introduction
+# Introduction
 
 Ever dreamed of a test framework that could be used across multiple platforms, OS and vendors, which could do regression, sanity and feature testing; already used by thousands of engineers and developers worldwide? Guess what, **it exists, it’s free, and you can start using it right now!**
 
@@ -113,7 +113,7 @@ Today's code will be available [here](https://github.com/AntoineOrsoni/pyats-col
 
 More use cases are going to be covered in the next posts.
 
-### Other pyATS episodes
+## Other pyATS episodes
 
 You've missed the first episode? You would like to read more? Below the list of published episodes:
 
@@ -124,7 +124,7 @@ You've missed the first episode? You would like to read more? Below the list of 
 | **3 - Be a model**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-be-a-model/){: .btn} 	|  What a pyATS model and when to use it   
 | **4 - Collecting many show commands**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-collecting-many-show-commands/){: .btn} 	|  How to collect many show commands on many devices?   
 
-### pyATS libraries in a nutshell
+## pyATS libraries in a nutshell
 
 * **2800+** parsers accross **11** OS (as of April 2021),
 * **32** supported models (more to come about them in a coming episode),
@@ -134,7 +134,7 @@ You've missed the first episode? You would like to read more? Below the list of 
 You can find supported **parsers** and **models** in the [official documentation](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/).
 {: .notice--info}
 
-## Getting your hands dirty
+# Getting your hands dirty
 
 Enough talking, let's code!
 
