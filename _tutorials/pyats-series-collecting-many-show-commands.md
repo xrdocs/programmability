@@ -230,7 +230,7 @@ The below outputs presents the Jinja2 logic used for our pyATS testbed. For brie
 <script src="https://gist.github.com/Maikor/620eb06f168d137aad906c1209e4b006.js"></script>
 
 
-We are giving Jinja2 a list of lists: `list_ip_id`. Each sub-list contains the `ip` address of a device and a unique `id` to identify the node name in the testbed. This value has to be **unique**. For each list in `list_ip_id` we will create a new node `id` and populate its `ip`.
+We are giving Jinja2 a list of lists: `list_ip_id`. Each sub-list contains the `ip` address of a device and a unique `id` to identify the node's name in the testbed. This value has to be **unique**. For each list in `list_ip_id` we will create a new node `id` and populate its `ip`.
 
 Now, we need to write Python logic to give this `list_ip_id` to Jinja2 template. That's how you do it.
 
