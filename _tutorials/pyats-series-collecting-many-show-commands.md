@@ -244,6 +244,7 @@ Now, we need to write Python logic to give this `list_ip_id` to Jinja2 template.
 
 **Python logic to populate Jinja2 template**
 {: .notice--primary}
+<div class="highlight"><pre><span></span>
 <span class="c1"># Where&#39;s the folder with my templates (or my folders, if multiple)</span>
 <span class="n">template_loader</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">searchpath</span><span class="o">=</span><span class="s2">&quot;./templates&quot;</span><span class="p">)</span>
 
@@ -277,6 +278,7 @@ First, we need to connect to each device. In case we cannot connect to a device,
 
 **Python logic to connect to each device**
 {: .notice--primary}
+<div class="highlight"><pre><span></span>
 <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">testbed</span><span class="p">:</span>
     
     <span class="k">try</span><span class="p">:</span>
@@ -297,6 +299,7 @@ The **connect()** method has been covered in the [First episode](https://xrdocs.
 
 Last, we need to collect each CLI output and write it in a file. In case a command is invalid, Unicon will send a `SubCommandFailure` exception. We are cathing this error, to tell in the terminal which command failed. We will still iterate through the other `show commands`, as long as we have `show commands` in the `list_show`. Feel free to change this behavior if needed.
 
+<div class="highlight"><pre><span></span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./outputs/</span><span class="si">{</span><span class="n">device</span><span class="o">.</span><span class="n">hostname</span><span class="si">}</span><span class="s1">.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
 
         <span class="c1"># Collect and write each output</span>
