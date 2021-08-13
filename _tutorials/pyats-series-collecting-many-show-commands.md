@@ -207,7 +207,7 @@ You can find PyYAML documentation [here](https://pyyaml.org/wiki/PyYAMLDocumenta
 
 ## Generate the testbed using Jinja2
 
-Jinja2 is a templating engine. You can create a sample structure with keywords. Jinja2 will find and replace these keywords with your own values. For example, you could have these sample IOS XR interface template.
+Jinja2 is a templating engine. You can create a sample structure with keywords. Jinja2 will find and replace these keywords with your own values. For example, you could have this sample IOS XR interface template.
 
 **Jinja2 IOS XR interface template**
 {: .notice--primary}
