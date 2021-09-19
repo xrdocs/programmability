@@ -1,7 +1,7 @@
 ---
 published: false
 date: '2021-09-19 10:39 +0200'
-title: YANG Suite - Do you speak NETCONF?
+title: YANG Suite - Do you speak YANG?
 position: hidden
 author: Antoine Orsoni
 excerpt: >-
@@ -13,4 +13,5 @@ tags:
   - YANG Suite
   - Automation
 ---
-YANG Suite
+
+February 2021
