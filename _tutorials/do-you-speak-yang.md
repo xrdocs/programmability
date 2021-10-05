@@ -67,7 +67,13 @@ To add a new YANG repository, from which we can sync our YANG models, here are t
   
   ![Add remote repository.jpg]({{site.baseurl}}/images/Add remote repository.jpg)
 
-
+## Cloning the remote repository
+  
+Now, we are going to clone a remote repository. Today, we are going to use this remote repository: https://github.com/YangModels/yang. Feel free to use another one.
+  
+Did you know that all YANG models for all Cisco IOS for all versions are stored on https://github.com/YangModels/yang ?
+{: .notice--info}
+  
 * GET from repo
 * Add and GET from node
 * Explore YANG
