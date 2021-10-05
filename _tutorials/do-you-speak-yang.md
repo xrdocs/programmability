@@ -108,6 +108,15 @@ First, we need to add a new device to YANG Suite. In order for everyone to be ab
 |     SSH Port      	|     22                 	|
 |     Username      	|     admin                	|
 |     Password      	|     C1sco12345           	|
+  
+To add a new device, follow the below steps:
+  1. Go to **Setup > Device profiles**
+  2. Create a new device
+  3. Fill up the device general information (use the one above if you don't have one)
+  4. Check **Skip SSH key validation for this device** if you want to skip this validation
+  5. NETCONF information will be filled automatically using the default port (830). Check the connectivity to make sure everything works as expected
+  6. You should get a similar output. The Devnet sandbox does not answer to ICMP messages. This test should fail. Make sure the NETCONF test is pass.
+  7. You can now **Create Profile**.
 
   
 * GET from repo
