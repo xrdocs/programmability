@@ -21,7 +21,7 @@ YANG Suite was first developped as an internal Cisco project. In February 2021, 
 
 YANG Suite provides network operators with a common tool to interact with Cisco IOS XE, IOS XR, and the NX-OS Network Operating Systems as they look to modernize their network management and migrate from traditional network management tools. Its core features include YANG model browsing and exploring, as well as device management. On top, you can add many plugins such as NETCONF, gRPC and Diff to enrich its capabilities.
 
-![English YANG translate_2.png]({{site.baseurl}}/images/English YANG translate_2.png)
+![English YANG translate_2.png]({{site.baseurl}}/images/English YANG translate_2.png){: .align-center}
 
 # Installing YANG Suite
 
@@ -65,7 +65,7 @@ To add a new YANG repository, from which we can sync our YANG models, here are t
   3. Give it a name
   4. Click **Create repository**
   
-  ![Add remote repository.jpg]({{site.baseurl}}/images/Add remote repository.jpg)
+  ![Add remote repository.jpg]({{site.baseurl}}/images/Add remote repository.jpg){: .align-center}
 
 ## Cloning the remote repository
   
@@ -79,6 +79,8 @@ To clone a remote repository, follow the below steps:
   2. Add the **Repository URL** (https://github.com/YangModels/yang), the **Git branch** (master) and the **directory** where the YANG models are stored (vendor/cisco/xr/731). You can nagivate in the repository and use the directory you like; for example if you need to collect YANG models for another IOS XR version.
   3. Click **Import YANG files** to start cloning the repository.
   
+![Select the repository.jpg]({{site.baseurl}}/images/Select the repository.jpg){: .align-center}
+
 This could take a few minutes, depending on how many models are in the repository. For me, it took around 5 minutes.
   
 * GET from repo
