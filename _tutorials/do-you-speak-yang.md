@@ -170,13 +170,18 @@ Go to the [YangModels/yang repository](https://github.com/YangModels/yang) on Gi
 
 ![github search.jpg]({{site.baseurl}}/images/github search.jpg){: .align-center}
 
-Below an example of query to find every file in a given folder that contains the word "serial".
+Below an example of query to find every `file` in a given folder (`/vendor/cisco/xr/731`) that contains the word `serial`.
   
 <code>
 serial in:file path:/vendor/cisco/xr/731
 </code>
   
+You can find more ways to add filters when searching code in GitHub [in the documentation](https://docs.github.com/en/search-github/searching-on-github/searching-code). This is what worked best for me so far.
 
+Also note you can't use the following wildcard characters as part of your search query: `. , : ; / \ \` ' " = * ! ? # $ & + ^ | ~ < > ( ) { } [ ] @`. The search will simply ignore these symbols.
+{: .notice--info}
+  
+  
 * Explore YANG
   * YANG sets
   * How to find the right model?
