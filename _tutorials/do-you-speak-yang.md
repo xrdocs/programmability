@@ -152,9 +152,9 @@ To download YANG models from a device, follow the below steps:
   
 ![Download from device.jpg]({{site.baseurl}}/images/Download from device.jpg){: .align-center}
   
-* GET from repo
-* Add and GET from node
 * Explore YANG
+  * How to find the right model?
+  * Verifies by exploring a model capabilities
 * Understand dependencies
 * Diff: what changed between two versions of a model?
 * Generate and play RPC
