@@ -89,7 +89,11 @@ This could take a few minutes, depending on how many models are in the repositor
   
 ## Cloning YANG models from a device
  
-Alternatively, you can also clone YANG models directly from a device. When a client (your device) and a server (YANG Suite) initiate a NETCONF session.
+Alternatively, you can also clone YANG models directly from a device. When a client (your device) and a server (YANG Suite) initiate a NETCONF session, they exchange **Hello messages** listing the set of capabilities they support.
+  
+For example, below is an example of capabilities of a device running IOS XR 6.5.3.
+  
+<script src="https://gist.github.com/AntoineOrsoni/f401cb979a81b62798c8f022b8f064d6.js"></script>
   
 * GET from repo
 * Add and GET from node
