@@ -154,6 +154,7 @@ To download YANG models from a device, follow the below steps:
 ![Download from device.jpg]({{site.baseurl}}/images/Download from device.jpg){: .align-center}
   
 * Explore YANG
+  * YANG sets
   * How to find the right model?
   * Verifies by exploring a model capabilities
 * Understand dependencies
