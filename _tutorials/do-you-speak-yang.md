@@ -64,10 +64,10 @@ Let's say your entire backbone is running **IOS XR 7.3.1**. You're trying to fin
 ## Adding a new YANG repository
   
 To add a new YANG repository, from which we can sync our YANG models, here are the steps to follow:
-  1. Go to **Setup > YANG Files and repositories**
-  2. Click **New repository** in order to create a new local folder where we will add our YANG models
-  3. Give it a name
-  4. Click **Create repository**
+  1. Go to **Setup > YANG Files and repositories**.
+  2. Click **New repository** in order to create a new local folder where we will add our YANG models.
+  3. Give it a name.
+  4. Click **Create repository**.
   
   ![Add remote repository.jpg]({{site.baseurl}}/images/Add remote repository.jpg){: .align-center}
 
@@ -79,7 +79,7 @@ Did you know that all YANG models for all Cisco IOS for all versions are stored 
 {: .notice--info}
   
 To clone a remote repository, follow the below steps:
-  1. Click on **Git** to use it as our way to collect YANG models
+  1. Click on **Git** to use it as our way to collect YANG models.
   2. Add the **Repository URL** (https://github.com/YangModels/yang), the **Git branch** (master) and the **directory** where the YANG models are stored (vendor/cisco/xr/731). You can nagivate in the repository and use the directory you like; for example if you need to collect YANG models for another IOS XR version.
   3. Click **Import YANG files** to start cloning the repository.
   
