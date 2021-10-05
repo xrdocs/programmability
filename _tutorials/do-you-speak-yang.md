@@ -28,6 +28,9 @@ First, let's install YANG Suite. Let's start by cloning the github repo where th
 You will need to install Docker in order to use YANG Suite. You can find more information on how to get Docker and how to install it [here](https://docs.docker.com/get-docker/).
 {: .notice--info}
 
+The complete documentation on how to install YANG Suite is available [here](https://github.com/CiscoDevNet/yangsuite).
+{: .notice--info}
+
 <code>
 git clone https://github.com/CiscoDevNet/yangsuite
 </code>
