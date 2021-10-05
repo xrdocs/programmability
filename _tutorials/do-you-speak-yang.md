@@ -122,6 +122,10 @@ To add a new device, follow the below steps:
 
   You've successfully added a new device. 
   
+### Downloading device supported YANG models
+  
+
+  
 * GET from repo
 * Add and GET from node
 * Explore YANG
