@@ -46,6 +46,7 @@ cd yangsuite/docker/
 docker compose up
 <code>
 
+The **nginx** container (web server) redirects port 80 to port 8433 which is used to interface with the YANG Suite core. You can now connect to http://localhost or https://localhost:8443 to access YANG Suite.
 
 * Installing YANG Suite
 * GET from repo
