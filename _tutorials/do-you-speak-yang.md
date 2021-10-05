@@ -21,7 +21,7 @@ YANG Suite was first developped as an internal Cisco project. In February 2021, 
 
 YANG Suite provides network operators with a common tool to interact with Cisco IOS XE, IOS XR, and the NX-OS Network Operating Systems as they look to modernize their network management and migrate from traditional network management tools. Its core features include YANG model browsing and exploring, as well as device management. On top, you can add many plugins such as NETCONF, gRPC and Diff to enrich its capabilities.
 
-![English YANG translate_2.png]({{site.baseurl}}/images/English YANG translate_2.png){: .align-center}
+![English YANG translate_3.png]({{site.baseurl}}/images/English YANG translate_3.png){: .align-center}
 
 # Installing YANG Suite
 
