@@ -52,6 +52,15 @@ The **nginx** container (web server) redirects port 80 to port 8433 which is use
   
 Let's say your entire backbone is running IOS XR 7.3.1. You're trying to find a way to collect the serial number of all devices on your backbone. In this second section, we are goign to see how we can download all YANG models from a remote repository, find the ritht model to use in order to collect the serial number.
   
+## Adding a new YANG repository
+  
+To add a new YANG repository, from which we can sync our YANG models, here are the steps to follow:
+  1. Go to **Setup > YANG Files and repositories**
+  2. Click **New repository** in order to create a new local folder where we will add our YANG models
+  3. Give it a name
+  4. Click **Create repository**
+  
+  ![Add remote repository.jpg]({{site.baseurl}}/images/Add remote repository.jpg)
 
 
 * GET from repo
