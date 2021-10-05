@@ -47,8 +47,13 @@ docker compose up
 <code>
 
 The **nginx** container (web server) redirects port 80 to port 8433 which is used to interface with the YANG Suite core. You can now connect to http://localhost or https://localhost:8443 to access YANG Suite.
+  
+# Learning YANG models from a remote repository
+  
+Let's say your entire backbone is running IOS XR 7.3.1. You're trying to find a way to collect the serial number of all devices on your backbone. In this second section, we are goign to see how we can download all YANG models from a remote repository, find the ritht model to use in order to collect the serial number.
+  
 
-* Installing YANG Suite
+
 * GET from repo
 * Add and GET from node
 * Explore YANG
