@@ -176,6 +176,8 @@ Below an example of query to find every `file` in a given folder (`/vendor/cisco
 serial in:file path:/vendor/cisco/xr/731
 </code>
   
+From the search results, the model that best fits our needs appears to be `Cisco-IOS-XR-sysadmin-sm.yang`. Let's verify it's the one we need.
+  
 You can find more ways to add filters when searching code in GitHub [in the documentation](https://docs.github.com/en/search-github/searching-on-github/searching-code). This is what worked best for me so far.
 {: .notice--info}
 
@@ -185,7 +187,6 @@ Also note you can't use the following wildcard characters as part of your search
   
 * Explore YANG
   * YANG sets
-  * How to find the right model?
   * Verifies by exploring a model capabilities
 * Understand dependencies
 * Diff: what changed between two versions of a model?
