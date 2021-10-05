@@ -98,6 +98,11 @@ For example, below is an example of capabilities of a device running IOS XR 6.5.
 You can get a similar output using CLI with the command: `ssh username@host -p 830 -s netconf` where 830 is the NETCONF port on the device.
 {: .notice--info}
 
+In the part, we are going to learn the supported YANG models from a device. Then we're going to download them in YANG Suite.
+  
+It could be interesting to download the YANG models from a device rather than from a repository. A folder in a repository could contain all the models supported for a given IOS version by all devices eligible to this IOS version. These devices would probably have different sensors and API, thus having different YANG capabilities. To be certain to only use models supported by a given device, it's often better to sync YANG models directly from the device itself.
+{: .notice--info}
+
 ### Adding a device
   
 First, we need to add a new device to YANG Suite. In order for everyone to be able to collect YANG models from a device, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Below the sandbox information. Feel free to use another device.
@@ -122,9 +127,22 @@ To add a new device, follow the below steps:
 
   You've successfully added a new device. 
   
-### Downloading device supported YANG models
+### Adding a new YANG repository
   
+To add a new YANG repository, from which we can sync our YANG models, here are the steps to follow:
+  1. Go to **Setup > YANG Files and repositories**.
+  2. Click **New repository** in order to create a new local folder where we will add our YANG models.
+  3. Give it a name.
+  4. Click **Create repository**.
+  
+  ![Add remote repository.jpg]({{site.baseurl}}/images/Add remote repository.jpg){: .align-center}
 
+### Downloading YANG models from a device
+  
+To download YANG models from a device, follow the below steps:
+  1. Make sure you have selected the right YANG module repository, where the YANG models will be stored.
+  2. Select **NETCONF**.
+  3. Select the device from which you would like to download YANG models.
   
 * GET from repo
 * Add and GET from node
