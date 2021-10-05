@@ -95,6 +95,9 @@ For example, below is an example of capabilities of a device running IOS XR 6.5.
   
 <script src="https://gist.github.com/AntoineOrsoni/f401cb979a81b62798c8f022b8f064d6.js"></script>
   
+You can get a similar output using CLI with the command: `ssh username@host -p 830 -s netconf` where 830 is the NETCONF port on the device.
+{: .notice--info}
+  
 * GET from repo
 * Add and GET from node
 * Explore YANG
