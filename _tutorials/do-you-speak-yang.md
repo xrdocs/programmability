@@ -79,7 +79,7 @@ To clone a remote repository, follow the below steps:
   2. Add the **Repository URL** (https://github.com/YangModels/yang), the **Git branch** (master) and the **directory** where the YANG models are stored (vendor/cisco/xr/731). You can nagivate in the repository and use the directory you like; for example if you need to collect YANG models for another IOS XR version.
   3. Click **Import YANG files** to start cloning the repository.
   
-![Select the repository.jpg]({{site.baseurl}}/images/Select the repository.jpg){: .align-center}
+![Add remote repository 2.jpg]({{site.baseurl}}/images/Add remote repository 2.jpg){: .align-center}
 
 This could take a few minutes, depending on how many models are in the repository. For me, it took around 5 minutes.
   
