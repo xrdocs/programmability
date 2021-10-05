@@ -153,6 +153,26 @@ To download YANG models from a device, follow the below steps:
   
 ![Download from device.jpg]({{site.baseurl}}/images/Download from device.jpg){: .align-center}
   
+# Exploring YANG models
+
+In this section, we are going to explore YANG models. Find the one we need and see what's inside.
+
+## How to find the model you need?
+
+First, you need to find the right model. Might sound easy when you would like to find the IP address of a given interface on a node running IOS XR 7.3.1. You could use the **ietf-interfaces** model. But what about something less straightforward like a serial number?
+  
+Cisco models are usually divided in two categories. **Oper** (operational data) models and **cfg** (configuration models data). On the first case, it will contain **oper** in the name. This indicates you will find operational data in this model like its status (shut/admin shut/no shut), type, name, speed and statistics. On the other case, it will contain **cfg** in the name. This model will store configuration information like its description, speed, ip address... You will be able to use this model to modify the configuration of a device.
+{: .notice--info}
+  
+A good way to find the model you need is to look at the naming. That's might not always work. Optionally, I use the github search feature to find the model I need. Here's how I do it.
+  
+Go to the [YangModels/yang repository](https://github.com/YangModels/yang) on GitHub. If you go on the top left side, there is a search bar. You can use it and filter your request.
+
+![github search.jpg]({{site.baseurl}}/images/github search.jpg){: .align-center}
+
+ 
+  
+
 * Explore YANG
   * YANG sets
   * How to find the right model?
