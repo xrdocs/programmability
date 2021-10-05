@@ -118,6 +118,9 @@ To add a new device, follow the below steps:
   6. You should get a similar output. The Devnet sandbox does not answer to ICMP messages. This test should fail. Make sure the NETCONF test is pass.
   7. You can now **Create Profile**.
 
+  ![Add device profile.jpg]({{site.baseurl}}/images/Add device profile.jpg){: .align-center}
+
+  You've successfully added a new device. 
   
 * GET from repo
 * Add and GET from node
