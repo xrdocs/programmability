@@ -81,7 +81,7 @@ To clone a remote repository, follow the below steps:
   
 ![Add remote repository 2.jpg]({{site.baseurl}}/images/Add remote repository 2.jpg){: .align-center}
 
-This could take a few minutes, depending on how many models are in the repository. For me, it took around 5 minutes.
+This could take a few minutes, depending on how many models are in the repository. For me, it took around 5 minutes. Once done, you should see YANG models from the remote repository appear on the box on the left (4).
   
 * GET from repo
 * Add and GET from node
