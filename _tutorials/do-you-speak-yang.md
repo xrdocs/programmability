@@ -50,7 +50,7 @@ The **nginx** container (web server) redirects port 80 to port 8433 which is use
   
 # Learning YANG models from a remote repository
   
-Let's say your entire backbone is running IOS XR 7.3.1. You're trying to find a way to collect the serial number of all devices on your backbone. In this second section, we are goign to see how we can download all YANG models from a remote repository, find the ritht model to use in order to collect the serial number.
+Let's say your entire backbone is running **IOS XR 7.3.1**. You're trying to find a way to collect the serial number of all devices on your backbone. In this second section, we are goign to see how we can download all YANG models from a remote repository, find the ritht model to use in order to collect the serial number.
   
 ## Adding a new YANG repository
   
