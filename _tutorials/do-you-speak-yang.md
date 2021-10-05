@@ -170,7 +170,11 @@ Go to the [YangModels/yang repository](https://github.com/YangModels/yang) on Gi
 
 ![github search.jpg]({{site.baseurl}}/images/github search.jpg){: .align-center}
 
- 
+Below an example of query to find every file in a given folder that contains the word "serial".
+  
+<code>
+serial in:file path:/vendor/cisco/xr/731
+</code>
   
 
 * Explore YANG
