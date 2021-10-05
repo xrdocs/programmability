@@ -100,7 +100,7 @@ You can get a similar output using CLI with the command: `ssh username@host -p 8
 
 In the part, we are going to learn the supported YANG models from a device. Then we're going to download them in YANG Suite.
   
-It could be interesting to download the YANG models from a device rather than from a repository. A folder in a repository could contain all the models supported for a given IOS version by all devices eligible to this IOS version. These devices would probably have different sensors and API, thus having different YANG capabilities. To be certain to only use models supported by a given device, it's often better to sync YANG models directly from the device itself.
+It could be interesting to download the YANG models from a device rather than from a repository. A folder in a repository would contain all the models supported for a given IOS version by all devices eligible to this IOS version. These devices would probably have different sensors and API, thus having different YANG capabilities. To be certain to only use models supported by a given device, it's often better to sync YANG models directly from the device itself.
 {: .notice--info}
 
 ### Adding a device
