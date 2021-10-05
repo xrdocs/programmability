@@ -150,6 +150,8 @@ To download YANG models from a device, follow the below steps:
   8. Click **Download selected schema**.
   9. This box will be filled with all YANG models you've downloaded from the device.
   
+![Download from device.jpg]({{site.baseurl}}/images/Download from device.jpg){: .align-center}
+  
 * GET from repo
 * Add and GET from node
 * Explore YANG
