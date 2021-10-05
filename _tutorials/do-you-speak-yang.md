@@ -143,6 +143,12 @@ To download YANG models from a device, follow the below steps:
   1. Make sure you have selected the right YANG module repository, where the YANG models will be stored.
   2. Select **NETCONF**.
   3. Select the device from which you would like to download YANG models.
+  4. Optionally, you can check again **device connectivity**.
+  5. **Get schema list** from the device. YANG Suite will send a NETCONF hello to the device. It will answer back with all its YANG capabilities.
+  6. Click **select all* or click on the YANG models you would like to download from the device.
+  7. This box will be filled with all YANG models supported by the device.
+  8. Click **Download selected schema**.
+  9. This box will be filled with all YANG models you've downloaded from the device.
   
 * GET from repo
 * Add and GET from node
