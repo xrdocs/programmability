@@ -15,6 +15,8 @@ tags:
   - Python
 ---
 
+{% include toc icon="table" title="Table of Contents" %}
+
 You have been talking SNMP for years with your network devices and you've faced many limitations as discussed in [RFC3535](https://datatracker.ietf.org/doc/html/rfc3535#page-4)? You understand YANG could definitely help you tackle these challenges but you don't yet speak YANG? Then YANG Suite is the right tool for you!
 
 YANG Suite was first developped as an internal Cisco project. In February 2021, the wait was over and it has been made available for everyone.
