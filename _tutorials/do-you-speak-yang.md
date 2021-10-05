@@ -177,6 +177,7 @@ serial in:file path:/vendor/cisco/xr/731
 </code>
   
 You can find more ways to add filters when searching code in GitHub [in the documentation](https://docs.github.com/en/search-github/searching-on-github/searching-code). This is what worked best for me so far.
+{: .notice--info}
 
 Also note you can't use the following wildcard characters as part of your search query: `. , : ; / \ \` ' " = * ! ? # $ & + ^ \| ~ < > ( ) { } [ ] @`. The search will simply ignore these symbols.
 {: .notice--info}
