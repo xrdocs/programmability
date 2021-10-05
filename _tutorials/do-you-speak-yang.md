@@ -23,6 +23,10 @@ YANG Suite provides network operators with a common tool to interact with Cisco 
 
 ![English YANG translate_3.png]({{site.baseurl}}/images/English YANG translate_3.png){: .align-center}
 
+# What is a model?
+
+TODO TODO TODO
+
 # Installing YANG Suite
 
 First, let's install YANG Suite. Let's start by cloning the github repo where the code is stored.
@@ -53,7 +57,7 @@ You will need to install Docker in order to use YANG Suite. You can find more in
 The complete documentation on how to install YANG Suite is available [here](https://github.com/CiscoDevNet/yangsuite).
 {: .notice--info}
   
-# Learning YANG models from a remote repository
+# Learning YANG models
   
 Let's say your entire backbone is running **IOS XR 7.3.1**. You're trying to find a way to collect the serial number of all devices on your backbone. In this second section, we are goign to see how we can download all YANG models from a remote repository, find the ritht model to use in order to collect the serial number.
   
@@ -67,9 +71,9 @@ To add a new YANG repository, from which we can sync our YANG models, here are t
   
   ![Add remote repository.jpg]({{site.baseurl}}/images/Add remote repository.jpg){: .align-center}
 
-## Cloning the remote repository
+## Cloning YANG models from a remote repository
   
-Now, we are going to clone a remote repository. Today, we are going to use this remote repository: https://github.com/YangModels/yang. Feel free to use another one.
+In this first scenario, we are going to clone a remote repository. Today, we are going to use this remote repository: https://github.com/YangModels/yang. Feel free to use another one.
   
 Did you know that all YANG models for all Cisco IOS for all versions are stored on [https://github.com/YangModels/yang](https://github.com/YangModels/yang) ?
 {: .notice--info}
@@ -82,6 +86,10 @@ To clone a remote repository, follow the below steps:
 ![Add remote repository 2.jpg]({{site.baseurl}}/images/Add remote repository 2.jpg){: .align-center}
 
 This could take a few minutes, depending on how many models are in the repository. For me, it took around 5 minutes. Once done, you should see YANG models from the remote repository appear on the box on the left (4).
+  
+## Cloning YANG models from a device
+ 
+Alternatively, you can also clone YANG models directly from a device. When a client (your device) and a server (YANG Suite) initiate a NETCONF session.
   
 * GET from repo
 * Add and GET from node
