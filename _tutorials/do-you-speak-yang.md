@@ -97,6 +97,18 @@ For example, below is an example of capabilities of a device running IOS XR 6.5.
   
 You can get a similar output using CLI with the command: `ssh username@host -p 830 -s netconf` where 830 is the NETCONF port on the device.
 {: .notice--info}
+
+### Adding a device
+  
+First, we need to add a new device to YANG Suite. In order for everyone to be able to collect YANG models from a device, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Below the sandbox information. Feel free to use another device.
+
+| Key               	| Value                    	|
+|-------------------	|--------------------------	|
+| IOS XRv 9000 host 	| sandbox-iosxr-1.cisco.com |
+|     SSH Port      	|     22                 	|
+|     Username      	|     admin                	|
+|     Password      	|     C1sco12345           	|
+
   
 * GET from repo
 * Add and GET from node
