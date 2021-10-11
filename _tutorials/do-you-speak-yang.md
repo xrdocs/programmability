@@ -217,16 +217,12 @@ In this case, your YANG model will have the keyword `augment` such as:
   
 It could also use references from another model. Very similar to when your import a module in Python so you don't have to write all the classes and methods.
 In this case, your YANG model will have the keyword `import` such as:
-  `import Cisco-IOS-XR-types` in the **Cisco-IOS-XR-ip-pfilter-subscriber-cfg.yang model**.
+  `import Cisco-IOS-XR-types` in the **Cisco-IOS-XR-ip-pfilter-subscriber-cfg.yang** model.
 {: .notice--info}
   
 
   
-  
-* Explore YANG
-  * YANG sets
-  * Verifies by exploring a model capabilities
-* Understand dependencies
+ 
 * Diff: what changed between two versions of a model?
 * Generate and play RPC
 * Export the call as Python script
