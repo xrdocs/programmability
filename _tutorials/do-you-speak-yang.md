@@ -27,7 +27,25 @@ YANG Suite provides network operators with a common tool to interact with Cisco 
 
 # What is a model?
 
-TODO TODO TODO
+A data model is simply a method to describe something. It could be a person, defined by:
+- Height (cm)
+- Weight (kg)
+- Eye color (Blue, Green, Brown)
+- Hair color (Brown, Blond, Black, Other)
+- Nationality (French, German, Italian, ...)
+
+But it could define many more things! It could define a networking feature, such as BGP:
+- Autonomous System (integer)
+- Neighbors (list of IP addresses)
+- Filters (list of prefix lists)
+
+And it could also define a networking service configured on many nodes, such as a L3VPN:
+- Name (string)
+- Nodes (list of nodes)
+- Address Families (list of address families)
+- Filters (list of prefix lists)
+
+To describe network features and services, we use YANG. It's a modeling langage to represent **data structures** in an **XML** tree format. 
 
 # Installing YANG Suite
 
