@@ -163,7 +163,7 @@ In this section, we are going to explore YANG models. Find the one we need and s
 
 First, you need to find the right model. Might sound easy when you would like to find the IP address of a given interface on a node running IOS XR 7.3.1. You could use the **ietf-interfaces** model. But what about something less straightforward like a serial number?
   
-Cisco models are usually divided in two categories. **Oper** (operational data) models and **cfg** (configuration data). On the first case, it will contain **oper** in the name. This indicates you will find operational data in this model like its status (shut/admin shut/no shut), type, name, speed and statistics. On the other case, it will contain **cfg** in the name. This model will store configuration information like its description, speed, ip address... You will be able to use this model to modify the configuration of a device.
+Cisco models are usually divided in two categories. **oper** (operational data) models and **cfg** (configuration data). On the first case, it will contain **oper** in the name. This indicates you will find operational data in this model like its status (shut/admin shut/no shut), type, name, speed and statistics. On the other case, it will contain **cfg** in the name. This model will store configuration information like its description, speed, ip address... You will be able to use this model to modify the configuration of a device.
 {: .notice--info}
   
 A good way to find the model you need is to look at the naming. That's might not always work. Optionally, I use the github search feature to find the model I need. Here's how I do it.
@@ -185,6 +185,21 @@ You can find more ways to add filters when searching code in GitHub [in the docu
 
 Also note you can't use the following wildcard characters as part of your search query: `. , : ; / \ ' " = * ! ? # $ & + ^ \| ~ < > ( ) { } [ ] @`. The search will simply ignore these symbols.
 {: .notice--info}
+  
+## YANG module sets
+  
+Now that you know all your device capabilities and in which model you need, it's time to create your first **YANG model set**. By opposition to a repository that contains all the models supported by your device, a YANG module set is a smaller view of your device capabilities. For example, the environment information of your device; or the OSPF information.
+  
+To create a new YANG module set, follow the below steps:
+  1. Go to **Setup > YANG module sets**.
+  2. Create a **New YANG Set**.
+  3. Give it a name. For example `XR 7.3.1 - Serial Number`.
+  4. Select the assciated YANG file repository. It's the repository where you collected the available models (from the device or from Github). If you followed my naming, it should be `XR Docs 7.3.1`.
+  5. Click **Create YANG set**
+  
+![Create module set.jpg]({{site.baseurl}}/images/Create module set.jpg){: .align-center}
+
+  
   
   
 * Explore YANG
