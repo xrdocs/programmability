@@ -45,7 +45,7 @@ And it could also define a networking service configured on many nodes, such as 
 - Address Families (list of address families)
 - Filters (list of prefix lists)
 
-To describe network features and services, we use YANG. It's a modeling langage to represent **data structures** in an **XML** tree format. 
+To describe network features and services, we use YANG. It's a modeling langage to represent **data structures** in an **XML** tree format. Optionally, YANG can use **XPath** (XML Path Langage) expression to filter the elements of a YANG data model.
 
 # Installing YANG Suite
 
