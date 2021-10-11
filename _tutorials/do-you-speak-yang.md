@@ -223,6 +223,5 @@ In this case, your YANG model will have the keyword `import` such as:
 
   
  
-* Diff: what changed between two versions of a model?
 * Generate and play RPC
 * Export the call as Python script
