@@ -199,7 +199,26 @@ To create a new YANG module set, follow the below steps:
   
 ![Create module set.jpg]({{site.baseurl}}/images/Create module set.jpg){: .align-center}
 
+Now that we have created our YANG module set, let's populate it. Follow the below steps:
+  1. Make sure you have selected the right YANG set (the one we have just created) and YANG repository.
+  2. Find your model in the list. You can type the model in the search bar. The list will be filtered automatically.
+  3. Click **Add Selected**.
+  4. Click **Locate and add missing dependencies**. It will look for dependencies for this model and add them to your YANG module sets.
+  5. Click **Validate YANG modules in greater depth**. It will look down if the models that have been added also have dependencies.
+  6. You're all set. The list on the left should be populated with your model and its dependencies.
   
+Your YANG model can be an augmentation of another model. Meaning that it could extend the capabilities of another model.
+In this case, your YANG model will have the keyword `augment` such as:
+  `augment "/a1:dynamic-template/a1:ip-subscribers/a1:ip-subscriber"` in the **Cisco-IOS-XR-ip-pfilter-subscriber-cfg.yang** model.
+{: .notice--info}
+  
+It could also use references from another model. Very similar to when your import a module in Python so you don't have to write all the classes and methods.
+In this case, your YANG model will have the keyword `import` such as:
+  `import Cisco-IOS-XR-types` in the **Cisco-IOS-XR-ip-pfilter-subscriber-cfg.yang model**.
+  {: .notice--info}
+  
+![Populate YANG set.jpg]({{site.baseurl}}/images/Populate YANG set.jpg){: .align-center}
+
   
   
 * Explore YANG
