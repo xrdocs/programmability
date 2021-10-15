@@ -238,7 +238,18 @@ In this case, your YANG model will have the keyword `import` such as:
   `import Cisco-IOS-XR-types` in the **Cisco-IOS-XR-ip-pfilter-subscriber-cfg.yang** model.
 {: .notice--info}
   
+# Checking node coverage: converting node's configuration into equivalent NETCONF filter
+  
+Another cool feature of YANG suite is **YANG coverage**. First, it allows you to understand which part of your device's configuration can be mapped to a NETCONF filter. It means that you can see which part of the CLI configuration can be configured using NETCONF.
+  
+That's not all! It also gives you the equivalent NETCONF filter to generate the configuration. Let's take an example. In order for eveyrone to be able to give it a try, we're going to use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Below the sandbox information. Feel free to use another device.
 
+| Key               	| Value                    	|
+|-------------------	|--------------------------	|
+| IOS XRv 9000 host 	| sandbox-iosxr-1.cisco.com |
+|     SSH Port      	|     22                 	|
+|     Username      	|     admin                	|
+|     Password      	|     C1sco12345           	|
   
  
 * Generate and play RPC
