@@ -251,6 +251,8 @@ That's not all! It also gives you the equivalent NETCONF filter to generate the 
 |     Username      	|     admin                	|
 |     Password      	|     C1sco12345           	|
   
+We are going to check the YANG coverage for the below sandbox partial configuration.
+  
  
 * Generate and play RPC
 * Export the call as Python script
