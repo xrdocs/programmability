@@ -259,7 +259,7 @@ There are two ways to check YANG coverage in YANG Suite:
   1. You can download the entire running configuration from a device.
   2. You can only use a partial configuration.
   
-In this example, we are going to download the full running configuration from a device. The device information should already be configured in YANG suite as we saw earlier in this tutorial. You can skip step 1 if you don't want to sync-up from a device and paste a configuration. 
+In this example, we are going to download the full running configuration from a device. The device information should already be configured in YANG suite as we saw earlier in this tutorial. You can skip `step 1` if you don't want to sync-up from a device and paste a configuration. 
   
 To check a configuration YANG coverage, follow the below steps:
   1. Select a device on which you would like to download the running configuration. It will take a few seconds for YANG suite to download the device's configuration.
@@ -269,6 +269,9 @@ To check a configuration YANG coverage, follow the below steps:
   5. Click on **Get model coverage**.
   6. The equivalent NETCONF filter for your device configuration will appear here.
   7. You can see which parts of the configuration have an equivalent NETCONF filter for a specific OS and release. Any missing coverage is highlighted in red.
+  
+![check YANG coverage.jpg]({{site.baseurl}}/images/check YANG coverage.jpg){: .align-center}
+
  
 * Generate and play RPC
 * Export the call as Python script
