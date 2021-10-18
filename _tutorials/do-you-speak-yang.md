@@ -252,8 +252,23 @@ That's not all! It also gives you the equivalent NETCONF filter to generate the 
 |     Username      	|     developer                	|
 |     Password      	|     C1sco12345           	|
   
-We are going to check the YANG coverage for the below sandbox partial configuration.
+As of October 2021, IOS XR and NXOS do **not** support the YANG converage feature in YANG Suite. This should come soon.
+{: .notice--info}
   
+There are two ways to check YANG coverage in YANG Suite:
+  1. You can download the entire running configuration from a device.
+  2. You can only use a partial configuration.
+  
+In this example, we are going to download the full running configuration from a device. The device information should already be configured in YANG suite as we saw earlier in this tutorial. You can skip step 1 if you don't want to sync-up from a device and paste a configuration. 
+  
+To check a configuration YANG coverage, follow the below steps:
+  1. Select a device on which you would like to download the running configuration. It will take a few seconds for YANG suite to download the device's configuration.
+  2. Once downloaded, the device configuration will appear here. Otherwise, you can paste your configuration here. The configuration can be partial: you can only paste a configuration for a specific feature (ex: BGP).
+  3. Select the device OS (for our sandbox, we are using IOS XE).
+  4. Select the device release (the sandbox is running IOS XE 17.3.1).
+  5. Click on **Get model coverage**.
+  6. The equivalent NETCONF filter for your device configuration will appear here.
+  7. You can see which parts of the configuration have an equivalent NETCONF filter for a specific OS and release. Any missing coverage is highlighted in red.
  
 * Generate and play RPC
 * Export the call as Python script
