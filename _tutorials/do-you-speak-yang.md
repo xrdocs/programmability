@@ -256,8 +256,8 @@ As of October 2021, IOS XR and NXOS do **not** support the YANG converage featur
 {: .notice--info}
   
 There are two ways to check YANG coverage in YANG Suite:
-  1. You can download the entire running configuration from a device.
-  2. You can only use a partial configuration.
+  - You can download the entire running configuration from a device.
+  - You can only use a partial configuration.
   
 In this example, we are going to download the full running configuration from a device. The device information should already be configured in YANG suite as we saw earlier in this tutorial. You can skip `step 1` if you don't want to sync-up from a device and paste a configuration. 
   
