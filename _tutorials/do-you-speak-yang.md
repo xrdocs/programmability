@@ -252,7 +252,7 @@ That's not all! It also gives you the equivalent NETCONF filter to generate the 
 |     Username      	|     developer                	|
 |     Password      	|     C1sco12345           	|
   
-As of October 2021, IOS XR and NXOS do **not** support the YANG converage feature in YANG Suite. This should come soon.
+As of October 2021, the YANG coverage feature do **not** support IOS XR and NXOS. This should come soon.
 {: .notice--info}
   
 There are two ways to check YANG coverage in YANG Suite:
