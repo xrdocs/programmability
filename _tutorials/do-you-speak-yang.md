@@ -257,9 +257,12 @@ There are two ways to check YANG coverage in YANG Suite:
   - You can download the entire running configuration from a device.
   - You can only use a partial configuration.
   
-As of October 2021, the YANG coverage feature do **not** support IOS XR and NXOS. This should come soon.
+As of October 2021, the YANG coverage feature do **not** support IOS XR and NXOS.
 {: .notice--warning}
-  
+
+On IOS XR, you can get the equivalent NETCONF filter for a given configuration by running the command `show run | xml`. It will print the equivalent configuration in XML format.
+{: .notice--info}
+
 In this example, we are going to download the full running configuration from a device. The device information should already be configured in YANG suite as we saw earlier in this tutorial. You can skip `step 1` if you don't want to sync-up from a device and paste a configuration. 
   
 To check a configuration YANG coverage, follow the below steps:
