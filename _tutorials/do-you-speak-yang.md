@@ -71,6 +71,9 @@ docker compose up
 
 The **nginx** container (web server) redirects port 80 to port 8433 which is used to interface with the YANG Suite core. You can now connect to http://localhost or https://localhost:8443 to access YANG Suite.
   
+You **cannot** use the credential `admin` in the setup. It will trigger the error: `django.db.utils.IntegrityError: UNIQUE contraint failed: auth user.username`.
+{: .notice--warning}
+  
 You will need to install Docker in order to use YANG Suite. You can find more information on how to get Docker and how to install it [here](https://docs.docker.com/get-docker/).
 {: .notice--info}
 
