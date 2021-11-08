@@ -51,6 +51,15 @@ And it could also define a networking service configured on many nodes, such as 
 
 To describe network features and services, we use YANG. It's a modeling langage to represent **data structures** in an **XML** tree format. Optionally, YANG can use **XPath** (XML Path Langage) expression to filter the elements of a YANG data model.
 
+# Where do YANG models come from?
+
+YANG models can come from two sources:
+- Standard definition (ex: IETF, ITU, Openconfig),
+- Vendor definition (ex: Cisco).
+
+In the first case, the models are compliant with industry standard. The goal is to agree on models that can be **vastly** supported by **networking devices** (ex: Routers) and **services** (ex: [L2VPN](https://datatracker.ietf.org/doc/html/draft-ietf-bess-l2vpn-yang)).
+In the second case, the goal is to support vendor specific features and operational data. It's often the case for **hardware specific features** such as QoS and ASIC operational data.
+
 # Installing YANG Suite
 
 First, let's install YANG Suite. Let's start by cloning the github repo where the code is stored.
