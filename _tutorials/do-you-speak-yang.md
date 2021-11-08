@@ -279,6 +279,18 @@ To check a configuration YANG coverage, follow the below steps:
   
 ![check YANG coverage.jpg]({{site.baseurl}}/images/check YANG coverage.jpg){: .align-center}
 
- 
-* Generate and play RPC
-* Export the call as Python script
+# Conclusion
+  
+In this article, we saw a portion of the power of YANG Suite capabilities:
+  - Learning YANG models (from a device and from a remote repository),
+  - Exploring YANG models,
+  - How to find the model you need,
+  - Checking node coverage.
+  
+In a coming article, we are going to see how we can leverage YANG Suite to build and send a NETCONF request to get operational data.
+
+# Useful resources
+  
+- YANG suite official repo: https://github.com/CiscoDevNet/yangsuite
+- YANG suite homepage: https://github.com/CiscoDevNet/yangsuite
+- YANG suite official documentation: https://pubhub.devnetcloud.com/media/yang-suite/docs/index.html
