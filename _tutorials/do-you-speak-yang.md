@@ -27,7 +27,7 @@ YANG Suite provides network operators with a common tool to interact with Cisco 
 
 # What is a model?
 
-A data model is simply a method to describe something using **keys**, a **type** and optionally a description. It could be a person, defined by:
+A data model is simply a method to describe something using **keys**, a **type** and optionally a **description**. It could be a person, defined by:
 - Height (cm)
 - Weight (kg)
 - Eye color (Blue, Green, Brown)
