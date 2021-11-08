@@ -27,17 +27,21 @@ YANG Suite provides network operators with a common tool to interact with Cisco 
 
 # What is a model?
 
-A data model is simply a method to describe something. It could be a person, defined by:
+A data model is simply a method to describe something using **keys**, a **type** and optionally a description. It could be a person, defined by:
 - Height (cm)
 - Weight (kg)
 - Eye color (Blue, Green, Brown)
 - Hair color (Brown, Blond, Black, Other)
 - Nationality (French, German, Italian, ...)
 
+In the above example, `Height` is a key and `cm` a type.
+
 But it could define many more things! It could define a networking feature, such as BGP:
 - Autonomous System (integer)
 - Neighbors (list of IP addresses)
 - Filters (list of prefix lists)
+
+In the above example, `Autonomous System` is a key and `integer` is a type.
 
 And it could also define a networking service configured on many nodes, such as a L3VPN:
 - Name (string)
