@@ -304,6 +304,6 @@ In a coming article, we are going to see how we can leverage YANG Suite to build
 
 # Useful resources
   
-- YANG suite official repo: https://github.com/CiscoDevNet/yangsuite
-- YANG suite homepage: https://github.com/CiscoDevNet/yangsuite
-- YANG suite official documentation: https://pubhub.devnetcloud.com/media/yang-suite/docs/index.html
+- [YANG suite official repo](https://github.com/CiscoDevNet/yangsuite)
+- [YANG suite homepage](https://github.com/CiscoDevNet/yangsuite)
+- [YANG suite official documentation](https://pubhub.devnetcloud.com/media/yang-suite/docs/index.html)
