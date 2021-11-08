@@ -2,7 +2,7 @@
 published: true
 date: '2021-09-19 10:39 +0200'
 title: YANG Suite - Do you speak YANG?
-position: hidden
+position: top
 author: Antoine Orsoni
 excerpt: >-
   Presentation of YANG Suite tool, to retrieve and observe YANG models from your
