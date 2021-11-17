@@ -26,7 +26,7 @@ In order for everyone to be able to run the code, we will use the [IOS XR always
 | Key               	| Value                    	|
 |-------------------	|--------------------------	|
 | IOS XRv 9000 host 	| sandbox-iosxr-1.cisco.com |
-|     SSH Port      	|     8181                 	|
+|     SSH Port      	|     22                 	|
 |     Username      	|     admin                	|
 |     Password      	|     C1sco12345           	|
 
