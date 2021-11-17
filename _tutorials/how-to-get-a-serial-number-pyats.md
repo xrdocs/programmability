@@ -15,6 +15,10 @@ position: hidden
 
 Recently, I got a query from a Customer: how could I easily collect my device(s) serial number? At first, he question sounded silly: you could just do `show inventory all` on any IOS XR platform to get the platform serial number. What if you need to do it 100 times per day? What if you need to do it on 100 devices at once? The goal of this new series of article is to explain different ways to collect a serial number on a device. If you can do it with a serial number, you can do it with anything else! In thirs first episode, we will use **pyATS**.
 
+If you are not already familiar with pyATS and you want to know how to install it and how to use it, have a look at my pyATS series below.
+https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/
+{: .notice--info}
+
 # Using the Devnet sandbox
 
 In order for everyone to be able to run the code, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Below the sandbox information.
@@ -32,3 +36,4 @@ In order for everyone to be able to run the code, we will use the [IOS XR always
 To all make sure we are all on the same page, below is the command to collect the serial number with CLI on an IOS XR device and a sample output. In this case, the answer we want to get is `SN: 8F21767F3A3`.
 
 <script src="https://gist.github.com/AntoineOrsoni/025aefa2afbeefd77d7b0a0f3ec909d1.js"></script>
+
