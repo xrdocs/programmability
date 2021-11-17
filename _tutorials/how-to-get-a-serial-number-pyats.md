@@ -25,7 +25,7 @@ In order for everyone to be able to run the code, we will use the [IOS XR always
 
 | Key               	| Value                    	|
 |-------------------	|--------------------------	|
-| IOS XRv 9000 host 	| sandbox-iosxr-1.cisco.com 	|
+| IOS XRv 9000 host 	| sandbox-iosxr-1.cisco.com |
 |     SSH Port      	|     8181                 	|
 |     Username      	|     admin                	|
 |     Password      	|     C1sco12345           	|
@@ -37,3 +37,11 @@ To all make sure we are all on the same page, below is the command to collect th
 
 <script src="https://gist.github.com/AntoineOrsoni/025aefa2afbeefd77d7b0a0f3ec909d1.js"></script>
 
+# Collecting the serial number using pyATS
+
+## Testbed definition
+
+First, we need to create a testbed. 
+
+Testbed definition has been covered in more details in this post: https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/
+{: .notice--info}
