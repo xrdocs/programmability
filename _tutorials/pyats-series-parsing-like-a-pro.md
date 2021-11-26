@@ -388,6 +388,12 @@ We use the `disconnect()` method to properly disconnect from the device.
 It’s important to properly disconnect from the device, otherwise the vty connection will remain open on the device, until it times out.
 {: .notice--info}
 
+# Parsing an output you already have 
+
+If you want to parse an ouput you already have (i.e. without the need to have a device to extract the output), it's also possible. You can use the code below.
+
+<script src="https://gist.github.com/AntoineOrsoni/cc247a507ead2583a0039932ba58db9a.js"></script>
+
 # Conclusion
 
 In this second episode of the pyATS series, we learnt:
