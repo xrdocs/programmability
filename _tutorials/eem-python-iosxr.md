@@ -2,7 +2,7 @@
 published: true
 date: '2022-02-23 16:46 -0500'
 title: Mixing EEM & Python on IOS-XR
-position: hidden
+position: top
 author: Alain Nicolas
 excerpt: Short description tbd
 tags:
