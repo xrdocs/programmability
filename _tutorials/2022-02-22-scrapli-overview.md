@@ -8,9 +8,9 @@ author: Neelima Parakala
 ---
 {% include toc icon="table" title="Scrapli Overview" %}
 
-You no more want to use command line interface, to manage network device configuration? Then go ahead and scrape CLI using scrapli !!!!
+Are you tired of manually logging in to the router and managing the network device configuration and operational data using the command line interface ? Then its time for you to explore Scrapli and scrape CLI !!!!
 
-## What is Scrapli?
+## Can I get a basic understanding on Scra?
 
 Scrapli is a python library focused on connecting to devices, specifically network devices (routers/switches/firewalls/etc.) via SSH or Telnet. 
 The name scrapli is just "scrape cli" (as in screen scrape) squished together! scrapli's goal is to be as fast and flexible as possible, 
