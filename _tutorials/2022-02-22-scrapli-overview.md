@@ -8,13 +8,11 @@ author: Neelima Parakala
 ---
 {% include toc icon="table" title="Scrapli Overview" %}
 
-Are you tired of manually logging in to the router and managing the network device configuration and operational data using the command line interface ? Then its time for you to explore Scrapli and scrape CLI !!!!
+Are you a pro in CLI commands but tired of manually logging in to each network device and managing the network device configuration and operational data using the command line interface ? Then its time for you to explore Scrapli and automate CLI scraping !!!!
 
 ## What is Scrapli?
 
-Scrapli is a python library focused on connecting to devices, specifically network devices (routers/switches/firewalls/etc.) via SSH or Telnet. 
-The name scrapli is just "scrape cli" (as in screen scrape) squished together! scrapli's goal is to be as fast and flexible as possible, 
-while providing a thoroughly tested, well typed, well documented, simple API that supports both synchronous and asynchronous usage.
+Scrapli is a python library that helps you to connect multiple network devices via SSH or Telnet, synchronously or asynchronously for screen scraping. Wondering what is screen scraping? well, it is the process of collecting screen display data from the network device and dumping it on to another screen or file. 
 
 ## Why Scrapli?
 
@@ -28,3 +26,6 @@ while providing a thoroughly tested, well typed, well documented, simple API tha
     
 
 ## How does it work?
+
+
+## What are the flavours of Scrapli ?
