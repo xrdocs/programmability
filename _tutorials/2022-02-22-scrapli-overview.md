@@ -15,15 +15,14 @@ Are you a pro in CLI commands but tired of manually logging in to each network d
 Scrapli is a python library that helps you to connect multiple network devices via SSH or Telnet, synchronously or asynchronously for screen scraping. Wondering what is screen scraping? well, it is the process of collecting screen display data from the network device and dumping it on to another screen or file. 
 
 ## Why Scrapli?
-
 - Firstly, it is an open-source project, hence it is free to use and you can add new device/transport support to it based on your requirement.
 - It is fast, flexible and well tested
 - It has an active community and well-maintained documentation.
 - As scrapli is completely written in python, it is easy to
-      - install
-      - write code
-      - integrate with any other python frameworks 
-      - troubleshoot and debug the issues using python debug tools
+      -  install
+      -  write code
+      -  integrate with any other python frameworks 
+      -  troubleshoot and debug the issues using python debug tools
           
 ## How does it work?
 
