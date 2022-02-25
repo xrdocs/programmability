@@ -16,15 +16,15 @@ Scrapli is a python library that helps you to connect multiple network devices v
 
 ## Why Scrapli?
 
-- Easy: It's easy to get going with scrapli -- check out the documentation and example links above, and you'll be connecting to devices in no time.
-- Fast: Do you like to go fast? Of course you do! All of scrapli is built with speed in mind, but if you really feel the need for speed, check out the ssh2 transport plugin to take it to the next level!
-- Great Developer Experience: scrapli has great editor support thanks to being fully typed; that plus thorough docs make developing with scrapli a breeze.
-- Well Tested: Perhaps out of paranoia, but regardless of the reason, scrapli has lots of tests! Unit tests cover the basics, regularly ran functional tests connect to virtual routers to ensure that everything works IRL!
-- Pluggable: scrapli provides a pluggable transport system -- don't like the currently available transports, simply extend the base classes and add your own! Need additional device support? Create a simple "platform" in scrapli_community to easily add new device support!
-- But wait, there's more!: Have NETCONF devices in your environment, but love the speed and simplicity of scrapli? You're in luck! Check out scrapli_netconf!
-- Concurrency on Easy Mode: Nornir's scrapli plugin gives you all the normal benefits of scrapli plus all the great features of Nornir.
-    
-
+- Firstly, it is an open-source project, hence it is free to use and you can add new device/transport support to it based on your requirement.
+- It is fast, flexible and well tested
+- It has an active community and well-maintained documentation.
+- As scrapli is completely written in python, it is easy to
+      - install
+      - write code
+      - integrate with any other python frameworks 
+      - troubleshoot and debug the issues using python debug tools
+          
 ## How does it work?
 
 
