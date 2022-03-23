@@ -52,11 +52,11 @@ Once you have all the required packages installed, go ahead and write the code t
 ### Write a few lines of code to automate your network
 
 #### Example 1
+
 ```
-"""examples.basic_usage.scrapli_driver"""
 from scrapli import Driver
 
-MY_DEVICE = {
+ROUTER = {
     "host": "10.10.100.12",
     "auth_username": "scrapli",
     "auth_password": "scrapli",
@@ -92,7 +92,6 @@ if __name__ == "__main__":
 #### Example 2
 
 ```
-"""examples.basic_usage.generic_driver"""
 from scrapli.driver import GenericDriver
 
 MY_DEVICE = {
@@ -129,7 +128,6 @@ if __name__ == "__main__":
 #### Example 3
 
 ```
-"""examples.basic_usage.iosxe_driver"""
 from scrapli.driver.core import IOSXRDriver
 
 MY_DEVICE = {
@@ -155,7 +153,6 @@ if __name__ == "__main__":
 ### Example 4
 
 ```
-"""examples.async_usage.async_iosxe_driver"""
 import asyncio
 
 from scrapli.driver.core import AsyncIOSXRDriver
@@ -185,7 +182,6 @@ if __name__ == "__main__":
 ### Example 5
 
 ```
-"""examples.async_usage.async_multiple_connections"""
 import asyncio
 
 from scrapli.driver.core import AsyncIOSXRDriver
@@ -237,7 +233,6 @@ if __name__ == "__main__":
 ### Example 6
 
 ```
-"""examples.logging.basic_logging"""
 import logging
 
 from scrapli.driver.core import IOSXRDriver
