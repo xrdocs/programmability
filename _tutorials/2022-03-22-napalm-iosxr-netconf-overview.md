@@ -75,4 +75,12 @@ Once you have all the required packages installed, go ahead and write the code t
 ## What are the flavours of Napalm ?
 
 
-## Conclusion
+# Conclusion
+Napalm is a vendor neutral, cross-platform open-source project that provides a unified API to automate the mnagement of network devices. Being an open-sourced project written in python makes it easy for the user to debug and troubleshoot. Above all, it's time-efficient, free, and easy to use. Write simple lines of python code to execute your network tasks on a lot of your network devices quickly!! 
+*Stay tuned to learn about another network automation tool in our next post.*
+*Please do comment below, your questions, and what you would like to learn about network automation!!*
+
+# Resources
+
+- [Napalm Documentation](https://napalm.readthedocs.io/en/latest/)
+- [Napalm GitHub repository](https://github.com/napalm-automation/napalm)
