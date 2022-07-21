@@ -334,12 +334,17 @@ This script helped to illustrate some of the methods that config scripts utilize
 
 **VIDEOLINK**
   
+
+![Scripts](https://xrdocs.github.io/xrdocs-images/assets/images/pickhardt-script-process.png)
   
 ## Process Scripts
   
 Process scripts are the best way to automatically monitor operational data within IOS-XR. Since process scripts run continuously by nature, we must register them with AppMgr for them to run. Information about how to correctly set up process scripts can be found [here](https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/process-scripts.html). 
 
 Process scripts begin with a typical Python `if __name__ == "__main__":` statement. In this statement, there must be an infinite loop, which can call any necessary helper functions. Many process scripts also utilize the `time` library, which allows the script to wait for a number of seconds (or minutes) at the end of the script before running again. This is helpful in saving power, since script execution is suspended during this time. 
+
+
+### NETCONF RPCs
 
 When creating a process script, a common practice is to use a NETCONF RPC to retrieve and edit operational data. We can import `NetconfClient` from the `iosxr.netconf.netconf_lib` in order to access an RPC. All [NETCONF operations](https://en.wikipedia.org/wiki/NETCONF#Operations:~:text=SNMP%20modeling%20language.-,Operations,-%5Bedit%5D) are available with this rpc with the following syntax:
 
