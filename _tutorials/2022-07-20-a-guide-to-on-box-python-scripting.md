@@ -14,7 +14,7 @@ position: hidden
 
 ## Programmability of IOS XR  
 
-Being a network engineer no longer requires poring over CLI commands for hours on end, ensuring every detail conforms to the requirements, just for a link to break, causing even more work. Using the programmability capabilities of IOS XR, you eliminate much of the tedious router-by-router configuration by manipulating the existing data models automatically. There are many ways to tap into the automated potential of IOS XR including on-box Python scripting.
+Being a network engineer no longer requires poring over CLI commands for hours on end, ensuring every detail conforms to the requirements, just for a link to break, causing even more work. Using the programmability capabilities of IOS XR, you eliminate much of the tedious router-by-router configuration by manipulating the existing data models automatically. There are many ways to tap into the automated potential of IOS XR, including on-box Python scripting.
 
 ## Automation Scripts
 Automation scripts are one way to leverage IOS XR to work for you. These are mainly Python scripts that run on-box. These scripts can work in four different ways to aid the configuration and maintenance of your network. 
@@ -361,21 +361,147 @@ In order to find the correct piece of data, we should use a string representing 
 <code>
 """
 &lt;container1 xmls="http:cisco.com/ns/yang/Cisco-IOS-XR-{namespace-of-YANG-model}"&gt;
-    &lt;container2&gt;
-        &lt;key-to-container2&gt;KeyData&lt;/key-to-container2&gt;
+    &lt;list&gt;
+        &lt;key-to-list&gt;<mark>KeyData</mark>&lt;/key-to-list&gt;
             &lt;leaf-name/&gt;
-    &lt;/container2&gt;
+    &lt;/list&gt;
 &lt;/container1&gt;
 """
 </code>
 </pre>
 </div>
 
-where the leaf contains the data we wish to monitor/manipulate. This filter string should be passed to the `request` argument of the NETCONF function.
+where the leaf contains the data we wish to monitor/manipulate. This filter string should be passed to the `request` argument of the NETCONF function. This template illustrates how to format the XML filter, including key-value pairs.
 
-We can use the reply from the operation (`nc.reply`) and details about the filter path to retrieve the desired data from here. The reply will be in XML, so we will have to employ some parsing strategies to extract the specific data. Examples of how to do this can be found in the videos at the end of this section. 
+We can use the reply from the Netconf Client operation (`nc.reply`) and details about the filter path to retrieve the desired data from here. The reply will be in XML, so we will have to employ some parsing strategies to extract the specific data. Demonstration of how to do this can be found in the example and videos at the end of this section. 
 
-Similarly to the config scripts, we can raise syslog errors (among other options) if operational data doesn't match requirements, or a change in the system has been detected. 
+
+### Process Script Example
+
+Let's walk through a fairly simple process script together. This script finds the number of alarms present on the router every minute and sends the information to syslog. Here are the familiar libraries and initializations:
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+import time
+import os
+import xmltodict
+import re
+
+from cisco.script_mgmt import xrlog
+from iosxr.netconf.netconf_lib import NetconfClient
+
+log = xrlog.getScriptLogger('Alarm')
+syslog = xrlog.getSysLogger('Alarm')
+</code>
+</pre>
+</div>
+Next, let's look at the `main` function, which executes the script every sixty seconds within an infinite loop: 
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+if __name__ == '__main__':
+	while(1):
+		check_curr_alarm_num()
+		time.sleep(60)
+</code>
+</pre>
+</div>
+
+We now write our `check_curr_alarm_num` function. The `Netconf` client is started, and the filter string is used to retrieve the data associated with the number of alarms. 
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+def check_curr_alarm_num():
+	"""
+	Checks current number of alarms
+	"""
+	curr_count = 0
+	filter_string = """
+	&lt;alarms xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-alarmgr-server-oper"&gt;
+		&lt;detail&gt;
+			&lt;detail-system&gt;
+				&lt;stats>
+					&lt;reported/&gt;
+				&lt;/stats&gt;
+			&lt;/detail-system&gt;
+		&lt;/detail&gt;
+	&lt;/alarms&gt;"""
+
+	nc = NetconfClient(debug=True)
+	nc.connect()
+	do_get(nc, filter=filter_string)
+</code>
+</pre>
+</div>
+
+Here is the `do_get` function, which helps to demonstrate how the NETCONF client can be used. We see the `nc.rpc.get` call, but other NETCONF operations could be used with this client.
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+def do_get(nc, filter=None, path=None):
+	try:
+		if path is not None:
+			nc.rpc.get(file=path)
+		elif filter is not None:
+			nc.rpc.get(request=filter)
+		else:
+			return False
+	except Exception as e:
+			return False
+	return True
+</code>
+</pre>
+</div>
+
+Returning to our initial function, we convert the reply from the client to a dictionary using the `xmltodict` library's capabilities. The dictionary is used to retrieve the integer value of the number of alarms, the number is printed to syslog, and the client is closed. 
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+	ret_dict = _xml_to_dict(nc.reply, 'alarms')
+	curr_count = int(ret_dict['alarms']['detail']['detail-system']['stats']['reported'])
+	syslog.info(curr_count)
+	nc.close()
+</code>
+</pre>
+</div>
+
+Here is the `_xml_to_dict` helper method. Without diving too deeply into `XML`, the function searches through the reply for a specific pattern and translates that into a dictionary, which allows us much simpler access to the data.
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+
+def _xml_to_dict(xml_output, xml_tag=None):
+	"""
+	convert netconf rpc request to dict
+	:param xml_output:
+	:return:
+	"""
+	if xml_tag:
+		pattern = "<data>\s+(<%s.*</%s>).*</data>" % (xml_tag, xml_tag)
+	else:
+		pattern = "(<data>.*</data>)"
+	xml_output = xml_output.replace('\n', ' ')
+	xml_data_match = re.search(pattern, xml_output)
+	ret_dict = xmltodict.parse(xml_data_match.group(1))
+	return ret_dict
+
+</code>
+</pre>
+</div>
+
+To see a video of me explaining this script, look here:
+
+**VIDEOLINK**
+
+This video breaks down a script that expands on the first example and and sends an email to the network manager when a change in the number of alarms is detected:
+
+**VIDEOLINK**
 
 ## EEM Scripts
 As EEM scripts are not currently supported, there is no script-writing guide available. 
