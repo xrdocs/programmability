@@ -127,6 +127,24 @@ Within our function, we simply issue a command. If the operation was successful,
 </pre>
 </div>
 
+Before we run this script, we must go through the steps of activating the script with IOS-XR. This is a fairly complex and slightly confusing process, but thankfully there is documentation available [here](https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/exec-scripts.html) that explains it. 
+
+However, there is one step that the guide doesn't mention, which is setting AAA permissions. For exec scripts, we must give the script the proper clearances before it will be effective. For my exec scripts, I use the following permissions:
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+aaa authorization exec default group tacacs+ local
+aaa authorization eventmanager default local
+aaa authentication login default group tacacs+ local
+</code>
+</pre>
+</div>
+
+These might be slightly different depending on the particular use case for the script.
+
+You should now be ready to create your very own exec script!
+
 To hear a similar breakdown from me of the same script, watch this video:
 
 **VIDEOLINK**
@@ -326,7 +344,11 @@ Finally, we iterate through the list of nodes to see if there is an ACL within t
 
 Normal list iteration is effective for leaf-lists, and we can access the `value` attribute of the leaf nodes.
 
-I dissect this script in a video here:
+Similarly to exec scripts, we must go through the steps of activating the script with IOS-XR. You can follow [this](https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/config-scripts.html)  guide for the process of how to do so.
+
+You now have the information you need to begin implementing config scripts on your router. 
+
+I dissect the script in a video here:
 
 **VIDEOLINK**
 
@@ -500,7 +522,11 @@ def _xml_to_dict(xml_output, xml_tag=None):
 </pre>
 </div>
 
-To see a video of me explaining this script, look here:
+Once again, we must properly activate the script before it will run. Process scripts have a slightly different implementation procedure because they are running constantly. Thus, we use AppMgr to set them up. Find out more about this routine [here](https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/process-scripts.html)
+
+Now that we have set up the script with AppMgr, you have all the tools you need to make process scripts that align with your particular solutions. 
+
+To see a video of me explaining the script, look here:
 
 **VIDEOLINK**
 
