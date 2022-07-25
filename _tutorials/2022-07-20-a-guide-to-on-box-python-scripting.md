@@ -83,7 +83,7 @@ Using a combination of these two techniques enables us to maximize the potential
 
 ### Exec Script Example
 
-The script we'll be dissecting is [`test_cli_show_version.py`](https://github.com/CiscoDevNet/xr-python-scripts/blob/main/exec/test_cli_show_version.py). This is a relatively simple exec script, issuing a single command and printing its output. 
+The script we'll be dissecting is <a href="https://github.com/CiscoDevNet/xr-python-scripts/blob/main/exec/test_cli_show_version.py" target="_blank">`test_cli_show_version.py`</a>. This is a relatively simple exec script, issuing a single command and printing its output. 
 
 We begin by importing regex operations and aforementioned Cisco libraries:
 
@@ -127,7 +127,7 @@ Within our function, we simply issue a command. If the operation was successful,
 </pre>
 </div>
 
-Before we run this script, we must go through the steps of activating the script with IOS-XR. This is a fairly complex and slightly confusing process, but thankfully there is documentation available [here](https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/exec-scripts.html) that explains it. 
+Before we run this script, we must go through the steps of activating the script with IOS-XR. This is a fairly complex and slightly confusing process, but thankfully there is documentation available <a href="https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/exec-scripts.html" target="_blank">here</a> that explains it. 
 
 However, there is one step that the guide doesn't mention, which is setting AAA permissions. For exec scripts, we must give the script the proper clearances before it will be effective. For my exec scripts, I use the following permissions:
 
@@ -294,7 +294,7 @@ acl_name = "access-list-1"
 </pre>
 </div>
 
-With config scripts, it's most logical to start with the callback validation funciton, which for this example, uses two different models: an [interface-configuration](https://github.com/YangModels/yang/blob/af90c053a1ca9b01a3f229e313e4af7e5b849c87/vendor/cisco/xr/751/Cisco-IOS-XR-ifmgr-cfg.yang) model along with a [pfilter](https://github.com/YangModels/yang/blob/af90c053a1ca9b01a3f229e313e4af7e5b849c87/vendor/cisco/xr/751/Cisco-IOS-XR-ip-pfilter-cfg.yang#L11) model. Notice that the pfilter model imports the interface configuration model, extending its reach. This function ensures that if a configuration is pushed that regards the ACL or any of the child nodes, this script will be called. 
+With config scripts, it's most logical to start with the callback validation funciton, which for this example, uses two different models: an <a href="https://github.com/YangModels/yang/blob/af90c053a1ca9b01a3f229e313e4af7e5b849c87/vendor/cisco/xr/751/Cisco-IOS-XR-ifmgr-cfg.yang" target="_blank">interface-configuration</a> model along with a <a href="https://github.com/YangModels/yang/blob/af90c053a1ca9b01a3f229e313e4af7e5b849c87/vendor/cisco/xr/751/Cisco-IOS-XR-ip-pfilter-cfg.yang#L11" target="_blank">pfilter</a> model. Notice that the pfilter model imports the interface configuration model, extending its reach. This function ensures that if a configuration is pushed that regards the ACL or any of the child nodes, this script will be called. 
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -344,7 +344,7 @@ Finally, we iterate through the list of nodes to see if there is an ACL within t
 
 Normal list iteration is effective for leaf-lists, and we can access the `value` attribute of the leaf nodes.
 
-Similarly to exec scripts, we must go through the steps of activating the script with IOS-XR. You can follow [this](https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/config-scripts.html)  guide for the process of how to do so.
+Similarly to exec scripts, we must go through the steps of activating the script with IOS-XR. You can follow <a href="https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/config-scripts.html" target="_blank">this</a> guide for the process of how to do so.
 
 You now have the information you need to begin implementing config scripts on your router. 
 
@@ -361,14 +361,14 @@ This script helped to illustrate some of the methods that config scripts utilize
   
 ## Process Scripts
   
-Process scripts are the best way to automatically monitor operational data within IOS-XR. Since process scripts run continuously by nature, we must register them with AppMgr for them to run. Information about how to correctly set up process scripts can be found [here](https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/process-scripts.html). 
+Process scripts are the best way to automatically monitor operational data within IOS-XR. Since process scripts run continuously by nature, we must register them with AppMgr for them to run. Information about how to correctly set up process scripts can be found <a href="https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/process-scripts.html" target="_blank">here</a>
 
 Process scripts begin with a typical Python `if __name__ == "__main__":` statement. In this statement, there must be an infinite loop, which can call any necessary helper functions. Many process scripts also utilize the `time` library, which allows the script to wait for a number of seconds (or minutes) at the end of the script before running again. This is helpful in saving power, since script execution is suspended during this time. 
 
 
 ### NETCONF RPCs
 
-When creating a process script, a common practice is to use a NETCONF RPC to retrieve and edit operational data. We can import `NetconfClient` from the `iosxr.netconf.netconf_lib` in order to access an RPC. All [NETCONF operations](https://en.wikipedia.org/wiki/NETCONF#Operations:~:text=SNMP%20modeling%20language.-,Operations,-%5Bedit%5D) are available with this rpc with the following syntax:
+When creating a process script, a common practice is to use a NETCONF RPC to retrieve and edit operational data. We can import `NetconfClient` from the `iosxr.netconf.netconf_lib` in order to access an RPC. All  <a href="https://en.wikipedia.org/wiki/NETCONF#Operations:~:text=SNMP%20modeling%20language.-,Operations,-%5Bedit%5D" target="_blank">NETCONF operations</a> are available with this rpc with the following syntax:
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -522,9 +522,8 @@ def _xml_to_dict(xml_output, xml_tag=None):
 </pre>
 </div>
 
-Once again, we must properly activate the script before it will run. Process scripts have a slightly different implementation procedure because they are running constantly. Thus, we use AppMgr to set them up. Find out more about this routine [here](https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/process-scripts.html)
-
-Now that we have set up the script with AppMgr, you have all the tools you need to make process scripts that align with your particular solutions. 
+We now register the script with AppMgr, as shown in the beginning of this section.
+You should have all the tools you need to make process scripts that align with your particular solutions. 
 
 To see a video of me explaining the script, look here:
 
@@ -537,4 +536,4 @@ This video breaks down a script that expands on the first example and and sends 
 ## EEM Scripts
 As EEM scripts are not currently supported, there is no script-writing guide available. 
 
-**Full script examples can be found at the xr_python_scripts [GitHub repository](https://github.com/CiscoDevNet/xr-python-scripts)**
+**Full script examples can be found at the xr_python_scripts <a href="https://github.com/CiscoDevNet/xr-python-scripts" target="_blank">GitHub repository</a>**
