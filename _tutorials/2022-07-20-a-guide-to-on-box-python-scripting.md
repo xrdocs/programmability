@@ -32,7 +32,7 @@ Automation scripts are one way to leverage IOS XR to work for you. These are mai
 ![Scripts](https://xrdocs.github.io/xrdocs-images/assets/images/pickhardt-scripts.png)
 
 ### Using Syslog in Python Scripts
-All types of on-box python scripts have access to the logging capabilities of IOS XR. As script-writers, we can utilize [all levels of syslog](https://www.cisco.com/c/en/us/td/docs/routers/access/wireless/software/guide/SysMsgLogging.html#wp1054858) information. The following example illustrates how you can leverage system logging within your scripts:
+All types of on-box python scripts have access to the logging capabilities of IOS XR. As script-writers, we can utilize <a href="https://www.cisco.com/c/en/us/td/docs/routers/access/wireless/software/guide/SysMsgLogging.html#wp1054858" target="_blank">all levels of syslog</a> messaging. The following example illustrates how you can leverage system logging within your scripts:
 
 <div class="highlighter-rouge">
 <pre class="highlight">
