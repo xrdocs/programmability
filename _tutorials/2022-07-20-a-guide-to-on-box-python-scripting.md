@@ -16,7 +16,7 @@ position: hidden
 
 Being a network engineer no longer requires poring over CLI commands for hours on end, ensuring every detail conforms to the requirements, just for a link to break, causing even more work. Using the programmability capabilities of IOS XR, you eliminate much of the tedious router-by-router configuration by manipulating the existing data models automatically. There are many ways to tap into the automated potential of IOS XR, including on-box Python scripting.
 
-## Automation Scripts
+## Python Automation Scripts
 Automation scripts are one way to leverage IOS XR to work for you. These are mainly Python scripts that run on-box. These scripts can work in four different ways to aid the configuration and maintenance of your network. 
 
 [**Exec Scripts**](#exec-scripts): These scripts are run manually, but they can dramatically decrease the work required for configuration or other operational tasks.
@@ -32,7 +32,7 @@ Automation scripts are one way to leverage IOS XR to work for you. These are mai
 ![Scripts](https://xrdocs.github.io/xrdocs-images/assets/images/pickhardt-scripts.png)
 
 ### Using Syslog in Python Scripts
-All types of on-box python scripts have access to the logging capabilities of IOS XR. As script-writers, we can utilize <a href="https://www.cisco.com/c/en/us/td/docs/routers/access/wireless/software/guide/SysMsgLogging.html#wp1054858" target="_blank">all levels of syslog</a> messaging. The following example illustrates how you can leverage system logging within your scripts:
+All types of on-box python scripts have access to the logging capabilities of IOS XR. As script-writers, we can utilize <a href="https://www.cisco.com/c/en/us/td/docs/routers/access/wireless/software/guide/SysMsgLogging.html#wp1054858" target="_blank">all levels of syslog</a> messaging, which represents the centralized logging standard for IOS-XR. The following example illustrates how you can leverage system logging within your scripts:
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -127,7 +127,7 @@ Within our function, we simply issue a command. If the operation was successful,
 </pre>
 </div>
 
-Before we run this script, we must go through the steps of activating the script with IOS-XR. This is a fairly complex and slightly confusing process, but thankfully there is documentation available [here](https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/exec-scripts.html) that explains it. 
+Before we run this script, we must go through the steps of activating the script with IOS-XR. Thankfully, there is documentation available [here](https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k-r7-5/programmability/configuration/guide/b-programmability-cg-asr9000-75x/exec-scripts.html) that explains it. 
 
 However, there is one step that the guide doesn't mention, which is setting AAA permissions. For exec scripts, we must give the script the proper clearances before it will be effective. For my exec scripts, I use the following permissions:
 
@@ -145,13 +145,7 @@ These might be slightly different depending on the particular use case for the s
 
 You should now be ready to create your very own exec script!
 
-To hear a similar breakdown from me of the same script, watch this video:
-
-**VIDEOLINK**
-
-I also have a line-by-line breakdown of a more complex exec script available here, which initiates OSPF neighborship between routers on the same subnet:
-
-**VIDEOLINK**
+I also wrote a more complex exec script available [here](***INSERTLINK***), which initiates OSPF neighborship between routers on the same subnet.
 
 ![Scripts](https://xrdocs.github.io/xrdocs-images/assets/images/pickhardt-script-config.png)
 
@@ -201,7 +195,7 @@ The most effective way to derive the correct YPath is to search for the intended
 </div>
 
 This path will tell the script to execute when any leaf node under the last container is edited, created, or deleted.
-There are a number of limitations on the available models that can be used for config scripts. Only XR-native YANG models are supported (no UM, IETF, OC). Also, in order for the callback function to properly access the configuration data, the path needs to be from a “cfg” model, not an “oper” model. 
+There are a number of limitations on the available models that can be used for config scripts. Only XR-native YANG models are currently supported. Also, in order for the callback function to properly access the configuration data, the path needs to be from a “cfg” model, not an “oper” model. 
 
 The second argument to this method, `callback_function`, is what will be run whenever a relevant commit is pushed to the configuration. The callback function is the “meat” of the config script. 
 
@@ -348,13 +342,7 @@ Similarly to exec scripts, we must go through the steps of activating the script
 
 You now have the information you need to begin implementing config scripts on your router. 
 
-I dissect the script in a video here:
-
-**VIDEOLINK**
-
-This script helped to illustrate some of the methods that config scripts utilize, but is limited in practicality. I created another sample config script that demonstrates more of the capabilites of config scripts. I discuss that script in this video:
-
-**VIDEOLINK**
+This script helped to illustrate some of the methods that config scripts utilize, but is limited in practicality. I created another sample config script that demonstrates more of the capabilites of config scripts. The link to that script can be found [here](***INSERTLINK***).
   
 
 ![Scripts](https://xrdocs.github.io/xrdocs-images/assets/images/pickhardt-script-process.png)
@@ -526,13 +514,7 @@ Once again, we must properly activate the script before it will run. Process scr
 
 Now that we have set up the script with AppMgr, you have all the tools you need to make process scripts that align with your particular solutions. 
 
-To see a video of me explaining the script, look here:
-
-**VIDEOLINK**
-
-This video breaks down a script that expands on the first example and and sends an email to the network manager when a change in the number of alarms is detected:
-
-**VIDEOLINK**
+The purpose of this example was to demonstrate some of the key aspects of process scripts, but the applications of the example are limited. I buffed out the script to provide a possible use case [here](***INSERTLINK***)
 
 ## EEM Scripts
 As EEM scripts are not currently supported, there is no script-writing guide available. 
