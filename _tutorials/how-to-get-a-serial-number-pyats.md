@@ -1,6 +1,6 @@
 ---
 published: true
-date: '2021-11-17 16:21 +0100'
+date: '2022-07-29 16:21 +0100'
 title: How to get a serial number - pyATS
 author: Antoine Orsoni
 excerpt: How to get a serial number on an IOS XR device using pyATS?
