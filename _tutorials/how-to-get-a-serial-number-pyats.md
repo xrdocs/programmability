@@ -28,6 +28,11 @@ If you are not already familiar with pyATS and you want to know how to install i
 https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/
 {: .notice--info}
 
+
+The code for this series of posts will be published here:
+https://github.com/AntoineOrsoni/how-to-get-serial-number/
+{: .notice--info}
+
 # Using the Devnet sandbox
 
 In order for everyone to be able to run the code, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Below the sandbox information.
@@ -55,7 +60,10 @@ Enough talking, let's code!
 
 ## Testbed definition
 
-First, we need to create a testbed. 
+The simplest way to connect to a device is through a pyATS testbed file, written in YAML. This information will be used by **Unicon** to connect to the device and send the requested commands.
+
+You can find the complete documentation on how to build a testbed [here](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
+{: .notice--info}
 
 Testbed definition has been covered in more details in this post: https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/
 {: .notice--info}
