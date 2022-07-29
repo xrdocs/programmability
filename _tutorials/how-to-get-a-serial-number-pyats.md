@@ -76,3 +76,10 @@ In a nutshell, we need to specify how to connect to our device:
 
 Testbed definition has been covered in more details in this post: https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/
 {: .notice--info}
+
+## Leveraging pyATS parsers to get a Python dictionary
+
+To better understand the difference between a raw output and a parserd output, you can refer to this article:
+https://xrdocs.io/programmability/tutorials/pyats-series-parsing-like-a-pro/
+{: .notice--info}
+
