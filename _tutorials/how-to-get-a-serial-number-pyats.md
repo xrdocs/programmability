@@ -28,7 +28,6 @@ If you are not already familiar with pyATS and you want to know how to install i
 https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/
 {: .notice--info}
 
-
 The code for this series of posts will be published here:
 https://github.com/AntoineOrsoni/how-to-get-serial-number/
 {: .notice--info}
@@ -64,6 +63,16 @@ The simplest way to connect to a device is through a pyATS testbed file, written
 
 You can find the complete documentation on how to build a testbed [here](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
 {: .notice--info}
+
+In a nutshell, we need to specify how to connect to our device:
+- IP address or URL,
+- Credentials,
+- Type, the Operating System of our device, in our case IOS XR,
+- How to connect to our device, in our case SSH on port 22.
+
+ Our testbed look like the below example:
+
+<script src="https://gist.github.com/AntoineOrsoni/c837b0cc0d49c5be0f18232689eedd3e.js"></script>
 
 Testbed definition has been covered in more details in this post: https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/
 {: .notice--info}
