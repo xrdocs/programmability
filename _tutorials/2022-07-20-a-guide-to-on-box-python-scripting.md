@@ -29,6 +29,8 @@ Automation scripts are one way to leverage IOS XR to work for you. These are mai
 
 > Note: As of IOS XR release 7.5.1, EEM scripts are not supported
 
+There is a more technically-focused documentation available [here](https://testing-developer.cisco.com/pubhub/docs/3390/new/#!config-validation-python-package-api/config-validation-api) that is very helpful for any unanswered questions from this article, including how to set up each type of script.
+
 ![Scripts](https://xrdocs.github.io/xrdocs-images/assets/images/pickhardt-scripts.png)
 
 ### Using Syslog in Python Scripts
