@@ -47,7 +47,11 @@ To all make sure we are all on the same page, below is the command to collect th
 
 <script src="https://gist.github.com/AntoineOrsoni/025aefa2afbeefd77d7b0a0f3ec909d1.js"></script>
 
-# Collecting the serial number using pyATS
+# Getting your hands dirty -- Collecting the serial number using pyATS
+
+Enough talking, let's code!
+
+![keyboard cat_small2.png]({{site.baseurl}}/images/keyboard cat_small2.png){: .align-center}
 
 ## Testbed definition
 
