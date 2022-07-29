@@ -13,7 +13,16 @@ position: hidden
 ---
 {% include toc icon="table" title="Table of Contents" %}
 
-Recently, I got a query from a Customer: how could I easily collect my device(s) serial number? At first, he question sounded silly: you could just do `show inventory all` on any IOS XR platform to get the platform serial number. What if you need to do it 100 times per day? What if you need to do it on 100 devices at once? The goal of this new series of article is to explain different ways to collect a serial number on a device. If you can do it with a serial number, you can do it with anything else! In thirs first episode, we will use **pyATS**.
+Recently, I got a query from a Customer: how could I easily collect my device(s) serial number? 
+
+At first, he question sounded silly: you could just do `show inventory all` on any IOS XR platform to get the platform serial number. What if you need to do it 100 times per day? What if you need to do it on 100 devices at once? The goal of this new series of article is to explain different ways to collect a serial number on a device. If you can do it with a serial number, you can do it with anything else! 
+
+In thirs first episode, we will use **pyATS** (**Py**thon **A**utomated **T**est **S**ystems, to be pronounced "py A. T. S.") was first created as an internal project, to ease the validation of two OS versions. It has been made public in 2017 through **Cisco Devnet**.
+
+pyATS is made of three main building blocks:
+- **pyATS**, the core block of this ecosystem. It’s a Python framework which leverages multiple Python libraries such as [Unicon](https://pypi.org/project/unicon/), providing a simplified connection experience to network devices. It supports **CLI**, **NETCONF**, **RESTCONF** and **gRPC**. It enables network engineers and developers to start with small and simple test cases.
+- **pyATS libraries** (also known as Genie) which provides everything you need for network testing such as parsers, triggers and APIs. 
+- **XPRESSO**, the pyATS Web UI Dashboard.
 
 If you are not already familiar with pyATS and you want to know how to install it and how to use it, have a look at my pyATS series below.
 https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/
