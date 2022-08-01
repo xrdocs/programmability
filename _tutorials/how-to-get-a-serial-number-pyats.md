@@ -82,10 +82,10 @@ You can find the complete documentation on how to build a testbed [here](https:/
 {: .notice--info}
 
 In a nutshell, we need to specify how to connect to our device:
-- IP address or URL,
-- Credentials,
-- Type, the Operating System of our device, in our case IOS XR,
-- How to connect to our device, in our case SSH on port 22.
+- `IP address` or `URL`,
+- `Credentials`,
+- `Type`, the Operating System of our device, in our case IOS XR,
+- `Protocol`, how to connect to our device, in our case SSH on port 22.
 
  Our testbed look like the below example:
 
