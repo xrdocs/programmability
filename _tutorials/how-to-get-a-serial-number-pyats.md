@@ -110,7 +110,7 @@ In Python, you can see a Dicitonary as a set of `key: value` pairs. For example:
 
 In `my_dict`, in order to retrieve `my_value` associated with a specific `my_key`, you should use `my_value = my_dict['my_key']`. 
 
-A value can be a dictionary. In this case, we call it a `nested dictionary`. In our example, the key `"module_name"` is associated with a dictionary. In our example, we have multiple nested dictionaries.
+A value can be a dictionary. In this case, we call it a `nested dictionary`. In our example, the key `"module_name"` is associated with a dictionary. In our pyATS output, we have multiple nested dictionaries.
 
 Dictionary keys are **case sensitive**!
 https://docs.python.org/3/tutorial/datastructures.html#dictionaries
