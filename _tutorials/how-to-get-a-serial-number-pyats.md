@@ -113,6 +113,17 @@ https://docs.python.org/3/tutorial/datastructures.html#dictionaries
 
 ## Bringing it all together
 
+This is what the full script looks like.
+1. We load the testbed to extact device information,
+2. We connect on the device,
+3. We collect the CLI output and we parse it using pyATS librairies,
+4. We extract the device number from the nested dictionaries,
+5. We disconnect from the device
+
+You can find all supported pyATS parsers here:
+https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers
+{: .notice--info}
+
 <script src="https://gist.github.com/AntoineOrsoni/a941584f96f4e78961a819e2d0360f42.js"></script>
 
 # pyATS pro and con's to retrieve a serial number
