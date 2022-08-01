@@ -111,8 +111,8 @@ You can read more about Python dictionaries in the documentation.
 https://docs.python.org/3/tutorial/datastructures.html#dictionaries
 {: .notice--info}
 
-## 
+## Bringing it all together
 
-
+<script src="https://gist.github.com/AntoineOrsoni/a941584f96f4e78961a819e2d0360f42.js"></script>
 
 # pyATS pro and con's to retrieve a serial number
