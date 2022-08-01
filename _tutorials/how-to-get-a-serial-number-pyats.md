@@ -101,7 +101,7 @@ In Python, you can see a Dicitonary as a set of `key: value` pairs. In `my_dict`
 
 A value can be a dictionary. In this case, we call it a `nested dictionary`. In our example, the key `"module_name"` is associated with a dictionary. In our example, we have multiple nested dictionaries.
 
-Dictionary keys are case sensitive!
+Dictionary keys are **case sensitive**!
 https://docs.python.org/3/tutorial/datastructures.html#dictionaries
 {: .notice--warning}
 
