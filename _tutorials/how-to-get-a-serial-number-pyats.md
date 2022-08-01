@@ -65,6 +65,13 @@ Enough talking, let's code!
 
 ![keyboard cat_small2.png]({{site.baseurl}}/images/keyboard cat_small2.png){: .align-center}
 
+## How to enable pyATS on your IOS XR device?
+
+pyATS leverages the [Unicon](https://pypi.org/project/unicon/) library to connect to the device. It supports various protocols to connect to your device, such as **telnet** or **ssh**.
+
+Use SSH! :)
+{: .notice--info}
+
 ## Testbed definition
 
 The simplest way to connect to a device is through a pyATS testbed file, written in YAML. This information will be used by **Unicon** to connect to the device and send the requested commands.
