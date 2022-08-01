@@ -106,7 +106,9 @@ https://xrdocs.io/programmability/tutorials/pyats-series-parsing-like-a-pro/
 
 ## Using Python to get the value of a specific key
 
-In Python, you can see a Dicitonary as a set of `key: value` pairs. In `my_dict`, in order to retrieve `my_value` associated with a specific `my_key`, you should use `my_value = my_dict['my_key']`. 
+In Python, you can see a Dicitonary as a set of `key: value` pairs. For example: `{ "name": "IOS-XR1", "version": "7.4.2"}`.
+
+In `my_dict`, in order to retrieve `my_value` associated with a specific `my_key`, you should use `my_value = my_dict['my_key']`. 
 
 A value can be a dictionary. In this case, we call it a `nested dictionary`. In our example, the key `"module_name"` is associated with a dictionary. In our example, we have multiple nested dictionaries.
 
