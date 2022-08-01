@@ -72,6 +72,8 @@ pyATS leverages the [Unicon](https://pypi.org/project/unicon/) library to connec
 Use SSH! :)
 {: .notice--info}
 
+In other words, you just need to make sure you have an account with `read` rights, which can connects using **ssh**. You can enable SSH on IOS XR with the command `ssh server v2`.
+
 ## Testbed definition
 
 The simplest way to connect to a device is through a pyATS testbed file, written in YAML. This information will be used by **Unicon** to connect to the device and send the requested commands.
