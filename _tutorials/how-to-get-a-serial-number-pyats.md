@@ -96,7 +96,7 @@ Testbed definition has been covered in more details in this post: https://xrdocs
 
 ## Leveraging pyATS parsers to get a Python dictionary
 
-The power of the **pyATS libraries**: converting **raw output** (what you would get in a CLI output, printed earlier in this post) into a **parsed output** (dictionary) where you can easily get a value by accessing a specific key. Once parsed by pyATS, the output would look to something like below:
+The power of the **pyATS libraries**: to be able to convert a **raw output** (what you would get in a CLI output, printed earlier in this post) into a **parsed output** (dictionary) where you can easily get a `value` by accessing a specific `key`. Once parsed by pyATS, the output would look to something like below:
 
 <script src="https://gist.github.com/AntoineOrsoni/dc87b1259a5f811e4a9394d9aa4481ae.js"></script>
 
