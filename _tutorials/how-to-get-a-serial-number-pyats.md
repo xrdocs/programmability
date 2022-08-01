@@ -139,7 +139,7 @@ https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers
 
 # pyATS pro and con's to retrieve a serial number
 
-This last section reflects my own experience. Based on your use can, it might vary. Feel free to comment if you disagree or if you think about something else.
+This last section reflects my own experience. Based on your own use of pyATS, it might vary. Feel free to comment if you disagree or if you think about something else.
 {: .notice--info}
 
 ## Pros
