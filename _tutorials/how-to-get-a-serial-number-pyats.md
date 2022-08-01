@@ -127,3 +127,33 @@ https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers
 <script src="https://gist.github.com/AntoineOrsoni/a941584f96f4e78961a819e2d0360f42.js"></script>
 
 # pyATS pro and con's to retrieve a serial number
+
+This last section reflects my own experience. Based on your use can, it might vary. Feel free to comment if you disagree or if you think about something else.
+{: .notice--info}
+
+## Pros
+
+* pyATS uses SSH as transport, which is most of the time open on the device.
+* You can extract the serial number with very basic Python knowledge and in less than 10 lines of code.
+* pyATS has great documentation and a very active community.
+
+## Cons
+
+* pyATS is great to retrieve this information once. You might have better tools if you need to retrieve an information periodically (ex: interface CRC errors, once per day).
+* If you use another operating system, the parser might not yet exist. It might take many more lines of codeto extact what you need using text parsing tools like Text FSM.
+
+# Conclusion
+
+pyATS is a great tool to retrieve a serial number: we were able to achieve our goal in less than 10 lines of Python. 
+
+In the next episode, we will see how to get a serial number using **NETCONF**. 
+
+# Resources
+
+Below a few useful pyATS resources.
+
+- [List of supported pyATS parsers](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/),
+- [The official pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/getting_started/index.html),
+- [List of Unicon supported platforms](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/supported_platforms.html),
+- [Devnet code exchange](https://developer.cisco.com/codeexchange/),
+- [Join the Webex space with the pyATS community](https://eurl.io/#r18UzrQVr).
