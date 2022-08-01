@@ -126,7 +126,7 @@ https://docs.python.org/3/tutorial/datastructures.html#dictionaries
 
 This is what the full script looks like.
 1. We load the testbed to extact device information,
-2. We connect on the device,
+2. We connect to the device,
 3. We collect the CLI output and we parse it using pyATS librairies,
 4. We extract the device number from the nested dictionaries,
 5. We disconnect from the device
