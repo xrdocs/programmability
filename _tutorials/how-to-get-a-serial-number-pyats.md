@@ -129,7 +129,7 @@ This is what the full script looks like.
 2. We connect to the device,
 3. We collect the CLI output and we parse it using pyATS librairies,
 4. We extract the device number from the nested dictionaries,
-5. We disconnect from the device
+5. We disconnect from the device.
 
 You can find all supported pyATS parsers here:
 https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers
