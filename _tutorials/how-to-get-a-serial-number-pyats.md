@@ -32,6 +32,15 @@ The code for this series of posts will be published here:
 https://github.com/AntoineOrsoni/how-to-get-serial-number/
 {: .notice--info}
 
+# Other "How to get a serial number" episodes
+
+You’ve missed an episode? You would like to read more? Below the list of published episodes:
+
+| Episode 	| URL                                                                                              	| What's covered                                        	|
+|---------	|--------------------------------------------------------------------------------------------------	|-------------------------------------------------------	|
+| **1 - Install and use pyATS**       	| [Link](https://xrdocs.io/programmability/tutorials/how-to-get-a-serial-number-pyats/){: .btn}  	
+|  Using pyATS to get a serial number on a given IOS XR device 	|
+
 # Using the Devnet sandbox
 
 In order for everyone to be able to run the code, we will use the [IOS XR always-on sandbox on Cisco Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/e83cfd31-ade3-4e15-91d6-3118b867a0dd?diagramType=Topology). Below the sandbox information.
@@ -88,3 +97,6 @@ https://xrdocs.io/programmability/tutorials/pyats-series-parsing-like-a-pro/
 {: .notice--info}
 
 ## Using Python to get the value of a specific key
+
+
+# pyATS pro and con's to retrieve a serial number
