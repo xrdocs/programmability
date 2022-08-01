@@ -99,4 +99,8 @@ https://xrdocs.io/programmability/tutorials/pyats-series-parsing-like-a-pro/
 ## Using Python to get the value of a specific key
 
 
+You can read more about Python dictionaries in the documentation.
+https://docs.python.org/3/tutorial/datastructures.html#dictionaries
+{: .notice--info}
+
 # pyATS pro and con's to retrieve a serial number
