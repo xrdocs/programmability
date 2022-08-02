@@ -12,6 +12,7 @@ tags:
 position: hidden
 ---
 {% include toc icon="table" title="Table of Contents" %}
+![pyats_hello2.jpg]({{site.baseurl}}/images/pyats_hello2.jpg){: .align-center}
 
 Recently, I got a query from a Customer: how could I easily collect my device(s) serial number? 
 
