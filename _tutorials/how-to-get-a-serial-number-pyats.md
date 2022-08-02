@@ -129,8 +129,7 @@ This is what the full script looks like.
 4. We extract the device number from the nested dictionaries,
 5. We disconnect from the device.
 
-You can find all supported pyATS parsers here:
-https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers
+You can find all supported pyATS parsers in [the documentation](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers).
 {: .notice--info}
 
 <script src="https://gist.github.com/AntoineOrsoni/a941584f96f4e78961a819e2d0360f42.js"></script>
