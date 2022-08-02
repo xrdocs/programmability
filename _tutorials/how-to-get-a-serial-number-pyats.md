@@ -134,7 +134,7 @@ You can find all supported pyATS parsers in [the documentation](https://pubhub.d
 
 <script src="https://gist.github.com/AntoineOrsoni/a941584f96f4e78961a819e2d0360f42.js"></script>
 
-# pyATS pro and con's to retrieve a serial number
+# pyATS pros and cons to retrieve a serial number
 
 This last section reflects my own experience. Based on your own use of pyATS, it might vary. Feel free to comment if you disagree or if you think about something else.
 {: .notice--info}
