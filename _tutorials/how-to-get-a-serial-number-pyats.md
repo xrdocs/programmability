@@ -118,8 +118,7 @@ Dictionary keys are **case sensitive**!
 
 In our case, the code to get the Serial Number out of the parsed output should look something like: `serial_number = my_output["module_name"]["Rack 0"]["sn"]`. 
 
-You can read more about Python dictionaries in the [official documentation]
-(https://docs.python.org/3/tutorial/datastructures.html#dictionaries).
+You can read more about Python dictionaries in the [official documentation](https://docs.python.org/3/tutorial/datastructures.html#dictionaries).
 {: .notice--info}
 
 ## Bringing it all together
