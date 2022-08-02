@@ -92,7 +92,7 @@ In a nutshell, we need to specify how to connect to our device:
 
 <script src="https://gist.github.com/AntoineOrsoni/c837b0cc0d49c5be0f18232689eedd3e.js"></script>
 
-Testbed definition has been covered in more details in this post: https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/
+Testbed definition has been covered in more details in [this post](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/).
 {: .notice--info}
 
 ## Leveraging pyATS parsers to get a Python dictionary
@@ -101,8 +101,7 @@ The power of the **pyATS libraries**: to be able to convert a **raw output** (wh
 
 <script src="https://gist.github.com/AntoineOrsoni/dc87b1259a5f811e4a9394d9aa4481ae.js"></script>
 
-To better understand the difference between a raw output and a parserd output, you can refer to this article:
-https://xrdocs.io/programmability/tutorials/pyats-series-parsing-like-a-pro/
+To better understand the difference between a raw output and a parserd output, you can refer to [this article](https://xrdocs.io/programmability/tutorials/pyats-series-parsing-like-a-pro/).
 {: .notice--info}
 
 ## Using Python to get the value of a specific key
