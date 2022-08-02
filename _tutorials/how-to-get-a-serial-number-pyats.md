@@ -39,7 +39,7 @@ You’ve missed an episode? You would like to read more? Below the list of publi
 
 | Episode 	| URL                                                                                              	| What's covered                                        	|
 |---------	|--------------------------------------------------------------------------------------------------	|-------------------------------------------------------	|
-| **1 - Install and use pyATS**       	| [Link](https://xrdocs.io/programmability/tutorials/how-to-get-a-serial-number-pyats/){: .btn}  	|  Using pyATS to get a serial number on a given IOS XR device 	|
+| **1 - pyATS**       	| [Link](https://xrdocs.io/programmability/tutorials/how-to-get-a-serial-number-pyats/){: .btn}  	|  Using pyATS to get a serial number on a given IOS XR device 	|
 
 # Using the Devnet sandbox
 
