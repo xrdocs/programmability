@@ -55,7 +55,7 @@ In order for everyone to be able to run the code, we will use the [IOS XR always
 
 # Collecting the serial number using CLI
 
-To all make sure we are all on the same page, below is the command to collect the serial number with CLI on an IOS XR device and a sample output. In this case, the answer we want to get is `SN: 8F21767F3A3`.
+To make sure we are all on the same page, below is the command to collect the serial number with CLI on an IOS XR device and a sample output. In this case, the answer we want to get is `SN: 8F21767F3A3`.
 
 <script src="https://gist.github.com/AntoineOrsoni/025aefa2afbeefd77d7b0a0f3ec909d1.js"></script>
 
@@ -69,7 +69,7 @@ Enough talking, let's code!
 
 pyATS leverages the [Unicon](https://pypi.org/project/unicon/) library to connect to the device. It supports various protocols to connect to your device, such as **telnet** or **ssh**.
 
-Use SSH! :)
+SSH is the recommended administration protocol for modern operations.
 {: .notice--info}
 
 In other words, you just need to make sure you have an account with `read` rights, which can connects using **ssh**. You can enable SSH on IOS XR with the command `ssh server v2`.
@@ -84,7 +84,7 @@ You can find the complete documentation on how to build a testbed [here](https:/
 In a nutshell, we need to specify how to connect to our device:
 - `IP address` or `URL`,
 - `Credentials`,
-- `Type`, the Operating System of our device, in our case IOS XR,
+- `Type`, the Network Operating System of our device, in our case IOS XR,
 - `Protocol`, how to connect to our device, in our case SSH on port 22.
 
  Our testbed look like the below example:
@@ -113,13 +113,12 @@ In `my_dict`, in order to retrieve `my_value` associated with a specific `my_key
 A value can be a dictionary. In this case, we call it a `nested dictionary`. In our example, the key `"module_name"` is associated with a dictionary. In our pyATS output, we have multiple nested dictionaries.
 
 Dictionary keys are **case sensitive**!
-https://docs.python.org/3/tutorial/datastructures.html#dictionaries
 {: .notice--warning}
 
 In our case, the code to get the Serial Number out of the parsed output should look something like: `serial_number = my_output["module_name"]["Rack 0"]["sn"]`. 
 
-You can read more about Python dictionaries in the documentation.
-https://docs.python.org/3/tutorial/datastructures.html#dictionaries
+You can read more about Python dictionaries in the [official documentation]
+(https://docs.python.org/3/tutorial/datastructures.html#dictionaries).
 {: .notice--info}
 
 ## Bringing it all together
@@ -151,7 +150,8 @@ This last section reflects my own experience. Based on your own use of pyATS, it
 ## Cons
 
 * pyATS is great to retrieve this information once. You might have better tools if you need to retrieve an information periodically (ex: interface CRC errors, once per day).
-* If you use another operating system, the parser might not yet exist. It might take many more lines of codeto extact what you need using text parsing tools like Text FSM.
+* If you use another Network Operating System, the parser might not exist yet. It might take many more lines of code to extact what you need using text parsing tools like Text FSM.
+* What if the CLI changes and the parser is not valid anymore?
 
 # Conclusion
 
