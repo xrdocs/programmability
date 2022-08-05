@@ -19,7 +19,10 @@ Recently, I got a query from a Customer: how could I easily collect my device(s)
 
 At first, the question sounded silly: you could just do `show inventory all` on any IOS XR platform to get the platform serial number. What if you need to retrieve an information 100 times per day? What if you need get this information on 100 devices at once? The goal of this new series of article is to explain different ways to collect a serial number on a device. If you can do it with a serial number, you can do it with anything else! 
 
+>> TODO
 >> Second episode Netmiko + Text FSM. Quick descriptions
+>> Netmiko to connect to the device, handle the connection and send commands
+>> Text FSM to parse output
 
 The code for this series of posts will be published here:
 https://github.com/AntoineOrsoni/how-to-get-serial-number/
@@ -54,13 +57,15 @@ To make sure we are all on the same page, below is the command to collect the se
 
 <script src="https://gist.github.com/AntoineOrsoni/025aefa2afbeefd77d7b0a0f3ec909d1.js"></script>
 
-# Getting your hands dirty -- Collecting the serial number using pyATS
+# Getting your hands dirty -- Collecting the serial number using Netmiko and Text FSM
 
 Enough talking, let's code!
 
 ![keyboard cat_small2.png]({{site.baseurl}}/images/keyboard cat_small2.png){: .align-center}
 
-## How to enable pyATS on your IOS XR device?
+## How to enable Netmiko and Text FSM on your IOS XR device?
+
+>> TODO
 
 pyATS leverages the [Unicon](https://pypi.org/project/unicon/) library to connect to the device. It supports various protocols to connect to your device, such as **telnet** or **ssh**.
 
@@ -70,6 +75,10 @@ SSH is the recommended administration protocol for modern operations.
 In other words, you just need to make sure you have an account with `read` rights, which can connects using **ssh**. You can enable SSH on IOS XR with the command `ssh server v2`.
 
 ## Testbed definition
+
+>> TODO
+>> To be updated with the Python code
+>> Yes we could also import a yaml file. 
 
 The simplest way to connect to a device is through a pyATS testbed file, written in YAML. This information will be used by **Unicon** to connect to the device and send the requested commands.
 
@@ -89,16 +98,18 @@ In a nutshell, we need to specify how to connect to our device:
 Testbed definition has been covered in more details in [this post](https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/).
 {: .notice--info}
 
-## Leveraging pyATS parsers to get a Python dictionary
+## Leveraging Netmiko to connect to the IOS XR Sandbox
 
-The power of the **pyATS libraries**: to be able to convert a **raw output** (what you would get in a CLI output, printed earlier in this post) into a **parsed output** (dictionary) where you can easily get a `value` by accessing a specific `key`. Once parsed by pyATS, the output would look to something like below:
+>> TODO
 
-<script src="https://gist.github.com/AntoineOrsoni/dc87b1259a5f811e4a9394d9aa4481ae.js"></script>
+## Leveraging Text FSM to parse the output
 
-To better understand the difference between a raw output and a parserd output, you can refer to [this article](https://xrdocs.io/programmability/tutorials/pyats-series-parsing-like-a-pro/).
-{: .notice--info}
+>> TODO
 
 ## Using Python to get the value of a specific key
+
+>> TODO
+>> Does it need to be updated?
 
 In Python, you can see a Dicitonary as a set of `key: value` pairs. For example: `{ "name": "IOS-XR1", "version": "7.4.2"}`.
 
@@ -116,6 +127,9 @@ You can read more about Python dictionaries in the [official documentation](http
 
 ## Bringing it all together
 
+>> TODO
+>> Change ref to the rigth script
+
 This is what the full script looks like.
 1. We load the testbed to extact device information,
 2. We connect to the device,
@@ -128,12 +142,14 @@ You can find all supported pyATS parsers in [the documentation](https://pubhub.d
 
 <script src="https://gist.github.com/AntoineOrsoni/a941584f96f4e78961a819e2d0360f42.js"></script>
 
-# pyATS pros and cons to retrieve a serial number
+# Netmiko and Text FSM pros and cons to retrieve a serial number
 
-This last section reflects my own experience. Based on your own use of pyATS, it might vary. Feel free to comment if you disagree or if you think about something else.
+This last section reflects my own experience. Based on your own use of Netmiko and Text FSM, it might vary. Feel free to comment if you disagree or if you think about something else.
 {: .notice--info}
 
 ## Pros
+
+>> TODO
 
 * pyATS uses SSH as transport, which is most of the time open on the device.
 * You can extract the serial number with very basic Python knowledge and in less than 10 lines of code.
@@ -141,17 +157,23 @@ This last section reflects my own experience. Based on your own use of pyATS, it
 
 ## Cons
 
+>> TODO
+
 * pyATS is great to retrieve this information once. You might have better tools if you need to retrieve an information periodically (ex: interface CRC errors, once per day).
 * If you use another Network Operating System, the parser might not exist yet. It might take many more lines of code to extact what you need using text parsing tools like Text FSM.
 * What if the CLI changes and the parser is not valid anymore?
 
 # Conclusion
 
+>> TODO
+
 pyATS is a great tool to retrieve a serial number: we were able to achieve our goal in less than 10 lines of Python. 
 
 In the next episode, we will see how to get a serial number using **NETCONF**. 
 
 # Resources
+
+>> TODO
 
 Below a few useful pyATS resources.
 
