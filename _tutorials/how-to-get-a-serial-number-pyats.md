@@ -9,7 +9,7 @@ tags:
   - Python
   - pyATS
   - Automation
-position: hidden
+position: top
 ---
 {% include toc icon="table" title="Table of Contents" %}
 ![pyats_hello2.jpg]({{site.baseurl}}/images/pyats_hello2.jpg){: .align-center}
