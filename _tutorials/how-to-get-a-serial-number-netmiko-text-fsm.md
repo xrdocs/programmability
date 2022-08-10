@@ -14,8 +14,7 @@ position: hidden
 ---
 {% include toc icon="table" title="Table of Contents" %}
  
->> TODO 
->> Add Netmiko/Text FSM banner
+![netmiko-textfsm.jpg]({{site.baseurl}}/images/netmiko-textfsm.jpg)
 
 Recently, I got a query from a Customer: how could I easily collect my device(s) serial number? 
 
