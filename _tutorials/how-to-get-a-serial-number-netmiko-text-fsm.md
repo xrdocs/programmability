@@ -24,8 +24,7 @@ At first, the question sounded silly: you could just do `show inventory all` on 
 
 In this second episode, we are going to use **Netmiko** and **TextFSM**. It will be very similar to what we saw on [episode 1](https://xrdocs.io/programmability/tutorials/how-to-get-a-serial-number-pyats/) as pyATS uses Netmiko under the hood to connect to the device. Here, Netmiko will be used to handle device connection and to interact with our device (i.e. connect to the device, send a `show command`, retrieve the `output`, disconnect from the device). Netmiko will retrieve our output as a very long string, without any parsing. It's our job to parse the output to extract the information we need. For this, we will leverage TextFSM.
 
-The code for this series of posts will be published here:
-https://github.com/AntoineOrsoni/how-to-get-serial-number/
+The code for this series of posts will be published [here](https://github.com/AntoineOrsoni/how-to-get-serial-number/).
 {: .notice--info}
 
 ## Netmiko
