@@ -20,11 +20,6 @@ Recently, I got a query from a Customer: how could I easily collect my device(s)
 
 At first, the question sounded silly: you could just do `show inventory all` on any IOS XR platform to get the platform serial number. What if you need to retrieve an information 100 times per day? What if you need get this information on 100 devices at once? The goal of this new series of article is to explain different ways to collect a serial number on a device. If you can do it with a serial number, you can do it with anything else! 
 
->> TODO
->> Second episode Netmiko + Text FSM. Quick descriptions
->> Netmiko to connect to the device, handle the connection and send commands
->> Text FSM to parse output
-
 # Introduction
 
 In this second episode, we are going to use **Netmiko** and **TextFSM**. It will be very similar to what we saw on [episode 1](https://xrdocs.io/programmability/tutorials/how-to-get-a-serial-number-pyats/) as pyATS uses Netmiko under the hood to connect to the device. Here, Netmiko will be used to handle device connection and to interact with our device (i.e. connect to the device, send a `show command`, retrieve the `output`, disconnect from the device). Netmiko will retrieve our output as a very long string, without any parsing. It's our job to parse the output to extract the information we need. For this, we will leverage TextFSM.
