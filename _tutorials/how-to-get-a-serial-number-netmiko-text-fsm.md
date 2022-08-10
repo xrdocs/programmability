@@ -14,7 +14,7 @@ position: hidden
 ---
 {% include toc icon="table" title="Table of Contents" %}
  
-![netmiko-textfsm.jpg]({{site.baseurl}}/images/netmiko-textfsm.jpg){: .align-center}{:height="60%" width="60%"}
+![netmiko-textfsm.jpg]({{site.baseurl}}/images/netmiko-textfsm.jpg){: .align-center}{:height="580" width="300"}
 
 Recently, I got a query from a Customer: how could I easily collect my device(s) serial number? 
 
