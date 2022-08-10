@@ -29,8 +29,7 @@ If you are not already familiar with pyATS and you want to know how to install i
 https://xrdocs.io/programmability/tutorials/pyats-series-install-and-use-pyats/
 {: .notice--info}
 
-The code for this series of posts will be published here:
-https://github.com/AntoineOrsoni/how-to-get-serial-number/
+The code for this series of posts will be published [here](https://github.com/AntoineOrsoni/how-to-get-serial-number/).
 {: .notice--info}
 
 # Other "How to get a serial number" episodes
