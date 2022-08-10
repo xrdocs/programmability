@@ -14,7 +14,7 @@ position: hidden
 ---
 {% include toc icon="table" title="Table of Contents" %}
  
-![netmiko-textfsm.jpg]({{site.baseurl}}/images/netmiko-textfsm.jpg){: .align-center}{:height="580" width="300"}
+![netmiko-textfsm.jpg]({{site.baseurl}}/images/netmiko-textfsm.jpg){: .align-center}{:height="750" width="400"}
 
 Recently, I got a query from a Customer: how could I easily collect my device(s) serial number? 
 
@@ -81,9 +81,7 @@ Enough talking, let's code!
 
 ## How to enable Netmiko and Text FSM on your IOS XR device?
 
->> TODO
-
-pyATS leverages the [Unicon](https://pypi.org/project/unicon/) library to connect to the device. It supports various protocols to connect to your device, such as **telnet** or **ssh**.
+Netmiko supports various protocols to connect to your device, such as **telnet** or **ssh**. TextFSM will not interact with your device; meaning there is no specific requirement for your device to support TextFSM.
 
 SSH is the recommended administration protocol for modern operations.
 {: .notice--info}
