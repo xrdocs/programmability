@@ -6,15 +6,16 @@ author: Rahul Sharma
 tags:
   - iosxr
   - cisco
-position: hidden
+position: top
 ---
+
 # Background
 
 Let’s first start with a little bit of background with why we need gRPC and why it is better than other available options.
 
 # What is an RPC?
 
-An RPC (Remote Procedure Call) is a mechanism in which a system 'A' (client) runs a program (or a process) on another system 'B' (server) and receives the output of this process as a response. It works on a client-server model and uses TCP protocols and JSON/XML for data serialization to transmit request/response data
+An RPC (Remote Procedure Call) is a mechanism in which a system 'A' (client) runs a program (or a process) on another system 'B' (server) and receives the output of this process as a response. It works on a client-server model and uses TCP protocols and JSON/XML as encodings to transmit request/response data.
 
 # What the problem with traditional RPC?
 
@@ -66,26 +67,49 @@ Step3: Use following scripts as an example to leverage all the gNMI functionalit
 
 **1. Capabilities function**
 
-**2. Get function**
+```python
+from pygnmi.client import gNMIclient
+import json
 
+if __name__ == '__main__':
+
+	with gNMIclient(target=("10.30.111.171",57777),username="cisco",password="cisco123!",insecure=True) as gc:
+		
+		capability_result = gc.capabilities()
+	
+	print(json.dumps(capability_result, indent=4))
+```
+
+**2. Get function**
+```python
+from pygnmi.client import gNMIclient
+import json
+
+if __name__ == '__main__':
+
+	path = ['openconfig-interfaces:interfaces/interface[name=Loopback0]','Cisco-IOS-XR-shellutil-oper:system-time/clock']
+
+	with gNMIclient(target=("10.30.111.171",57777),username="cisco",password="cisco123!",insecure=True) as gc:	
+		get_result = gc.get(path=path,encoding='json_ietf',datatype='all',) 
+
+		print(json.dumps(get_result, indent=4))	
+```
 Path is provided as a list in the following format:
  
-path=['yang-module:container/container[key=value]',
-'yang-module:container/container[key=value]', ..]
- 
-
 Available path formats:
-          - yang-module:container/container[key=value]
-          - /yang-module:container/container[key=value]
-          - /yang-module:/container/container[key=value]
-          - /container/container[key=value]
+	
+	/yang-module:container/container[key=value]
+	/yang-module:container/container[key=value]
+	/yang-module:/container/container[key=value]
+	/container/container[key=value]
         
 The datatype argument may have the following values per gNMI specification:
-          - all
-          - config
-          - state
-          - operational
-
+```
+all
+config
+state
+operational
+```
 The encoding argument may have the following values per gNMI specification:
           - json
           - bytes
@@ -110,16 +134,3 @@ For both Update and Replace operations, If the path specified does not exist, th
 Update and Delete operations are performed on the specific data-node and remaining configurations stays as it is. Whereas Replace operation replaces all the current configurations with new configurations. If a path-value combination for an already existing data-node is not given with this operation, then that data-node will get deleted if it doesn’t have a default values. If it has a default value, the values will be set to default.
 
 **4. Capabilities function**
-```python
-from pygnmi.client import gNMIclient
-import json
-
-if __name__ == '__main__':
-
-	with gNMIclient(target=("10.30.111.171",57777),username="cisco",password="cisco123!",insecure=True) as gc:
-		
-		capability_result = gc.capabilities()
-	
-	print(json.dumps(capability_result, indent=4))
-```
-
