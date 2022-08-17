@@ -6,7 +6,7 @@ author: Rahul Sharma
 tags:
   - iosxr
   - cisco
-position: top
+position: hidden
 ---
 
 # Background
