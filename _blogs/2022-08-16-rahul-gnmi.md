@@ -8,7 +8,6 @@ tags:
   - cisco
 position: hidden
 ---
-
 ---
 published: false
 date: '2022-08-16 13:08 -0500'
@@ -27,11 +26,11 @@ Let’s first start with a little bit of background with why we need gRPC and wh
 
 An RPC (Remote Procedure Call) is a mechanism in which a system 'A' (client) runs a program (or a process) on another system 'B' (server) and receives the output of this process as a response. It works on a client-server model and uses TCP protocols and JSON/XML as encodings to transmit request/response data.
 
-# What the problem with traditional RPC?
+# What's the problem with traditional RPC?
 
 The problem starts with JSON/XML data formats. These text-based formats aren't the best when it comes to data compression. These formats transfer additional data (basically semantics) along with the actual data and this leads to a huge amount of data being transferred between client and server.
 
-This problem is addressed in gRPC, and therefore gRPC is preferred over RPC.
+Other solutions also available such as Apache RPC, but for this article we will focus on gRPC.
 
 # What is gRPC?
 
@@ -90,10 +89,12 @@ if __name__ == '__main__':
 	print(json.dumps(capability_result, indent=4))
 ```
 
-**Output**
-This is an omitted output.
-```json
-{
+<details>
+  <summary><b>Output</b></summary>
+
+This is an omitted output.  
+  ```json
+  {
     "supported_models": [
         {
             "name": "Cisco-IOS-XR-man-netconf-cfg",
@@ -118,7 +119,9 @@ This is an omitted output.
     ],
     "gnmi_version": "0.7.0"
 }
-```
+  ```
+</details>
+
 ## 2. Get function
 ```python
 from pygnmi.client import gNMIclient
@@ -133,6 +136,175 @@ if __name__ == '__main__':
 
 	print(json.dumps(get_result, indent=4))	
 ```
+
+ <details>
+  <summary><b>Output</b></summary>
+
+This is an omitted output.  
+  ```json
+ {
+  "notification": [
+      {
+          "timestamp": 1660773182082429567,
+          "prefix": null,
+          "alias": null,
+          "atomic": false,
+          "update": [
+              {
+                  "path": "interfaces/interface[name=Loopback0]/config",
+                  "val": {
+                      "name": "Loopback0",
+                      "type": "iana-if-type:softwareLoopback"
+                  }
+              },
+              {
+                  "path": "interfaces/interface[name=Loopback0]/state",
+                  "val": {
+                      "name": "Loopback0",
+                      "enabled": true,
+                      "type": "iana-if-type:softwareLoopback",
+                      "admin-status": "UP",
+                      "oper-status": "UP",
+                      "mtu": 1500,
+                      "counters": {
+                          "carrier-transitions": "1"
+                      },
+                      "last-change": "1658346470937377952",
+                      "loopback-mode": false,
+                      "ifindex": 9,
+                      "logical": true
+                  }
+              },
+              {
+                  "path": "interfaces/interface[name=Loopback0]/subinterfaces",
+                  "val": {
+                      "subinterface": [
+                          {
+                              "index": 0,
+                              "openconfig-if-ip:ipv4": {
+                                  "addresses": {
+                                      "address": [
+                                          {
+                                              "ip": "1.1.1.1",
+                                              "config": {
+                                                  "ip": "1.1.1.1",
+                                                  "prefix-length": 32
+                                              },
+                                              "state": {
+                                                  "ip": "1.1.1.1",
+                                                  "prefix-length": 32,
+                                                  "origin": "STATIC"
+                                              }
+                                          }
+                                      ]
+                                  }
+                              }
+                          }
+                      ]
+                  }
+              },
+              {
+                  "path": "bgp/bpm-instances-table/bpm-instances",
+                  "val": {
+                      "instance": [
+                          {
+                              "instance-identifier": 0,
+                              "placed-group-id": 1,
+                              "instance-name-str": "default",
+                              "as-number": 1,
+                              "number-of-vrfs": 2,
+                              "af-array": [
+                                  {
+                                      "entry": true
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": true
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": true
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  },
+                                  {
+                                      "entry": false
+                                  }
+                              ],
+                              "read-only-enabled": false,
+                              "install-diversion-enabled": false,
+                              "srgb-start-configured": 0,
+                              "srgb-end-configured": 0
+                          }
+                      ]
+                  }
+              }
+          ]
+      }
+  ]
+}
+  ```
+</details>
+
  
 Available path formats:
 	
@@ -153,169 +325,9 @@ The encoding argument may have the following values per gNMI specification:
  - ascii
  - json_ietf
  
- **Output**
- ```json
- {
-    "notification": [
-        {
-            "timestamp": 1660773182082429567,
-            "prefix": null,
-            "alias": null,
-            "atomic": false,
-            "update": [
-                {
-                    "path": "interfaces/interface[name=Loopback0]/config",
-                    "val": {
-                        "name": "Loopback0",
-                        "type": "iana-if-type:softwareLoopback"
-                    }
-                },
-                {
-                    "path": "interfaces/interface[name=Loopback0]/state",
-                    "val": {
-                        "name": "Loopback0",
-                        "enabled": true,
-                        "type": "iana-if-type:softwareLoopback",
-                        "admin-status": "UP",
-                        "oper-status": "UP",
-                        "mtu": 1500,
-                        "counters": {
-                            "carrier-transitions": "1"
-                        },
-                        "last-change": "1658346470937377952",
-                        "loopback-mode": false,
-                        "ifindex": 9,
-                        "logical": true
-                    }
-                },
-                {
-                    "path": "interfaces/interface[name=Loopback0]/subinterfaces",
-                    "val": {
-                        "subinterface": [
-                            {
-                                "index": 0,
-                                "openconfig-if-ip:ipv4": {
-                                    "addresses": {
-                                        "address": [
-                                            {
-                                                "ip": "1.1.1.1",
-                                                "config": {
-                                                    "ip": "1.1.1.1",
-                                                    "prefix-length": 32
-                                                },
-                                                "state": {
-                                                    "ip": "1.1.1.1",
-                                                    "prefix-length": 32,
-                                                    "origin": "STATIC"
-                                                }
-                                            }
-                                        ]
-                                    }
-                                }
-                            }
-                        ]
-                    }
-                },
-                {
-                    "path": "bgp/bpm-instances-table/bpm-instances",
-                    "val": {
-                        "instance": [
-                            {
-                                "instance-identifier": 0,
-                                "placed-group-id": 1,
-                                "instance-name-str": "default",
-                                "as-number": 1,
-                                "number-of-vrfs": 2,
-                                "af-array": [
-                                    {
-                                        "entry": true
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": true
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": true
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    },
-                                    {
-                                        "entry": false
-                                    }
-                                ],
-                                "read-only-enabled": false,
-                                "install-diversion-enabled": false,
-                                "srgb-start-configured": 0,
-                                "srgb-end-configured": 0
-                            }
-                        ]
-                    }
-                }
-            ]
-        }
-    ]
-}
- ```      
+ 
+> **_NOTE:_** When using ‘get’ or ‘set’ functions, some parameters are mandatory to pass as a parameter. To find mandatory parameters for a YANG module, we need to go through that module.
+
 ## 3. Set function
 
 There are 3 types of operations defined in the ‘SetRequest’ message:
@@ -379,10 +391,11 @@ if __name__ == '__main__':
 	print(json.dumps(delete_result, indent=4))	
 	
 ```
-	
- **Output**
- ```json
- {
+<details>
+  <summary><b>Output</b></summary>
+ 
+  ```json
+	{
     "timestamp": 1660768044642964688,
     "prefix": null,
     "response": [
@@ -441,7 +454,10 @@ if __name__ == '__main__':
         }
     ]
 }
- ```
+	
+  ```
+</details>
+
 
 ## 4. Subscribe function
 
@@ -479,10 +495,11 @@ if __name__ == '__main__':
 		for data in telemetry_stream:
 			print(json.dumps((telemetryParser(data)), indent=4))
 ```
-**Output**
-
-```json
-{
+<details>
+  <summary><b>Output</b></summary>
+  
+  ```json
+  {
     "update": {
         "update": [
             {
@@ -647,4 +664,496 @@ if __name__ == '__main__':
     "sync_response": true
 }
 
+	
 ```
+</details>
+
+# 'pygnmi' with TLS:
+
+In order to have TLS encryption to secure the data, we need an ems.pem certificate. This certificate is available at '/misc/config/grpc' directory on the router and can be copied into the same folder as the scripts above. Once it is copied, you can replace the line the line:
+	
+	with gNMIclient(target=("10.30.111.171",57777),username="cisco",password="cisco123!",insecure=True) as gc:
+	
+with the following lines:
+	
+	cert = "Documents/certs/ems.pem"
+	with gNMIclient(target=("10.30.111.171",57777),username="cisco",password="cisco123!",path_cert=cert,override="ems.cisco.com") as gc:
+	
+For example, to use the capabilities function of gNMI, our new code would be:
+```python
+
+from pygnmi.client import gNMIclient
+import json
+
+if __name__ == '__main__':
+	
+	cert = "/Users/rahusha7/Documents/rahusha7-github/pygnmi/functionalities/certs/ems.pem"
+	with gNMIclient(target=("10.30.111.171",57777),username="cisco",password="cisco123!",path_cert=cert,override="ems.cisco.com") as gc:
+		capability_result = gc.capabilities()
+	print(json.dumps(capability_result, indent=4))
+```
+
+Similarly, we can use 'Get', 'Set' and 'Subscribe' functions with TLS.
+
+# 'gNMIc' without TLS:
+
+As oppossed to pygnmi, this is a CLI tool that enables us leverage gNMI functionalities.
+
+## 1. Capabilities function
+	
+	gnmic -a 10.30.111.171:57777 -u cisco -p cisco123! --insecure capabilities
+
+<details>
+  <summary><b>Output</b></summary>
+  
+ 
+  ```
+
+gNMI version: 0.7.0
+supported models:
+  - Cisco-IOS-XR-man-netconf-cfg, Cisco Systems, Inc., 2019-12-12
+  - Cisco-IOS-XR-dot1x-oper, Cisco Systems, Inc., 2021-03-31
+  - Cisco-IOS-XR-dot1x-oper-sub1, Cisco Systems, Inc., 2021-03-31
+  - Cisco-IOS-XR-ethernet-link-oam-cfg, Cisco Systems, Inc., 2020-04-15
+  - Cisco-IOS-XR-um-dci-fabric-interconnect-cfg, Cisco Systems, Inc., 2020-12-14
+  - Cisco-IOS-XR-shellutil-delete-act, Cisco Systems, Inc., 2019-10-01
+  - Cisco-IOS-XR-um-config-display-cfg, Cisco Systems, Inc., 2021-04-14
+  - Cisco-IOS-XR-um-l2-ethernet-cfg, Cisco Systems, Inc., 2021-03-30
+  - openconfig-igmp-types, OpenConfig working group, 0.1.1
+  - openconfig-ospfv2, OpenConfig working group, 0.2.3
+  - openconfig-ospfv2-global, OpenConfig working group, 0.2.3
+  - openconfig-ospfv2-lsdb, OpenConfig working group, 0.2.3
+  - openconfig-ospfv2-area-interface, OpenConfig working group, 0.2.3
+  - openconfig-ospfv2-common, OpenConfig working group, 0.2.3
+  - openconfig-ospfv2-area, OpenConfig working group, 0.2.3
+supported encodings:
+  - JSON_IETF
+  - ASCII
+  - PROTO
+  ```
+</details>
+
+## 2. Get function
+
+To retrieve the content of a container, here 'interfaces', we can use the following command:
+
+	gnmic -a 10.30.111.171:57777 -u cisco -p cisco123! --insecure get --path 'openconfig-interfaces:/interfaces' -e json_ietf
+
+> **_NOTE:_** Due to several naming conventions, first container in the path doesn't have a forward slash ('/') before it. So Make sure there is a forward slash ('/') right after the colon (':') follwed by YANG module name.
+ 		
+<details>
+  <summary><b>Output</b></summary>
+  
+ 
+  ```json
+[
+  {
+    "source": "10.30.111.171:57777",
+    "timestamp": 1661276820039040328,
+    "time": "2022-08-23T12:47:00.039040328-05:00",
+    "updates": [
+      {
+        "Path": "openconfig-interfaces:interfaces",
+        "values": {
+          "interfaces": {
+            "interface": [
+              {
+                "config": {
+                  "name": "BVI1",
+                  "type": "iana-if-type:propVirtual"
+                },
+                "name": "BVI1",
+                "state": {
+                  "admin-status": "UP",
+                  "counters": {
+                    "carrier-transitions": "1"
+                  },
+                  "enabled": true,
+                  "ifindex": 8,
+                  "last-change": "1661274102416905208",
+                  "logical": true,
+                  "loopback-mode": false,
+                  "mtu": 1514,
+                  "name": "BVI1",
+                  "oper-status": "UP",
+                  "type": "iana-if-type:propVirtual"
+                },
+                "subinterfaces": {
+                  "subinterface": [
+                    {
+                      "index": 0,
+                      "openconfig-if-ip:ipv4": {
+                        "addresses": {
+                          "address": [
+                            {
+                              "config": {
+                                "ip": "10.10.8.1",
+                                "prefix-length": 24
+                              },
+                              "ip": "10.10.8.1",
+                              "state": {
+                                "ip": "10.10.8.1",
+                                "origin": "STATIC",
+                                "prefix-length": 24
+                              }
+                            }
+                          ]
+                        },
+                        "neighbors": {
+                          "neighbor": [
+                            {
+                              "ip": "10.10.8.1",
+                              "state": {
+                                "ip": "10.10.8.1",
+                                "link-layer-address": "00:8a:96:aa:70:da",
+                                "origin": "OTHER"
+                              }
+                            }
+                          ]
+                        },
+                        "state": {
+                          "counters": {
+                            "in-octets": "0",
+                            "in-pkts": "0",
+                            "out-octets": "0",
+                            "out-pkts": "0"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              {  
+              "config": {
+                  "name": "Loopback0",
+                  "type": "iana-if-type:softwareLoopback"
+                },
+                "state": {
+                  "admin-status": "UP",
+                  "counters": {
+                    "carrier-transitions": "1"
+                  },
+                  "enabled": true,
+                  "ifindex": 10,
+                  "last-change": "1661273971876349223",
+                  "logical": true,
+                  "loopback-mode": false,
+                  "mtu": 1500,
+                  "name": "Loopback0",
+                  "oper-status": "UP",
+                  "type": "iana-if-type:softwareLoopback"
+                },
+                "subinterfaces": {
+                  "subinterface": [
+                    {
+                      "index": 0,
+                      "openconfig-if-ip:ipv4": {
+                        "addresses": {
+                          "address": [
+                            {
+                              "config": {
+                                "ip": "1.1.1.1",
+                                "prefix-length": 32
+                              },
+                              "ip": "1.1.1.1",
+                              "state": {
+                                "ip": "1.1.1.1",
+                                "origin": "STATIC",
+                                "prefix-length": 32
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]  
+          }
+        }
+      }
+    ]
+  }
+] 
+  ```
+</details>
+
+To retrive a specific leaf of a container, we need use key-value pair with the following command:
+
+	gnmic -a 10.30.111.171:57777 -u cisco -p cisco123! --insecure get --path 'openconfig-interfaces:/interfaces/interface[name=Loopback0]' -e json_ietf
+	
+<details>
+  <summary><b>Output</b></summary>
+  
+ 
+  ```json
+  [
+  {
+    "source": "10.30.111.171:57777",
+    "timestamp": 1661277653053111016,
+    "time": "2022-08-23T13:00:53.053111016-05:00",
+    "updates": [
+      {
+        "Path": "openconfig-interfaces:interfaces/interface[name=Loopback0]",
+        "values": {
+          "interfaces/interface": {
+            "config": {
+              "name": "Loopback0",
+              "type": "iana-if-type:softwareLoopback"
+            },
+            "state": {
+              "admin-status": "UP",
+              "counters": {
+                "carrier-transitions": "1"
+              },
+              "enabled": true,
+              "ifindex": 10,
+              "last-change": "1661273971876349223",
+              "logical": true,
+              "loopback-mode": false,
+              "mtu": 1500,
+              "name": "Loopback0",
+              "oper-status": "UP",
+              "type": "iana-if-type:softwareLoopback"
+            },
+            "subinterfaces": {
+              "subinterface": [
+                {
+                  "index": 0,
+                  "openconfig-if-ip:ipv4": {
+                    "addresses": {
+                      "address": [
+                        {
+                          "config": {
+                            "ip": "1.1.1.1",
+                            "prefix-length": 32
+                          },
+                          "ip": "1.1.1.1",
+                          "state": {
+                            "ip": "1.1.1.1",
+                            "origin": "STATIC",
+                            "prefix-length": 32
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+]
+
+  ```
+</details>
+
+To retrieve more granular information about a leaf, we use the following command:
+
+	gnmic -a 10.30.111.171:57777 -u cisco -p cisco123! --insecure get --path 'openconfig-interfaces:/interfaces/interface[name=Loopback3]/state' -e json_ietf
+	
+<details>
+  <summary><b>Output</b></summary>
+  
+ 
+  ```json
+	[
+  {
+    "source": "10.30.111.171:57777",
+    "timestamp": 1661353613153429526,
+    "time": "2022-08-24T10:06:53.153429526-05:00",
+    "updates": [
+      {
+        "Path": "openconfig-interfaces:interfaces/interface[name=Loopback3]/state",
+        "values": {
+          "interfaces/interface/state": {
+            "admin-status": "UP",
+            "counters": {
+              "carrier-transitions": "1"
+            },
+            "enabled": true,
+            "ifindex": 125,
+            "last-change": "1661291780049212608",
+            "logical": true,
+            "loopback-mode": false,
+            "mtu": 1500,
+            "name": "Loopback3",
+            "oper-status": "UP",
+            "type": "iana-if-type:softwareLoopback"
+          }
+        }
+      }
+    ]
+  }
+]
+  ```
+</details>
+
+
+
+
+## 3. Set function
+
+This function helps us make configurational changes on the router. Here, we will create a new leaf with desired configuration and then delete it using following two commands.
+
+	gnmic -a 10.30.111.171:57777 -u cisco -p cisco123! --insecure set --update-path 'openconfig-interfaces:/interfaces/interface[name=Loopback3]' --update-file input.json
+	
+<details>
+  <summary><b>Output</b></summary>
+  
+ 
+  ```json
+	{
+  "source": "10.30.111.171:57777",
+  "timestamp": 1661358941551196624,
+  "time": "2022-08-24T11:35:41.551196624-05:00",
+  "results": [
+    {
+      "operation": "UPDATE",
+      "path": "openconfig-interfaces:interfaces/interface[name=Loopback3]"
+    }
+  ]
+}
+  ```
+</details>
+
+<details>
+  <summary>In this command, we use input.json file to pass required parameters to create an interface. Here is a sample input.json file.</summary>
+  
+ 
+  ```json
+	{
+    "config": {
+        "name": "Loopback4",
+        "type": "iana-if-type:softwareLoopback",
+        "enabled": false,
+        "description": "testing pygnmi to create an interface"
+    }
+}    
+  ```
+</details>
+
+To delete a leaf,  we can use the following command:
+	
+	gnmic -a 10.30.111.171:57777 -u cisco -p cisco123! --insecure set --delete 'openconfig-interfaces:/interfaces/interface[name=Loopback3]'
+
+<details>
+  <summary><b>Output</b></summary>
+  
+ 
+  ```json
+	{
+  "source": "10.30.111.171:57777",
+  "timestamp": 1661359383278642479,
+  "time": "2022-08-24T11:43:03.278642479-05:00",
+  "results": [
+    {
+      "operation": "DELETE",
+      "path": "openconfig-interfaces:interfaces/interface[name=Loopback3]"
+    }
+  ]
+}
+  ```
+</details>
+
+
+## 4. Subscribe function
+
+We can have a streaming telemetry at a given cadence using this function using the following CLI:
+
+	gnmic -a 10.30.111.171:57777 -u cisco -p cisco123! --insecure subscribe --path 'openconfig-interfaces:/interfaces/interface[name=Loopback0]' --mode stream --sample-interval 20s --stream-mode sample
+	
+<details>
+  <summary><b>Output</b></summary>
+  
+ 
+  ```json
+	{
+  "source": "10.30.111.171:57777",
+  "subscription-name": "default-1661359862",
+  "timestamp": 1661359913237000000,
+  "time": "2022-08-24T11:51:53.237-05:00",
+  "prefix": "openconfig-interfaces:",
+  "updates": [
+    {
+      "Path": "interfaces/interface[name=Loopback0]",
+      "values": {
+        "interfaces/interface": {
+          "subinterfaces": {
+            "subinterface": {
+              "index": 0,
+              "openconfig-if-ip:ipv4": {
+                "addresses": {
+                  "address": {
+                    "ip": "1.1.1.1",
+                    "state": {
+                      "ip": "1.1.1.1",
+                      "origin": "STATIC",
+                      "prefix-length": 32
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
+{
+  "source": "10.30.111.171:57777",
+  "subscription-name": "default-1661359862",
+  "timestamp": 1661359933239000000,
+  "time": "2022-08-24T11:52:13.239-05:00",
+  "prefix": "openconfig-interfaces:",
+  "updates": [
+    {
+      "Path": "interfaces/interface[name=Loopback0]",
+      "values": {
+        "interfaces/interface": {
+          "subinterfaces": {
+            "subinterface": {
+              "index": 0,
+              "openconfig-if-ip:ipv4": {
+                "addresses": {
+                  "address": {
+                    "ip": "1.1.1.1",
+                    "state": {
+                      "ip": "1.1.1.1",
+                      "origin": "STATIC",
+                      "prefix-length": 32
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
+  ```
+</details>
+
+You can confirm the cadence in the time stamp of each stream, here it's 20s.
+
+# 'gNMIc' with TLS:
+
+To enable TLS with gNMIc, we need to copy the 'ems.pem' certificate present in the '/misc/config/grpc' directory on the router and pass it's location as one of the parameters with CLI.
+
+For example, to use TLS with 'Capabilities' functions, our new command would be:
+
+	gnmic -a 10.30.111.171:57777 -u cisco -p cisco123! --tls-cert 'Documents/certs/ems.pem' --skip-verify capabilities -e 'json_ietf'
+
+Here, we are passing two additional parameters - '--tls-cert' and '--skip-verify'.
+
+We can use these paramters with 'Get','Set' and 'Subscribe' functions and leverage TLS with them.
+	
+	
