@@ -1,14 +1,4 @@
 ---
-published: false
-date: '2022-08-16 13:08 -0500'
-title: Rahul-gnmi
-author: Rahul Sharma
-tags:
-  - iosxr
-  - cisco
-position: hidden
----
----
 published: true
 date: '2022-08-16 13:08 -0500'
 title: OpenConfig - gNMI
