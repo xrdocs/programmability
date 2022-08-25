@@ -9,7 +9,7 @@ tags:
 position: hidden
 ---
 ---
-published: false
+published: true
 date: '2022-08-16 13:08 -0500'
 title: OpenConfig - gNMI
 author: Rahul Sharma
@@ -1155,5 +1155,3 @@ For example, to use TLS with 'Capabilities' functions, our new command would be:
 Here, we are passing two additional parameters - '--tls-cert' and '--skip-verify'.
 
 We can use these paramters with 'Get','Set' and 'Subscribe' functions and leverage TLS with them.
-	
-	
