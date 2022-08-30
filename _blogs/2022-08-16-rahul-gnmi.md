@@ -16,6 +16,8 @@ Let’s first start with a little bit of background with why we need gRPC and wh
 
 # What is an RPC?
 
+<script src="https://gist.github.com/rahusha7/6cfe3c25d929edd02f9ccd48a4a0742e.js"></script>
+
 An RPC (Remote Procedure Call) is a mechanism in which a system 'A' (client) runs a program (or a process) on another system 'B' (server) and receives the output of this process as a response. It works on a client-server model and uses TCP protocols and JSON/XML as encodings to transmit request/response data.
 
 # What's the problem with traditional RPC?
@@ -81,6 +83,7 @@ if __name__ == '__main__':
 ```
 <details>
 <summary><b>Output</b></summary>
+<script src="https://gist.github.com/rahusha7/6cfe3c25d929edd02f9ccd48a4a0742e.js"></script>
 
 This is an omitted output.  
 ```json
