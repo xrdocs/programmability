@@ -65,7 +65,6 @@ Step2: Install pygnmi on your system
 Step3: Use following scripts as an example to leverage all the gNMI functionalities
 
 ## 1. Capabilities function
-
 ```python
 from pygnmi.client import gNMIclient
 import json
@@ -82,7 +81,7 @@ if __name__ == '__main__':
 <details>
   <summary><b>Output</b></summary>
 
-This is an omitted outpu.  
+This is an omitted out.  
 ```json
 {
     "supported_models": [
