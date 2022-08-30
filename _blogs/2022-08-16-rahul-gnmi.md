@@ -10,8 +10,6 @@ position: hidden
 ---
 # Background
 
-<script src="https://gist.github.com/rahusha7/ea2ded49a8d5327f96254a2478d8cc03.js"></script>
-
 Let’s first start with a little bit of background with why we need gRPC and why it is better than other available options.
 
 # What is an RPC?
@@ -105,11 +103,11 @@ if __name__ == '__main__':
 ```
 
  <details>
-  <summary><b>Output</b></summary>
+	<summary><b>Output</b></summary>
 
 This is an omitted output.  
 
-<script src="https://gist.github.com/rahusha7/a41fdd960b696d4d4c58899b655f9929.js"></script>
+	<script src="https://gist.github.com/rahusha7/a41fdd960b696d4d4c58899b655f9929.js"></script>
 	
 </details>
 
