@@ -81,10 +81,10 @@ if __name__ == '__main__':
 <details>
   <summary><b>Output</b></summary>
 
- This is an omitted out1.  
+  This is an omitted output.  
 
-```javascript
-{
+  ```json
+  {
     "supported_models": [
         {
             "name": "Cisco-IOS-XR-man-netconf-cfg",
@@ -108,7 +108,9 @@ if __name__ == '__main__':
         "proto"
     ],
     "gnmi_version": "0.7.0"
-}```
+  }
+  
+  ```
 
 
 </details>
