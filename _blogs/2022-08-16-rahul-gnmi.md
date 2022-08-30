@@ -78,37 +78,37 @@ if __name__ == '__main__':
 	print(json.dumps(capability_result, indent=4))
 ```
 <details>
-	<summary>Output??</summary><p>
+<summary><b>Output</b></summary>
+
+This is an omitted output.  
 ```json
-  
-  {
-    "supported_models": [
-        {
-            "name": "Cisco-IOS-XR-man-netconf-cfg",
-            "organization": "Cisco Systems, Inc.",
-            "version": "2019-12-12"
-        },
-        {
-            "name": "Cisco-IOS-XR-dot1x-oper",
-            "organization": "Cisco Systems, Inc.",
-            "version": "2021-03-31"
-        },
-        {
-            "name": "Cisco-IOS-XR-dot1x-oper-sub1",
-            "organization": "Cisco Systems, Inc.",
-            "version": "2021-03-31"
-        }
-    ],
-    "supported_encodings": [
-        "json_ietf",
-        "ascii",
-        "proto"
-    ],
-    "gnmi_version": "0.7.0"
-  }
-  
-```
-</p>  
+  	{
+    	"supported_models": [
+        	{
+            	"name": "Cisco-IOS-XR-man-netconf-cfg",
+            	"organization": "Cisco Systems, Inc.",
+            	"version": "2019-12-12"
+        	},	
+        	{
+            	"name": "Cisco-IOS-XR-dot1x-oper",
+            	"organization": "Cisco Systems, Inc.",
+            	"version": "2021-03-31"
+        	},
+        	{
+            	"name": "Cisco-IOS-XR-dot1x-oper-sub1",
+            	"organization": "Cisco Systems, Inc.",
+            	"version": "2021-03-31"
+        	}
+    	],
+    	"supported_encodings": [
+        	"json_ietf",
+        	"ascii",
+        	"proto"
+    	],
+    	"gnmi_version": "0.7.0"
+  	}
+  ```
+
 </details>
 
 
