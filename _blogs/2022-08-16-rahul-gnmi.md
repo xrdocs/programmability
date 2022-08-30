@@ -83,7 +83,7 @@ if __name__ == '__main__':
 
  This is an omitted out1.  
 
-```yaml
+```javascript
 {
     "supported_models": [
         {
@@ -108,7 +108,7 @@ if __name__ == '__main__':
         "proto"
     ],
     "gnmi_version": "0.7.0"
-}
+}```
 
 
 </details>
