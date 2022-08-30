@@ -77,13 +77,10 @@ if __name__ == '__main__':
 	
 	print(json.dumps(capability_result, indent=4))
 ```
-
 <details>
-  <summary><b>Output</b></summary>
-
-  This is an omitted output.  
-
-  ```json
+	<summary>Output??</summary><p>
+```json
+  
   {
     "supported_models": [
         {
@@ -110,10 +107,10 @@ if __name__ == '__main__':
     "gnmi_version": "0.7.0"
   }
   
-  ```
-
-
+```
+</p>  
 </details>
+
 
 ## 2. Get function
 ```python
