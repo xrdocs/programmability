@@ -10,6 +10,8 @@ position: hidden
 ---
 # Background
 
+<script src="https://gist.github.com/rahusha7/ea2ded49a8d5327f96254a2478d8cc03.js"></script>
+
 Let’s first start with a little bit of background with why we need gRPC and why it is better than other available options.
 
 # What is an RPC?
