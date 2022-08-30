@@ -10,13 +10,12 @@ position: hidden
 ---
 # Background
 
-<script src="https://gist.github.com/rahusha7/6cfe3c25d929edd02f9ccd48a4a0742e.js"></script>
+<script src="https://gist.github.com/rahusha7/b4cfa4a3558b30dbb41c2b4853085511.js"></script>
+
 
 Let’s first start with a little bit of background with why we need gRPC and why it is better than other available options.
 
 # What is an RPC?
-
-<script src="https://gist.github.com/rahusha7/6cfe3c25d929edd02f9ccd48a4a0742e.js"></script>
 
 An RPC (Remote Procedure Call) is a mechanism in which a system 'A' (client) runs a program (or a process) on another system 'B' (server) and receives the output of this process as a response. It works on a client-server model and uses TCP protocols and JSON/XML as encodings to transmit request/response data.
 
@@ -83,36 +82,9 @@ if __name__ == '__main__':
 ```
 <details>
 <summary><b>Output</b></summary>
+	
+This is an omitted output.
 <script src="https://gist.github.com/rahusha7/6cfe3c25d929edd02f9ccd48a4a0742e.js"></script>
-
-This is an omitted output.  
-```json
-  	{
-    	"supported_models": [
-        	{
-            	"name": "Cisco-IOS-XR-man-netconf-cfg",
-            	"organization": "Cisco Systems, Inc.",
-            	"version": "2019-12-12"
-        	},	
-        	{
-            	"name": "Cisco-IOS-XR-dot1x-oper",
-            	"organization": "Cisco Systems, Inc.",
-            	"version": "2021-03-31"
-        	},
-        	{
-            	"name": "Cisco-IOS-XR-dot1x-oper-sub1",
-            	"organization": "Cisco Systems, Inc.",
-            	"version": "2021-03-31"
-        	}
-    	],
-    	"supported_encodings": [
-        	"json_ietf",
-        	"ascii",
-        	"proto"
-    	],
-    	"gnmi_version": "0.7.0"
-  	}
-  ```
 
 </details>
 
