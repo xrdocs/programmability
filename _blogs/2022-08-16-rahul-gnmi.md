@@ -83,7 +83,7 @@ if __name__ == '__main__':
   <summary><b>Output</b></summary>
 
 This is an omitted output.  
-  ```json
+```json
   {
     "supported_models": [
         {
@@ -109,7 +109,7 @@ This is an omitted output.
     ],
     "gnmi_version": "0.7.0"
 }
-  ```
+```
 </details>
 
 ## 2. Get function
