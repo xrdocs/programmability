@@ -81,8 +81,9 @@ if __name__ == '__main__':
 <details>
   <summary><b>Output</b></summary>
 
-This is an omitted out.  
-```json
+ This is an omitted out1.  
+
+```yaml
 {
     "supported_models": [
         {
@@ -109,6 +110,7 @@ This is an omitted out.
     "gnmi_version": "0.7.0"
 }
 ```
+
 </details>
 
 ## 2. Get function
@@ -444,7 +446,8 @@ if __name__ == '__main__':
     ]
 }
 	
-  ```
+```
+  
 </details>
 
 
