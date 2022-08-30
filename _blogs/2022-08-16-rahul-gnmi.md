@@ -282,32 +282,8 @@ As oppossed to pygnmi, this is a CLI tool that enables us leverage gNMI function
 
 <details>
   <summary><b>Output</b></summary>
-  
+ <script src="https://gist.github.com/rahusha7/fa6285714399a4c76d46e11d0ff035da.js"></script> 
  
-  ```
-
-gNMI version: 0.7.0
-supported models:
-  - Cisco-IOS-XR-man-netconf-cfg, Cisco Systems, Inc., 2019-12-12
-  - Cisco-IOS-XR-dot1x-oper, Cisco Systems, Inc., 2021-03-31
-  - Cisco-IOS-XR-dot1x-oper-sub1, Cisco Systems, Inc., 2021-03-31
-  - Cisco-IOS-XR-ethernet-link-oam-cfg, Cisco Systems, Inc., 2020-04-15
-  - Cisco-IOS-XR-um-dci-fabric-interconnect-cfg, Cisco Systems, Inc., 2020-12-14
-  - Cisco-IOS-XR-shellutil-delete-act, Cisco Systems, Inc., 2019-10-01
-  - Cisco-IOS-XR-um-config-display-cfg, Cisco Systems, Inc., 2021-04-14
-  - Cisco-IOS-XR-um-l2-ethernet-cfg, Cisco Systems, Inc., 2021-03-30
-  - openconfig-igmp-types, OpenConfig working group, 0.1.1
-  - openconfig-ospfv2, OpenConfig working group, 0.2.3
-  - openconfig-ospfv2-global, OpenConfig working group, 0.2.3
-  - openconfig-ospfv2-lsdb, OpenConfig working group, 0.2.3
-  - openconfig-ospfv2-area-interface, OpenConfig working group, 0.2.3
-  - openconfig-ospfv2-common, OpenConfig working group, 0.2.3
-  - openconfig-ospfv2-area, OpenConfig working group, 0.2.3
-supported encodings:
-  - JSON_IETF
-  - ASCII
-  - PROTO
-  ```
 </details>
 
 ## 2. Get function
@@ -321,140 +297,8 @@ To retrieve the content of a container, here 'interfaces', we can use the follow
 <details>
   <summary><b>Output</b></summary>
   
- 
-  ```json
-[
-  {
-    "source": "10.30.111.171:57777",
-    "timestamp": 1661276820039040328,
-    "time": "2022-08-23T12:47:00.039040328-05:00",
-    "updates": [
-      {
-        "Path": "openconfig-interfaces:interfaces",
-        "values": {
-          "interfaces": {
-            "interface": [
-              {
-                "config": {
-                  "name": "BVI1",
-                  "type": "iana-if-type:propVirtual"
-                },
-                "name": "BVI1",
-                "state": {
-                  "admin-status": "UP",
-                  "counters": {
-                    "carrier-transitions": "1"
-                  },
-                  "enabled": true,
-                  "ifindex": 8,
-                  "last-change": "1661274102416905208",
-                  "logical": true,
-                  "loopback-mode": false,
-                  "mtu": 1514,
-                  "name": "BVI1",
-                  "oper-status": "UP",
-                  "type": "iana-if-type:propVirtual"
-                },
-                "subinterfaces": {
-                  "subinterface": [
-                    {
-                      "index": 0,
-                      "openconfig-if-ip:ipv4": {
-                        "addresses": {
-                          "address": [
-                            {
-                              "config": {
-                                "ip": "10.10.8.1",
-                                "prefix-length": 24
-                              },
-                              "ip": "10.10.8.1",
-                              "state": {
-                                "ip": "10.10.8.1",
-                                "origin": "STATIC",
-                                "prefix-length": 24
-                              }
-                            }
-                          ]
-                        },
-                        "neighbors": {
-                          "neighbor": [
-                            {
-                              "ip": "10.10.8.1",
-                              "state": {
-                                "ip": "10.10.8.1",
-                                "link-layer-address": "00:8a:96:aa:70:da",
-                                "origin": "OTHER"
-                              }
-                            }
-                          ]
-                        },
-                        "state": {
-                          "counters": {
-                            "in-octets": "0",
-                            "in-pkts": "0",
-                            "out-octets": "0",
-                            "out-pkts": "0"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              },
-              {  
-              "config": {
-                  "name": "Loopback0",
-                  "type": "iana-if-type:softwareLoopback"
-                },
-                "state": {
-                  "admin-status": "UP",
-                  "counters": {
-                    "carrier-transitions": "1"
-                  },
-                  "enabled": true,
-                  "ifindex": 10,
-                  "last-change": "1661273971876349223",
-                  "logical": true,
-                  "loopback-mode": false,
-                  "mtu": 1500,
-                  "name": "Loopback0",
-                  "oper-status": "UP",
-                  "type": "iana-if-type:softwareLoopback"
-                },
-                "subinterfaces": {
-                  "subinterface": [
-                    {
-                      "index": 0,
-                      "openconfig-if-ip:ipv4": {
-                        "addresses": {
-                          "address": [
-                            {
-                              "config": {
-                                "ip": "1.1.1.1",
-                                "prefix-length": 32
-                              },
-                              "ip": "1.1.1.1",
-                              "state": {
-                                "ip": "1.1.1.1",
-                                "origin": "STATIC",
-                                "prefix-length": 32
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            ]  
-          }
-        }
-      }
-    ]
-  }
-] 
-  ```
+ <script src="https://gist.github.com/rahusha7/2b22f837758282a70afe35a31a5e85b0.js"></script>
+	
 </details>
 
 To retrive a specific leaf of a container, we need use key-value pair with the following command:
@@ -464,70 +308,7 @@ To retrive a specific leaf of a container, we need use key-value pair with the f
 <details>
   <summary><b>Output</b></summary>
   
- 
-  ```json
-  [
-  {
-    "source": "10.30.111.171:57777",
-    "timestamp": 1661277653053111016,
-    "time": "2022-08-23T13:00:53.053111016-05:00",
-    "updates": [
-      {
-        "Path": "openconfig-interfaces:interfaces/interface[name=Loopback0]",
-        "values": {
-          "interfaces/interface": {
-            "config": {
-              "name": "Loopback0",
-              "type": "iana-if-type:softwareLoopback"
-            },
-            "state": {
-              "admin-status": "UP",
-              "counters": {
-                "carrier-transitions": "1"
-              },
-              "enabled": true,
-              "ifindex": 10,
-              "last-change": "1661273971876349223",
-              "logical": true,
-              "loopback-mode": false,
-              "mtu": 1500,
-              "name": "Loopback0",
-              "oper-status": "UP",
-              "type": "iana-if-type:softwareLoopback"
-            },
-            "subinterfaces": {
-              "subinterface": [
-                {
-                  "index": 0,
-                  "openconfig-if-ip:ipv4": {
-                    "addresses": {
-                      "address": [
-                        {
-                          "config": {
-                            "ip": "1.1.1.1",
-                            "prefix-length": 32
-                          },
-                          "ip": "1.1.1.1",
-                          "state": {
-                            "ip": "1.1.1.1",
-                            "origin": "STATIC",
-                            "prefix-length": 32
-                          }
-                        }
-                      ]
-                    }
-                  }
-                }
-              ]
-            }
-          }
-        }
-      }
-    ]
-  }
-]
-
-  ```
+<script src="https://gist.github.com/rahusha7/46cf78b838415667604e705db285bacf.js"></script>
 </details>
 
 To retrieve more granular information about a leaf, we use the following command:
@@ -536,39 +317,7 @@ To retrieve more granular information about a leaf, we use the following command
 	
 <details>
   <summary><b>Output</b></summary>
-  
- 
-  ```json
-	[
-  {
-    "source": "10.30.111.171:57777",
-    "timestamp": 1661353613153429526,
-    "time": "2022-08-24T10:06:53.153429526-05:00",
-    "updates": [
-      {
-        "Path": "openconfig-interfaces:interfaces/interface[name=Loopback3]/state",
-        "values": {
-          "interfaces/interface/state": {
-            "admin-status": "UP",
-            "counters": {
-              "carrier-transitions": "1"
-            },
-            "enabled": true,
-            "ifindex": 125,
-            "last-change": "1661291780049212608",
-            "logical": true,
-            "loopback-mode": false,
-            "mtu": 1500,
-            "name": "Loopback3",
-            "oper-status": "UP",
-            "type": "iana-if-type:softwareLoopback"
-          }
-        }
-      }
-    ]
-  }
-]
-  ```
+<script src="https://gist.github.com/rahusha7/ba88c1f352efa79b9db1f24902c2c1d2.js"></script>
 </details>
 
 
@@ -583,20 +332,7 @@ This function helps us make configurational changes on the router. Here, we will
 <details>
   <summary><b>Output</b></summary>
   
- 
-  ```json
-	{
-  "source": "10.30.111.171:57777",
-  "timestamp": 1661358941551196624,
-  "time": "2022-08-24T11:35:41.551196624-05:00",
-  "results": [
-    {
-      "operation": "UPDATE",
-      "path": "openconfig-interfaces:interfaces/interface[name=Loopback3]"
-    }
-  ]
-}
-  ```
+<script src="https://gist.github.com/rahusha7/c51dadefb561889dca5d8e123cb0c311.js"></script>
 </details>
 
 <details>
@@ -621,21 +357,9 @@ To delete a leaf,  we can use the following command:
 
 <details>
   <summary><b>Output</b></summary>
-  
- 
-  ```json
-	{
-  "source": "10.30.111.171:57777",
-  "timestamp": 1661359383278642479,
-  "time": "2022-08-24T11:43:03.278642479-05:00",
-  "results": [
-    {
-      "operation": "DELETE",
-      "path": "openconfig-interfaces:interfaces/interface[name=Loopback3]"
-    }
-  ]
-}
-  ```
+
+<script src="https://gist.github.com/rahusha7/988a8adfd5085f605f2ba3af3599d9b3.js"></script>
+
 </details>
 
 
@@ -647,76 +371,7 @@ We can have a streaming telemetry at a given cadence using this function using t
 	
 <details>
   <summary><b>Output</b></summary>
-  
- 
-  ```json
-	{
-  "source": "10.30.111.171:57777",
-  "subscription-name": "default-1661359862",
-  "timestamp": 1661359913237000000,
-  "time": "2022-08-24T11:51:53.237-05:00",
-  "prefix": "openconfig-interfaces:",
-  "updates": [
-    {
-      "Path": "interfaces/interface[name=Loopback0]",
-      "values": {
-        "interfaces/interface": {
-          "subinterfaces": {
-            "subinterface": {
-              "index": 0,
-              "openconfig-if-ip:ipv4": {
-                "addresses": {
-                  "address": {
-                    "ip": "1.1.1.1",
-                    "state": {
-                      "ip": "1.1.1.1",
-                      "origin": "STATIC",
-                      "prefix-length": 32
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  ]
-}
-{
-  "source": "10.30.111.171:57777",
-  "subscription-name": "default-1661359862",
-  "timestamp": 1661359933239000000,
-  "time": "2022-08-24T11:52:13.239-05:00",
-  "prefix": "openconfig-interfaces:",
-  "updates": [
-    {
-      "Path": "interfaces/interface[name=Loopback0]",
-      "values": {
-        "interfaces/interface": {
-          "subinterfaces": {
-            "subinterface": {
-              "index": 0,
-              "openconfig-if-ip:ipv4": {
-                "addresses": {
-                  "address": {
-                    "ip": "1.1.1.1",
-                    "state": {
-                      "ip": "1.1.1.1",
-                      "origin": "STATIC",
-                      "prefix-length": 32
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  ]
-}
-  ```
+  <script src="https://gist.github.com/rahusha7/5769cbac089107eec39028f1c0215e9f.js"></script>
 </details>
 
 You can confirm the cadence in the time stamp of each stream, here it's 20s.
