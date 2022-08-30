@@ -82,9 +82,9 @@ if __name__ == '__main__':
 <details>
   <summary><b>Output</b></summary>
 
-This is an omitted output.  
+This is an omitted outpu.  
 ```json
-  {
+{
     "supported_models": [
         {
             "name": "Cisco-IOS-XR-man-netconf-cfg",
