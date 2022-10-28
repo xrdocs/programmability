@@ -1,21 +1,19 @@
 ---
 published: True
 position: hidden
-date: '2022-03-22 10:00 -0400'
-title: Napalm IOSXR NETCONF Overview
-excerpt: Napalm is a python library which grabbed the attention of network engineers. Learn more about it and take a look how you could manage Cisco devices with it.
+date: '2022-10-28 10:00 -0400'
+title: Napalm IOS-XR NETCONF Overview
+excerpt: Napalm is a python library which grabbed the attention of network engineers. Learn more about IOS-XR NETCONF driver and take a look how you could manage Cisco IOS-XR devices with it.
 author: Neelima Parakala
 ---
-{% include toc icon="table" title="Napalm IOSXR NETCONF Overview" %}
+{% include toc icon="table" title="Napalm IOS-XR NETCONF Overview" %}
 
 
-## What is Napalm ?
 
-## What is Napalm IOSXR NETCONF driver ?
+## What is Napalm IOS-XR NETCONF driver ?
 
-## Why Napalm ?
 
-## Why Napalm IOSXR NETCONF driver ?
+## Why Napalm IOS-XR NETCONF driver ?
        
 ## How does it work?
 
@@ -71,8 +69,6 @@ Once you have all the required packages installed, go ahead and write the code t
 ```
 ```
 
-
-## What are the flavours of Napalm ?
 
 
 # Conclusion
