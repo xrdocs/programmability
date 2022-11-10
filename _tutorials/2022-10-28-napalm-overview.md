@@ -8,7 +8,7 @@ author: Neelima Parakala
 ---
 {% include toc icon="table" title="Napalm Overview" %}
 
-
+Are you looking for a vendor-neutral,  scalable, efficient network automation framework, where all tasks are written in Python programming language? If yes, then you are at the right place! And it is Napalm !!!
 
 ## What is Napalm ?
 
