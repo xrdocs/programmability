@@ -24,11 +24,11 @@ There are a number of alternatives, including Apache RPC, to solve this problem,
 
 # What is gRPC?
 
-A Google-led open-source protocol that utilises an RPC, just like regular RPC, but combines it with a "Protocol Buffer." A protocol buffer can define the data structure, and from that description, code can be written to create or parse a stream of bytes that corresponds to the structured data. The real data is reduced by the binary data format by around 10 times. This compressed data is transmitted over HTTP V2, which may be secured by adding TLS.
+A Google-led open-source protocol that utilises an RPC, just like regular RPC, but combines it with a "Protocol Buffer." A protocol buffer can define the data structure, and from that description, code can be written to create or parse a stream of bytes that corresponds to the structured data. The real data is reduced by the binary data format by around 10 times. This compressed data is transmitted over HTTP/2, which may be secured by adding TLS.
 
 You might be questioning why REST instead of conventional RPC isn't used because we are talking about HTTP.
 
-The JSON data format, which is a text-based format, is used by even REST, and as was said previously, it is not very compressible. Additionally, REST makes use of HTTP v1.1, which operates on a request/response basis, meaning that if a server gets requests from numerous clients at once, each request is dealt with separately. While gRPC employs HTTP v2, which supports multiplexing, a request/response mechanism, and can handle many requests concurrently.
+The JSON data format, which is a text-based format, is used by even REST, and as was said previously, it is not very compressible. Additionally, REST makes use of HTTP v1.1, which operates on a request/response basis, meaning that if a server gets requests from numerous clients at once, each request is dealt with separately. While gRPC employs HTTP/2, which supports multiplexing, a request/response mechanism, and can handle many requests concurrently.
 
 So far, we have read why is gRPC the best option we have. But how do we make use of gRPC? One way is to create an RPC on our own and then convert it into corresponding binary data format and transfer it to/from the server. Does this method seem interesting?? because creating is an RPC is 'very easy'. Another method is to have an interface that creates RPCs for us and handle their conversion into corresponding data bytes at the client as well as at server.
 
@@ -138,11 +138,11 @@ The encoding argument may have the following values per gNMI specification:
 
 There are 3 types of operations defined in the ‘SetRequest’ message:
 
-**1.Update:** To create new configurations(data-node) as per the given path-value combination. 
+**1. Update:** To create new configurations(data-node) as per the given path-value combination. 
 
-**2.Delete:** To delete the configuration(data-node) in the on the router(data-tree) provided the path is correct and data-node already exists in the tree. Otherwise, the entire transaction is rolled back to its initial state. 
+**2. Delete:** To delete the configuration(data-node) in the on the router(data-tree) provided the path is correct and data-node already exists in the tree. Otherwise, the entire transaction is rolled back to its initial state. 
 
-**3.Replace:** To replace the current configuration with the new supplied path-value combination.
+**3. Replace:** To replace the current configuration with the new supplied path-value combination.
 
 For both Update and Replace operations, If the path specified does not exist, the target MUST create the data tree element and populate it with the data in the Update message, provided the path is valid according to the data tree schema. If invalid values are specified, the target MUST cease processing updates within the SetRequest method, return the data tree to the state prior to any changes, and return a SetResponse status indicating the error encountered.
 
@@ -319,8 +319,6 @@ To retrieve more granular information about a leaf, we use the following command
   <summary><b>Output</b></summary>
 <script src="https://gist.github.com/rahusha7/ba88c1f352efa79b9db1f24902c2c1d2.js"></script>
 </details>
-
-
 
 
 ## 3. Set function
