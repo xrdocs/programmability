@@ -46,7 +46,7 @@ The "gNMI" or "gRPC Network Management Interface" is an interface that uses Prot
 
 After reading the abovementioned material, you now have a general understanding of gRPC's advantages over regular RPC, the needs for gNMI, and its features. But as said, applying what we read helps us learn more. It's time to put what we have learned and read thus far to use and get our hands dirty.
 
-Since we are utilizing gRPCs, which employs HTTP 2.0, we may utilize TLS to protect our connection. Let's begin without TLS for now. Additionally, we have two open-source gNMI clients, 'pygnmi' and 'gnmic'. For now, we'll start with 'pygnmi'.
+Since we are utilizing gRPCs, which employs HTTP/2, we may utilize TLS to protect our connection. Let's begin without TLS for now. Additionally, we have two open-source gNMI clients, 'pygnmi' and 'gnmic'. For now, we'll start with 'pygnmi'.
 
 # 'pygnmi' without TLS:
 
