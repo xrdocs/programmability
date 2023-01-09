@@ -1,7 +1,7 @@
 ---
 published: false
 date: '2023-01-09 15:10 -0500'
-title: ''
+title: OpenConfig-gnmi.md
 ---
 # Background
 
