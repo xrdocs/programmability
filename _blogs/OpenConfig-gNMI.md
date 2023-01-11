@@ -7,8 +7,9 @@ tags:
   - iosxr
   - cisco
 position: hidden
+toc: true
+
 ---
-{% include toc icon="table" title="Running a Native (WRL7) App" %}
 
 # Background
 
