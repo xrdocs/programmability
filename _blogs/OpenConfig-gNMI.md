@@ -7,7 +7,6 @@ tags:
   - iosxr
   - cisco
 position: hidden
-toc: true
 
 ---
 
