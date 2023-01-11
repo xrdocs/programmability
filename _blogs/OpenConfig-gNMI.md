@@ -8,6 +8,8 @@ tags:
   - cisco
 position: hidden
 ---
+{% include toc icon="table" title="Running a Native (WRL7) App" %}
+
 # Background
 
 Let's first go through some background information on why gRPC is necessary and why it is superior to other available options.
