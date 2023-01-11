@@ -10,6 +10,8 @@ position: hidden
 
 ---
 
+{% include toc icon="table" title="ON THIS PAGE" %}
+
 # Background
 
 Let's first go through some background information on why gRPC is necessary and why it is superior to other available options.
