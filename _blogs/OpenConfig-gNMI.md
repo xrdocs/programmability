@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2022-08-16 13:08 -0500'
-title: _blogs/OpenConfig - gNMI
+title: OpenConfig - gNMI
 author: Rahul Sharma
 tags:
   - iosxr
