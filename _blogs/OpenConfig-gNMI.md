@@ -7,34 +7,37 @@ tags:
   - iosxr
   - cisco
 position: hidden
-
 ---
 
 {% include toc icon="table" title="ON THIS PAGE" %}
 
 # Background
 
-Let's first go through some background information on why gRPC is necessary and why it is superior to other available options.
+In today's era, where applications are built on Microservices architecture, we need an API framework that allows these microservices to communicate effectively and allows developers to focus on the core code of their microservices rather than on code that allows them to talk to each other.
 
-# What is an RPC?
+There are existing API frameworks with their downsides:
 
-A remote procedure call, or RPC, is a mechanism through which a system "A" (client) asks another system "B" (server) to execute a program or process, and gets the results of that process as a response. It employs a client-server architecture and transmits request and response data using TCP protocols and JSON/XML encodings.
+1. REST - a. It uses JSON, which is a text based encoding, which is much heavier as opposed to binary encoding.
+		  b. It uses HTTP/1.1 which uses request/response model, meaning that if a server gets requests from numerous clients at once, each request is dealt with separately. Also, it doesn't support TLS.
 
-# What's the problem with traditional RPC?
+2. RPC - a. It also uses JSON/XML encoding which is heavier as it's a text-based.
 
-JSON/XML data formats are where the issue first arises. These text-based formats aren't the most effective at compressing data. These formats convey extra data (essentially semantics) in addition to the actual data, which causes a significant quantity of data to be exchanged between the client and server.
+An ideal API framework should possess following features:
 
-There are a number of alternatives, including Apache RPC, to solve this problem, but in this post, we'll concentrate on gRPC.
+1. Fast and light weight - effective encoding technique for structured data for example binary.
+2. Is loosely coupled - independent of the underlying architecture.
+3. Uses efficient and secured protocol - like HTTP/2 that sends data using TLS a in binary format.
+4. Supports bidirectial communication - unlike SOAP and REST.
+
+In order to check all these 4 boxes, Google came up with an API framework known as gRPC where 'g' stands for 'Google'.
 
 # What is gRPC?
 
-A Google-led open-source protocol that utilises an RPC, just like regular RPC, but combines it with a "Protocol Buffer." A protocol buffer can define the data structure, and from that description, code can be written to create or parse a stream of bytes that corresponds to the structured data. The real data is reduced by the binary data format by around 10 times. This compressed data is transmitted over HTTP/2, which may be secured by adding TLS.
+A Google-led open-source protocol that utilises an RPC, just like regular RPC, but combines it with a "Protocol Buffer." A protocol buffer can define the data structure, and from that description, code can be written to create or parse a stream of bytes that corresponds to the structured data. The real data is reduced by the binary data format by around 10 times. This compressed data is transmitted over HTTP/2, which may be secured using TLS.
 
-You might be questioning why REST instead of conventional RPC isn't used because we are talking about HTTP.
+Also, gRPC employs HTTP/2, which supports multiplexing, a request/response mechanism, and can handle many requests concurrently.
 
-The JSON data format, which is a text-based format, is used by even REST, and as was said previously, it is not very compressible. Additionally, REST makes use of HTTP v1.1, which operates on a request/response basis, meaning that if a server gets requests from numerous clients at once, each request is dealt with separately. While gRPC employs HTTP/2, which supports multiplexing, a request/response mechanism, and can handle many requests concurrently.
-
-So far, we have read why is gRPC the best option we have. But how do we make use of gRPC? One way is to create an RPC on our own and then convert it into corresponding binary data format and transfer it to/from the server. Does this method seem interesting?? because creating is an RPC is 'very easy'. Another method is to have an interface that creates RPCs for us and handle their conversion into corresponding data bytes at the client as well as at server.
+So far, we have read why gRPC is the best option we have. But how do we make use of gRPC? One way is to create an RPC on our own and then convert it into corresponding binary data format and transfer it to/from the server. Does this method seem interesting?? because creating is an RPC is 'very easy'. Another method is to have an interface that creates RPCs for us and handle their conversion into corresponding data bytes at the client as well as at server.
 
 And that's when gNMI comes into the role.
 
@@ -389,3 +392,10 @@ For example, to use TLS with 'Capabilities' functions, our new command would be:
 Here, we are passing two additional parameters - '--tls-cert' and '--skip-verify'.
 
 We can use these paramters with 'Get','Set' and 'Subscribe' functions and leverage TLS with them.
+
+
+# Conclusion
+
+With these clients you can start to interact with device and grow your automation use cases.
+
+
