@@ -13,7 +13,7 @@ position: hidden
 
 # Background
 
-In today's era, where applications are built on Microservices architecture, we need an API framework that allows these microservices to communicate effectively and allows developers to focus on the core code of their microservices rather than on code that allows them to talk to each other.
+In today's era, where applications are built on microservices architecture, we need an API framework that allows these microservices to communicate effectively and allows developers to focus on the core code of their microservices rather than on code that allows them to talk to each other.
 
 There are existing API frameworks with their downsides:
 
