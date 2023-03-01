@@ -17,10 +17,14 @@ In today's era, where applications are built on microservices architecture, we n
 
 There are existing API frameworks with their downsides:
 
-1. REST - a. It uses JSON, which is a text based encoding, which is much heavier as opposed to binary encoding.
-		  b. It uses HTTP/1.1 which uses request/response model, meaning that if a server gets requests from numerous clients at once, each request is dealt with separately. Also, it doesn't support TLS.
+1. REST 
+	a. It uses JSON, which is a text based encoding, which is much heavier as opposed to binary encoding.
+    
+	b. It uses HTTP/1.1 which uses request/response model, meaning that if a server gets requests from numerous clients at once, each request is dealt with separately. Also, it doesn't support TLS.
 
-2. RPC - a. It also uses JSON/XML encoding which is heavier as it's a text-based.
+2. RPC 
+
+	a. It also uses JSON/XML encoding which is heavier as it's a text-based.
 
 An ideal API framework should possess following features:
 
@@ -51,7 +55,7 @@ The "gNMI" or "gRPC Network Management Interface" is an interface that uses Prot
 
 **4. Subscribe:** To stream operational data corresponding to a particular YANG module at a given cadence. Ideally this cadence should not be less than 30 seconds. It might vary depending on the situation.
 
-After reading the abovementioned material, you now have a general understanding of gRPC's advantages over regular RPC, the needs for gNMI, and its features. But as said, applying what we read helps us learn more. It's time to put what we have learned and read thus far to use and get our hands dirty.
+After reading the above mentioned material, you now have a general understanding of gRPC's advantages over regular RPC, the needs for gNMI, and its features. But as said, applying what we read helps us learn more. It's time to put what we have learned and read thus far to use and get our hands dirty.
 
 Since we are utilizing gRPCs, which employs HTTP/2, we may utilize TLS to protect our connection. Let's begin without TLS for now. Additionally, we have two open-source gNMI clients, 'pygnmi' and 'gnmic'. For now, we'll start with 'pygnmi'.
 
@@ -308,7 +312,7 @@ To retrieve the content of a container, here 'interfaces', we can use the follow
 	
 </details>
 
-To retrive a specific leaf of a container, we need use key-value pair with the following command:
+To retrieve a specific leaf of a container, we need use key-value pair with the following command:
 
 	gnmic -a 10.30.111.171:57777 -u cisco -p cisco123! --insecure get --path 'openconfig-interfaces:/interfaces/interface[name=Loopback0]' -e json_ietf
 	
@@ -397,5 +401,3 @@ We can use these paramters with 'Get','Set' and 'Subscribe' functions and levera
 # Conclusion
 
 With these clients you can start to interact with device and grow your automation use cases.
-
-
