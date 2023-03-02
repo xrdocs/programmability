@@ -18,7 +18,8 @@ In today's era, where applications are built on microservices architecture, we n
 There are existing API frameworks with their downsides:
 
 1. REST 
-	a. It uses JSON, which is a text based encoding, which is much heavier as opposed to binary encoding.
+
+	a.It uses JSON, which is a text based encoding, which is much heavier as opposed to binary encoding.
     
 	b. It uses HTTP/1.1 which uses request/response model, meaning that if a server gets requests from numerous clients at once, each request is dealt with separately. Also, it doesn't support TLS.
 
