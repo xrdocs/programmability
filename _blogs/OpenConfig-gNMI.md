@@ -10,7 +10,6 @@ tags:
   - pygnmi
   - gnmic
   - grpc
-position: hidden
 ---
 
 {% include toc icon="table" title="ON THIS PAGE" %}
