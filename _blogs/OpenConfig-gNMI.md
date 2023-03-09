@@ -6,6 +6,10 @@ author: Rahul Sharma
 tags:
   - iosxr
   - cisco
+  - gnmi
+  - pygnmi
+  - gnmic
+  - grpc
 position: hidden
 ---
 
