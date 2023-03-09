@@ -345,6 +345,7 @@ This function helps make configurational changes on the router. Here, a new leaf
 <script src="https://gist.github.com/rahusha7/c51dadefb561889dca5d8e123cb0c311.js"></script>
 </details>
 
+
 In this command, input.json file is used to pass required parameters to create an interface. Here is a sample input.json file.</summary>
   
 <script src="https://gist.github.com/rahusha7/c855c8694521f6428be842d90f72ef71.js"></script>
