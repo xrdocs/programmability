@@ -10,6 +10,7 @@ tags:
   - pygnmi
   - gnmic
   - grpc
+excerpt: Introduction to gNMI and its clients - pygnmi and gnmic
 ---
 
 {% include toc icon="table" title="ON THIS PAGE" %}
@@ -61,9 +62,9 @@ The "gNMI" or "gRPC Network Management Interface" is an interface that uses Prot
 
 After reading the above mentioned material, a general understanding of gRPC's advantages over regular RPC, the need for gNMI, and its features is obtained. But as said, applying what is read helps to learn more. It's time to put what has been learned and read thus far to use and get hands dirty.
 
-A router with  minimum version IOS-XR 7.4.2 and either of two open-source tools - 'pygnmi' and 'gnmic' can be used as server and client, respectively.
+A router with  minimum version IOS-XR 7 and either of two open-source tools - 'pygnmi' and 'gnmic' can be used as server and client, respectively.
 
-And, since gNMI uses HTTP/2, TLS can be used to secure the connection, if needed. But for now, let's begin without TLS. 
+And, since gNMI uses HTTP/2, TLS can be used to secure the connection. But for now, let's begin without TLS. 
 
 # 'pygnmi' without TLS:
 
