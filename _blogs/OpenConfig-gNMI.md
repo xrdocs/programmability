@@ -73,6 +73,7 @@ Step1:  Configure grpc server on the router.
 	Router#confifure terminal
 	Router(config)#grpc
 	Router(config-grpc)#port 57777
+    Router(config-grpc)#no-tls
 
 Step2: Install pygnmi on your system
 
