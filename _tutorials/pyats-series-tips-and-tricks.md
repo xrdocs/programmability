@@ -176,6 +176,59 @@ You can find supported platforms by Unicon in the [pyATS documentation](https://
 Ensure that devices you are using are accurately represented as this will serve as the source of truth for [Genie Abstract](https://pubhub.devnetcloud.com/media/genie-docs/docs/abstract/index.html) as well in a near future update.
 {: .notice--info}
 
+### Using a SSH Proxy
+
+Your device might be accessible via a proxy (ex: Bastion). You can add a proxy to your testbed and indicates for which device you should first connect to the proxy.
+
+In the below example, I will connect to `xrd1` via a proxy and to `xrd2` directly. `jumphost` will store information regarding how to connect to the proxy. You can name it how you want, as long at it matches with the device proxy value. Note that `jumphost` you could also make `jumphost` use the default credentials, as seen before.
+
+The associated bash command would be: `ssh -J iosxr4ever@192.168.1.1 cisco@10.10.10.1`. The first `login/ip` are the ones of the proxy, the second couple are the ones from the device.
+
+```
+testbed:
+  credentials:
+    default:
+      username: cisco
+      password: cisco123
+
+devices:
+  jumphost:
+    os: linux
+    platform: linux
+    type: linux
+    connections:
+      cli:
+        ip: 192.168.1.1
+        port: 22
+        protocol: ssh
+     credentials:
+       default:
+         username: iosxr4ever
+         password: cisco!
+  xrd1:
+    os: iosxr
+    platform: iosxrv
+    type: router
+    connections:
+      cli:
+        ip: 10.10.10.1
+        proxy: jumphost
+        port: 22
+        protocol: ssh
+    xrd2:
+    os: iosxr
+    platform: iosxrv
+    type: router
+    connections:
+      cli:
+        ip: 10.10.10.2
+        port: 22
+        protocol: ssh
+```
+
+More information about how to use proxy in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/proxy.html).
+{: .notice--info}
+
 ### Validating a Testbed file
 
 You can verify that there is no typo or error in your testbed file by using the below command. If your testbed has error, it should look like the below output.
