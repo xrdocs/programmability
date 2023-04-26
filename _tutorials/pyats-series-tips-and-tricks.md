@@ -156,3 +156,15 @@ devices:
 
 By default, the name of your device in the testbed should **EXACTLY** match the hostname of your device. This information is case sensitive.
 {: .notice--info}
+
+### Validating a Testbed file
+
+You can verify that there is no typo or error in your testbed file by using the below command. If your testbed has error, it should look like the below output.
+
+```
+Loading testbed file: testbed.yaml
+--------------------------------------------------------------------------------
+
+YAML Lint Messages
+------------------
+  36:24     error    no new line character at the end of file  (new-line-at-end-of-file)```
