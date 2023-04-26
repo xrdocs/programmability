@@ -33,3 +33,31 @@ You've missed the first episode? You would like to read more? Below the list of 
 
 ## pyATS installation and maintenance
 
+### Installing pyATS
+
+After checking the [Requirements](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/prereqs/prerequisites.html#requirements), you can install pyATS and pyATS librairies by running the below command.
+
+```
+pip install "pyats[full]"
+```
+
+### Veryfying the installation
+
+You can verify pyATS has been successfuly installed by running the below command. It should return a similar output.
+
+```
+❯ pyats version check
+
+You are currently running pyATS version: 23.3
+Python: 3.10.4 [64bit]
+
+  Package                      Version
+  ---------------------------- -------
+  genie                        23.3   
+  genie.libs.clean             23.3   
+  
+  ## output chunked for brevity ## 
+  
+  yang.connector               23.3   
+```
+
