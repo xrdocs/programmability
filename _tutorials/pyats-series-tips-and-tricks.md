@@ -38,6 +38,8 @@ Do you have a Tips or Trick that could benefit everyone? Feel free to share it i
 
 ## pyATS installation and maintenance
 
+This section will give general Tips and Tricks about pyATS installation and maintenance.
+
 ### Installing pyATS
 
 After checking the [Requirements](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/prereqs/prerequisites.html#requirements), you can install pyATS and pyATS librairies by running the below command.
@@ -106,3 +108,42 @@ Fetching package list... (it may take some time)
 
 Are you sure to continue [y/N]? 
 ```
+
+## pyATS Testbed
+
+This section will give general Tips and Tricks about pyATS testbeds.
+
+### Default credentials and CLI	
+
+When credentials or CLI options (ex: protocol, port number) are shared by many devices (ex: in a lab), it could be useful to set them as default. You should add them in your `testbed.yaml` file. You can still use specific information (i.e. non-default) for other devices in your testbed. 
+
+In the below example, `xr1` and `xr2` will use all default information. `xr3` will use default `os` information, but specific `connections` and `credentials`.
+
+```
+
+testbed:										# Default information section
+    credentials:
+        default:                                # Default credentials
+            username: cisco
+            password: cisco
+ 	connections:								# Default CLI options
+    	cli:
+        	protocol: ssh
+            port: 22
+    os: iosxr									# Default OS, platform and type
+    platform: iosxrv
+    type: router
+       
+devices:
+    xr1:                                    
+        connections:
+            cli:
+                ip: 192.168.1.11
+    xr2:                                    
+        connections:
+            cli:
+                ip: 192.168.1.12 
+```
+
+By default, the name of your device in the testbed should **EXACTLY** match the hostname of your device. This information is case sensitive.
+{: .notice--info}
