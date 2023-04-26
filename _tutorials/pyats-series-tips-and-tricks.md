@@ -30,18 +30,18 @@ You've missed the first episode? You would like to read more? Below the list of 
 | **3 - Be a model**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-be-a-model/){: .btn} 	|  What a pyATS model and when to use it        	|
 | **4 - Collecting many show commands**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-collecting-many-show-commands/){: .btn} 	|  How to collect many show commands on many devices?
 
-# pyATS Tips and Tricks
+# Abstract
 
 This article is intended to share my Tips and Tricks I wish I knew when I started to use pyATS. It's based on my own experience and does not intend to be exhaustive. I will try to update this article frequently.
 
 Do you have a Tips or Trick that could benefit everyone? Feel free to share it in the comments!
 {: .notice--info}
 
-## pyATS installation and maintenance
+# pyATS installation and maintenance
 
 This section will give general Tips and Tricks about pyATS installation and maintenance.
 
-### Installing pyATS
+## Installing pyATS
 
 After checking the [Requirements](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/prereqs/prerequisites.html#requirements), you can install pyATS and pyATS librairies by running the below command.
 
@@ -49,7 +49,7 @@ After checking the [Requirements](https://pubhub.devnetcloud.com/media/pyats-get
 pip install "pyats[full]"
 ```
 
-### Veryfying the installation
+## Veryfying the installation
 
 You can verify pyATS has been successfuly installed by running the below command. It should return the current pyATS version, with a similar output. This command also shows if there are any available package updates.
 
@@ -69,7 +69,7 @@ Python: 3.10.4 [64bit]
   yang.connector               23.3   
 ```
 
-### Updating pyATS
+## Updating pyATS
 
 You can check if there is a newer pyATS version and update it with the below command. It should return a similar output.
 
@@ -110,11 +110,11 @@ Fetching package list... (it may take some time)
 Are you sure to continue [y/N]? 
 ```
 
-## pyATS Testbed
+# pyATS Testbed
 
 This section will give general Tips and Tricks about pyATS testbeds.
 
-### Default credentials and CLI	
+## Default credentials and CLI	
 
 When credentials are shared by many devices (ex: in a lab), it could be useful to set them as default. You should add them in your `testbed.yaml` file. You can still use specific credentials (i.e. non-default) for other devices in your testbed. 
 
@@ -167,7 +167,7 @@ devices:
 By default, the name of your device in the testbed should **EXACTLY** match the hostname of your device. This information is case sensitive.
 {: .notice--info}
 
-### pyATS Supported Operating Systems and Platforms
+## pyATS Supported Operating Systems and Platforms
 
 pyATS relies on Unicon to support network devices. They are described with their operating system `os` (ex: `iosxr`) and optionally their `platform` (ex: `spitfire`, for Cisco 8000) and `model` (rarely used).
 
@@ -176,7 +176,7 @@ You can find supported platforms by Unicon in the [pyATS documentation](https://
 Ensure that devices you are using are accurately represented as this will serve as the source of truth for [Genie Abstract](https://pubhub.devnetcloud.com/media/genie-docs/docs/abstract/index.html) as well in a near future update.
 {: .notice--info}
 
-### Using a SSH Proxy
+## Using a SSH Proxy
 
 Your device might be accessible via a proxy (ex: Bastion). You can add a proxy to your testbed and indicates for which device you should first connect to the proxy.
 
@@ -229,7 +229,7 @@ devices:
 More information about how to use proxy in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/proxy.html).
 {: .notice--info}
 
-### Validating a Testbed file
+## Validating a Testbed file
 
 You can verify that there is no typo or error in your testbed file by using the below command. If your testbed has error, it should look like the below output.
 
