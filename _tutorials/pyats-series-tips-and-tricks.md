@@ -93,7 +93,7 @@ Fetching package list... (it may take some time)
   genie                        latest (23.4)
   genie.libs.clean             latest (23.4)
 
-## output chunked for brevity ## 
+  ## output chunked for brevity ## 
 
   unicon.plugins               latest (23.4)
   yang.connector               latest (23.4)
