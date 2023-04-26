@@ -29,7 +29,12 @@ You've missed the first episode? You would like to read more? Below the list of 
 | **3 - Be a model**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-be-a-model/){: .btn} 	|  What a pyATS model and when to use it        	|
 | **4 - Collecting many show commands**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-collecting-many-show-commands/){: .btn} 	|  How to collect many show commands on many devices?
 
-# pyATS tool belt
+# pyATS Tips and Tricks
+
+This article is intended to share my Tips and Tricks I wish I knew when I started to use pyATS. It's based on my own experience and does not intend to be exhaustive. I will try to update this article frequently.
+
+Do you have a Tips or Trick that could benefit everyone? Feel free to share it in the comments!
+{: .notice--info}
 
 ## pyATS installation and maintenance
 
