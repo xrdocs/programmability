@@ -115,43 +115,52 @@ This section will give general Tips and Tricks about pyATS testbeds.
 
 ### Default credentials and CLI	
 
-When credentials or CLI options (ex: protocol, port number) are shared by many devices (ex: in a lab), it could be useful to set them as default. You should add them in your `testbed.yaml` file. You can still use specific information (i.e. non-default) for other devices in your testbed. 
+When credentials are shared by many devices (ex: in a lab), it could be useful to set them as default. You should add them in your `testbed.yaml` file. You can still use specific credentials (i.e. non-default) for other devices in your testbed. 
 
-In the below example, `xr1` and `xr2` will use all default information. `xr3` will use default `os` information, but specific `connections` and `credentials`.
+In the below example, `xr1` and `xr2` will use all default credentials. `xr3` will non-default credentials.
+
+Only `credentials` can have default values. Objects like `os` or `connections` have to be set for each device in the testbed. Testbed and Devices configurable information can be found in [the documentation](https://pubhub.devnetcloud.com/media/pyats/docs/topology/concept.html#testbed-object).
+{: .notice--info}
 
 ```
-
 testbed:										# Default information section
     credentials:
         default:                                # Default credentials
             username: cisco
             password: cisco
- 	connections:								# Default CLI options
-    	cli:
-        	protocol: ssh
-            port: 22
-    os: iosxr									# Default OS, platform and type
-    platform: iosxrv
-    type: router
        
 devices:
     xr1:                                    
         connections:
             cli:
                 ip: 192.168.1.11
+                protocol: ssh
+                port: 22
+        os: iosxr									
+    	platform: iosxrv
+    	type: router
     xr2:                                    
         connections:
             cli:
                 ip: 192.168.1.12 
+                protocol: ssh
+                port: 22
+        os: iosxr									
+    	platform: iosxrv
+    	type: router
     xr3:
     	connections:
             cli:
                 ip: 192.168.1.12
-                port: 2222
+                protocol: ssh
+                port: 22
         credentials:
         	default:                                
             	username: antoine
             	password: cisco123
+        os: iosxr									
+    	platform: iosxrv
+    	type: router
 ```
 
 By default, the name of your device in the testbed should **EXACTLY** match the hostname of your device. This information is case sensitive.
@@ -167,4 +176,5 @@ Loading testbed file: testbed.yaml
 
 YAML Lint Messages
 ------------------
-  36:24     error    no new line character at the end of file  (new-line-at-end-of-file)```
+  36:24     error    no new line character at the end of file  (new-line-at-end-of-file)
+```
