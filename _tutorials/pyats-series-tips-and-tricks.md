@@ -43,7 +43,7 @@ pip install "pyats[full]"
 
 ### Veryfying the installation
 
-You can verify pyATS has been successfuly installed by running the below command. It should return a similar output.
+You can verify pyATS has been successfuly installed by running the below command. It should return the current pyATS version, with a similar output. This command also shows if there are any available package updates.
 
 ```
 pyats version check
@@ -61,3 +61,43 @@ Python: 3.10.4 [64bit]
   yang.connector               23.3   
 ```
 
+### Updating pyATS
+
+You can check if there is a newer pyATS version and update it with the below command. It should return a similar output.
+
+```
+pyats version update
+
+Checking your current environment...
+
+
+The following packages will be removed:
+
+  Package                      Version
+  ---------------------------- -------
+  genie                        23.3   
+  genie.libs.clean             23.3   
+    
+  ## output chunked for brevity ## 
+ 
+  unicon.plugins               23.3   
+  yang.connector               23.3   
+
+
+Fetching package list... (it may take some time)
+
+... and updated with:
+
+  Package                      Version      
+  ---------------------------- -------------
+  genie                        latest (23.4)
+  genie.libs.clean             latest (23.4)
+
+## output chunked for brevity ## 
+
+  unicon.plugins               latest (23.4)
+  yang.connector               latest (23.4)
+
+
+Are you sure to continue [y/N]? 
+```
