@@ -167,6 +167,15 @@ devices:
 By default, the name of your device in the testbed should **EXACTLY** match the hostname of your device. This information is case sensitive.
 {: .notice--info}
 
+### pyATS Supported Operating Systems and Platforms
+
+pyATS relies on Unicon to support network devices. They are described with their operating system `os` (ex: `iosxr`) and optionally their `platform` (ex: `spitfire`, for Cisco 8000) and `model` (rarely used).
+
+You can find supported platforms by Unicon in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/supported_platforms.html).
+
+Ensure that devices you are using are accurately represented as this will serve as the source of truth for [Genie Abstract](https://pubhub.devnetcloud.com/media/genie-docs/docs/abstract/index.html) as well in a near future update.
+{: .notice--info}
+
 ### Validating a Testbed file
 
 You can verify that there is no typo or error in your testbed file by using the below command. If your testbed has error, it should look like the below output.
