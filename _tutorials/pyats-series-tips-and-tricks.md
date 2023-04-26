@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2023-04-26 16:09 +0200'
 title: pyats-series-tips-and-tricks
 position: hidden
