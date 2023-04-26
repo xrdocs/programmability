@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2023-04-26 16:09 +0200'
-title: pyats-series-tips-and-tricks
+title: pyATS Series - Tips and Tricks
 position: hidden
 author: Antoine Orsoni
 tags:
