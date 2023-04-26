@@ -143,6 +143,15 @@ devices:
         connections:
             cli:
                 ip: 192.168.1.12 
+    xr3:
+    	connections:
+            cli:
+                ip: 192.168.1.12
+                port: 2222
+        credentials:
+        	default:                                
+            	username: antoine
+            	password: cisco123
 ```
 
 By default, the name of your device in the testbed should **EXACTLY** match the hostname of your device. This information is case sensitive.
