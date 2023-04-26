@@ -46,7 +46,7 @@ pip install "pyats[full]"
 You can verify pyATS has been successfuly installed by running the below command. It should return a similar output.
 
 ```
-❯ pyats version check
+pyats version check
 
 You are currently running pyATS version: 23.3
 Python: 3.10.4 [64bit]
