@@ -20,7 +20,7 @@ pyATS (**Py**thon **A**utomated **T**est **S**ystems, to be pronounced "py A. T.
 Many thanks to Romain Cyrille, Cisco CX Engineer, for your help writting this article!
 {: .notice--info}
 
-# Other pyATS episodess
+# Other pyATS episodes
 
 You've missed the first episode? You would like to read more? Below the list of published episodes:
 
