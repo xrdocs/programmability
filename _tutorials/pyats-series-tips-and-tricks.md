@@ -17,6 +17,9 @@ Ever dreamed of a test framework that could be used across multiple platforms, O
 
 pyATS (**Py**thon **A**utomated **T**est **S**ystems, to be pronounced "py A. T. S.") was first created as an internal project, to ease the validation of two OS versions. It has been made public in 2017 through **Cisco Devnet**.
 
+Many thanks to Romain Cyrille, CX Engineer, for your help writting this article!
+{: .notice--info}
+
 # Other pyATS episodes
 
 You've missed the first episode? You would like to read more? Below the list of published episodes:
