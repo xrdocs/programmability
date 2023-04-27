@@ -336,3 +336,18 @@ device.connect(init_exec_commands=[],
 
 More information about the device `connect()` method in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
 {: .notice--info}
+
+## Parsing an already saved output
+
+If you already have an output (ex: in a text file) that you would like to parse with pyATS, you can use the below commands. You first need to load a device from a testbed, so the pyATS librairies know from which OS it should look for the appropriate parser.
+
+```
+from genie.testbed import load
+
+device = load('./testbed.yaml')['device']
+
+with open('./output.txt') as file:
+  output = file.read()
+  
+device.parse('<show command>', output=output)
+```
