@@ -276,6 +276,9 @@ Note that `init_exec_commands` and  `init_config_commands` should be list of com
         log_stdout: False
 ```
 
+It's not advised to use `init_exec_commands: []` as your device might not have `terminal width` and `terminal length 0` commands. You could have issues when with long outputs.
+{: .notice--warning}
+
 More information about the device `connect()` method in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
 {: .notice--info}
 
@@ -332,6 +335,9 @@ device.connect(init_exec_commands=[],
                init_config_commands=[],
                log_stdout=False)
 ```
+
+It's not advised to use `init_exec_commands: []` as your device might not have `terminal width` and `terminal length 0` commands. You could have issues when with long outputs.
+{: .notice--warning}
 
 More information about the device `connect()` method in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
 {: .notice--info}
