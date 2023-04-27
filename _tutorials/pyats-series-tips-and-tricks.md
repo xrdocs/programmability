@@ -114,6 +114,14 @@ Are you sure to continue [y/N]?
 
 This section will give general Tips and Tricks about pyATS testbeds.
 
+## Testbed is not in the directory of execution
+
+When the testbed cannot be found, you have a similar error as the output below. Double check the path to your testbed file. By default, pyATS is looking for a testbed file in the directory where you execute the command.
+
+```
+pyats.utils.yaml.exceptions.LoadError: Content of 'testbed.yaml' failed to load into a dict.
+```
+
 ## Default credentials and CLI	
 
 When credentials are shared by many devices (ex: in a lab), it could be useful to set them as default. You should add them in your `testbed.yaml` file. You can still use specific credentials (i.e. non-default) for other devices in your testbed. 
@@ -245,3 +253,7 @@ YAML Lint Messages
 ## Encrypting Testbed credentials
 
 If you don't want your credentials (ex: login, passwords) to appear as cleartext in your testbed, you can use the `pyats secret` tool. More information in the [pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/cli/pyats_secret.html).
+
+# Using pyATS with Python
+
+## 
