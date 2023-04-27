@@ -254,9 +254,66 @@ YAML Lint Messages
   36:24     error    no new line character at the end of file  (new-line-at-end-of-file)
 ```
 
-## pyATS secret
+## Testbed Credentials Management
 
-If you don't want your credentials (ex: login, passwords) to appear as cleartext in your testbed, you can use the `pyats secret` tool. More information in the [pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/utilities/secret_strings.html).
+Having clear password in your testbed may not be a best practice. pyATS offers severals options to help with password management. 
+
+These options are mostly used for credentials management but in reality they can be used almost anywhere in the testbed file.
+{: .notice--info}
+
+### Prompting
+
+One solution is to prompt the user for their credentials at the start of the script, this can be done very easily and directly in the testbed. The prompt can be customized or left empty for the default one to be used.
+
+```
+testbed:
+    credentials:
+      default:
+          username: "%ASK{}"
+          password: "%ASK{Password won't be echoed}"
+```
+
+This is the result when launching the pyATS script:
+```
+$python pyats_script.py
+
+Enter value for testbed.credentials.default.username: cisco
+Enter default password for testbed
+Password won't be echoed: 
+
+```
+
+### Environment Variables
+
+It is possible to fill your testbed using environment variables:
+```
+testbed:
+    credentials:
+      default:
+          username: "%ENV{PYATS_USER}"
+          password: "%ENV{PYATS_PASSWORD}"
+```
+
+Depending on your environment their are many way to set environment variables. If you are on a Linux terminal you can use the `export` command for example (hint: if you put a space before the `export` command it should not be saved in your shell history):
+```
+$ export PYATS_USER=cisco
+$ export PYATS_PASSWORD=cisco123
+$python pyats_script.py
+```
+
+### Encrypted Text
+
+Encryption is another option and the `pyats secret` tool can help you encode and decode text. More information in the [pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/utilities/secret_strings.html).
+
+The encrypted password can then be set in the testbed and will automatically be decrypted when the script is launched.
+
+```
+testbed:
+    credentials:
+      default:
+          username: cisco
+          password: "%ENC{gAAAAABdsgvwElU9_3RTZsRnd4b1l3Es2gV6Y_DUnUE8C9y3SdZGBc2v0B2m9sKV}"
+```
 
 ## Avoid printting the default commands after connecting to a device
 
