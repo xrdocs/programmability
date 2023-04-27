@@ -256,4 +256,19 @@ If you don't want your credentials (ex: login, passwords) to appear as cleartext
 
 # Using pyATS with Python
 
-## 
+## Mismatch between the hostname and the keys in the testbed
+
+The name of the device in your testbed, and the hostname **MUST** match. It's case sensitive. In case it doesn't match, you will have a similar error.
+
+```
+unicon.core.errors.TimeoutError: timeout occurred:
+```
+
+You can also specify in your Python script that you do not care if they don't match by setting the `learn_hostname` argument to `True` in your device `connect()` method.
+
+```
+device.connect(learn_hostname=True)
+```
+
+More information about the device `connect()` method in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
+{: .notice--info}
