@@ -272,3 +272,15 @@ device.connect(learn_hostname=True)
 
 More information about the device `connect()` method in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
 {: .notice--info}
+
+## Avoid printting the default commands after connecting to a device
+
+By default, after connecting to a device, pyATS will send a bunch of `exec` and `configuration` level commands. It will also send logging to standard output. You can disable them by editing their respective arguments: `init_exec_commands`, `init_config_commands` and `log_stdout` in the device `connect()` method; like in the below example.
+
+```
+device.connect(init_exec_commands=[],
+               init_config_commands=[],
+               log_stdout=False)
+```
+
+
