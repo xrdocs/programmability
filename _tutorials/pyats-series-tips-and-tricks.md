@@ -254,6 +254,32 @@ YAML Lint Messages
 
 If you don't want your credentials (ex: login, passwords) to appear as cleartext in your testbed, you can use the `pyats secret` tool. More information in the [pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/cli/pyats_secret.html).
 
+## Avoid printting the default commands after connecting to a device
+
+By default, after connecting to a device, pyATS will send a bunch of `exec` and `configuration` level commands. It will also send logging to standard output. You can disable them by editing their respective arguments: `init_exec_commands`, `init_config_commands` and `log_stdout` in the testbed `connection` `settings` parameter; like in the below example. 
+
+Note that `init_exec_commands` and  `init_config_commands` should be list of commands to use when initializating the connection. `log_stdout` should be a boolean option to enable/disable logging to standard output.
+
+```
+  xrd1:
+    os: iosxr
+    platform: iosxrv
+    type: router
+    connections:
+      cli:
+        ip: 10.10.10.1
+        proxy: jumphost
+        port: 22
+        protocol: ssh
+      settings:
+        init_exec_commands: []
+        init_config_commands: []
+        log_stdout: False
+```
+
+More information about the device `connect()` method in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
+{: .notice--info}
+
 # Using pyATS with Python
 
 ## Mismatch between the hostname and the keys in the testbed
@@ -283,4 +309,5 @@ device.connect(init_exec_commands=[],
                log_stdout=False)
 ```
 
-
+More information about the device `connect()` method in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
+{: .notice--info}
