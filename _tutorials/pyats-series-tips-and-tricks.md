@@ -351,3 +351,20 @@ with open('./output.txt') as file:
   
 device.parse('<show command>', output=output)
 ```
+
+# Conclusion
+
+In this fifth episode of the pyATS series, we saw a bunch of useful Tips and Tricks based on my experience with pyATS.
+
+The code used for each blog post can be found [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats). This link will include the code for all posts.
+{: .notice--info}
+
+# Resources
+
+Below a few useful pyATS resources.
+
+- [List of supported pyATS parsers](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/),
+- [The official pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/getting_started/index.html),
+- [List of Unicon supported platforms](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/supported_platforms.html),
+- [Devnet code exchange](https://developer.cisco.com/codeexchange/),
+- [Join the Webex space with the pyATS community](https://eurl.io/#r18UzrQVr).
