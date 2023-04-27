@@ -2,7 +2,7 @@
 published: true
 date: '2023-04-26 16:09 +0200'
 title: pyATS Series - Tips and Tricks
-position: hidden
+position: top
 author: Antoine Orsoni
 tags:
   - iosxr
