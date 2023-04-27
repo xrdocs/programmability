@@ -379,7 +379,7 @@ More information about the device `disconnect()` method in the [pyATS documentat
 The name of the device in your testbed, and the hostname **MUST** match. It's case sensitive. In case it doesn't match, you will have a similar error.
 
 ```
-unicon.core.errors.TimeoutError: timeout occurred:
+unicon.core.errors.TimeoutError: Prompt timeout occured, please check the hostname 
 ```
 
 You can also specify in your Python script that you do not care if they don't match by setting the `learn_hostname` argument to `True` in your device `connect()` method.
