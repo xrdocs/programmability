@@ -17,7 +17,7 @@ Ever dreamed of a test framework that could be used across multiple platforms, O
 
 pyATS (**Py**thon **A**utomated **T**est **S**ystems, to be pronounced "py A. T. S.") was first created as an internal project, to ease the validation of two OS versions. It has been made public in 2017 through **Cisco Devnet**.
 
-Many thanks to **Romain Cyrille**, Cisco CX Engineer, for your help writting this article!
+Many thanks to **Romain Cyrille**, Cisco CX Engineer, for his help writting this article!
 {: .notice--info}
 
 # Other pyATS episodes
@@ -36,7 +36,7 @@ You've missed the first episode? You would like to read more? Below the list of 
 
 This article is intended to share my Tips and Tricks I wish I knew when I started to use pyATS. It's based on my own experience and does not intend to be exhaustive. I will try to update this article frequently.
 
-Do you have a Tips or Trick that could benefit everyone? Feel free to share it in the comments!
+Do you have a Tip or a Trick that could benefit everyone? Feel free to share it in the comments!
 {: .notice--info}
 
 # pyATS installation and maintenance
@@ -244,6 +244,8 @@ More information about how to use proxy in the [pyATS documentation](https://pub
 You can verify that there is no typo or error in your testbed file by using the below command. If your testbed has error, it should look like the below output.
 
 ```
+> pyats validate testbed <path_to_testbed_file>
+
 Loading testbed file: testbed.yaml
 --------------------------------------------------------------------------------
 
@@ -282,7 +284,7 @@ Note that `init_exec_commands` and  `init_config_commands` should be list of com
           log_stdout: False
 ```
 
-It's not advised to use `init_exec_commands: []` as your device might not have `terminal width` and `terminal length 0` commands. You could have issues when with long outputs.
+It's not recommended to use `init_exec_commands: []` as your device might not have `terminal width` and `terminal length 0` commands. You could have issues when with long outputs.
 {: .notice--warning}
 
 More information about the device `connect()` method in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
@@ -342,7 +344,7 @@ device.connect(init_exec_commands=[],
                log_stdout=False)
 ```
 
-It's not advised to use `init_exec_commands: []` as your device might not have `terminal width` and `terminal length 0` commands. You could have issues when with long outputs.
+It's not recommended to use `init_exec_commands: []` as your device might not have `terminal width` and `terminal length 0` commands. You could have issues when with long outputs.
 {: .notice--warning}
 
 More information about the device `connect()` method in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
