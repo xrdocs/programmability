@@ -256,8 +256,6 @@ YAML Lint Messages
 
 If you don't want your credentials (ex: login, passwords) to appear as cleartext in your testbed, you can use the `pyats secret` tool. More information in the [pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/utilities/secret_strings.html).
 
-
-
 ## Avoid printting the default commands after connecting to a device
 
 By default, after connecting to a device, pyATS will send a bunch of `exec` and `configuration` level commands. It will also send logging to standard output. You can disable them by editing their respective arguments: `init_exec_commands`, `init_config_commands` and `log_stdout` in the testbed `connection` `settings` parameter; like in the below example. 
