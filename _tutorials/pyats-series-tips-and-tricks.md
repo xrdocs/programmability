@@ -260,6 +260,9 @@ If you don't want your credentials (ex: login, passwords) to appear as cleartext
 
 By default, after connecting to a device, pyATS will send a bunch of `exec` and `configuration` level commands. It will also send logging to standard output. You can disable them by editing their respective arguments: `init_exec_commands`, `init_config_commands` and `log_stdout` in the testbed `connection` `settings` parameter; like in the below example. 
 
+`settings` has to be under the appropriate parameter (here `cli`), otherwise it will be seen as a new `connection` method.
+{: .notice--info}
+
 Note that `init_exec_commands` and  `init_config_commands` should be list of commands to use when initializating the connection. `log_stdout` should be a boolean option to enable/disable logging to standard output.
 
 ```
@@ -273,10 +276,10 @@ Note that `init_exec_commands` and  `init_config_commands` should be list of com
         proxy: jumphost
         port: 22
         protocol: ssh
-      settings:
-        init_exec_commands: []
-        init_config_commands: []
-        log_stdout: False
+        settings:
+          init_exec_commands: []
+          init_config_commands: []
+          log_stdout: False
 ```
 
 It's not advised to use `init_exec_commands: []` as your device might not have `terminal width` and `terminal length 0` commands. You could have issues when with long outputs.
