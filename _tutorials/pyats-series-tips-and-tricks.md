@@ -47,7 +47,7 @@ This section will give general Tips and Tricks about pyATS installation and main
 After checking the [Requirements](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/prereqs/prerequisites.html#requirements), you can install pyATS and pyATS librairies by running the below command.
 
 ```
-pip install "pyats[full]"
+> pip install "pyats[full]"
 ```
 
 ## Veryfying the installation
@@ -55,7 +55,7 @@ pip install "pyats[full]"
 You can verify pyATS has been successfuly installed by running the below command. It should return the current pyATS version, with a similar output. This command also shows if there are any available package updates.
 
 ```
-pyats version check
+> pyats version check
 
 You are currently running pyATS version: 23.3
 Python: 3.10.4 [64bit]
@@ -75,7 +75,7 @@ Python: 3.10.4 [64bit]
 You can check if there is a newer pyATS version and update it with the below command. It should return a similar output.
 
 ```
-pyats version update
+> pyats version update
 
 Checking your current environment...
 
