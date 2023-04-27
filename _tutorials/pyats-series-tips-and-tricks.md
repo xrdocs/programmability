@@ -280,6 +280,31 @@ Note that `init_exec_commands` and  `init_config_commands` should be list of com
 More information about the device `connect()` method in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
 {: .notice--info}
 
+## Disconnecting quickly
+
+When you disconnect from a device, using the `disconnect()` method, Unicon will wait about 10 seconds. The documentation says this is to prevent connection issues on rapid connect/disconnect sequences. It can be annoying when you script connect and disconnect from many devices.
+
+To change the default timers, you can change the `GRACEFUL_DISCONNECT_WAIT_SEC` and `POST_DISCONNECT_WAIT_SEC` in the testbed `connection` `settings` parameter; like in the below example.
+
+```
+  xrd1:
+    os: iosxr
+    platform: iosxrv
+    type: router
+    connections:
+      cli:
+        ip: 10.10.10.1
+        proxy: jumphost
+        port: 22
+        protocol: ssh
+      settings:
+        GRACEFUL_DISCONNECT_WAIT_SEC = 0
+        POST_DISCONNECT_WAIT_SEC = 0
+```
+
+More information about the device `disconnect()` method in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
+{: .notice--info}
+
 # Using pyATS with Python
 
 ## Mismatch between the hostname and the keys in the testbed
