@@ -249,9 +249,11 @@ YAML Lint Messages
   36:24     error    no new line character at the end of file  (new-line-at-end-of-file)
 ```
 
-## Encrypting Testbed credentials
+## pyATS secret
 
-If you don't want your credentials (ex: login, passwords) to appear as cleartext in your testbed, you can use the `pyats secret` tool. More information in the [pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/cli/pyats_secret.html).
+If you don't want your credentials (ex: login, passwords) to appear as cleartext in your testbed, you can use the `pyats secret` tool. More information in the [pyATS documentation](https://pubhub.devnetcloud.com/media/pyats/docs/utilities/secret_strings.html).
+
+
 
 ## Avoid printting the default commands after connecting to a device
 
