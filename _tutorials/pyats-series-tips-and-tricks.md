@@ -182,6 +182,7 @@ By default, the name of your device in the testbed should **EXACTLY** match the 
 pyATS relies on Unicon to support network devices. They are described with their operating system `os` (ex: `iosxr`) and optionally their `platform` (ex: `spitfire`, for Cisco 8000) and `model` (rarely used).
 
 You can find supported platforms by Unicon in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/supported_platforms.html).
+{: .notice--info}
 
 Ensure that devices you are using are accurately represented as this will serve as the source of truth for [Genie Abstract](https://pubhub.devnetcloud.com/media/genie-docs/docs/abstract/index.html) as well in a near future update.
 {: .notice--info}
