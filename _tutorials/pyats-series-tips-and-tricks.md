@@ -349,7 +349,7 @@ More information about the device `connect()` method in the [pyATS documentation
 
 ## Disconnecting quickly
 
-When you disconnect from a device, using the `disconnect()` method, Unicon will wait about 10 seconds. The documentation says this is to prevent connection issues on rapid connect/disconnect sequences. It can be annoying when you script connect and disconnect from many devices.
+When you disconnect from a device, using the `disconnect()` method, Unicon will wait about 10 seconds. The documentation says this is to prevent connection issues on rapid connect/disconnect sequences. It can be annoying when you script `connect()` and `disconnect()` from many devices.
 
 To change the default timers, you can change the `GRACEFUL_DISCONNECT_WAIT_SEC` and `POST_DISCONNECT_WAIT_SEC` in the testbed `connection` `settings` parameter; like in the below example.
 
