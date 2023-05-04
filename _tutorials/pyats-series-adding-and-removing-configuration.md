@@ -68,3 +68,42 @@ The topology will look like below. We will send traffic between a source and a d
 # xrd-2-GE2 (right): 10.3.1.2
 # dest:              10.3.1.3
 ```
+
+## Modifying the docker-compose File
+
+To be able to connect via SSH to the two linux hosts (source and destination), I had to modify the `docker-compose` file. Below what the file looks like for the two hosts. What changed:
+- Using the image `lscr.io/linuxserver/openssh-server:latest` where SSH server is already installed. Documentation [here](https://github.com/linuxserver/docker-openssh-server).
+- In the `environment`, I set `PASSWORD_ACCESS=true` so I can access my device using a login/password. Otherwise I could only access it with a specific public RSA key.
+
+```
+  dest:
+    cap_add:
+    - NET_ADMIN
+    command: /bin/sh -c "ip route add 10.0.0.0/8 via 10.3.1.2 && /bin/sh"
+    container_name: dest
+    image: lscr.io/linuxserver/openssh-server:latest
+    networks:
+      xrd-2-dest:
+        ipv4_address: 10.3.1.3
+    stdin_open: true
+    tty: true
+    environment:
+      - PASSWORD_ACCESS=true
+      - USER_PASSWORD=cisco123
+      - USER_NAME=cisco
+  source:
+    cap_add:
+    - NET_ADMIN
+    command: /bin/sh -c "ip route add 10.0.0.0/8 via 10.1.1.3 && /bin/sh"
+    container_name: source
+    image: lscr.io/linuxserver/openssh-server:latest
+    networks:
+      source-xrd-1:
+        ipv4_address: 10.1.1.2
+    stdin_open: true
+    tty: true
+    environment:
+      - PASSWORD_ACCESS=true
+      - USER_PASSWORD=cisco123
+      - USER_NAME=cisco
+```
