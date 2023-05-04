@@ -75,7 +75,6 @@ To be able to connect via SSH to the two linux hosts (source and destination), I
 - Using the image `lscr.io/linuxserver/openssh-server:latest` where SSH server is already installed. Documentation [here](https://github.com/linuxserver/docker-openssh-server).
 - In the `environment`, I set `PASSWORD_ACCESS=true` so I can access my device using a login/password. Otherwise I could only access it with a specific public RSA key.
 
-```
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
@@ -112,4 +111,4 @@ To be able to connect via SSH to the two linux hosts (source and destination), I
 </code>
 </pre>
 </div>
-```
+
