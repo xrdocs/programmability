@@ -366,8 +366,8 @@ To change the default timers, you can change the `GRACEFUL_DISCONNECT_WAIT_SEC` 
         port: 22
         protocol: ssh
       settings:
-        GRACEFUL_DISCONNECT_WAIT_SEC = 0
-        POST_DISCONNECT_WAIT_SEC = 0
+        GRACEFUL_DISCONNECT_WAIT_SEC: 0
+        POST_DISCONNECT_WAIT_SEC: 0
 ```
 
 More information about the device `disconnect()` method in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/connection.html).
