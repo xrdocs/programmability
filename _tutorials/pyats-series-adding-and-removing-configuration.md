@@ -38,3 +38,10 @@ In this new episode, we will see how to add configuration to a device, confirm t
 
 Manipulating configuration can be done with pyATS but it might not be the ideal tool for you. Here, we use pyATS because we are in a lab and we can't break anything (most important, we don't care if we do). Based on your use case, you might consider other tools like Ansible or NSO.
 {: .notice--info}
+
+# Network Topology
+
+In today's article, we will use the Segment Routing network topology, based on XRd. It's available [on this github repo](https://github.com/ios-xr/xrd-tools/blob/main/samples/xr_compose_topos/segment-routing/docker-compose.xr.yml).
+
+You can read more on XRDocs about what's XRd and how to use it [here](https://xrdocs.io/virtual-routing/tutorials/).
+{: .notice--info}
