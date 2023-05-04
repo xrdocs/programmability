@@ -76,34 +76,40 @@ To be able to connect via SSH to the two linux hosts (source and destination), I
 - In the `environment`, I set `PASSWORD_ACCESS=true` so I can access my device using a login/password. Otherwise I could only access it with a specific public RSA key.
 
 ```
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
   dest:
     cap_add:
     - NET_ADMIN
     command: /bin/sh -c "ip route add 10.0.0.0/8 via 10.3.1.2 && /bin/sh"
     container_name: dest
-    image: lscr.io/linuxserver/openssh-server:latest
+    <mark>image: lscr.io/linuxserver/openssh-server:latest</mark>
     networks:
       xrd-2-dest:
         ipv4_address: 10.3.1.3
     stdin_open: true
     tty: true
-    environment:
-      - PASSWORD_ACCESS=true
-      - USER_PASSWORD=cisco123
-      - USER_NAME=cisco
+    <mark>environment:</mark>
+      <mark>- PASSWORD_ACCESS=true</mark>
+      <mark>- USER_PASSWORD=cisco123</mark>
+      <mark>- USER_NAME=cisco</mark>
   source:
     cap_add:
     - NET_ADMIN
     command: /bin/sh -c "ip route add 10.0.0.0/8 via 10.1.1.3 && /bin/sh"
     container_name: source
-    image: lscr.io/linuxserver/openssh-server:latest
+    <mark>image: lscr.io/linuxserver/openssh-server:latest</mark>
     networks:
       source-xrd-1:
         ipv4_address: 10.1.1.2
     stdin_open: true
     tty: true
-    environment:
-      - PASSWORD_ACCESS=true
-      - USER_PASSWORD=cisco123
-      - USER_NAME=cisco
+    <mark>environment:</mark>
+      <mark>- PASSWORD_ACCESS=true</mark>
+      <mark>- USER_PASSWORD=cisco123</mark>
+      <mark>- USER_NAME=cisco</mark>
+</code>
+</pre>
+</div>
 ```
