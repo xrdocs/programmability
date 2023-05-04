@@ -33,3 +33,8 @@ You've missed the first episode? You would like to read more? Below the list of 
 | **5 - Tips and Tricks**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-tips-and-tricks/){: .btn} 	|  pyATS Tips and Tricks |
 
 # Abstract
+
+In this new episode, we will see how to add configuration to a device, confirm the changes (looking at operational data). We will then compare three ways to remove configuration to go back to default. We will do all this changes using pyATS.
+
+Manipulating configuration can be done with pyATS but it might not be the ideal tool for you. Here, we use pyATS because we are in a lab and we can't break anything (most important, we don't care if we do). Based on your use case, you might consider other tools like Ansible or NSO.
+{: .notice--info}
