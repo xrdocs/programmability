@@ -36,6 +36,8 @@ You've missed the first episode? You would like to read more? Below the list of 
 
 In this new episode, we will see how to add configuration to a device, confirm the changes (looking at operational data). We will then compare three ways to remove configuration to go back to default. We will do all this changes using pyATS.
 
+We will manipulate Segment Routing Traffic Engineering in today's use case. We will send traffic from a source to a destination and influence the traffic's path using Segment Routing Policies.
+
 Manipulating configuration can be done with pyATS but it might not be the ideal tool for you. Here, we use pyATS because we are in a lab and we can't break anything (most important, we don't care if we do). Based on your use case, you might consider other tools like Ansible or NSO.
 {: .notice--info}
 
@@ -45,3 +47,24 @@ In today's article, we will use the Segment Routing network topology, based on X
 
 You can read more on XRDocs about what's XRd and how to use it [here](https://xrdocs.io/virtual-routing/tutorials/).
 {: .notice--info}
+
+The topology will look like below. We will send traffic between a source and a destination (linux hosts) and influence the traffic's path using Segment Routing Policies.
+
+```
+#                 xrd-7(PCE)
+#                 /        \
+#              xrd-3 --- xrd-4
+#               / |        | \
+#  src --- xrd-1  |        |  xrd-2 --- dst
+#               \ |        | /
+#              xrd-5 --- xrd-6
+#                 \        /
+#                 xrd-8(vRR)
+#
+#
+# IP addresses
+# source:            10.1.1.2
+# xrd-1-GE2 (left ): 10.1.1.3
+# xrd-2-GE2 (right): 10.3.1.2
+# dest:              10.3.1.3
+```
