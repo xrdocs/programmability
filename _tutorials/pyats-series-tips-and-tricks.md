@@ -187,6 +187,24 @@ You can find supported platforms by Unicon in the [pyATS documentation](https://
 Ensure that devices you are using are accurately represented as this will serve as the source of truth for [Genie Abstract](https://pubhub.devnetcloud.com/media/genie-docs/docs/abstract/index.html) as well in a near future update.
 {: .notice--info}
 
+## Linux Host in a Testbed
+
+Linux host are supported by Unicon. You can add them in your testbed. Below an example of what it could look like.
+
+```
+  my_linux_host:
+    os: linux
+    type: linux
+    connections:
+      cli:
+        ip: 10.10.10.10
+        port: 22
+        protocol: ssh
+```
+
+You can find supported platforms by Unicon in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/supported_platforms.html).
+{: .notice--info}
+
 ## Using a SSH Proxy
 
 Your device might be accessible via a proxy (ex: Bastion). You can add a proxy to your testbed and indicates for which device you should first connect to the proxy.
