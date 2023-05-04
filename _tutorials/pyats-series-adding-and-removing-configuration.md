@@ -69,7 +69,7 @@ The topology will look like below. We will send traffic between a source and a d
 # dest:              10.3.1.3
 ```
 
-## Modifying the docker-compose File
+## Modifying the `docker-compose` File
 
 To be able to connect via SSH to the two linux hosts (source and destination), I had to modify the `docker-compose` file. Below what the file looks like for the two hosts. What changed:
 - Using the image `lscr.io/linuxserver/openssh-server:latest` where SSH server is already installed. Documentation [here](https://github.com/linuxserver/docker-openssh-server).
