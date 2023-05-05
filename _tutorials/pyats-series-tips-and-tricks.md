@@ -441,6 +441,37 @@ with open('./output.txt') as file:
 device.parse('<show command>', output=output)
 ```
 
+## Getting the password as plaintext
+
+By default, when you try to retrieve a device's password using the `device.credentials.default.password` attribute, it will return a line of `*`. 
+
+```
+from genie import testbed
+
+testbed = testbed.load('./testbed.yaml')
+device = testbed.devices['xrd1']
+
+print(device.credentials.default.password)
+````
+
+The above Python script would return: `************************`.
+
+If you would like to retrieve the password as plaintext, you can use the `plaintext` attribute of the `device.credentials.default.password` object.
+
+```
+from genie import testbed
+
+testbed = testbed.load('./testbed.yaml')
+device = testbed.devices['xrd1']
+
+print(device.credentials.default.password.plaintext)
+````
+
+The above Python script would return `Cisco123` (or whatever you used as password).
+
+
+
+
 # Conclusion
 
 In this fifth episode of the pyATS series, we saw a bunch of useful Tips and Tricks based on my experience with pyATS.
