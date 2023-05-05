@@ -469,7 +469,38 @@ print(device.credentials.default.password.plaintext)
 
 The above Python script would return `Cisco123` (or whatever you used as password).
 
+## Handling Dialogs
 
+It could happen that you need to handle a specific dialog with pyATS (ex: you're connecting to a linux host and would like to use a command that requires `sudo` privileges). In this case, the device might ask you for a password.
+
+You can use the `Dialog` and `Statement` Classes of the `unicon.eal.dialogs` package to handle it. 
+
+In the below example, we are expecting the device to send us `[sudo] password for cisco:` line, when using the command `sudo traceroute 10.3.1.3`. Will will use the action `'fsendline("{source.credentials.default.password.plaintext}")'` which will send the device's password as plaintext.
+
+```
+from genie import testbed
+from unicon.eal.dialogs import Statement, Dialog
+
+testbed = testbed.load('./testbed.yaml')
+device = testbed.devices['source']
+
+dialog = Dialog([
+    Statement(pattern=r'.*[sudo] password for cisco:',
+                        action=f'sendline("{source.credentials.default.password.plaintext}")',
+                        loop_continue=True,
+                        continue_timer=False)
+])
+
+device.connect()
+
+traceroute = device.execute('sudo traceroute 10.3.1.3', reply=dialog)
+print(traceroute)
+
+device.disconnect()
+```
+
+You can read more about `Dialog` and `Statement` Classes in the [Common Service documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/services/generic_services.html#sendline).
+{: .notice--info}
 
 
 # Conclusion
