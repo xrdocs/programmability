@@ -1,7 +1,7 @@
 ---
 published: True
-position: hidden
-date: '2022-03-11 10:00 -0400'
+position: top
+date: '2023-05-11 10:00 -0400'
 title: Scrapli Overview
 excerpt: Scrapli is a python library which grabbed the attention of network engineers. Learn more about it and take a look how you could manage Cisco devices with it.
 author: Neelima Parakala
