@@ -675,10 +675,13 @@ UNLOCK
 
 # What did I learn ?
 Scrapli is a screen scraping python library that provides a way to automate your network tasks efficiently by connecting multiple network devices via SSH, NETCONF or Telnet, synchronously or asynchronously. Being an open-sourced project written in python makes it easy for the user to debug and troubleshoot. Above all, it's time-efficient, free, and easy to use. Write simple lines of python code to execute your network tasks on a lot of your network devices with CLI scraping!!
-*Stay tuned to learn about another network automation tool in our next post.*
-*Please do comment below, your questions, and what you would like to learn about network automation!!*
+
 
 # Resources
 
 - [Scrapli Documentation](https://carlmontanari.github.io/scrapli/)
 - [Scrapli GitHub repository](https://github.com/carlmontanari/scrapli)
+
+##
+*Stay tuned to learn about another network automation tool in our next post.*
+*Please do comment below, your questions, and what you would like to learn about network automation!!*
