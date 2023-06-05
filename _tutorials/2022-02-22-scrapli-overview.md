@@ -65,7 +65,7 @@ Once you have all the required packages installed, go ahead and write the code t
 
 ## scrapli
 
-#### 1. generic_driver.py
+### 1. generic_driver.py
 
 ```
 from scrapli.driver import GenericDriver
