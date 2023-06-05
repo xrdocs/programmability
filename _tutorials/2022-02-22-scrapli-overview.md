@@ -144,7 +144,7 @@ Build Information:
 cisco NCS-5500 () processor
 System uptime is 4 weeks 2 days 18 hours 1 minute
 ```
-#### 2. iosxr_driver.py
+### 2. iosxr_driver.py
 
 ```
 from scrapli.driver.core import IOSXRDriver
@@ -191,7 +191,7 @@ IFT_NULL                1        1        0        0
 IFT_TENGETHERNET        48       1        0        47
 
 ```
-#### 3. sync_iosxr_driver.py
+### 3. sync_iosxr_driver.py
 
 ```
 from scrapli.driver.core import IOSXRDriver
