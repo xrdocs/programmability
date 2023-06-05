@@ -10,6 +10,8 @@ author: Neelima Parakala
 
 Are you a pro in CLI commands but tired of manually logging in to each network device and managing the network device configuration and operational data using the command line interface ? Then its time for you to explore Scrapli and automate CLI scraping !!!!
 
+How about structured data then ? Yes, you can also scrape structured data through scrapli_netconf.  
+
 ## What is Scrapli?
 
 Scrapli is a python library that helps you to connect multiple network devices via SSH or Telnet, synchronously or asynchronously for screen scraping. Wondering what is screen scraping? well, it is the process of collecting screen display data from the network device and dumping it on to another screen or file. 
@@ -106,9 +108,41 @@ if __name__ == "__main__":
     main()
 
 ```
+Execute **generic_driver.py** file and retrieve the results.
 
 ```
 python generic_driver.py
+```
+### Output
+```
+Prompt:
+
+RP/0/RP0/CPU0:R2_Red_Pine#
+
+Hostname:
+
+Sun Jun  4 21:30:03.851 PDT
+Building configuration...
+hostname R2_Red_Pine
+
+
+Version:
+
+Sun Jun  4 21:30:04.180 PDT
+Cisco IOS XR Software, Version 7.9.1
+Copyright (c) 2013-2023 by Cisco Systems, Inc.
+
+Build Information:
+ Built By     : ingunawa
+ Built On     : Sun Apr  2 01:04:35 PDT 2023
+ Built Host   : iox-ucs-047
+ Workspace    : /auto/srcarchive15/prod/7.9.1/ncs5500/ws
+ Version      : 7.9.1
+ Location     : /opt/cisco/XR/packages/
+ Label        : 7.9.1-iso
+
+cisco NCS-5500 () processor
+System uptime is 4 weeks 2 days 18 hours 1 minute
 ```
 #### 2. iosxr_driver.py
 
@@ -132,7 +166,7 @@ def main():
     # handle disabling paging for you
     
     with IOSXRDriver(**MY_DEVICE) as conn:
-        result = conn.send_command("show run")
+        result = conn.send_command("show interfaces summary")
 
     print(result.result)
 
@@ -141,11 +175,22 @@ if __name__ == "__main__":
     main()
     
 ```
-
+Execute **iosxr_driver.py** file and retrieve the results.
 ```
 python iosxr_driver.py
 ```
+### Output
+```
+Interface Type          Total    UP       Down     Admin Down
+--------------          -----    --       ----     ----------
+ALL TYPES               56       3        0        53
+--------------
+IFT_HUNDREDGE           6        0        0        6
+IFT_ETHERNET            1        1        0        0
+IFT_NULL                1        1        0        0
+IFT_TENGETHERNET        48       1        0        47
 
+```
 #### 3. sync_iosxr_driver.py
 
 ```
@@ -190,9 +235,50 @@ if __name__ == "__main__":
     main()
     
 ```
-
+Execute **sync_iosxr_driver.py** file and retrieve the results.
 ```
-python sync_iosxr_driver.py
+time python sync_iosxr_driver.py
+```
+### Output
+```
+device prompt: RP/0/RP0/CPU0:R1_Macrocarpa#
+device show version: Mon Jun  5 04:37:58.281 UTC
+Cisco IOS XR Software, Version 7.10.1.26I
+Copyright (c) 2013-2023 by Cisco Systems, Inc.
+
+Build Information:
+ Built By     : deenayak
+ Built On     : Wed May 24 02:03:06 PDT 2023
+ Built Host   : iox-ucs-002
+ Workspace    : /auto/iox-ucs-002-san2/prod/7.10.1.26I.SIT_IMAGE/ncs5500/ws
+ Version      : 7.10.1.26I
+ Location     : /opt/cisco/XR/packages/
+ Label        : 7.10.1.26I
+
+cisco NCS-5500 () processor
+System uptime is 1 day 12 hours 29 minutes
+
+device prompt: RP/0/RP0/CPU0:R2_Red_Pine#
+device show version: Sun Jun  4 21:40:55.670 PDT
+Cisco IOS XR Software, Version 7.9.1
+Copyright (c) 2013-2023 by Cisco Systems, Inc.
+
+Build Information:
+ Built By     : ingunawa
+ Built On     : Sun Apr  2 01:04:35 PDT 2023
+ Built Host   : iox-ucs-047
+ Workspace    : /auto/srcarchive15/prod/7.9.1/ncs5500/ws
+ Version      : 7.9.1
+ Location     : /opt/cisco/XR/packages/
+ Label        : 7.9.1-iso
+
+cisco NCS-5500 () processor
+System uptime is 4 weeks 2 days 18 hours 12 minutes
+
+real	0m4.028s
+user	0m0.238s
+sys	0m0.140s
+
 ```
 ### 4. async_iosxr_driver.py
 
@@ -246,10 +332,50 @@ if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(main())
 
 ```
+Execute **async_iosxr_driver.py** file and retrieve the results.
 ```
-python async_iosxr_driver.py
+time python async_iosxr_driver.py
 ```
+### Output
+```
+device prompt: RP/0/RP0/CPU0:R1_Macrocarpa#
+device show version: Mon Jun  5 04:39:37.260 UTC
+Cisco IOS XR Software, Version 7.10.1.26I
+Copyright (c) 2013-2023 by Cisco Systems, Inc.
 
+Build Information:
+ Built By     : deenayak
+ Built On     : Wed May 24 02:03:06 PDT 2023
+ Built Host   : iox-ucs-002
+ Workspace    : /auto/iox-ucs-002-san2/prod/7.10.1.26I.SIT_IMAGE/ncs5500/ws
+ Version      : 7.10.1.26I
+ Location     : /opt/cisco/XR/packages/
+ Label        : 7.10.1.26I
+
+cisco NCS-5500 () processor
+System uptime is 1 day 12 hours 30 minutes
+
+device prompt: RP/0/RP0/CPU0:R2_Red_Pine#
+device show version: Sun Jun  4 21:42:32.574 PDT
+Cisco IOS XR Software, Version 7.9.1
+Copyright (c) 2013-2023 by Cisco Systems, Inc.
+
+Build Information:
+ Built By     : ingunawa
+ Built On     : Sun Apr  2 01:04:35 PDT 2023
+ Built Host   : iox-ucs-047
+ Workspace    : /auto/srcarchive15/prod/7.9.1/ncs5500/ws
+ Version      : 7.9.1
+ Location     : /opt/cisco/XR/packages/
+ Label        : 7.9.1-iso
+
+cisco NCS-5500 () processor
+System uptime is 4 weeks 2 days 18 hours 14 minutes
+
+real	0m1.966s
+user	0m0.363s
+sys	0m0.074s
+```
 ## scrapli_netconf
 
 ### 5. get_config.py
@@ -274,8 +400,43 @@ if __name__ == "__main__":
     main()
     
 ```
+Execute **get_config.py** file and retrieve the results.
 ```
 python get_config.py
+```
+### Output 
+```
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <data>
+    <netconf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-man-xml-ttyagent-cfg">
+      <agent>
+        <tty>
+          <enable/>
+        </tty>
+      </agent>
+    </netconf>
+    <call-home xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-call-home-cfg">
+      <active/>
+      <contact-smart-licensing>true</contact-smart-licensing>
+      <profiles>
+        <profile>
+          <profile-name>CiscoTAC-1</profile-name>
+          <active/>
+          <methods>
+            <method>
+              <method>email</method>
+              <enable>false</enable>
+            </method>
+            <method>
+              <method>http</method>
+              <enable>true</enable>
+            </method>
+          </methods>
+        </profile>
+      </profiles>
+    </call-home>
+   <data>
+  <rpc-reply>
 ```
 ### 6. edit_config.py
 
@@ -344,8 +505,32 @@ if __name__ == "__main__":
     main()
 
 ```
+Execute **edit_config.py** file and retrieve the results.
 ```
 python edit_config.py
+```
+### Output
+```
+LOCK
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <ok/>
+</rpc-reply>
+
+EDIT
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="102">
+  <ok/>
+</rpc-reply>
+
+COMMIT
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="102">
+  <ok/>
+</rpc-reply>
+
+UNLOCK
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="104">
+  <ok/>
+</rpc-reply>
+
 ```
 ### 7. async_edit_config.py
 
@@ -429,8 +614,51 @@ if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(main())
 
 ```
+Execute **async_edit_config.py** file and retrieve the results.
 ```
 python async_edit_config.py
+```
+### Output
+```
+LOCK
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <ok/>
+</rpc-reply>
+
+EDIT
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="102">
+  <ok/>
+</rpc-reply>
+
+COMMIT
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="103">
+  <ok/>
+</rpc-reply>
+
+UNLOCK
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="104">
+  <ok/>
+</rpc-reply>
+
+LOCK
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <ok/>
+</rpc-reply>
+
+EDIT
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="102">
+  <ok/>
+</rpc-reply>
+
+COMMIT
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="103">
+  <ok/>
+</rpc-reply>
+
+UNLOCK
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="104">
+  <ok/>
+</rpc-reply>
 ```
 ## What are the flavours of Scrapli ?
 - [scrapli_netconf](https://scrapli.github.io/scrapli_netconf/) 
