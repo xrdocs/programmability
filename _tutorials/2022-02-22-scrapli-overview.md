@@ -109,7 +109,8 @@ if __name__ == "__main__":
     main()
 
 ```
-Here generic driver of scrapli is used to connect to the device  
+Here generic driver of scrapli is used to connect to the device via SSH. Generic driver doesn't disable paging, hence it is disabled explicitly using the CLI command. The above code open the connection to the device, disable paging, retrieve the prompt, hostname, version, and close the connection.
+
 Execute **generic_driver.py** file and retrieve the results.
 
 ```
@@ -146,6 +147,8 @@ Build Information:
 cisco NCS-5500 () processor
 System uptime is 4 weeks 2 days 18 hours 1 minute
 ```
+The output shows the prompt, hostname and version details of the device as per the request.
+
 ### 2. iosxr_driver.py
 
 ```
@@ -178,6 +181,8 @@ if __name__ == "__main__":
     main()
     
 ```
+Here core IOS-XR driver of scrapli is used to connect to the device via SSH. Core driver does disable the paging. Context manager helps open and close the device connection while connecting to it, hence explicit open and close instructions are not given in the code. 
+
 Execute **iosxr_driver.py** file and retrieve the results.
 ```
 python iosxr_driver.py
@@ -194,6 +199,8 @@ IFT_NULL                1        1        0        0
 IFT_TENGETHERNET        48       1        0        47
 
 ```
+The output shows interfaces summary information as per the request.
+
 ### 3. sync_iosxr_driver.py
 
 ```
@@ -229,7 +236,7 @@ def gather_version(device):
 
 
 def main():
-    """Function to gather coroutines, await them and print results"""
+    """Function to gather config details, and print results"""
     for device in DEVICES:
         output = gather_version(device)
         print(f"device prompt: {output[0]}")
@@ -240,6 +247,8 @@ if __name__ == "__main__":
     main()
     
 ```
+Here the configurations of 2 devices are retrieved in a synchronous manner i.e one after another.
+
 Execute **sync_iosxr_driver.py** file and retrieve the results.
 ```
 time python sync_iosxr_driver.py
@@ -285,6 +294,8 @@ user	0m0.238s
 sys	0m0.140s
 
 ```
+The output shows prompt and version details of the 2 devices and it took 4 seconds to retrieve this information in a synchronous way.
+
 ### 4. async_iosxr_driver.py
 
 ```
@@ -340,6 +351,8 @@ if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(main())
 
 ```
+Here the configurations of 2 devices are retrieved in an asynchronous way i.e in parallel. In this case we use AsyncIOSXRDriver to connect the devices via asyncssh transport. The functions in this code are executed asynchronously, hence we await on every operation of the device. 
+
 Execute **async_iosxr_driver.py** file and retrieve the results.
 ```
 time python async_iosxr_driver.py
@@ -384,6 +397,8 @@ real	0m1.966s
 user	0m0.363s
 sys	0m0.074s
 ```
+The output shows prompt and version details of the 2 devices and it took 1.9 seconds to retrieve this information asynchronously.
+
 ## scrapli_netconf
 
 ### 5. get_config.py
@@ -408,6 +423,8 @@ if __name__ == "__main__":
     main()
     
 ```
+Here NetconfDriver is used to connect the device via Netconf over SSH to retrieve running configuration.
+
 Execute **get_config.py** file and retrieve the results.
 ```
 python get_config.py
@@ -446,6 +463,8 @@ python get_config.py
    <data>
   <rpc-reply>
 ```
+The output shows running configuration of the device as per the request.
+
 ### 6. edit_config.py
 
 ```
@@ -514,6 +533,8 @@ if __name__ == "__main__":
     main()
 
 ```
+Here we are connecting to the device via NETCONF to edit and commit the candidate configuration.
+
 Execute **edit_config.py** file and retrieve the results.
 ```
 python edit_config.py
@@ -541,6 +562,8 @@ UNLOCK
 </rpc-reply>
 
 ```
+The output returns rpc replies as ok, which means the edit operations are completed successfully.
+
 ### 7. async_edit_config.py
 
 ```
@@ -625,6 +648,8 @@ if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(main())
 
 ```
+Here we are connecting to 2 devices via NETCONF to edit and commit the candidate configuration asynchronously.
+
 Execute **async_edit_config.py** file and retrieve the results.
 ```
 python async_edit_config.py
@@ -671,6 +696,8 @@ UNLOCK
   <ok/>
 </rpc-reply>
 ```
+The output returns rpc replies as ok, which means the asynchronously edit operations on 2 devices completed successfully.
+
 ## What are the flavours of Scrapli ?
 - [scrapli_netconf](https://scrapli.github.io/scrapli_netconf/) 
 - [nornir_scrapli](https://scrapli.github.io/nornir_scrapli/)
