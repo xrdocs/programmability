@@ -75,6 +75,7 @@ MY_DEVICE = {
     "auth_username": "cisco",
     "auth_password": "cisco",
     "auth_strict_key": False,
+    "port": 22,
 }
 
 
@@ -108,6 +109,7 @@ if __name__ == "__main__":
     main()
 
 ```
+Here generic driver of scrapli is used to connect to the device  
 Execute **generic_driver.py** file and retrieve the results.
 
 ```
@@ -154,6 +156,7 @@ MY_DEVICE = {
     "auth_username": "cisco",
     "auth_password": "cisco",
     "auth_strict_key": False,
+    "port": 22,
 }
 
 
@@ -201,6 +204,7 @@ IOSXR_DEVICE1 = {
     "auth_username": "cisco",
     "auth_password": "cisco",
     "auth_strict_key": False,
+    "port": 22,
 }
 
 IOSXR_DEVICE2 = {
@@ -208,6 +212,7 @@ IOSXR_DEVICE2 = {
     "auth_username": "cisco",
     "auth_password": "cisco",
     "auth_strict_key": False,
+    "port": 22,
 }
 
 DEVICES = [IOSXR_DEVICE1, IOSXR_DEVICE2]
@@ -292,8 +297,10 @@ IOSXR_DEVICE1 = {
     "auth_username": "cisco",
     "auth_password": "cisco",
     "auth_strict_key": False,
+    "port": 22,
     "transport": "asyncssh",
     "driver": AsyncIOSXRDriver,
+    
 }
 
 IOSXR_DEVICE2 = {
@@ -301,6 +308,7 @@ IOSXR_DEVICE2 = {
     "auth_username": "cisco",
     "auth_password": "cisco",
     "auth_strict_key": False,
+    "port": 22,
     "transport": "asyncssh",
     "driver": AsyncIOSXRDriver,
 }
@@ -388,7 +396,7 @@ my_device = {
     "auth_username": "cisco",
     "auth_password": "cisco",
     "auth_strict_key": False,
-    "port": 830
+    "port": 830,
 }
 
 def main():
@@ -448,6 +456,7 @@ IOSXR_DEVICE = {
     "auth_username": "cisco",
     "auth_password": "cisco",
     "auth_strict_key": False,
+    "port": 830,
 }
 
 EDIT_INTERFACE = """
@@ -544,6 +553,7 @@ IOSXR_DEVICE1 = {
     "auth_username": "cisco",
     "auth_password": "cisco",
     "auth_strict_key": False,
+    "port": 830,
     "transport": "asyncssh",
 }
 
@@ -552,6 +562,7 @@ IOSXR_DEVICE2 = {
     "auth_username": "cisco",
     "auth_password": "cisco",
     "auth_strict_key": False,
+    "port": 830,
     "transport": "asyncssh",
 }
 
