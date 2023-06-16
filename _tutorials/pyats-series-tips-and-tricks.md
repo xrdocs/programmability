@@ -258,6 +258,53 @@ devices:
 More information about how to use proxy in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/proxy.html).
 {: .notice--info}
 
+## Using a SSH Tunnel
+
+Sometimes it's more convenient to use a SSH tunnel rather than an proxy. For example, you cannot use pyATS NETCONF plugin with a proxy, but it works with a SSH tunnel.
+
+In the below example, I will connect to `xrd1` via a SSH tunnel and to `xrd2` directly. `js` will store information regarding how to connect to the SSH tunnel. You can name it how you want, as long at it matches with the device `sshtunnel` value. 
+
+
+```
+testbed:
+  credentials:
+    default:
+      username: cisco
+      password: cisco123
+  servers:
+    js:
+      address: 10.10.10.10
+      credentials:
+        ssh:
+          username: cisco
+          password: cisco123
+
+devices:
+  xrd1:
+    os: iosxr
+    platform: iosxrv
+    type: router
+    connections:
+      cli:
+        ip: 10.10.10.1
+        sshtunnel:
+          host: js
+        port: 22
+        protocol: ssh
+    xrd2:
+    os: iosxr
+    platform: iosxrv
+    type: router
+    connections:
+      cli:
+        ip: 10.10.10.2
+        port: 22
+        protocol: ssh
+```
+
+More information about how to use SSH tunnel in the [pyATS documentation](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/proxy.html#ssh-tunnel).
+{: .notice--info}
+
 ## Validating a Testbed file
 
 You can verify that there is no typo or error in your testbed file by using the below command. If your testbed has error, it should look like the below output.
