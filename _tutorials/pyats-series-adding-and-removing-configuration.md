@@ -53,24 +53,18 @@ You can read more on XRDocs about what's IOS XRd and how to use it [here](https:
 
 The topology will look like below. We will send traffic between a source and a destination (linux hosts) and influence the traffic's path using Segment Routing Policies.
 
-```
-#                 xrd-7(PCE)
-#                 /        \
-#              xrd-3 --- xrd-4
-#               / |        | \
-#  src --- xrd-1  |        |  xrd-2 --- dst
-#               \ |        | /
-#              xrd-5 --- xrd-6
-#                 \        /
-#                 xrd-8(vRR)
-#
-#
-# IP addresses
-# source:            10.1.1.2
-# xrd-1-GE2 (left ): 10.1.1.3
-# xrd-2-GE2 (right): 10.3.1.2
-# dest:              10.3.1.3
-```
+![Topology_XRd_1.jpg]({{site.baseurl}}/images/Topology_XRd_1.jpg)
+
+## IP Addressing
+
+**Management IP** addresses are in the range `172.40.0.0/24`.
+`101` to `108` are respectively associated from `xrd-1` to `xrd-8`
+`200` and `201` are respectively associated to `xrd-source` and `xrd-dest`.
+
+**Adjacency links** addresses are in the range `100.0.0.0/8`.
+Second and third byte are associated with the two routers on each side of the link. Fourth byte represents the node.
+Ex: `100.106.108.0/24` represents the link between `xrd-6` and `xrd-8`.
+`100.106.108.108` belong to an interface on `xrd-8`.
 
 ## Modifying the `docker-compose` File
 
