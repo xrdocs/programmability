@@ -34,7 +34,7 @@ You've missed the first episode? You would like to read more? Below the list of 
 
 # Abstract
 
-In this new episode, we will see how to add configuration to a device, confirm the changes (looking at operational data). We will then compare three ways to remove configuration to go back to default. We will do all this changes using pyATS.
+In this new episode, we will see how to add configuration to a device, confirm the changes (looking at operational data) and then clean the configuration. We will then compare three ways to remove configuration to go back to default. We will do all this changes using pyATS.
 
 We will manipulate Segment Routing Traffic Engineering in today's use case. We will send traffic from a source to a destination and influence the traffic's path using Segment Routing Policies.
 
@@ -78,4 +78,13 @@ Manipulating configuration can be done with pyATS but it might not be the ideal 
 Once connected to a device using pyATS, you can use the `configure()` method to push configuration. It takes a `string` as parameter, which is the configuration to be pushed. Below an example for a segment-routing policy.
 
 <script src="https://gist.github.com/AntoineOrsoni/56032ff89ed5ca6de7ab836b09bdb72d.js"></script>
+
+# Removing configuration from a device
+
+Removing configuration can be slightly more complex than pushing configuration. In this part, we are going to explore 3 differerents ways to achieve that goal:
+- Downloading a `base configuration template` on the device, and loading it.
+- Doing a configuration rollback to a previous commit.
+- Using `configure()` method to unconfigure what we have done (i.e. adding `no` at the beginning of each configuration section).
+
+In all three scenarios, we will remove the segment routing policy configuration. We will then compare the pros and cons for each option.
 
