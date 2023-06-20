@@ -66,45 +66,16 @@ Second and third byte are associated with the two routers on each side of the li
 Ex: `100.106.108.0/24` represents the link between `xrd-6` and `xrd-8`.
 `100.106.108.108` belong to an interface on `xrd-8`.
 
-## Modifying the `docker-compose` File
+**Source and Destination** addresses are respectively `10.1.1.2` and `10.3.1.3`.
 
-To be able to connect via SSH to the two linux hosts (source and destination), I had to modify the `docker-compose` file. Below what the file looks like for the two hosts. What changed:
-- Using the image `lscr.io/linuxserver/openssh-server:latest` where SSH server is already installed. Documentation [here](https://github.com/linuxserver/docker-openssh-server).
-- In the `environment`, I set `PASSWORD_ACCESS=true` so I can access my device using a login/password. Otherwise I could only access it with a specific public RSA key.
+# Pushing Configuration to a device
 
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-  dest:
-    cap_add:
-    - NET_ADMIN
-    command: /bin/sh -c "ip route add 10.0.0.0/8 via 10.3.1.2 && /bin/sh"
-    container_name: dest
-    <mark>image: lscr.io/linuxserver/openssh-server:latest</mark>
-    networks:
-      xrd-2-dest:
-        ipv4_address: 10.3.1.3
-    stdin_open: true
-    tty: true
-    <mark>environment:</mark>
-      <mark>- PASSWORD_ACCESS=true</mark>
-      <mark>- USER_PASSWORD=cisco123</mark>
-      <mark>- USER_NAME=cisco</mark>
-  source:
-    cap_add:
-    - NET_ADMIN
-    command: /bin/sh -c "ip route add 10.0.0.0/8 via 10.1.1.3 && /bin/sh"
-    container_name: source
-    <mark>image: lscr.io/linuxserver/openssh-server:latest</mark>
-    networks:
-      source-xrd-1:
-        ipv4_address: 10.1.1.2
-    stdin_open: true
-    tty: true
-    <mark>environment:</mark>
-      <mark>- PASSWORD_ACCESS=true</mark>
-      <mark>- USER_PASSWORD=cisco123</mark>
-      <mark>- USER_NAME=cisco</mark>
-</code>
-</pre>
-</div>
+In this first step, we are going to see that pushing configuration with pyATS is easy. I would not suggest using this solution when pushing a complex end-to-end service where you would need advanced features such as rollback capabilities. In a lab environment, it's good enough and it has the advantage to be very simple.
+
+Manipulating configuration can be done with pyATS but it might not be the ideal tool for you. Here, we use pyATS because we are in a lab and we can't break anything (most important, we don't care if we do). Based on your use case, you might consider other tools like Crosswork, NSO or Ansible.
+{: .notice--info}
+
+Once connected to a device using pyATS, you can use the `configure()` method to push configuration. It takes a `string` as parameter, which is the configuration to be pushed. Below an example for a segment-routing policy.
+
+<script src="https://gist.github.com/AntoineOrsoni/56032ff89ed5ca6de7ab836b09bdb72d.js"></script>
+
