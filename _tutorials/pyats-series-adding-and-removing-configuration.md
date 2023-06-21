@@ -35,7 +35,7 @@ We will manipulate Segment Routing Traffic Engineering in today's use case. We w
 Manipulating configuration can be done with pyATS but it might not be the ideal tool for you. Here, we use pyATS because we are in a lab and we can break anything (most important, we don't care if we do). Based on your use case, you might consider other tools like Crosswork, NSO or Ansible.
 {: .notice--info}
 
-![config push.jpeg]({{site.baseurl}}/images/config push.jpeg){: .align-center}
+![config push.jpeg]({{site.baseurl}}/images/config push.jpeg){: .align-center}{:height="60%" width="60%"}
 
 
 # Network Topology
