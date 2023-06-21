@@ -131,3 +131,16 @@ Last way that we can consider is to remove the configuration line by line: addin
 Here is an example:
 
 <script src="https://gist.github.com/AntoineOrsoni/36dea353f00336425c1358b0e6b88c6f.js"></script>
+
+# Combining all building blocks together
+
+Now that we explored each building block, we can combine everything to have an example of end-to-end solution. The below script will be divided in three parts:
+1. Verifying the traffic from `source` to `destination` follows the IGP and is not influenced by any policy.
+2. Pushing the **Segment Routing Traffic Engineering policy** configuration and verifying the traffic path is following the policy.
+3. Removing the configuration and getting back to default configuration. Verifying the traffic follows the IGP again.
+
+To keep this example simple, we will only `execute()` a traceroute to check the path from `source` to `destination` and print the output (i.e. we will not parse it, as we don't have a parser today for traceroute on IOS XR). We will see in the next episode what you can do in this case.
+
+Here is the code:
+
+<script src="https://gist.github.com/AntoineOrsoni/be6c3b6ce29c382111e63d6842239158.js"></script>
