@@ -86,5 +86,6 @@ Removing configuration can be slightly more complex than pushing configuration. 
 - Doing a configuration rollback to a previous commit.
 - Using `configure()` method to unconfigure what we have done (i.e. adding `no` at the beginning of each configuration section).
 
-In all three scenarios, we will remove the segment routing policy configuration. We will then compare the pros and cons for each option.
+In all three scenarios, we will remove the segment routing policy configuration. We will compare the pros and cons for each option.
+
 
