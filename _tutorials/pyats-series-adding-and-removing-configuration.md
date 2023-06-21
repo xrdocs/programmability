@@ -91,4 +91,18 @@ Removing configuration can be slightly more complex than pushing configuration. 
 
 In all three scenarios, we will remove the segment routing policy configuration. We will compare the pros and cons for each option.
 
+## Loading a configuration on the device
+
+First option is to have a base configuration file saved on the device harddisk and `load` the configuration on the device. The IOS XR command to do it is `load harddisk:filename` where `filename` is the configuration file. Then, you have to commit the change using `commit replace` to first wipe out the configuration and then apply the fresh one.
+
+To download the configuration on the device, I like to use SCP. On IOS XR, the command is: `scp username@server:/path/to/file harddisk:/filename` where:
+- `username` is the username to connect to the `server`,
+- `server` is the server where you want to download the configuration file,
+- `/path/to/file` is the path to your configuration file on the `server`,
+- `filename` is the filename you would like to use on the device.
+
+If the configuration file is not on the device or if the `filename` has a typo, the `commit replace` will just wipe out the configuration and you will end with a factory default configuration. 
+Double check that the file has been pushed on the device before executing the command.
+{: .notice--warning}
+
 
