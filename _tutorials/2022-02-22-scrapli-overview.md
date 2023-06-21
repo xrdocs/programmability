@@ -1,4 +1,4 @@
-<img width="354" alt="image" src="https://github.com/xrdocs/programmability/assets/10559258/4cf35031-149b-44f9-8527-ceb080de232e">---
+---
 published: True
 position: top
 date: '2023-05-11 10:00 -0400'
