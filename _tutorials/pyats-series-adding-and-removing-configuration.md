@@ -95,7 +95,7 @@ To download the configuration on the device, I like to use SCP. On IOS XR, the c
 - `/path/to/file` is the path to your configuration file on the `server`,
 - `filename` is the filename you would like to use on the device.
 
-If the configuration file is not on the device or if the `filename` has a typo, the `commit replace` will just wipe out the configuration and you will end with a factory default configuration. 
+If the configuration file is not on the device or if the `filename` has a typo, the `commit replace` will just wipe out the configuration and you will end up with a factory default configuration. 
 Double check that the file has been pushed on the device before executing the command.
 {: .notice--warning}
 
