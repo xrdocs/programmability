@@ -39,7 +39,7 @@ In this new episode, we will see how to add configuration to a device, confirm t
 
 We will manipulate Segment Routing Traffic Engineering in today's use case. We will send traffic from a source to a destination and influence the traffic's path using Segment Routing Policies.
 
-Manipulating configuration can be done with pyATS but it might not be the ideal tool for you. Here, we use pyATS because we are in a lab and we can't break anything (most important, we don't care if we do). Based on your use case, you might consider other tools like Crosswork, NSO or Ansible.
+Manipulating configuration can be done with pyATS but it might not be the ideal tool for you. Here, we use pyATS because we are in a lab and we can break anything (most important, we don't care if we do). Based on your use case, you might consider other tools like Crosswork, NSO or Ansible.
 {: .notice--info}
 
 # Network Topology
@@ -73,7 +73,7 @@ Ex: `100.106.108.0/24` represents the link between `xrd-6` and `xrd-8`.
 
 In this first step, we are going to see that pushing configuration with pyATS is easy. I would not suggest using this solution when pushing a complex end-to-end service where you would need advanced features such as rollback capabilities. In a lab environment, it's good enough and it has the advantage to be very simple.
 
-Manipulating configuration can be done with pyATS but it might not be the ideal tool for you. Here, we use pyATS because we are in a lab and we can't break anything (most important, we don't care if we do). Based on your use case, you might consider other tools like Crosswork, NSO or Ansible.
+Manipulating configuration can be done with pyATS but it might not be the ideal tool for you. Here, we use pyATS because we are in a lab and we can break anything (most important, we don't care if we do). Based on your use case, you might consider other tools like Crosswork, NSO or Ansible.
 {: .notice--info}
 
 Once connected to a device using pyATS, you can use the `configure()` method to push configuration. It takes a `string` as parameter, which is the configuration to be pushed. Below an example for a segment-routing policy. You can pass multiple lines of configuration to the `configure()` method.
@@ -162,4 +162,3 @@ Below a few useful pyATS resources.
 - [List of Unicon supported platforms](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/supported_platforms.html),
 - [Devnet code exchange](https://developer.cisco.com/codeexchange/),
 - [Join the Webex space with the pyATS community](https://eurl.io/#r18UzrQVr).
-
