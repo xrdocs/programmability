@@ -126,3 +126,8 @@ This approach is efficient as it takes only one line of Python but it can be pai
 ## Unconfiguring line by line
 
 
+Last way that we can consider is to remove the configuration line by line: adding a `no` in front of each line we pushed. It takes more lines and probably more chances to forget to remove something but it can be handy if you need to partially change the configuration.
+
+Here is an example:
+
+<script src="https://gist.github.com/AntoineOrsoni/36dea353f00336425c1358b0e6b88c6f.js"></script>
