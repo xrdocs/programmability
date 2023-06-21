@@ -1,27 +1,31 @@
----
+<img width="354" alt="image" src="https://github.com/xrdocs/programmability/assets/10559258/4cf35031-149b-44f9-8527-ceb080de232e">---
 published: True
 position: top
 date: '2023-05-11 10:00 -0400'
 title: Scrapli Overview
-excerpt: Scrapli is a python library which grabbed the attention of network engineers. Learn more about it and take a look how you could manage Cisco devices with it.
+excerpt: Scrapli is a Python library that grabbed the attention of network engineers. You can learn more about it and take a look at how you could manage Cisco devices with it.
 author: Neelima Parakala
 ---
 {% include toc icon="table" title="Scrapli Overview" %}
 
-Are you a pro in CLI commands but tired of manually logging in to each network device and managing the network device configuration and operational data using the command line interface ? Then its time for you to explore Scrapli and automate CLI scraping !!!!
+Are you a pro in CLI commands but tired of manually logging in to each network device and managing the network device configuration and operational data using the command line interface? Then it's time for you to explore Scrapli and automate CLI scraping !!!!
 
-How about structured data then ? Yes, you can also scrape structured data through scrapli_netconf.  
+How about structured data then? Yes, you can also scrape structured data through scrapli_netconf.  
 
 ## What is Scrapli?
 
-Scrapli is a python library that helps you to connect multiple network devices via SSH or Telnet, synchronously or asynchronously for screen scraping. Wondering what is screen scraping? well, it is the process of collecting screen display data from the network device and dumping it on to another screen or file. 
+Scrapli is a Python library that helps you to connect multiple network devices via SSH or Telnet, synchronously or asynchronously for screen scraping. Wondering what screen scraping is? it is the process of collecting screen display data from the network device and dumping it onto another screen or file. 
+
+## What is Scrapli-Netconf?
+
+Scrapli-Netconf is a Netconf driver built on top of Scrapli. It is a Python package that helps to send and receive structured configuration data of the device using Netconf messages. It is a fast, flexible, well-tested, typed, and documented simple API that supports both synchronous and asynchronous usage.
 
 ## Why Scrapli?
 - Firstly, it is an open-source project, hence it is free to use and you can add new device/transport support to it based on your requirement
-- It is fast, flexible, lightweight and well tested
-- It uses asynchio python package and not threads to handle multiple device connections asynchronously
+- It is fast, flexible, lightweight, and well tested
+- It uses the Asynchio python package and not threads to handle multiple device connections asynchronously
 - It has an active community and well-maintained documentation
-- As scrapli is completely written in python, it is easy to install, write code, integrate with any other python frameworks, troubleshoot and debug the issues using python debug tools
+- As scrapli is completely written in Python, it is easy to install, write code, integrate with any other Python frameworks, troubleshoot, and debug the issues using Python debug tools
 - It provides asynchronous and synchronous support for both ssh and telnet transport protocols
 - It provides multi-vendor support (Arista EOS, Cisco NX-OS, Cisco IOS-XE, Cisco IOS-XR, Juniper JunOS)
          
@@ -29,14 +33,14 @@ Scrapli is a python library that helps you to connect multiple network devices v
 
 ### Setup virtual environment(Optional)
 
-If you would like to isolate the dependencies of scrapli from the system, you can create a python virtual environment.
+If you would like to isolate the dependencies of Scrapli from the system, you can create a Python virtual environment.
 
 Install virtualenv package using pip. pip is a package installer for Python. Here I am using Python 3.8.5 version.
 ```
 pip install virtualenv
 ```
-Using virtualenv package, create a python virtual environment.
-Refer [creation of python virtual environments](https://docs.python.org/3/library/venv.html).
+Using the virtualenv package, create a python virtual environment.
+Refer to [creation of python virtual environments](https://docs.python.org/3/library/venv.html).
 ```
 virtualenv scrapli_venv
 ```
@@ -46,7 +50,7 @@ source ~/scrapli_venv/bin/activate
 ```
 ### Install Scrapli and its plugins
 
-In the “scrapli_venv” virtual environment, install **scrapli**. At the moment of producing this tutorial, latest version of scrapli is 2022.1.30.
+In the “scrapli_venv” virtual environment, install **scrapli**. At the moment of producing this tutorial, the latest version of scrapli is 2022.1.30.
 ```
 pip install scrapli
 ```
@@ -54,7 +58,7 @@ Install **scrapli_netconf**. It is a netconf driver built on top of scrapli to a
 ```
 pip install scrapli_netconf
 ```
-Install **scrapli[asyncssh]**. It is a scrapli plugin which speed up the automation process by executing the tasks asynchronously.
+Install **scrapli[asyncssh]**. It is a scrapli plugin that speeds up the automation process by executing the tasks asynchronously.
 ```
 pip install scrapli[asyncssh]
 ```
@@ -68,7 +72,12 @@ Once you have all the required packages installed, go ahead and write the code t
 ### 1. generic_driver.py
 
 ```
+import logging
+
 from scrapli.driver import GenericDriver
+
+# set the name for the logfile and the logging level
+logging.basicConfig(filename="scrapli.log", level=logging.DEBUG)
 
 MY_DEVICE = {
     "host": "10.30.11.1",
@@ -109,7 +118,8 @@ if __name__ == "__main__":
     main()
 
 ```
-Here generic driver of scrapli is used to connect to the device via SSH. Generic driver doesn't disable paging, hence it is disabled explicitly using the CLI command. The above code open the connection to the device, disable paging, retrieve the prompt, hostname, version, and close the connection.
+Here generic driver of scrapli is used to connect to the device via SSH. Generic driver doesn't disable paging, hence it is disabled explicitly using the CLI command. The above code opens the connection to the device, disables paging, retrieves the prompt, hostname, and version, and closes the connection.
+You can troubleshoot the issues by adding log files.
 
 Execute **generic_driver.py** file and retrieve the results.
 
@@ -181,7 +191,7 @@ if __name__ == "__main__":
     main()
     
 ```
-Here core IOS-XR driver of scrapli is used to connect to the device via SSH. Core driver does disable the paging. Context manager helps open and close the device connection while connecting to it, hence explicit open and close instructions are not given in the code. 
+Here core IOS-XR driver of scrapli is used to connect to the device via SSH. The core driver does disable the paging. Context manager helps open and close the device connection while connecting to it, hence explicit open and close instructions are not given in the code. 
 
 Execute **iosxr_driver.py** file and retrieve the results.
 ```
@@ -247,7 +257,7 @@ if __name__ == "__main__":
     main()
     
 ```
-Here the configurations of 2 devices are retrieved in a synchronous manner i.e one after another.
+Here the configurations of 2 devices are retrieved in a synchronous manner i.e. one after another.
 
 Execute **sync_iosxr_driver.py** file and retrieve the results.
 ```
@@ -351,7 +361,7 @@ if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(main())
 
 ```
-Here the configurations of 2 devices are retrieved in an asynchronous way i.e in parallel. In this case we use AsyncIOSXRDriver to connect the devices via asyncssh transport. The functions in this code are executed asynchronously, hence we await on every operation of the device. 
+Here the configurations of 2 devices are retrieved in an asynchronous way i.e. in parallel. In this case, we use AsyncIOSXRDriver to connect the devices via asyncssh transport. The functions in this code are executed asynchronously, hence we await every operation of the device. 
 
 Execute **async_iosxr_driver.py** file and retrieve the results.
 ```
@@ -397,7 +407,7 @@ real	0m1.966s
 user	0m0.363s
 sys	0m0.074s
 ```
-The output shows prompt and version details of the 2 devices and it took 1.9 seconds to retrieve this information asynchronously.
+The output shows the prompt and version details of the 2 devices and it took 1.9 seconds to retrieve this information asynchronously.
 
 ## scrapli_netconf
 
@@ -423,7 +433,7 @@ if __name__ == "__main__":
     main()
     
 ```
-Here NetconfDriver is used to connect the device via Netconf over SSH to retrieve running configuration.
+Here NetconfDriver is used to connect the device via Netconf over SSH to retrieve the running configuration.
 
 Execute **get_config.py** file and retrieve the results.
 ```
@@ -463,7 +473,7 @@ python get_config.py
    <data>
   <rpc-reply>
 ```
-The output shows running configuration of the device as per the request.
+The output shows the running configuration of the device as per the request.
 
 ### 6. edit_config.py
 
@@ -562,7 +572,7 @@ UNLOCK
 </rpc-reply>
 
 ```
-The output returns rpc replies as ok, which means the edit operations are completed successfully.
+The output returns RPC replies as ok, which means the edit operations are completed successfully.
 
 ### 7. async_edit_config.py
 
@@ -696,7 +706,7 @@ UNLOCK
   <ok/>
 </rpc-reply>
 ```
-The output returns rpc replies as ok, which means the asynchronously edit operations on 2 devices completed successfully.
+The output returns RPC replies as ok, which means the asynchronous edit operations on 2 devices were completed successfully.
 
 ## What are the flavours of Scrapli ?
 - [scrapli_netconf](https://scrapli.github.io/scrapli_netconf/) 
@@ -711,8 +721,8 @@ The output returns rpc replies as ok, which means the asynchronously edit operat
 - [scrapligo](https://github.com/scrapli/scrapligo)
 - [srlinux-scrapli](https://github.com/srl-labs/srlinux-scrapli) 
 
-# What did I learn ?
-Scrapli is a screen scraping python library that provides a way to automate your network tasks efficiently by connecting multiple network devices via SSH, NETCONF or Telnet, synchronously or asynchronously. Being an open-sourced project written in python makes it easy for the user to debug and troubleshoot. Above all, it's time-efficient, free, and easy to use. Write simple lines of python code to execute your network tasks on a lot of your network devices with CLI scraping!!
+# What did I learn?
+Scrapli is a screen-scraping Python library that provides a way to automate your network tasks efficiently by connecting multiple network devices via SSH, NETCONF, or Telnet, synchronously or asynchronously. Being an open-sourced project written in python makes it easy for the user to debug and troubleshoot. Above all, it's time-efficient, free, and easy to use. Write simple lines of python code to execute your network tasks on a lot of your network devices with CLI scraping!!
 
 
 # Resources
@@ -722,4 +732,4 @@ Scrapli is a screen scraping python library that provides a way to automate your
 
 #
 *Stay tuned to learn about another network automation tool in our next post.*
-*Please do comment below, your questions, and what you would like to learn about network automation!!*
+*Please do comment below, with your questions, and what you would like to learn about network automation!!*
