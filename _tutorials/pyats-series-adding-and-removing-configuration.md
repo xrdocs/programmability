@@ -113,3 +113,16 @@ What I like with the solution is the simplicity. Once the base configuration fil
 
 I can see two cons for this solution. If your base configuration file changes, then you have to upload it again on each device. As we saw, if the file doesn't exist on the device, IOS XR will just wipe out the configuration. It's on you to double check the file is there and you can use **pyATS Library** to do so.
 
+## Configuration rollback
+
+Another way is to commit your base configuration with a **label** then use `configuration rollback to-exclude label-name` command to rollback the configuration. In this case `label-name` is the label you used in the commit with the command `commit label label-name`. 
+
+It takes only one line of Python to do so.
+
+<script src="https://gist.github.com/AntoineOrsoni/7bb17e80c75f352cf8a17311659c2a3b.js"></script>
+
+This approach is efficient as it takes only one line of Python but it can be painful to manage commit labels on each device.
+
+## Unconfiguring line by line
+
+
