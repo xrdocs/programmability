@@ -124,6 +124,7 @@ You've missed the first episode? You would like to read more? Below the list of 
 | **3 - Be a model**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-be-a-model/){: .btn} 	|  What a pyATS model and when to use it        	|
 | **4 - Collecting many show commands**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-collecting-many-show-commands/){: .btn} 	|  How to collect many show commands on many devices? |
 | **5 - Tips and Tricks**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-tips-and-tricks/){: .btn} 	|  pyATS Tips and Tricks | 
+| **6 - Pushing and removing configuration**       	| [Link](https://xrdocs.io/programmability/tutorials/pyats-series-adding-and-removing-configuration/){: .btn} 	|  pyATS Tips and Tricks |
 
 ## pyATS libraries in a nutshell
 
