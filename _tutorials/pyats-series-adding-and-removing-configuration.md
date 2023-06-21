@@ -109,5 +109,7 @@ You can find below an example of loading a configuration file from the device. F
 
 <script src="https://gist.github.com/AntoineOrsoni/7899d47846d73acf1fc3ad21c03af88e.js"></script>
 
-What I like with
+What I like with the solution is the simplicity. Once the base configuration file is on the device, you can just wipe out the configuration and start from a clean base. No chance to have residual configuration. You can have as many base configuration files as you want, according to your use case. For example one base configuration for **segment routing**, one for **telemetry** etc.
+
+I can see two cons for this solution. If your base configuration file changes, then you have to upload it again on each device. As we saw, if the file doesn't exist on the device, IOS XR will just wipe out the configuration. It's on you to double check the file is there and you can use **pyATS Library** to do so.
 
