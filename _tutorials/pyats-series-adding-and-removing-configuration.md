@@ -147,7 +147,7 @@ Here is the code:
 
 # Conclusion
 
-In this sixth episode of the pyATS series, saw how to push and remove configuration. We took a segment routing traffic engineering policy as example.
+In this sixth episode of the pyATS series, saw how to push and remove configuration. We took a **Segment Routing Traffic Engineering policy** as example.
 
 The code used for each blog post can be found [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats). This link will include the code for all posts.
 {: .notice--info}
