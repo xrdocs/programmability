@@ -34,7 +34,7 @@ You've missed the first episode? You would like to read more? Below the list of 
 
 # Abstract
 
-In this new episode, we will see how to add configuration to a device, confirm the changes (looking at operational data) and then clean the configuration. We will then compare three ways to remove configuration to go back to default. We will do all this changes using pyATS.
+In this new episode, we will see how to add configuration to a device, confirm the changes (looking at operational data) and then clean the configuration. We will then compare three ways to remove configuration to go back to default. We will do all this changes using pyATS. In the last part, we will combine the different building blocks to have a complete script.
 
 We will manipulate Segment Routing Traffic Engineering in today's use case. We will send traffic from a source to a destination and influence the traffic's path using Segment Routing Policies.
 
@@ -89,7 +89,7 @@ Removing configuration can be slightly more complex than pushing configuration. 
 - Doing a configuration rollback to a previous commit.
 - Using `configure()` method to unconfigure what we have done (i.e. adding `no` at the beginning of each configuration section).
 
-In all three scenarios, we will remove the segment routing policy configuration. We will compare the pros and cons for each option.
+In all three scenarios, we will remove the segment routing policy configuration that we pushed in the previous part. We will compare the pros and cons for each option.
 
 ## Loading a configuration on the device
 
@@ -105,4 +105,9 @@ If the configuration file is not on the device or if the `filename` has a typo, 
 Double check that the file has been pushed on the device before executing the command.
 {: .notice--warning}
 
+You can find below an example of loading a configuration file from the device. For safety reason, we first use the **pyATS Library** to parse the `dir harddisk:` output to verify the file exists.
+
+<script src="https://gist.github.com/AntoineOrsoni/7899d47846d73acf1fc3ad21c03af88e.js"></script>
+
+What I like with
 
