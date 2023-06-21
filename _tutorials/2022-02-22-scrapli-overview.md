@@ -730,6 +730,6 @@ Scrapli is a screen-scraping Python library that provides a way to automate your
 - [Scrapli Documentation](https://carlmontanari.github.io/scrapli/)
 - [Scrapli GitHub repository](https://github.com/carlmontanari/scrapli)
 
-#
+   
 *Stay tuned to learn about another network automation tool in our next post.*
 *Please do comment below, with your questions, and what you would like to learn about network automation!!*
