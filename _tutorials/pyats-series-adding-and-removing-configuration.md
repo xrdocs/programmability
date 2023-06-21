@@ -75,9 +75,12 @@ In this first step, we are going to see that pushing configuration with pyATS is
 Manipulating configuration can be done with pyATS but it might not be the ideal tool for you. Here, we use pyATS because we are in a lab and we can't break anything (most important, we don't care if we do). Based on your use case, you might consider other tools like Crosswork, NSO or Ansible.
 {: .notice--info}
 
-Once connected to a device using pyATS, you can use the `configure()` method to push configuration. It takes a `string` as parameter, which is the configuration to be pushed. Below an example for a segment-routing policy.
+Once connected to a device using pyATS, you can use the `configure()` method to push configuration. It takes a `string` as parameter, which is the configuration to be pushed. Below an example for a segment-routing policy. You can pass multiple lines of configuration to the `configure()` method.
 
 <script src="https://gist.github.com/AntoineOrsoni/56032ff89ed5ca6de7ab836b09bdb72d.js"></script>
+
+You can read more about how to configure devices with pyATS in the [documentation](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/quickstart/configuredevices.html)
+{: .notice--info}
 
 # Removing configuration from a device
 
