@@ -48,7 +48,7 @@ You can find those changes (each node `startup configuration` and `docker-compos
 You can read more on XRDocs about what's IOS XRd and how to use it [here](https://xrdocs.io/virtual-routing/tutorials/).
 {: .notice--info}
 
-The topology will look like below. We will send traffic between a source and a destination (linux hosts) and influence the traffic's path using Segment Routing Policies.
+The topology will look like below. We will send traffic between a source and a destination and influence the traffic's path using Segment Routing Policies.
 
 ![Topology_XRd_1.jpg]({{site.baseurl}}/images/Topology_XRd_1.jpg)
 
