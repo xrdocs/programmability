@@ -55,7 +55,7 @@ The topology will look like below. We will send traffic between a source and a d
 ## IP Addressing
 
 **Management IP** addresses are in the range `172.40.0.0/24`.
-`101` to `108` are respectively associated from `xrd-1` to `xrd-8`
+`101` to `108` are respectively associated from `xrd-1` to `xrd-8`.
 `200` and `201` are respectively associated to `xrd-source` and `xrd-dest`.
 
 **Adjacency links** addresses are in the range `100.0.0.0/8`.
@@ -90,7 +90,7 @@ In all three scenarios, we will remove the segment routing policy configuration 
 
 ## Loading a configuration on the device
 
-First option is to have a base configuration file saved on the device harddisk and `load` the configuration on the device. The IOS XR command to do it is `load harddisk:filename` where `filename` is the configuration file. Then, you have to commit the change using `commit replace` to first wipe out the configuration and then apply the fresh one.
+First option is to have a base configuration file saved on the device harddisk and `load` the configuration on the device. The IOS XR command is `load harddisk:filename` where `filename` is the configuration file. Then, you have to commit the change using `commit replace` to first wipe out the configuration and then apply the fresh one.
 
 To download the configuration on the device, I like to use SCP. On IOS XR, the command is: `scp username@server:/path/to/file harddisk:/filename` where:
 - `username` is the username to connect to the `server`,
@@ -106,7 +106,7 @@ You can find below an example of loading a configuration file from the device. F
 
 <script src="https://gist.github.com/AntoineOrsoni/7899d47846d73acf1fc3ad21c03af88e.js"></script>
 
-What I like with the solution is the simplicity. Once the base configuration file is on the device, you can just wipe out the configuration and start from a clean base. No chance to have residual configuration. You can have as many base configuration files as you want, according to your use case. For example one base configuration for **segment routing**, one for **telemetry** etc.
+What I like with this solution is the simplicity. Once the base configuration file is on the device, you can just wipe out the configuration and start from a clean base. No chance to have residual configuration. You can have as many base configuration files as you want, according to your use case. For example one base configuration for **segment routing**, one for **telemetry** etc.
 
 I can see two cons for this solution. If your base configuration file changes, then you have to upload it again on each device. As we saw, if the file doesn't exist on the device, IOS XR will just wipe out the configuration. It's on you to double check the file is there and you can use **pyATS Library** to do so.
 
@@ -144,7 +144,7 @@ Here is the code:
 
 # Conclusion
 
-In this sixth episode of the pyATS series, saw how to push and remove configuration. We took a **Segment Routing Traffic Engineering policy** as example.
+In this sixth episode of the pyATS series, we saw how to push and remove configuration. We took a **Segment Routing Traffic Engineering policy** as example.
 
 The code used for each blog post can be found [here](https://github.com/AntoineOrsoni/xrdocs-how-to-pyats). This link will include the code for all posts.
 {: .notice--info}
