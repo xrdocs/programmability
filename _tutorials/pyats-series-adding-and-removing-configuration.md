@@ -6,7 +6,7 @@ author: Antoine Orsoni
 excerpt: Adding and removing configuration from IOS XR device using pyATS
 tags:
   - iosxr
-position: hidden
+position: top
 ---
 {% include toc icon="table" title="Table of Contents" %}
 ![pyats_hello2.jpg]({{site.baseurl}}/images/pyats_hello2.jpg){: .align-center}
