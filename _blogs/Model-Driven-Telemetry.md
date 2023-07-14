@@ -1,5 +1,5 @@
 ---
-published: True
+published: true
 date: '2023-07-13 19:56 -0400'
 title: Untitled
 ---
@@ -31,10 +31,14 @@ Streaming telemetry represents a modern and efficient approach to network monito
 
 This continuous streaming enables granular visibility into network behavior, facilitates prompt anomaly detection, optimization of resources, and informed decision-making for network management and troubleshooting.
 
-**gRPC** is an open-source protocol led by Google, combines Remote Procedure Calls (RPC) with Protocol Buffers to enable efficient communication between systems. Protocol Buffers define the structure of data, allowing for the generation of code to create or parse byte streams representing the structured data. The binary data format employed by gRPC reduces the size of the actual data by approximately 10 times. This compressed data is transmitted over HTTP/2, which supports multiplexing, facilitating concurrent handling of multiple requests using a request/response mechanism. Additionally, gRPC can utilize TLS encryption to ensure secure communication over HTTP/2.
-
 ![SNMPvsST.png]({{site.baseurl}}/images/SNMPvsST.png)
 
+![SNMP-vs-ST-tabular.png]({{site.baseurl}}/images/SNMP-vs-ST-tabular.png)
+
+**gRPC** is an open-source protocol led by Google, combines Remote Procedure Calls (RPC) with Protocol Buffers to enable efficient communication between systems. Protocol Buffers define the structure of data, allowing for the generation of code to create or parse byte streams representing the structured data. The binary data format employed by gRPC reduces the size of the actual data by approximately 10 times. This compressed data is transmitted over HTTP/2, which supports multiplexing, facilitating concurrent handling of multiple requests using a request/response mechanism. Additionally, gRPC can utilize TLS encryption to ensure secure communication over HTTP/2.
+
+
+![gRPC-client-server.png]({{site.baseurl}}/images/gRPC-client-server.png)
 # YANG Models + Streaming Telemetry = Model-Driven Telemetry
 
 **YANG Models**
@@ -47,11 +51,11 @@ These are two classes of YANG Models:
 
 These models are Cisco-exclusive and can only be used with Cisco devices.These models are further categorised into different types:
 
-	1. Configurational: These models are used to modify network device configurations.
-    
-	2. Operational: These models are used to retrieve a network device's operational state. These models are read-only, which means you cannot change their configuration.
-    
-	3. Cisco has a third model type known as the Unified model. These are similar to config models, but they share the same abstraction layer as CLI, making them CLI friendly. Someone who understands the IOS-XR CLI will find it easier to understand these models than the config model, which has a different abstraction layer than the CLI and thus is more difficult to understand its hierarchy.
+ - Configurational: These models are used to modify network device configurations.
+        
+ - Operational: These models are used to retrieve a network device's operational state. These models are read-only, which means you cannot change their configuration.
+ 
+ - Cisco has a third model type known as the Unified model. These are similar to config models, but they share the same abstraction layer as CLI, making them CLI friendly. Someone who understands the IOS-XR CLI will find it easier to understand these models than the config model, which has a different abstraction layer than the CLI and thus is more difficult to understand its hierarchy.
 
 2. OpenConfig Models: OpenConfig models are created by the OpenConfig forum, led by Google and consisting of companies like Meta, Apple, Microsoft, AT&T, Comcast, and more. These models serve as a common baseline for all network vendors, such as Cisco, Juniper, Arista, and others. 
 
@@ -68,6 +72,8 @@ There are two types of MDT with respect to the network device.
 
 2. When the gRPC channel is initiated by collector or when network-device ‘sends out’ the gRPC channel request, it is known as **Dial-out** MDT.
 
+![dial-in-dial-out.png]({{site.baseurl}}/images/dial-in-dial-out.png)
+
 In order to establish MDT, we need to create sensor-group, destination-group and subscription. Let's discuss more about them in the following lines:
 
 **Sensor-group** is a group of sensor-paths that corresponds to the data that network device sends to the collector. This can be summarised as **What data to send** 
@@ -77,28 +83,3 @@ In order to establish MDT, we need to create sensor-group, destination-group and
 **Subscription** binds a sensor-group to a destination-group. Once this is created, an MDT is established where the network device starts streaming 'sensor-group' to 'destination-group'.
 
 Let's now implement all the we have learned so far.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
