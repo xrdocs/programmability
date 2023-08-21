@@ -1,7 +1,7 @@
 ---
 published: false
 date: '2023-08-21 14:13 -0400'
-title: MDT with TIG
+title: MDT-with-TIG
 position: hidden
 ---
 # Background
@@ -113,7 +113,7 @@ Here is the breakdown for this file:
 
 **services**: Defines the individual Docker services to be deployed.
 
-- **telegraf**: Specifies the Telegraf service configuration.
+- **telegraf**: Specifies the Telegraf service configuration. Here, path of the telegraf.conf is relative docker-compose.yml. In this case, both these files are in the same folder.
 
 - **image: telegraf**: Specifies the Docker image to be used for the Telegraf container.
 - **container_name: telegraf**: Names the container as "telegraf".
@@ -138,3 +138,84 @@ Here is the breakdown for this file:
 - Mounts a volume for storing Grafana data.
 
 **volumes**: Defines named volumes for persisting data between container restarts.
+
+
+Step3: Go to the folder where you have both these files and use the following command to spin up containers.
+
+```
+docker-compose up
+```
+
+At this point, your collector is ready to collect data once network-device starts streaming it.
+
+Now we will configure the network-device to start streaming the data.
+
+Step1: Create a destination-group
+
+
+```
+RP/0/RP0/CPU0:ios(config)# telemetry model-driven
+RP/0/RP0/CPU0:ios(config-model-driven)# destination-group DGroup1
+RP/0/RP0/CPU0:ios(config-model-driven-dest)#  address family ipv4 10.30.111.165 port 57100  
+RP/0/RP0/CPU0:ios(config-model-driven-dest-addr)#   encoding self-describing-gpb  
+RP/0/RP0/CPU0:ios(config-model-driven-dest-addr)#   protocol grpc no-tls  
+RP/0/RP0/CPU0:ios(config-model-driven-dest-addr)# commit   
+```
+
+Step2: Create a sensor-group
+
+```
+RP/0/RP0/CPU0:ios(config)#telemetry model-driven
+RP/0/RP0/CPU0:ios(config-model-driven)#sensor-group SGroup1
+RP/0/RP0/CPU0:ios(config-model-driven-snsr-grp)# sensor-path Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
+RP/0/RP0/CPU0:ios(config-model-driven-snsr-grp)# commit
+```
+
+Step3: Create a subscription
+
+```
+RP/0/RP0/CPU0:ios(config)telemetry model-driven  
+RP/0/RP0/CPU0:ios(config-model-driven)#subscription Sub1  
+RP/0/RP0/CPU0:ios(config-model-driven-subs)#sensor-group-id SGroup1 sample-interval 30000  
+RP/0/RP0/CPU0:ios(config-model-driven-subs)#destination-id DGroup1  
+RP/0/RP0/CPU0:ios(config-mdt-subscription)# commit  
+```
+
+Step4: Confirm the configuration
+
+```
+RP/0/RP0/CPU0:ios# show run telemetry model-driven
+telemetry model-driven  
+ destination-group DGroup1  
+   address family ipv4 10.30.111.165 port 57100  
+   encoding self-describing-gpb  
+   protocol grpc no-tls
+  !
+ !
+ sensor-group SGroup1
+  sensor-path Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
+ !  
+ subscription Sub1  
+  sensor-group-id SGroup1 sample-interval 30000  
+  destination-id DGroup1   
+```
+
+Step5: Check if data is being streamed to the collector or not.
+
+```
+RP/0/RP0/CPU0:ios#show telemetry model-driven subscription
+Thu Aug 21 11:27:27.751 UTC
+Subscription:  Sub1                     State: ACTIVE
+-------------
+  Sensor groups:
+  Id                Interval(ms)        State
+  SGroup1           30000               Resolved
+
+  Destination Groups:
+  Id                Encoding            Transport   State   Port    IP
+  DGroup1           self-describing-gpb grpc        Active  57100   10.30.111.165
+```
+
+
+
+
