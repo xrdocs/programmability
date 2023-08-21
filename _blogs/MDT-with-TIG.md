@@ -20,6 +20,8 @@ Let's delve into the individual elements of the TIG stack:
 
 3. **Grafana** : By retrieving data from InfluxDB, Grafana generates various types of visualizations, including graphs, pie charts, and statistics.
 
+![MDT-TIG.png]({{site.baseurl}}/images/MDT-TIG.png)
+
 We will now establish a **Dial-out** MDT where in network-device initiates a grpc channel with collector (here, telegraf).
 
 Since this is Dial-out MDT, the collecor should be up and running so that it is ready to collect the data when network-device initiates a grpc channel. So we'll first configure the collector side.
@@ -147,8 +149,22 @@ docker-compose up
 ```
 
 At this point, your collector is ready to collect data once network-device starts streaming it.
+You can run the following command to check if containers are running or not.
+
+```
+docker ps
+```
+
+and you will see the following output:
+
+```
+ea8d09f16378        grafana/grafana                                         "/run.sh"                32 seconds ago      Up 30 seconds                   0.0.0.0:3000->3000/tcp                                                                                                     grafana-server
+302ca634ace8        telegraf                                                "/entrypoint.sh tele…"   32 seconds ago      Up 31 seconds                   8092/udp, 0.0.0.0:8125->8125/tcp, 8125/udp, 8094/tcp, 0.0.0.0:57100->57100/tcp                                             telegraf
+9ef752784c05        influxdb:1.8-alpine                                     "/entrypoint.sh infl…"   34 seconds ago      Up 32 seconds                   0.0.0.0:8086->8086/tcp
+```
 
 Now we will configure the network-device to start streaming the data.
+
 
 Step1: Create a destination-group
 
@@ -215,6 +231,96 @@ Subscription:  Sub1                     State: ACTIVE
   Id                Encoding            Transport   State   Port    IP
   DGroup1           self-describing-gpb grpc        Active  57100   10.30.111.165
 ```
+
+Since we know that telegraf is storing all the data in InfluxDB, we'll confirm the same by quering the database.
+
+Run the following command on the ubuntu server where you containers are running:
+
+```
+docker exec -it influxdb bash
+```
+This command will take you to bash shell in the influxdb container.
+
+Run the following command to enter the database:
+
+```
+9ef752784c05:/# influx
+Connected to http://localhost:8086 version 1.8.10
+InfluxDB shell version: 1.8.10
+```
+
+You can then run database commands and you will find the same sensor-path that we had initially configured in the sensor-group.
+
+```
+> show databases
+name: databases
+name
+----
+mdt-db
+_internal
+> use mdt-db
+Using database mdt-db
+> show measurements
+name: measurements
+name
+----
+Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
+```
+We can see that InfluxDB is storing the data that our NCS 5500 is streaming.
+
+We will now plot graph using the data from InfluxDB on Grafana.
+
+To access the Grafana dashboard, go to the browser and type 'http://10.30.111.165:3000/' in the url. Note that this is IP address of the server running Grafana followed by the port number. This might be different for you.
+
+![login.png]({{site.baseurl}}/images/login.png)
+
+You will see the Grafana dashboard and will be prompted to login using a username and a password. 
+This is the same username and password that we had mentioned in the docker-compose.yml file in the 'environment' segment of 'Grafana' service. Here both username and password are same, admin.
+
+![login-creds.png]({{site.baseurl}}/images/login-creds.png)
+
+Use this username and password and you will get a prompt to change your password. You can click on 'skip' and go to the home page.
+
+![homepage.png]({{site.baseurl}}/images/homepage.png)
+
+Now, we will configure the data source for Grafana. In order to do so, click on 'Add your first data source' widget. Then search for 'InfluxDB' using the filter and click on the 'InfluxDB'.
+![add-source.png]({{site.baseurl}}/images/add-source.png)
+
+
+You can give any name to the source, choose 'InfluxQL' as a query language, type 'http://10.30.111.165:8086' for HTTP URL, skip Auth and Custom HTTP Headers. Add database 'mdt-db' in the 'InfluxDB Details' and click on 'Save & Test'
+
+![source-detail1.png]({{site.baseurl}}/images/source-detail1.png)
+![source-detail2.png]({{site.baseurl}}/images/source-detail2.png)
+
+Now we will create a dashboard using the following steps:
+
+![homepage.png]({{site.baseurl}}/images/homepage.png)
+
+Go to 'Home' page and click on 'Dashboards' widget, then click on 'Add visualization', select your data source (here, mdt-influx) and you will see a following page. 
+
+![add-visual.png]({{site.baseurl}}/images/add-visual.png)
+
+![select-data-source.png]({{site.baseurl}}/images/select-data-source.png)
+
+Click on the 'select measurement' and you will see the sensor-path that you had configured using sensor-group. Select that sensor-path.
+
+
+![select-measurement.png]({{site.baseurl}}/images/select-measurement.png)
+
+Then click on 'field(value)' and select 'bytes-received' and you will see the graph on the top.
+
+![initial-graph.png]({{site.baseurl}}/images/initial-graph.png)
+
+![final-graph.png]({{site.baseurl}}/images/final-graph.png)
+
+You can try playing with this query and you will see the graph correspoding to your query.
+
+
+
+
+
+
+
 
 
 
