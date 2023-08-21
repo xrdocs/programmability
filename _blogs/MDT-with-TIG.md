@@ -314,14 +314,3 @@ Then click on 'field(value)' and select 'bytes-received' and you will see the gr
 ![final-graph.png]({{site.baseurl}}/images/final-graph.png)
 
 You can try playing with this query and you will see the graph correspoding to your query.
-
-
-
-
-
-
-
-
-
-
-
