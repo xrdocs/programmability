@@ -10,23 +10,30 @@ This article focuses on  establishing Model-Driven Telemetry (MDT) using the Tel
 
 If you are well-verse with MDT, YANG models and sensor-group, destination group and subscription, please follow the steps to establish MDT. Otherwise you might want to go through this post first. 
 
-MDT consists of two main components. Firstly, there's a network device (such as a router) equipped with pre-installed YANG models and a running grpc server. Through MDT, this network device continuously streams data at specified time intervals. Secondly, the TIG stack comes into play, which consumes, stores, and presents this data visually.
+MDT consists of two main components. Firstly, there's a router equipped with pre-installed YANG models and a running grpc server. Through MDT, this router continuously streams mtetrics at specified time intervals. Secondly, the TIG stack, which consumes, stores, and presents this metrics visually.
 
 Let's delve into the individual elements of the TIG stack:
 
-1. **Telegraf** : This tool gathers data from the network device and stores it in the InfluxDB time series database.
+# TIG Stack
 
-2. **InfluxDB** : Responsible for storing the data received from Telegraf, InfluxDB then forwards it to Grafana. Grafana utilizes this data to create visual representations.
+1. **Telegraf** :Collects router metrics and stores them in a Time Series Database (TSDB).
 
-3. **Grafana** : By retrieving data from InfluxDB, Grafana generates various types of visualizations, including graphs, pie charts, and statistics.
+2. **InfluxDB** :TSDB that stores metrics from Telegraf. Forwards data to Grafana for visualization.
+
+3. **Grafana** :Receives metrics from InfluxDB and displays them visually (graphs, charts) for analysis.
+
+
+# gRPC Dial-out
+
+The objective is to create a Dial-out MDT, wherein a router initiates a grpc channel with a collector, specifically Telegraf.
+
+As this is a Dial-out MDT, the collector must be operational and prepared to receive data when router initiates a grpc channel. The initial focus will be on configuring the collector aspect.
+
+## Collector configuration
+
+To establish the TIG configuration, the subsequent topology and steps will be used:
 
 ![MDT-TIG.png]({{site.baseurl}}/images/MDT-TIG.png)
-
-We will now establish a **Dial-out** MDT where in network-device initiates a grpc channel with collector (here, telegraf).
-
-Since this is Dial-out MDT, the collecor should be up and running so that it is ready to collect the data when network-device initiates a grpc channel. So we'll first configure the collector side.
-
-In order to configure TIG, we will use the following steps:
 
 Step1: Create a following telegraf.conf file.
 
@@ -78,9 +85,9 @@ services:
     container_name: influxdb
     restart: always
     environment:
-      - INFLUXDB_DB=telemetry
-      - INFLUXDB_ADMIN_USER=admin
-      - INFLUXDB_ADMIN_PASSWORD=admin
+      - INFLUXDB_DB=
+      - INFLUXDB_ADMIN_USER=
+      - INFLUXDB_ADMIN_PASSWORD=
     ports:
       - '8086:8086'
     volumes:
@@ -142,20 +149,18 @@ Here is the breakdown for this file:
 **volumes**: Defines named volumes for persisting data between container restarts.
 
 
-Step3: Go to the folder where you have both these files and use the following command to spin up containers.
+Step3: Navigate to the directory containing both files and utilize the provided command to initiate container deployment.
 
 ```
 docker-compose up
 ```
 
-At this point, your collector is ready to collect data once network-device starts streaming it.
-You can run the following command to check if containers are running or not.
+At this stage, the collector is set to gather metrics when the network device initiates streaming. The following command can be executed to check the status of containers
 
 ```
 docker ps
 ```
-
-and you will see the following output:
+Subsequently, the displayed output will be as follows:
 
 ```
 ea8d09f16378        grafana/grafana                                         "/run.sh"                32 seconds ago      Up 30 seconds                   0.0.0.0:3000->3000/tcp                                                                                                     grafana-server
@@ -163,11 +168,11 @@ ea8d09f16378        grafana/grafana                                         "/ru
 9ef752784c05        influxdb:1.8-alpine                                     "/entrypoint.sh infl…"   34 seconds ago      Up 32 seconds                   0.0.0.0:8086->8086/tcp
 ```
 
-Now we will configure the network-device to start streaming the data.
+Next, the configuration process involves enabling the network device to initiate data streaming.
 
+## Router Configuration
 
 Step1: Create a destination-group
-
 
 ```
 RP/0/RP0/CPU0:ios(config)# telemetry model-driven
@@ -177,6 +182,9 @@ RP/0/RP0/CPU0:ios(config-model-driven-dest-addr)#   encoding self-describing-gpb
 RP/0/RP0/CPU0:ios(config-model-driven-dest-addr)#   protocol grpc no-tls  
 RP/0/RP0/CPU0:ios(config-model-driven-dest-addr)# commit   
 ```
+Remember that the IP address in the destination-group pertains to the server hosting Telegraf, and the port number should align with what's specified in the 'telegraf.conf' file.
+
+Additionally, pay attention to the 'protocol grpc no-tls' configuration, as it reflects the usage of grpc dial-out MDT.
 
 Step2: Create a sensor-group
 
@@ -186,6 +194,9 @@ RP/0/RP0/CPU0:ios(config-model-driven)#sensor-group SGroup1
 RP/0/RP0/CPU0:ios(config-model-driven-snsr-grp)# sensor-path Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
 RP/0/RP0/CPU0:ios(config-model-driven-snsr-grp)# commit
 ```
+Additional sensor-paths can be incorporated into this sensor-group at a later stage, facilitating the reception of corresponding streamed data by the collector.
+
+Interested in discovering the accurate sensor path for a desired metric to stream? Delve into the provided article, which elucidates the process of locating a sensor-path for a CLI.
 
 Step3: Create a subscription
 
@@ -232,26 +243,32 @@ Subscription:  Sub1                     State: ACTIVE
   DGroup1           self-describing-gpb grpc        Active  57100   10.30.111.165
 ```
 
-Since we know that telegraf is storing all the data in InfluxDB, we'll confirm the same by quering the database.
+The 'Resolved' state indicates that the router successfully identified and resolved the sensor-path specified within the sensor-group.
 
-Run the following command on the ubuntu server where you containers are running:
+For further insights into this subscription, utilize the following command:
+
+```
+RP/0/RP0/CPU0:ios#show telemetry model-driven subscription sub1
+```
+
+The status of this subscription is observed as 'ACTIVE,' indicating that the router is actively streaming data, and the collector (Telegraf) is effectively collecting the data.
+
+## InfluxDB and Grafana
+
+Given that Telegraf stores data in InfluxDB, we will validate this by querying the database. Execute the provided command on the Ubuntu server where your containers are operational.
 
 ```
 docker exec -it influxdb bash
 ```
-This command will take you to bash shell in the influxdb container.
 
-Run the following command to enter the database:
+Executing this command will lead you to the bash shell within the InfluxDB container. 
+
+Upon accessing the container's bash shell, database commands can be employed to identify the sensor-path configured within the sensor-group.
 
 ```
 9ef752784c05:/# influx
 Connected to http://localhost:8086 version 1.8.10
 InfluxDB shell version: 1.8.10
-```
-
-You can then run database commands and you will find the same sensor-path that we had initially configured in the sensor-group.
-
-```
 > show databases
 name: databases
 name
@@ -266,51 +283,123 @@ name
 ----
 Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
 ```
-We can see that InfluxDB is storing the data that our NCS 5500 is streaming.
 
-We will now plot graph using the data from InfluxDB on Grafana.
+The presence of the 'mdt-db' database within InfluxDB is apparent. This aligns with the database mentioned in the 'telegraf.conf' file within the output section.
 
-To access the Grafana dashboard, go to the browser and type 'http://10.30.111.165:3000/' in the url. Note that this is IP address of the server running Grafana followed by the port number. This might be different for you.
+
+The following sensor-path as a measurement above shows that InfluxDB successfully stores the streamed data from our NCS 5500 device.
+
+```
+Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
+```
+
+Next, we'll create graphs utilizing InfluxDB data on Grafana.
+
+To access the Grafana dashboard, enter 'http://10.30.111.165:3000/' into your browser's URL field. Keep in mind that this IP address corresponds to the server running Grafana, followed by the relevant port number. Your configuration might have a different address and port.
 
 ![login.png]({{site.baseurl}}/images/login.png)
 
-You will see the Grafana dashboard and will be prompted to login using a username and a password. 
-This is the same username and password that we had mentioned in the docker-compose.yml file in the 'environment' segment of 'Grafana' service. Here both username and password are same, admin.
+Upon accessing the Grafana dashboard, a login prompt will appear, requiring a username and password. Use the credentials specified in the 'docker-compose.yml' file under the 'environment' section of the 'Grafana' service. In this case, both the username and password are 'admin'.
 
 ![login-creds.png]({{site.baseurl}}/images/login-creds.png)
 
-Use this username and password and you will get a prompt to change your password. You can click on 'skip' and go to the home page.
+Utilize the provided username and password. You'll be prompted to update your password; however, you can select 'skip' to proceed to the home page.
 
 ![homepage.png]({{site.baseurl}}/images/homepage.png)
 
-Now, we will configure the data source for Grafana. In order to do so, click on 'Add your first data source' widget. Then search for 'InfluxDB' using the filter and click on the 'InfluxDB'.
+Now, let's set up the data source for Grafana. To achieve this, click on the 'Add your first data source' widget. Then, apply the filter to locate 'InfluxDB' and proceed to select it.
+
 ![add-source.png]({{site.baseurl}}/images/add-source.png)
 
-
-You can give any name to the source, choose 'InfluxQL' as a query language, type 'http://10.30.111.165:8086' for HTTP URL, skip Auth and Custom HTTP Headers. Add database 'mdt-db' in the 'InfluxDB Details' and click on 'Save & Test'
+Assign a name of your choice to the source. Opt for 'InfluxQL' as the query language. For the HTTP URL, input 'http://10.30.111.165:8086'. Leave out the Auth and Custom HTTP Headers sections. In the 'InfluxDB Details', add the 'mdt-db' database. Finally, click on 'Save & Test'.
 
 ![source-detail1.png]({{site.baseurl}}/images/source-detail1.png)
+
 ![source-detail2.png]({{site.baseurl}}/images/source-detail2.png)
 
-Now we will create a dashboard using the following steps:
+The message 'Datasource is working. 1 measurement found' confirms that Grafana has successfully established a connection to the 'mdt-db' database within InfluxDB.
+
+Next, a dashboard will be created through the subsequent steps:
 
 ![homepage.png]({{site.baseurl}}/images/homepage.png)
 
-Go to 'Home' page and click on 'Dashboards' widget, then click on 'Add visualization', select your data source (here, mdt-influx) and you will see a following page. 
+Access the 'Home' page and select the 'Dashboards' widget. Click on 'Add visualization', pick your data source (in this case, 'mdt-influx'), and the subsequent page will appear.
 
 ![add-visual.png]({{site.baseurl}}/images/add-visual.png)
 
 ![select-data-source.png]({{site.baseurl}}/images/select-data-source.png)
 
-Click on the 'select measurement' and you will see the sensor-path that you had configured using sensor-group. Select that sensor-path.
-
+Select 'select measurement', and the sensor-path configured using the sensor-group will be visible. Choose that sensor-path
 
 ![select-measurement.png]({{site.baseurl}}/images/select-measurement.png)
 
-Then click on 'field(value)' and select 'bytes-received' and you will see the graph on the top.
+Then, click on 'field(value)', and opt for 'bytes-received'. This action will generate the graph at the top.
 
 ![initial-graph.png]({{site.baseurl}}/images/initial-graph.png)
 
 ![final-graph.png]({{site.baseurl}}/images/final-graph.png)
 
-You can try playing with this query and you will see the graph correspoding to your query.
+Feel free to experiment with this query, and you'll observe the graph corresponding to your query modifications.
+
+
+# TCP Dial-out
+
+TCP dial-out closely resembles grpc dial-out, requiring just two configuration adjustments in the previously outlined grpc dial-out setup to enable TCP dial-out.
+
+Adjustment 1: Modify the transport in the 'input' plugin from 'grpc' to 'tcp' as demonstrated below:
+
+```
+[[inputs.cisco_telemetry_mdt]]
+   transport = "tcp"
+   service_address = ":57100
+
+[[outputs.influxdb]]
+
+  urls = ["http://influxdb:8086"]
+  database = "mdt-db"
+  
+```
+
+Adjustment 2: Modify the transport in 'destination-group' from 'grpc no-tls' to 'tcp' as demonstrated below:
+
+```
+RP/0/RP0/CPU0:ios# show run telemetry model-driven
+telemetry model-driven  
+ destination-group DGroup1  
+   address family ipv4 10.30.111.165 port 57100  
+   encoding self-describing-gpb  
+   protocol tcp
+  !
+ !
+ sensor-group SGroup1
+  sensor-path Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
+ !  
+ subscription Sub1  
+  sensor-group-id SGroup1 sample-interval 30000  
+  destination-id DGroup1   
+```
+
+Upon implementing these modifications and executing the 'show telemetry model-driven subscription' command on the router, the resulting output will be as follows:
+
+```
+RP/0/RP0/CPU0:ios#show telemetry model-driven subscription
+Thu Aug 21 11:27:27.751 UTC
+Subscription:  Sub1                     State: ACTIVE
+-------------
+  Sensor groups:
+  Id                Interval(ms)        State
+  SGroup1           30000               Resolved
+
+  Destination Groups:
+  Id                Encoding            Transport   State   Port    IP
+  DGroup1           self-describing-gpb Tcp         Active  57100   10.30.111.165
+```
+
+Consequently, this concludes the article, wherein you gained insights into TCP and gRPC Dial-out MDT by employing the TIG stack as a collector.
+
+
+
+
+
+
+
