@@ -4,6 +4,8 @@ date: '2023-08-21 14:13 -0400'
 title: MDT-with-TIG
 position: hidden
 ---
+{% include toc icon="table" title="ON THIS PAGE" %}
+
 # Background
 
 This article focuses on  establishing Model-Driven Telemetry (MDT) using the Telegraf, InfluxDB, and Grafana (TIG) stack.
@@ -52,15 +54,15 @@ Here is the breakdown of this configuration file:
 
 **inputs.cisco_telemetry_mdt**: This indicates that you're configuring the input section specifically for the 'cisco_telemetry_mdt' plugin. It signifies that Telegraf will be set up to receive data using this plugin.
 
-**transport = "grpc"**: This line specifies the transport protocol to be used for data reception. In this case, the "grpc" protocol is selected. gRPC is a modern and efficient protocol for remote procedure calls and communication between systems.
+- **transport = "grpc"**: This line specifies the transport protocol to be used for data reception. In this case, the "grpc" protocol is selected. gRPC is a modern and efficient protocol for remote procedure calls and communication between systems.
 
-**service_address = ":57100"**: This line defines the service address where the incoming data will be received. It signifies that Telegraf will listen on port number "57100" for incoming data using the specified transport protocol. The colon (":") before the port number indicates that Telegraf will listen on all available network interfaces.
+- **service_address = ":57100"**: This line defines the service address where the incoming data will be received. It signifies that Telegraf will listen on port number "57100" for incoming data using the specified transport protocol. The colon (":") before the port number indicates that Telegraf will listen on all available network interfaces.
 
 **outputs.influxdb** indicates that you're defining an output configuration for the InfluxDB plugin within the 'outputs' section. It means that the collected data will be sent to InfluxDB.
 
-**urls = ["http://influxdb:8086"]'** : This line specifies the URLs of the InfluxDB instances to which the data will be sent. In this case, the data will be sent to an InfluxDB instance located at "http://influxdb" and listening on port "8086". This is the destination where Telegraf will send the data.
+- **urls = ["http://influxdb:8086"]'** : This line specifies the URLs of the InfluxDB instances to which the data will be sent. In this case, the data will be sent to an InfluxDB instance located at "http://influxdb" and listening on port "8086". This is the destination where Telegraf will send the data.
 
-**database = "mdt-db"** : Here, you are specifying the name of the InfluxDB database where the data will be stored. In this case, the data will be stored in a database named "mdt-db".
+- **database = "mdt-db"** : Here, you are specifying the name of the InfluxDB database where the data will be stored. In this case, the data will be stored in a database named "mdt-db".
 
 
 Step2: Create a following docker-compose.yml file. 
@@ -163,9 +165,10 @@ docker ps
 Subsequently, the displayed output will be as follows:
 
 ```
+CONTAINER ID        IMAGE                                                   COMMAND                  CREATED             STATUS                          PORTS                                                                                                                      NAMES
 ea8d09f16378        grafana/grafana                                         "/run.sh"                32 seconds ago      Up 30 seconds                   0.0.0.0:3000->3000/tcp                                                                                                     grafana-server
 302ca634ace8        telegraf                                                "/entrypoint.sh tele…"   32 seconds ago      Up 31 seconds                   8092/udp, 0.0.0.0:8125->8125/tcp, 8125/udp, 8094/tcp, 0.0.0.0:57100->57100/tcp                                             telegraf
-9ef752784c05        influxdb:1.8-alpine                                     "/entrypoint.sh infl…"   34 seconds ago      Up 32 seconds                   0.0.0.0:8086->8086/tcp
+9ef752784c05        influxdb:1.8-alpine                                     "/entrypoint.sh infl…"   34 seconds ago      Up 32 seconds                   0.0.0.0:8086->8086/tcp                                                                                                     influxdb
 ```
 
 Next, the configuration process involves enabling the network device to initiate data streaming.
@@ -396,10 +399,3 @@ Subscription:  Sub1                     State: ACTIVE
 ```
 
 Consequently, this concludes the article, wherein you gained insights into TCP and gRPC Dial-out MDT by employing the TIG stack as a collector.
-
-
-
-
-
-
-
