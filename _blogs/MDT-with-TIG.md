@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2023-08-21 14:13 -0400'
 title: MDT-with-TIG
 position: hidden
