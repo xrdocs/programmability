@@ -1,8 +1,23 @@
 ---
 published: true
 date: '2023-08-21 14:13 -0400'
-title: MDT-with-TIG
+title: Dial-out Model-Driven Telemetry with TIG Stack
 position: hidden
+excerpt: >-
+  Master the configuration of TCP and gRPC Dial-out MDT using the TIG stack as a
+  collector for streamlined data collection and visualization."
+author: Rahul Sharma
+tags:
+  - iosxr
+  - cisco
+  - TIG Stack
+  - Telegraf
+  - InfluxDB
+  - Grafana
+  - Model-Driven Telemetry
+  - Dial-out
+  - TCP
+  - gRPC
 ---
 {% include toc icon="table" title="ON THIS PAGE" %}
 
