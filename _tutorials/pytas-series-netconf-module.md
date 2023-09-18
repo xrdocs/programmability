@@ -96,3 +96,20 @@ Here is what the full command looks like with a sample output:
 ./Cisco-IOS-XR-ip-udp-oper-sub2.yang
 ./Cisco-IOS-XR-ip-tcp-oper-sub4.yang
 ```
+
+Now that we only have a few models, you can use YANG Suite to explore these models and verify they contain what you are looking for. In our case, the right top-level model will be `Cisco-IOS-XR-traceroute-act.yang`. If you read the model, you can see that `ipv4`, `ipv6` and `mpls` traceroute are submodules that all belong to `Cisco-IOS-XR-traceroute-act.yang`.
+
+```
+submodule Cisco-IOS-XR-ipv6-traceroute-act {
+  belongs-to Cisco-IOS-XR-traceroute-act {
+```
+
+You can read how to use YANG Suite in [this article](https://xrdocs.io/programmability/tutorials/do-you-speak-yang/).
+{: .notice--info}
+
+
+# How to build the RPC?
+
+In order to ask your device what output you want and which filters you would like to apply, we need to build the appropriate RPC. 
+
+I have already covered how to add a new **YANG model repository** and how to create a **YANG set** in this article.
