@@ -97,7 +97,7 @@ Here is what the full command looks like with a sample output:
 ./Cisco-IOS-XR-ip-tcp-oper-sub4.yang
 ```
 
-Now that we only have a few models, you can use YANG Suite to explore these models and verify they contain what you are looking for. In our case, the right top-level model will be `Cisco-IOS-XR-traceroute-act.yang`. If you read the model, you can see that `ipv4`, `ipv6` and `mpls` traceroute are submodules that all belong to `Cisco-IOS-XR-traceroute-act.yang`.
+Now that we only have a few models, you can use YANG Suite to explore these models and verify they contain what you are looking for. In our case, the right top-level model will be `Cisco-IOS-XR-traceroute-act`. If you read the model, you can see that `ipv4`, `ipv6` and `mpls` traceroute are submodules that all belong to `Cisco-IOS-XR-traceroute-act`.
 
 ```
 submodule Cisco-IOS-XR-ipv6-traceroute-act {
@@ -112,4 +112,27 @@ You can read how to use YANG Suite in [this article](https://xrdocs.io/programma
 
 In order to ask your device what output you want and which filters you would like to apply, we need to build the appropriate RPC. 
 
-I have already covered how to add a new **YANG model repository** and how to create a **YANG set** in this article.
+I have already covered how to add a new **YANG model repository** and how to create a **YANG set** in [this article](https://xrdocs.io/programmability/tutorials/do-you-speak-yang/). We will move directly to the specific actions in this article.
+{: .notice--info}
+
+Here are the steps we need to take in order to build the RPC:
+1. Go the **Protocols** > **NETCONF**.
+2. Pick the **YANG Set** you created and the **Module** `Cisco-IOS-XR-traceroute-act` and **Load Module(s)**.
+3. Expend the model and go to **traceroute > input > ipv4 > destination** and put the IP address of the remote device.
+4. Click **Build RCP**.
+
+Below is a sample screenshot of YANG Suite to reproduce the above steps.
+
+![YANG suite build rpc.jpg]({{site.baseurl}}/images/YANG suite build rpc.jpg){: .align-center}
+
+Here is the RPC I am going to use based on my topology.
+
+```
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101">
+  <traceroute xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-traceroute-act">
+    <ipv4>
+      <destination>10.3.1.3</destination>
+    </ipv4>
+  </traceroute>
+</rpc>
+```
