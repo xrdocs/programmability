@@ -136,3 +136,14 @@ Here is the RPC I am going to use based on my topology.
   </traceroute>
 </rpc>
 ```
+
+# Making the testbed
+
+In a testbed, you need to specify that we want to use the NETCONF connector. Below is an example. Note that we can use **multiple connection methods** for the same device. For the NETCONF method, do not forget to set the `class` to `yang.connector.Netconf`.
+
+<script src="https://gist.github.com/AntoineOrsoni/683dfb7c0a5dc866c492ef82fe99a691.js"></script>
+
+You can find the source code for the pyATS yang NETCONF connector in [the documentation](https://pubhub.devnetcloud.com/media/yang-connector/docs/_modules/yang/connector/netconf.html).
+{: .notice--info}
+
+
