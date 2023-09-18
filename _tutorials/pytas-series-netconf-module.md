@@ -1,8 +1,8 @@
 ---
-published: false
+published: true
 date: '2023-09-18 11:30 +0200'
 title: pyATS series - How to use the NETCONF module?
-position: hidden
+position: top
 author: Antoine Orsoni
 excerpt: How to use the pyATS NETCONF module?
 tags:
