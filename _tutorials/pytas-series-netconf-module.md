@@ -169,6 +169,10 @@ To work with XML, you can use the [**xmltodict** Python module](https://pypi.org
 
 ## Assembling Python building blocks
 
+Below is an example of the full script and the Python logic to print the IP address of each hop of the traceroute.
 
+<script src="https://gist.github.com/AntoineOrsoni/901cc28169e892de2b63462ac39edfbe.js"></script>
 
+For your information, here is the an example of the `reply` output, after we parsed the XML reply. You can see that we have the exact same information as in the raw output (when using CLI) but already structured.
 
+<script src="https://gist.github.com/AntoineOrsoni/92b7b6e7ab81e2771d211023127e8205.js"></script>
