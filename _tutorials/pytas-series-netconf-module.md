@@ -146,4 +146,29 @@ In a testbed, you need to specify that we want to use the NETCONF connector. Bel
 You can find the source code for the pyATS yang NETCONF connector in [the documentation](https://pubhub.devnetcloud.com/media/yang-connector/docs/_modules/yang/connector/netconf.html).
 {: .notice--info}
 
+# Creating the Python logic
+
+Now that we have each individual building block, we want to assemble all of them to create the Python logic to execute the traceroute via the NETCONF RPC and be able to work with the output.
+
+## Handling multiple connection methods
+
+If you have multiple connection methods for a device, you need to specify which one you would like to use in the `device.connect()` method. For example: `source.connect(via='netconf', log_stdout=True)`. Here, `netconf` refers to the `netconf` connection method, in the testbed. You can choose the name you want.
+
+You can verify you are successfuly connected to the device using the connection method you specified with the attribute `device.connected`. It should return `True` if you are successfuly connected.
+
+## Sending the RPC request
+
+To send a RPC request, you can use the `device.netconf.request()` method. You can give two parameters: the `rpc_request` you would like to send (as string) and optionally the `timeout` value. Here, we will set it to 120 seconds.
+
+Below is an example:
+
+<script src="https://gist.github.com/AntoineOrsoni/5eb4a67cba53c4bde188bec42a63d724.js"></script>
+
+To work with XML, you can use the [**xmltodict** Python module](https://pypi.org/project/xmltodict/). We will see an example in the next part.
+{: .notice--info}
+
+## Assembling Python building blocks
+
+
+
 
