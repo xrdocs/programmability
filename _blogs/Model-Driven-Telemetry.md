@@ -12,7 +12,7 @@ author: Rahul Sharma
 <div style="text-align: justify">
 A lot has been heard about 'Streaming Telemetry' in recent times, and it is known to be used to manage network devices. However, the question arises: Why is it needed when SNMP is already available to monitor and configure network devices?
 </div>
-
+<br>
 <div style="text-align: justify">    
 Knowing SNMP, its architecture, basic commands, and how it works is common knowledge. However, it's also essential to be aware of certain limitations associated with SNMP, which can act as bottlenecks for network device management. 
 </div> 
@@ -41,7 +41,7 @@ These limitations are manageable for small number of devices, but when it comes 
 
 # What is Streaming Telemetry?
 
-Streaming telemetry represents a modern and efficient approach to network monitoring and data collection, where network devices autonomously **push** real-time operational data to a central management system (or collector) using frameworks like **gRPC** .
+<p align="justify"> Streaming telemetry represents a modern and efficient approach to network monitoring and data collection, where network devices autonomously **push** real-time operational data to a central management system (or collector) using frameworks like <b>gRPC</b> .</p>
 
 This continuous streaming enables granular visibility into network behavior, facilitates prompt anomaly detection, optimization of resources, and informed decision-making for network management and troubleshooting.
 
