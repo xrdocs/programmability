@@ -12,61 +12,63 @@ position: hidden
 A lot has been heard about 'Streaming Telemetry' in recent times, and it is known to be used to manage network devices. However, the question arises: Why is it needed when SNMP is already available to monitor and configure network devices?
 
 </div>
-
+<hr>
 <div style="text-align: justify"> 
 
 Knowing SNMP, its architecture, basic commands, and how it works is common knowledge. However, it's also essential to be aware of certain limitations associated with SNMP, which can act as bottlenecks for network device management. 
 
 </div> 
-
+<hr>
 <div style="text-align: justify"> 
   
 Here are some of these limitations:
+
 </div> 
-  
+<hr>
 <div style="text-align: justify"> 
 
   
 **1. Limited Data Granularity:** SNMP's limited data coverage and predefined polling intervals hinder real-time monitoring and analysis of network conditions, as it may not capture comprehensive data or transient events occurring between intervals.
 
 </div> 
-  
+<hr>  
 <div style="text-align: justify"> 
   
   
 **2. Polling Overhead:** SNMP's polling mechanism, involving periodic data requests from the management system, adds network traffic and overhead, impacting performance, especially in large-scale networks with numerous devices.
 
 </div> 
-  
+<hr>  
 <div style="text-align: justify"> 
   
 **3 .Unreliable Transport:** SNMP traps use UDP for transport. UDP is inherently unreliable. If a trap doesn't reach a data collector, the information will be lost.
 
 </div>   
-  
+<hr>  
 <div style="text-align: justify"> 
   
 **4. Scalability Challenges:** SNMP encounters scalability challenges as the number of managed devices grows, requiring the management system to handle connection maintenance, polling intervals, and data processing, which can strain resources and hinder efficient management of large networks.
 
 </div> 
-  
+<hr>  
 <div style="text-align: justify"> 
   
 **5. Limited Event-Driven Monitoring:** Due to its reliance on polling, SNMP is less adept at capturing and responding to event-driven conditions, resulting in potential delays in detecting and reporting critical network events or anomalies unless they coincide with polling intervals.
 
 </div> 
-  
+<hr>  
 <div style="text-align: justify">   
 **6. Lack of Flexibility:** Extending or modifying the hierarchical data model of SNMP, defined by MIBs, involves complex and time-consuming updates to both the management system and network devices. This process limits flexibility in adding new metrics or adapting to evolving network requirements.
 
 </div> 
-  
+<hr>  
 <div style="text-align: justify"> 
   
 These limitations are manageable for small number of devices, but when it comes to managing a network with 1000s of devices, it becomes challenging. There is a need to have an alternative that addresses these limitations. And that's is when 'Streaming Telemetry' comes into the role.
 
 </div>   
-  
+<hr>
+
 # What is Streaming Telemetry?
 
 Streaming telemetry represents a modern and efficient approach to network monitoring and data collection, where network devices autonomously **push** real-time operational data to a central management system (or collector) using frameworks like **gRPC** .
