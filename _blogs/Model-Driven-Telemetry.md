@@ -51,9 +51,10 @@ Here are some of these limitations:
 
 These are two classes of YANG Models:
 
-<p align="justify"> <b>1. Cisco Native Models:</b>Cisco creates and manages these models. They are fairly comprehensive and cover nearly everything that can be configured via a CLI. There are over 1300 native YANG models as of July 2023.</p> 
-
-<p align="justify"> These models are Cisco-exclusive and can only be used with Cisco devices.These models are further categorised into different types:</p>
+<p align="justify"> <b>1. Cisco Native Models:</b>Cisco creates and manages these models. They are fairly comprehensive and cover nearly everything that can be configured via a CLI. There are over 1300 native YANG models as of July 2023.
+<br>
+<br>  
+These models are Cisco-exclusive and can only be used with Cisco devices.These models are further categorised into different types:</p>
 
  - Configurational: These models are used to modify network device configurations.
         
@@ -69,22 +70,25 @@ They are designed to be vendor-neutral, meaning they can work with any network d
 
 **Model-Driven Telemetry**
 
-When streaming telemetry is combined with YANG models as a data definition language, it’s known as MDT. In order to establish an MDT, a gRPC channel has to be created between network device and collector.
-
+<p align="justify">When streaming telemetry is combined with YANG models as a data definition language, it’s known as MDT. In order to establish an MDT, a gRPC channel has to be created between network device and collector.
+<br>
+<br>  
 There are two types of MDT with respect to the network device. 
-
+<br>
+<br>  
 1. When the gRPC channel is initiated by collector or when network device ‘gets in’ the gRPC channel request, it known as **Dial-in** MDT.
-
+<br>
+<br>  
 2. When the gRPC channel is initiated by collector or when network-device ‘sends out’ the gRPC channel request, it is known as **Dial-out** MDT.
-
+</p>
 ![dial-in-dial-out.png]({{site.baseurl}}/images/dial-in-dial-out.png)
+<p align="justify">In order to establish MDT, we need to create sensor-group, destination-group and subscription. Let's discuss more about them in the following lines:
+<br>
+<br>  
+<b>Sensor-group</b> is a group of sensor-paths that corresponds to the data that network device sends to the collector. This can be summarised as <b>What data to send</b>. 
 
-In order to establish MDT, we need to create sensor-group, destination-group and subscription. Let's discuss more about them in the following lines:
+<b>Destination-group</b> is a group of collectors that collect data from network devices. It comprises of parameters such as collector IP address, username and password and encoding (one out of JSON-IETF, GPB etc) for each of the collector. This can be summarised as <b>Where to send the data</b>.
 
-**Sensor-group** is a group of sensor-paths that corresponds to the data that network device sends to the collector. This can be summarised as **What data to send** 
-
-**Destination-group** is a group of collectors that collect data from network devices. It comprises of parameters such as collector IP address, username and password and encoding (one out of JSON-IETF, GPB etc) for each of the collector. This can be summarised as **Where to send the data**
-
-**Subscription** binds a sensor-group to a destination-group. Once this is created, an MDT is established where the network device starts streaming 'sensor-group' to 'destination-group'.
+<b>Subscription</b> binds a sensor-group to a destination-group. Once this is created, an MDT is established where the network device starts streaming 'sensor-group' to 'destination-group'.
 
 Let's now implement all the we have learned so far.
