@@ -119,7 +119,7 @@ Here is the breakdown of this configuration file:
 <br>
 - <b>database</b>: Specifies the name of the InfluxDB database where the collected data will be stored, here named "mdt-db".
 <br>
-Step2: Create a following docker-compose.yml file. 
+Step2: Create a following docker-compose.yml file.</p> 
 ```
 version: '3.6'
 services:
@@ -212,14 +212,13 @@ Here is the breakdown for this file:
 <b>volumes</b>: Defines named volumes for persisting data between container restarts.
 <br>
 <br>  
-
-Step3: Navigate to the directory containing both files and utilize the provided command to initiate container deployment.
+Step3: Navigate to the directory containing both files and utilize the provided command to initiate container deployment.</p>
 
 ```
 docker-compose up
 ```
 
-At this stage, the collector is set to gather metrics when the network device initiates streaming. The following command can be executed to check the status of containers
+<p align="justify">At this stage, the collector is set to gather metrics when the network device initiates streaming. The following command can be executed to check the status of containers.</p>
 
 ```
 docker ps
@@ -233,9 +232,10 @@ ea8d09f16378        grafana/grafana                                         "/ru
 9ef752784c05        influxdb:1.8-alpine                                     "/entrypoint.sh infl…"   34 seconds ago      Up 32 seconds                   0.0.0.0:8086->8086/tcp                                                                                                     influxdb
 ```
 
-Next, the configuration process involves enabling the network device to initiate data streaming.
-
-In order to check if MDT is working or not, execute the following command on the router.
+<p align="justify">Next, the configuration process involves enabling the network device to initiate data streaming.
+<br>
+<br>  
+In order to check if MDT is working or not, execute the following command on the router.</p>
 
 ```
 RP/0/RP0/CPU0:ios#show telemetry model-driven subscription
@@ -255,15 +255,15 @@ Subscription:  GNMI__13821465244912532582  State: ACTIVE
 
 ## InfluxDB and Grafana
 
-Given that Telegraf stores data in InfluxDB, we will validate this by querying the database. Execute the provided command on the Ubuntu server where your containers are operational.
+<p align="justify">Given that Telegraf stores data in InfluxDB, we will validate this by querying the database. Execute the provided command on the Ubuntu server where your containers are operational.</p>
 
 ```
 docker exec -it influxdb bash
 ```
 
-Executing this command will lead you to the bash shell within the InfluxDB container. 
+<p align="justify">Executing this command will lead you to the bash shell within the InfluxDB container.</p> 
 
-Upon accessing the container's bash shell, database commands can be employed to identify the sensor-path configured within the sensor-group.
+<p align="justify">Upon accessing the container's bash shell, database commands can be employed to identify the sensor-path configured within the sensor-group.</p>
 
 ```
 9ef752784c05:/# influx
@@ -284,59 +284,59 @@ name
 Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
 ```
 
-The presence of the 'mdt-db' database within InfluxDB is apparent. This aligns with the database mentioned in the 'telegraf.conf' file within the output section.
+<p align="justify">The presence of the 'mdt-db' database within InfluxDB is apparent. This aligns with the database mentioned in the 'telegraf.conf' file within the output section.</p>
 
 
-The following sensor-path as a measurement above shows that InfluxDB successfully stores the streamed data from our NCS 5500 device.
+<p align="justify">The following sensor-path as a measurement above shows that InfluxDB successfully stores the streamed data from our NCS 5500 device.</p></p>
 
 ```
 Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
 ```
 
-Next, we'll create graphs utilizing InfluxDB data on Grafana.
+<p align="justify">Next, we'll create graphs utilizing InfluxDB data on Grafana.</p>
 
-To access the Grafana dashboard, enter 'http://10.30.111.165:3000/' into your browser's URL field. Keep in mind that this IP address corresponds to the server running Grafana, followed by the relevant port number. Your configuration might have a different address and port.
+<p align="justify">To access the Grafana dashboard, enter 'http://10.30.111.165:3000/' into your browser's URL field. Keep in mind that this IP address corresponds to the server running Grafana, followed by the relevant port number. Your configuration might have a different address and port.</p>
 
 ![login.png]({{site.baseurl}}/images/login.png)
 
-Upon accessing the Grafana dashboard, a login prompt will appear, requiring a username and password. Use the credentials specified in the 'docker-compose.yml' file under the 'environment' section of the 'Grafana' service. In this case, both the username and password are 'admin'.
+<p align="justify">Upon accessing the Grafana dashboard, a login prompt will appear, requiring a username and password. Use the credentials specified in the 'docker-compose.yml' file under the 'environment' section of the 'Grafana' service. In this case, both the username and password are 'admin'.</p>
 
 ![login-creds.png]({{site.baseurl}}/images/login-creds.png)
 
-Utilize the provided username and password. You'll be prompted to update your password; however, you can select 'skip' to proceed to the home page.
+<p align="justify">Utilize the provided username and password. You'll be prompted to update your password; however, you can select 'skip' to proceed to the home page.</p>
 
 ![homepage.png]({{site.baseurl}}/images/homepage.png)
 
-Now, let's set up the data source for Grafana. To achieve this, click on the 'Add your first data source' widget. Then, apply the filter to locate 'InfluxDB' and proceed to select it.
+<p align="justify">Now, let's set up the data source for Grafana. To achieve this, click on the 'Add your first data source' widget. Then, apply the filter to locate 'InfluxDB' and proceed to select it.</p>
 
 ![add-source.png]({{site.baseurl}}/images/add-source.png)
 
-Assign a name of your choice to the source. Opt for 'InfluxQL' as the query language. For the HTTP URL, input 'http://10.30.111.165:8086'. Leave out the Auth and Custom HTTP Headers sections. In the 'InfluxDB Details', add the 'mdt-db' database. Finally, click on 'Save & Test'.
+<p align="justify">Assign a name of your choice to the source. Opt for 'InfluxQL' as the query language. For the HTTP URL, input 'http://10.30.111.165:8086'. Leave out the Auth and Custom HTTP Headers sections. In the 'InfluxDB Details', add the 'mdt-db' database. Finally, click on 'Save & Test'.</p>
 
 ![source-detail1.png]({{site.baseurl}}/images/source-detail1.png)
 
 ![source-detail2.png]({{site.baseurl}}/images/source-detail2.png)
 
-The message 'Datasource is working. 1 measurement found' confirms that Grafana has successfully established a connection to the 'mdt-db' database within InfluxDB.
+<p align="justify">The message 'Datasource is working. 1 measurement found' confirms that Grafana has successfully established a connection to the 'mdt-db' database within InfluxDB.</p>
 
-Next, a dashboard will be created through the subsequent steps:
+<p align="justify">Next, a dashboard will be created through the subsequent steps:</p>
 
 ![homepage.png]({{site.baseurl}}/images/homepage.png)
 
-Access the 'Home' page and select the 'Dashboards' widget. Click on 'Add visualization', pick your data source (in this case, 'mdt-influx'), and the subsequent page will appear.
+<p align="justify">Access the 'Home' page and select the 'Dashboards' widget. Click on 'Add visualization', pick your data source (in this case, 'mdt-influx'), and the subsequent page will appear.</p>
 
 ![add-visual.png]({{site.baseurl}}/images/add-visual.png)
 
 ![select-data-source.png]({{site.baseurl}}/images/select-data-source.png)
 
-Select 'select measurement', and the sensor-path configured using the sensor-group will be visible. Choose that sensor-path
+<p align="justify">Select 'select measurement', and the sensor-path configured using the sensor-group will be visible. Choose that sensor-path.</p>
 
 ![select-measurement.png]({{site.baseurl}}/images/select-measurement.png)
 
-Then, click on 'field(value)', and opt for 'bytes-received'. This action will generate the graph at the top.
+<p align="justify">Then, click on 'field(value)', and opt for 'bytes-received'. This action will generate the graph at the top.</p>
 
 ![initial-graph.png]({{site.baseurl}}/images/initial-graph.png)
 
 ![final-graph.png]({{site.baseurl}}/images/final-graph.png)
 
-Feel free to experiment with this query, and you'll observe the graph corresponding to your query modifications.
+<p align="justify">Feel free to experiment with this query, and you'll observe the graph corresponding to your query modifications.</p>
