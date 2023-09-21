@@ -9,36 +9,42 @@ author: Rahul Sharma
 
 # Background
 
-This article focuses on  establishing Model-Driven Telemetry (MDT) using the Telegraf, InfluxDB, and Grafana (TIG) stack.
-
+<p align="justify">This article focuses on  establishing Model-Driven Telemetry (MDT) using the Telegraf, InfluxDB, and Grafana (TIG) stack.
+<br>
+<br>  
 If you are well-verse with MDT, YANG models and sensor-group, destination group and subscription, please follow the steps to establish MDT. Otherwise you might want to go through this post first. 
-
+<br>
+<br>  
 MDT consists of two main components. Firstly, there's a router equipped with pre-installed YANG models and a running grpc server. Through MDT, this router continuously streams mtetrics at specified time intervals. Secondly, the TIG stack, which consumes, stores, and presents this metrics visually.
-
-Let's delve into the individual elements of the TIG stack:
+<br>
+<br>  
+Let's delve into the individual elements of the TIG stack:</p>
 
 # TIG Stack
 
-1. **Telegraf** :Collects router metrics and stores them in a Time Series Database (TSDB).
-
-2. **InfluxDB** :TSDB that stores metrics from Telegraf. Forwards data to Grafana for visualization.
-
-3. **Grafana** :Receives metrics from InfluxDB and displays them visually (graphs, charts) for analysis.
+<p align="justify">1. <b>Telegraf</b> :Collects router metrics and stores them in a Time Series Database (TSDB).
+<br>
+<br>  
+2. <b>InfluxDB</b> :TSDB that stores metrics from Telegraf. Forwards data to Grafana for visualization.
+<br>
+<br>  
+3. <b>Grafana</b> :Receives metrics from InfluxDB and displays them visually (graphs, charts) for analysis.<>/p
 
 
 # gRPC Dial-in
 
-The objective is to create a Dial-in MDT, wherein a collector initiates a grpc channel with a router.
-
+<p align="justify">The objective is to create a Dial-in MDT, wherein a collector initiates a grpc channel with a router.
+<br>
+<br>  
 As this is a Dial-in MDT, the router must be operational and prepared to receive a request for gRPC channel by a collector.In short, gRPC server on the router must be up and running.
-
-The initial focus will be on configuring the router aspect.
+<br>
+<br>  
+The initial focus will be on configuring the router aspect.</p>
 
 ## Router Configuration
 
-In order for router to receive a grpc channel creation request, the gRPC server should be up and running. You can configure grpc on the router using following set of commands:
-
-
+<p align="justify">In order for router to receive a grpc channel creation request, the gRPC server should be up and running. You can configure grpc on the router using following set of commands:</p>
+  
 Step1: Configure gRPC server on the router. 
 
 ```
@@ -60,8 +66,7 @@ grpc
 ```
 
 ## Collector configuration
-
-To establish the TIG configuration, the subsequent topology and steps will be used:
+<p align="justify">To establish the TIG configuration, the subsequent topology and steps will be used:</p>
 
 ![MDT-TIG.png]({{site.baseurl}}/images/MDT-TIG.png)
 
@@ -87,27 +92,33 @@ Step1: Create a following telegraf.conf file.
 ```
 Here is the breakdown of this configuration file:
 
-**[[inputs.gnmi]]:** This section defines a configuration for gathering data using the gNMI (gRPC Network Management Interface) protocol. gNMI is typically used for network device management and telemetry.
+<p align="justify"><b>[[inputs.gnmi]]:</b> This section defines a configuration for gathering data using the gNMI (gRPC Network Management Interface) protocol. gNMI is typically used for network device management and telemetry.
+<br>
+<br>  
+- <b>addresses</b>: Specifies the IP address and port (57100) of the gNMI server on the network device.
+  <br>
+  <br> 
+- <b>username</b>: The username to authenticate with when connecting to the gNMI server.
+  <br>
+  <br> 
+- <b>password</b>: The password associated with the provided username for authentication.
+  <br>
+  <br> 
+<b>[[inputs.gnmi.subscription]]</b>: This section configures a specific subscription for telemetry data from the network device. It defines what data to retrieve, how often to sample it, and the subscription mode.
+  <br>
+  <br> 
+- <b>name</b>: A user-defined name for this subscription configuration, in this case, "ifcounters".
+  <br>
+- <b>origin</b>: YANG Model name (in this case, "Cisco-IOS-XR-infra-statsd-oper").<br>
+- <b>path</b>: Path from root of the YANG to the leaf that collector would request from router.<br>
+- <b>subscription_mode</b>: Sets the subscription mode. In this case, it's set to "sample", indicating that data should be sampled periodically.(one of: "target_defined", "sample", "on_change")<br>
+- <b>sample_interval</b>: Specifies the interval at which data should be sampled, here set to "30s" (30 seconds).<br>
+<b>[[outputs.influxdb]]</b>: This section configures the output destination for the collected data, using the InfluxDB database system. InfluxDB is commonly used for time-series data storage.<br>
 
-- **addresses**: Specifies the IP address and port (57100) of the gNMI server on the network device.
-
-- **username**: The username to authenticate with when connecting to the gNMI server.
-
-- **password**: The password associated with the provided username for authentication.
-
-**[[inputs.gnmi.subscription]]**: This section configures a specific subscription for telemetry data from the network device. It defines what data to retrieve, how often to sample it, and the subscription mode.
-
-- **name**: A user-defined name for this subscription configuration, in this case, "ifcounters".
-- **origin**: YANG Model name (in this case, "Cisco-IOS-XR-infra-statsd-oper").
-- **path**: Path from root of the YANG to the leaf that collector would request from router.
-- **subscription_mode**: Sets the subscription mode. In this case, it's set to "sample", indicating that data should be sampled periodically.(one of: "target_defined", "sample", "on_change")
-- **sample_interval**: Specifies the interval at which data should be sampled, here set to "30s" (30 seconds).
-**[[outputs.influxdb]]:** This section configures the output destination for the collected data, using the InfluxDB database system. InfluxDB is commonly used for time-series data storage.
-
-- **urls**: Specifies the URLs of the InfluxDB instances to which the data will be sent. In this case, it's a single URL - "http://localhost:8086".
-
-- **database**: Specifies the name of the InfluxDB database where the collected data will be stored, here named "mdt-db".
-
+- <b>urls</b>: Specifies the URLs of the InfluxDB instances to which the data will be sent. In this case, it's a single URL - "http://localhost:8086".
+<br>
+- <b>database</b>: Specifies the name of the InfluxDB database where the collected data will be stored, here named "mdt-db".
+<br>
 Step2: Create a following docker-compose.yml file. 
 ```
 version: '3.6'
@@ -162,37 +173,45 @@ volumes:
 ```
 
 Here is the breakdown for this file:
-
-**version: '3.6'**: Specifies the version of the Docker Compose file being used.
-
-**services**: Defines the individual Docker services to be deployed.
-
-- **telegraf**: Specifies the Telegraf service configuration. Here, path of the telegraf.conf is relative docker-compose.yml. In this case, both these files are in the same folder.
-
-- **image: telegraf**: Specifies the Docker image to be used for the Telegraf container.
-- **container_name: telegraf**: Names the container as "telegraf".
-- **restart: always**: Ensures the Telegraf container restarts automatically if it crashes.
-- **volumes**: Mounts the telegraf.conf configuration file into the container.
-- **depends_on**: Indicates that this service depends on the "influxdb" service to be running.
-- **links**: Creates a link to the "influxdb" service.
-- **ports**: Maps port "57100" on the host to port "57100" on the container.
-
-**influxdb**: Specifies the InfluxDB service configuration.
-
+<p align="justify"><b>version: '3.6'</b>: Specifies the version of the Docker Compose file being used.
+<br>
+<br>  
+<b>services</b>: Defines the individual Docker services to be deployed.
+<br>
+<br>  
+- <b>telegraf</b>: Specifies the Telegraf service configuration. Here, path of the telegraf.conf is relative docker-compose.yml. In this case, both these files are in the same folder.
+<br>
+<br>
+- <b>image: telegraf</b>: Specifies the Docker image to be used for the Telegraf container.<br>
+- <b>container_name: telegraf</b>: Names the container as "telegraf".<br>
+- <b>restart: always</b>: Ensures the Telegraf container restarts automatically if it crashes.<br>
+- <b>volumes</b>: Mounts the telegraf.conf configuration file into the container.<br>
+- <b>depends_on</b>: Indicates that this service depends on the "influxdb" service to be running.<br>
+- <b>links</b>: Creates a link to the "influxdb" service.<br>
+- <b>ports</b>: Maps port "57100" on the host to port "57100" on the container.<br>
+<br>
+<br>  
+<b>influxdb</b>: Specifies the InfluxDB service configuration.
+<br>
+<br>  
 - Similar to the telegraf service, it defines the InfluxDB container configuration.
 - Sets environment variables for the InfluxDB database name, admin username, and password.
 - Maps port "8086" on the host to port "8086" on the container.
 - Mounts a volume for storing InfluxDB data.
-
-**grafana**: Specifies the Grafana service configuration.
-
+<br>
+<br>
+<b>grafana</b>: Specifies the Grafana service configuration.
+<br>
+<br>
 - Similar to the other services, it defines the Grafana container configuration.
 - Sets environment variables for the Grafana admin username and password.
 - Maps port "3000" on the host to port "3000" on the container.
 - Mounts a volume for storing Grafana data.
-
-**volumes**: Defines named volumes for persisting data between container restarts.
-
+<br>
+<br>
+<b>volumes</b>: Defines named volumes for persisting data between container restarts.
+<br>
+<br>  
 
 Step3: Navigate to the directory containing both files and utilize the provided command to initiate container deployment.
 
