@@ -43,7 +43,7 @@ These limitations are manageable for small number of devices, but when it comes 
 
 <p align="justify"> Streaming telemetry represents a modern and efficient approach to network monitoring and data collection, where network devices autonomously **push** real-time operational data to a central management system (or collector) using frameworks like <b>gRPC</b> .</p>
 
-This continuous streaming enables granular visibility into network behavior, facilitates prompt anomaly detection, optimization of resources, and informed decision-making for network management and troubleshooting.
+<p align="justify">This continuous streaming enables granular visibility into network behavior, facilitates prompt anomaly detection, optimization of resources, and informed decision-making for network management and troubleshooting.</p>
 
 ![SNMPvsST.png]({{site.baseurl}}/images/SNMPvsST.png)
 
