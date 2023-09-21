@@ -28,7 +28,7 @@ Let's delve into the individual elements of the TIG stack:</p>
 2. <b>InfluxDB</b> :TSDB that stores metrics from Telegraf. Forwards data to Grafana for visualization.
 <br>
 <br>  
-3. <b>Grafana</b> :Receives metrics from InfluxDB and displays them visually (graphs, charts) for analysis.<>/p
+3. <b>Grafana</b> :Receives metrics from InfluxDB and displays them visually (graphs, charts) for analysis.</p>
 
 
 # gRPC Dial-in
