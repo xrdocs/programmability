@@ -74,10 +74,13 @@ They are designed to be vendor-neutral, meaning they can work with any network d
 There are two types of MDT with respect to the network device. 
 <br>
 <br>  
-1. When the gRPC channel is initiated by collector or when network device <b>‘gets in’</b> the gRPC channel request, it known as <b>Dial-in</b> MDT. Interested in establishing this MDT? Click [here](https://xrdocs.io/programmability/blogs/Dial-in-MDT-with-TIG/).
-<br>
-<br>  
-2. When the gRPC channel is initiated by collector or when network-device <b>‘sends out’</b> the gRPC channel request, it is known as <b>Dial-out</b> MDT. Interedted in establishing this MDT? Click [here](https://xrdocs.io/programmability/blogs/Dial-out-MDT-with-TIG/).
-</p>
-![dial-in-dial-out.png]({{site.baseurl}}/images/dial-in-dial-out.png)
+1. When the gRPC channel is initiated by collector or when network device <b>‘gets in’</b> the gRPC channel request, it known as <b>Dial-in</b> MDT.</p>
 
+Interested in establishing Dial-in MDT? Click [here](https://xrdocs.io/programmability/blogs/Dial-in-MDT-with-TIG/).
+
+<p align="justify">2. When the gRPC channel is initiated by collector or when network-device <b>‘sends out’</b> the gRPC channel request, it is known as <b>Dial-out</b> MDT.</p>
+  
+Interested in establishing Dial-out MDT? Click [here](https://xrdocs.io/programmability/blogs/Dial-out-MDT-with-TIG/).
+<p align="center">
+![dial-in-dial-out.png]({{site.baseurl}}/images/dial-in-dial-out.png)
+</p>
