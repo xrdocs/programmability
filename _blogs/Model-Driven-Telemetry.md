@@ -56,11 +56,11 @@ These are two classes of YANG Models:
 <br>  
 These models are Cisco-exclusive and can only be used with Cisco devices.These models are further categorised into different types:</p>
 
- - Configurational: These models are used to modify network device configurations.
+ - <b>Configurational:</b> These models are used to modify network device configurations.
         
- - <p align="justify"> Operational: These models are used to retrieve a network device's operational state. These models are read-only, which means you cannot change their configuration.</p>
+ - <p align="justify"> <b>Operational:</b> These models are used to retrieve a network device's operational state. These models are read-only, which means you cannot change their configuration.</p>
  
- - <p align="justify">Cisco has a third model type known as the Unified model. These are similar to config models, but they share the same abstraction layer as CLI, making them CLI friendly. Someone who understands the IOS-XR CLI will find it easier to understand these models than the config model, which has a different abstraction layer than the CLI and thus is more difficult to understand its hierarchy.</p>
+ - <p align="justify">Cisco has a third model type known as the <b>Unified model</b>. These are similar to config models, but they share the same abstraction layer as CLI, making them CLI friendly. Someone who understands the IOS-XR CLI will find it easier to understand these models than the config model, which has a different abstraction layer than the CLI and thus is more difficult to understand its hierarchy.</p>
 
 <p align="justify"> <b>2. OpenConfig Models:</b> OpenConfig models are created by the OpenConfig forum, led by Google and consisting of companies like Meta, Apple, Microsoft, Comcast, and more. These models serve as a common baseline for all network vendors, such as Cisco, Juniper, Arista, and others.
 <br>
@@ -76,10 +76,10 @@ They are designed to be vendor-neutral, meaning they can work with any network d
 There are two types of MDT with respect to the network device. 
 <br>
 <br>  
-1. When the gRPC channel is initiated by collector or when network device ‘gets in’ the gRPC channel request, it known as **Dial-in** MDT.
+1. When the gRPC channel is initiated by collector or when network device <b>‘gets in’</b> the gRPC channel request, it known as **Dial-in** MDT.
 <br>
 <br>  
-2. When the gRPC channel is initiated by collector or when network-device ‘sends out’ the gRPC channel request, it is known as **Dial-out** MDT.
+2. When the gRPC channel is initiated by collector or when network-device <b>‘sends out’</b> the gRPC channel request, it is known as **Dial-out** MDT.
 </p>
 ![dial-in-dial-out.png]({{site.baseurl}}/images/dial-in-dial-out.png)
 <p align="justify">In order to establish MDT, we need to create sensor-group, destination-group and subscription. Let's discuss more about them in the following lines:
