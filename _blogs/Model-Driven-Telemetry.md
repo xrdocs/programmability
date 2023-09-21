@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2023-07-13 19:56 -0400'
-title: Introduction to Model-Driven-Telemetry
+title: Introduction to Model-Driven Telemetry
 position: hidden
 author: Rahul Sharma
 ---
@@ -9,7 +9,7 @@ author: Rahul Sharma
 
 <p align="justify">A lot has been heard about 'Streaming Telemetry' in recent times, and it is known to be used to manage network devices. However, the question arises: Why is it needed when SNMP is already available to monitor and configure network devices?</p>
 
-<p align="justify">Knowing SNMP, its architecture, basic commands, and how it works is common knowledge. However, it's also essential to be aware of certain limitations associated with SNMP, which can act as bottlenecks for network device management.</p>
+<p align="justify">Knowing SNMP, its architecture, basic commands, and how it works is common knowledge. However, it's also essential to be aware of certain limitations associated with SNMP, which act as bottlenecks for network device management.</p>
   
 Here are some of these limitations:
   
@@ -45,22 +45,22 @@ Here are some of these limitations:
 
 **YANG Models**
 
-<p align="justify">YANG model is a hierarchical data structure (like tree) that consists of nodes that can be managed/monitored on network device.</p>
+<p align="justify">A YANG model is a hierarchical data structure (like tree) that consists of nodes that can be managed/monitored on network device.</p>
 
 These are two classes of YANG Models:
 
-<p align="justify"> <b>1. Cisco Native Models:</b>Cisco creates and manages these models. They are fairly comprehensive and cover nearly everything that can be configured via a CLI. There are over 1300 native YANG models as of July 2023.
+<p align="justify"> <b>1. Cisco Native Models:</b> These are Cisco proprietary models; created and managed by Cisco. They are fairly comprehensive and cover nearly everything that can be configured via a CLI. There are over 1300 native YANG models as of IOS-XR 7.9.1.
 <br>
 <br>  
-These models are Cisco-exclusive and can only be used with Cisco devices.These models are further categorised into different types:</p>
+These models are Cisco-exclusive and can only be used with Cisco devices. They are further categorised into different types:</p>
 
- - <b>Configurational:</b> These models are used to modify network device configurations.
+ - <b>Configurational:</b> These models are used to add new or modify existing configuration on the network device. Abstraction layer for these models and CLI is different, making it a bit challenging to use these models. 
         
- - <p align="justify"> <b>Operational:</b> These models are used to retrieve a network device's operational state. These models are read-only, which means you cannot change their configuration.</p>
+ - <p align="justify"> <b>Operational:</b> These models are used to retrieve the operational state of a network device.</p>
  
- - <p align="justify">Cisco has a third model type known as the <b>Unified model</b>. These are similar to config models, but they share the same abstraction layer as CLI, making them CLI friendly. Someone who understands the IOS-XR CLI will find it easier to understand these models than the config model, which has a different abstraction layer than the CLI and thus is more difficult to understand its hierarchy.</p>
+ - <p align="justify">Cisco has a third model type known as the <b>Unified model</b>. They are similar to config models, but they share the same abstraction layer as CLI, making them CLI friendly. Someone who understands the IOS-XR CLI will find it easier to understand these models than the config model, which has a different abstraction layer than the CLI and thus is more difficult to understand its hierarchy.</p>
 
-<p align="justify"> <b>2. OpenConfig Models:</b> OpenConfig models are created by the OpenConfig forum, led by Google and consisting of companies like Meta, Apple, Microsoft, Comcast, and more. These models serve as a common baseline for all network vendors, such as Cisco, Juniper, Arista, and others.
+<p align="justify"> <b>2. OpenConfig Models:</b> These models are created by a vendor-neutral forum known as 'OpenConfig', which is led by Google and consists of companies like Meta, Apple, Microsoft, Comcast, and more. These models serve as a common baseline for all network vendors, such as Cisco, Juniper, Arista, and others.
 <br>
 <br>  
 They are designed to be vendor-neutral, meaning they can work with any network device regardless of the manufacturer. However, it's important to note that these models have limited coverage in terms of the data they can manage.</p>
@@ -68,25 +68,16 @@ They are designed to be vendor-neutral, meaning they can work with any network d
 
 **Model-Driven Telemetry**
 
-<p align="justify">When streaming telemetry is combined with YANG models as a data definition language, it’s known as MDT. In order to establish an MDT, a gRPC channel has to be created between network device and collector.
+<p align="justify">When streaming telemetry is combined with YANG models as a Data Definition Language, it’s known as MDT. In order to establish an MDT, a gRPC channel has to be created between network device and collector.
 <br>
 <br>  
 There are two types of MDT with respect to the network device. 
 <br>
 <br>  
-1. When the gRPC channel is initiated by collector or when network device <b>‘gets in’</b> the gRPC channel request, it known as **Dial-in** MDT.
+1. When the gRPC channel is initiated by collector or when network device <b>‘gets in’</b> the gRPC channel request, it known as <b>Dial-in</b> MDT. Interested in establishing this MDT? Click [here](https://xrdocs.io/programmability/blogs/Dial-in-MDT-with-TIG/).
 <br>
 <br>  
-2. When the gRPC channel is initiated by collector or when network-device <b>‘sends out’</b> the gRPC channel request, it is known as **Dial-out** MDT.
+2. When the gRPC channel is initiated by collector or when network-device <b>‘sends out’</b> the gRPC channel request, it is known as <b>Dial-out</b> MDT. Interedted in establishing this MDT? Click [here](https://xrdocs.io/programmability/blogs/Dial-out-MDT-with-TIG/).
 </p>
 ![dial-in-dial-out.png]({{site.baseurl}}/images/dial-in-dial-out.png)
-<p align="justify">In order to establish MDT, we need to create sensor-group, destination-group and subscription. Let's discuss more about them in the following lines:
-<br>
-<br>  
-<b>Sensor-group</b> is a group of sensor-paths that corresponds to the data that network device sends to the collector. This can be summarised as <b>What data to send</b>. 
 
-<b>Destination-group</b> is a group of collectors that collect data from network devices. It comprises of parameters such as collector IP address, username and password and encoding (one out of JSON-IETF, GPB etc) for each of the collector. This can be summarised as <b>Where to send the data</b>.
-
-<b>Subscription</b> binds a sensor-group to a destination-group. Once this is created, an MDT is established where the network device starts streaming 'sensor-group' to 'destination-group'.
-
-Let's now implement all the we have learned so far.
