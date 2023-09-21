@@ -9,27 +9,17 @@ author: Rahul Sharma
 
 # Background
 
-<div style="text-align: justify">
-A lot has been heard about 'Streaming Telemetry' in recent times, and it is known to be used to manage network devices. However, the question arises: Why is it needed when SNMP is already available to monitor and configure network devices?
-</div>
-<br>
-<div style="text-align: justify">    
-Knowing SNMP, its architecture, basic commands, and how it works is common knowledge. However, it's also essential to be aware of certain limitations associated with SNMP, which can act as bottlenecks for network device management. 
-</div> 
+<p align="justify">A lot has been heard about 'Streaming Telemetry' in recent times, and it is known to be used to manage network devices. However, the question arises: Why is it needed when SNMP is already available to monitor and configure network devices?</p>
+
+<p align="justify">Knowing SNMP, its architecture, basic commands, and how it works is common knowledge. However, it's also essential to be aware of certain limitations associated with SNMP, which can act as bottlenecks for network device management.</p>
   
 Here are some of these limitations:
   
-**1. Limited Data Granularity:** 
-<div style="text-align: justify">
-SNMP's limited data coverage and predefined polling intervals hinder real-time monitoring and analysis of network conditions, as it may not capture comprehensive data or transient events occurring between intervals.
-</div>
+<p align="justify"> <b>1. Limited Data Granularity:</b> SNMP's limited data coverage and predefined polling intervals hinder real-time monitoring and analysis of network conditions, as it may not capture comprehensive data or transient events occurring between intervals.</p>
 
-**2. Polling Overhead:** 
-<div style="text-align: justify">
-SNMP's polling mechanism, involving periodic data requests from the management system, adds network traffic and overhead, impacting performance, especially in large-scale networks with numerous devices.
-</div>
+<p align="justify"> <b>2. Polling Overhead:</b> SNMP's polling mechanism, involving periodic data requests from the management system, adds network traffic and overhead, impacting performance, especially in large-scale networks with numerous devices.</p>
 
-**3 .Unreliable Transport:** SNMP traps use UDP for transport. UDP is inherently unreliable. If a trap doesn't reach a data collector, the information will be lost.
+<p align="justify"> <b>3 .Unreliable Transport:</b> SNMP traps use UDP for transport. UDP is inherently unreliable. If a trap doesn't reach a data collector, the information will be lost.</p>
   
 **4. Scalability Challenges:** SNMP encounters scalability challenges as the number of managed devices grows, requiring the management system to handle connection maintenance, polling intervals, and data processing, which can strain resources and hinder efficient management of large networks.
 
