@@ -5,7 +5,6 @@ title: Introduction to Model-Driven-Telemetry
 position: hidden
 author: Rahul Sharma
 ---
-
 # Background
 
 <p align="justify">A lot has been heard about 'Streaming Telemetry' in recent times, and it is known to be used to manage network devices. However, the question arises: Why is it needed when SNMP is already available to monitor and configure network devices?</p>
