@@ -81,6 +81,6 @@ Interested in establishing Dial-in MDT? Click [here](https://xrdocs.io/programma
 <p align="justify">2. When the gRPC channel is initiated by collector or when network-device <b>‘sends out’</b> the gRPC channel request, it is known as <b>Dial-out</b> MDT.</p>
   
 Interested in establishing Dial-out MDT? Click [here](https://xrdocs.io/programmability/blogs/Dial-out-MDT-with-TIG/).
-<p align="center">
+
 ![dial-in-dial-out.png]({{site.baseurl}}/images/dial-in-dial-out.png)
-</p>
+
