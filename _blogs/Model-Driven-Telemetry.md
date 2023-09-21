@@ -63,6 +63,7 @@ These are two classes of YANG Models:
 
 <p align="justify"> <b>2. OpenConfig Models:</b> OpenConfig models are created by the OpenConfig forum, led by Google and consisting of companies like Meta, Apple, Microsoft, Comcast, and more. These models serve as a common baseline for all network vendors, such as Cisco, Juniper, Arista, and others.
 <br>
+<br>  
 They are designed to be vendor-neutral, meaning they can work with any network device regardless of the manufacturer. However, it's important to note that these models have limited coverage in terms of the data they can manage.</p>
 
 
