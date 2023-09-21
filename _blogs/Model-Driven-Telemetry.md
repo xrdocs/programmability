@@ -4,13 +4,16 @@ date: '2023-07-13 19:56 -0400'
 title: Untitled
 position: hidden
 ---
+<div style="text-align: justify">
+
 # Background
 
-We have heard a lot about 'Streaming Telemetry' in recent times and also know they are used to manage network devices. But why do we need it when SNMP is already there to monitor and configure network devices. 
+A lot has been heard about 'Streaming Telemetry' in recent times, and it is known to be used to manage network devices. However, the question arises: Why is it needed when SNMP is already available to monitor and configure network devices?
 
-We all know what is SNMP, it's architecture, basic commands and working. But we also need to know some limitations that SNMP has which is a bottleneck for network device management.
+Knowing SNMP, its architecture, basic commands, and how it works is common knowledge. However, it's also essential to be aware of certain limitations associated with SNMP, which can act as bottlenecks for network device management. 
 
-Here are some of the SNMP limitations:
+Here are some of these limitations:
+ccccccvklcfeetelerkkjncvjlbehujrcdhhtcjkttfl
 
 **1. Limited Data Granularity:** SNMP's limited data coverage and predefined polling intervals hinder real-time monitoring and analysis of network conditions, as it may not capture comprehensive data or transient events occurring between intervals.
 
