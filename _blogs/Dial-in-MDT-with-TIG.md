@@ -73,18 +73,21 @@ grpc
 Step1: Create a following telegraf.conf file.
 
 ```
-[[inputs.gnmi]]
-   addresses = ["10.30.111.168:57100"]
-   username = "cisco"
+# This section defines the  settings for the router that Telegraf will dial-in or connect to.
+[[inputs.gnmi]]                                                           
+   addresses = ["10.30.111.168:57100"]     
+   username = "cisco"                      
    password = "cisco123!"
 
+# This section defines the metric that Telegraf wants router to stream.
 [[inputs.gnmi.subscription]]
-   name = "ifcounters"
-   origin = "Cisco-IOS-XR-infra-statsd-oper"
+   name = "ifcounters"                                                                   
+   origin = "Cisco-IOS-XR-infra-statsd-oper"							  
    path = "/infra-statistics/interfaces/interface/latest/generic-counters"
-   subscription_mode = "sample"
-   sample_interval = "30s"
+   subscription_mode = "sample"    # (one of: "target_defined", "sample", "on_change")
+   sample_interval = "30s"		   # Cadence between two consecutive samples.
 
+# This section defines where to store the metric.
 [[outputs.influxdb]]
 
    urls = ["http://localhost:8086"]
@@ -92,55 +95,29 @@ Step1: Create a following telegraf.conf file.
 ```
 Here is the breakdown of this configuration file:
 
-<p align="justify"><b>[[inputs.gnmi]]:</b> This section defines a configuration for gathering data using the gNMI (gRPC Network Management Interface) protocol. gNMI is typically used for network device management and telemetry.
-<br>
-<br>  
-- <b>addresses</b>: Specifies the IP address and port (57100) of the gNMI server on the network device.
-  <br>
-  <br> 
-- <b>username</b>: The username to authenticate with when connecting to the gNMI server.
-  <br>
-  <br> 
-- <b>password</b>: The password associated with the provided username for authentication.
-  <br>
-  <br> 
-<b>[[inputs.gnmi.subscription]]</b>: This section configures a specific subscription for telemetry data from the network device. It defines what data to retrieve, how often to sample it, and the subscription mode.
-  <br>
-  <br> 
-- <b>name</b>: A user-defined name for this subscription configuration, in this case, "ifcounters".
-  <br>
-- <b>origin</b>: YANG Model name (in this case, "Cisco-IOS-XR-infra-statsd-oper").<br>
-- <b>path</b>: Path from root of the YANG to the leaf that collector would request from router.<br>
-- <b>subscription_mode</b>: Sets the subscription mode. In this case, it's set to "sample", indicating that data should be sampled periodically.(one of: "target_defined", "sample", "on_change")<br>
-- <b>sample_interval</b>: Specifies the interval at which data should be sampled, here set to "30s" (30 seconds).<br>
-<b>[[outputs.influxdb]]</b>: This section configures the output destination for the collected data, using the InfluxDB database system. InfluxDB is commonly used for time-series data storage.<br>
-
-- <b>urls</b>: Specifies the URLs of the InfluxDB instances to which the data will be sent. In this case, it's a single URL - "http://localhost:8086".
-<br>
-- <b>database</b>: Specifies the name of the InfluxDB database where the collected data will be stored, here named "mdt-db".
-<br>
+<p align="justify">
 Step2: Create a following docker-compose.yml file.</p> 
 ```
-version: '3.6'
-services:
-  telegraf:
-    image: telegraf
+version: '3.6'											# Version of docker-compose file
+services:												# Individual docker services for TIG
+  telegraf:												# telegraf service configuration	
+    image: telegraf								
     container_name: telegraf
-    restart: always
+    restart: always                                   # Restarts automatically if it crashes
     volumes:
-    - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
-    depends_on:
+    - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro  # Mounts telegraf.conf into the container
+    depends_on:									      # Waits until influxdb service is running
       - influxdb
-    links:
+    links:											  # Connects this service to influxdb service
       - influxdb
-    ports:
+    ports:											  # Maps port 57100 on host to container.
     - '57100:57100'
        
-  influxdb:
+  influxdb:											  # influxdb service configuration
     image: influxdb:1.8-alpine
     container_name: influxdb
     restart: always
-    environment:
+    environment:									  # To create a database, user and password.
       - INFLUXDB_DB=
       - INFLUXDB_ADMIN_USER=
       - INFLUXDB_ADMIN_PASSWORD=
@@ -149,10 +126,10 @@ services:
     volumes:
       - influxdb_data:/var/lib/influxdb
 
-  grafana:
+  grafana:											  # grafana service configuration
     image: grafana/grafana
     container_name: grafana-server
-    restart: always
+    restart: always									  # Restarts automatically if it crashes
     depends_on:
       - influxdb
     environment:
@@ -166,53 +143,13 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
 
-volumes:
-  grafana_data: {}
+volumes:											  # To store data persistently on the host
+  grafana_data: {}									 
   influxdb_data: {}
 
 ```
 
-Here is the breakdown for this file:
-<p align="justify"><b>version: '3.6'</b>: Specifies the version of the Docker Compose file being used.
-<br>
-<br>  
-<b>services</b>: Defines the individual Docker services to be deployed.
-<br>
-<br>  
-- <b>telegraf</b>: Specifies the Telegraf service configuration. Here, path of the telegraf.conf is relative docker-compose.yml. In this case, both these files are in the same folder.
-<br>
-<br>
-- <b>image: telegraf</b>: Specifies the Docker image to be used for the Telegraf container.<br>
-- <b>container_name: telegraf</b>: Names the container as "telegraf".<br>
-- <b>restart: always</b>: Ensures the Telegraf container restarts automatically if it crashes.<br>
-- <b>volumes</b>: Mounts the telegraf.conf configuration file into the container.<br>
-- <b>depends_on</b>: Indicates that this service depends on the "influxdb" service to be running.<br>
-- <b>links</b>: Creates a link to the "influxdb" service.<br>
-- <b>ports</b>: Maps port "57100" on the host to port "57100" on the container.<br>
-<br>
-<br>  
-<b>influxdb</b>: Specifies the InfluxDB service configuration.
-<br>
-<br>  
-- Similar to the telegraf service, it defines the InfluxDB container configuration.
-- Sets environment variables for the InfluxDB database name, admin username, and password.
-- Maps port "8086" on the host to port "8086" on the container.
-- Mounts a volume for storing InfluxDB data.
-<br>
-<br>
-<b>grafana</b>: Specifies the Grafana service configuration.
-<br>
-<br>
-- Similar to the other services, it defines the Grafana container configuration.
-- Sets environment variables for the Grafana admin username and password.
-- Maps port "3000" on the host to port "3000" on the container.
-- Mounts a volume for storing Grafana data.
-<br>
-<br>
-<b>volumes</b>: Defines named volumes for persisting data between container restarts.
-<br>
-<br>  
-Step3: Navigate to the directory containing both files and utilize the provided command to initiate container deployment.</p>
+<p align="justify">Step3: Navigate to the directory containing both files and utilize the provided command to initiate container deployment.</p>
 
 ```
 docker-compose up
@@ -287,7 +224,7 @@ Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/gene
 <p align="justify">The presence of the 'mdt-db' database within InfluxDB is apparent. This aligns with the database mentioned in the 'telegraf.conf' file within the output section.</p>
 
 
-<p align="justify">The following sensor-path as a measurement above shows that InfluxDB successfully stores the streamed data from our NCS 5500 device.</p></p>
+<p align="justify">The following sensor-path as a measurement above shows that InfluxDB successfully stores the streamed data from our NCS 5500 device.</p>
 
 ```
 Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters
