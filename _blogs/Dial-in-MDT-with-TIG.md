@@ -7,28 +7,29 @@ author: Rahul Sharma
 ---
 {% include toc icon="table" title="ON THIS PAGE" %}
 
-# Background
+# Introduction
 
-<p align="justify">This article focuses on  establishing Model-Driven Telemetry (MDT) using the Telegraf, InfluxDB, and Grafana (TIG) stack.
+<p align="justify">This article focuses on  establishing dial-in Model-Driven Telemetry (MDT) using TIG (Telegraf, Influxdb and Grafana) stack.
 <br>
-<br>  
-If you are well-verse with MDT, YANG models and sensor-group, destination group and subscription, please follow the steps to establish MDT. Otherwise you might want to go through this post first. 
 <br>
-<br>  
-MDT consists of two main components. Firstly, there's a router equipped with pre-installed YANG models and a running grpc server. Through MDT, this router continuously streams mtetrics at specified time intervals. Secondly, the TIG stack, which consumes, stores, and presents this metrics visually.
+If you are well-versed with Streaming Telemtry, MDT and YANG models, please follow the steps to establish MDT. Otherwise you might want to go</p> through [this](https://xrdocs.io/programmability/blogs/Model-Driven-Telemetry/) post first. 
+<br>
+<br>
+<p align="justify">  
+MDT consists of two main components. Firstly, there's a router equipped with pre-installed YANG models and a running grpc server. Through MDT, this router continuously streams metrics at specified time intervals. Secondly, the TIG stack, which consumes, stores, and presents this metrics visually.
 <br>
 <br>  
 Let's delve into the individual elements of the TIG stack:</p>
 
 # TIG Stack
 
-<p align="justify">1. <b>Telegraf</b> :Collects router metrics and stores them in a Time Series Database (TSDB).
+<p align="justify"> <b>1. Telegraf:</b> Collects router metrics and stores them in a Time Series Database (TSDB).
 <br>
 <br>  
-2. <b>InfluxDB</b> :TSDB that stores metrics from Telegraf. Forwards data to Grafana for visualization.
+<b>2. InfluxDB:</b> TSDB that stores metrics from Telegraf. Forwards data to Grafana for visualization.
 <br>
 <br>  
-3. <b>Grafana</b> :Receives metrics from InfluxDB and displays them visually (graphs, charts) for analysis.</p>
+<b>3. Grafana:</b> Receives metrics from InfluxDB and displays them visually using graphs and charts.</p>
 
 
 # gRPC Dial-in
@@ -36,14 +37,14 @@ Let's delve into the individual elements of the TIG stack:</p>
 <p align="justify">The objective is to create a Dial-in MDT, wherein a collector initiates a grpc channel with a router.
 <br>
 <br>  
-As this is a Dial-in MDT, the router must be operational and prepared to receive a request for gRPC channel by a collector.In short, gRPC server on the router must be up and running.
+Since collector is initialing the grpc channel here, the router must be operational and prepared to receive a request for gRPC channel by a collector. In short, gRPC server on the router must be up and running.
 <br>
 <br>  
 The initial focus will be on configuring the router aspect.</p>
 
 ## Router Configuration
 
-<p align="justify">In order for router to receive a grpc channel creation request, the gRPC server should be up and running. You can configure grpc on the router using following set of commands:</p>
+<p align="justify"> Configure the gRPC server on the router to receive channel creation requests from the collector, utilizing the following steps:</p>
   
 Step1: Configure gRPC server on the router. 
 
@@ -65,12 +66,14 @@ grpc
 !
 ```
 
+> **_NOTE:_** The grpc port range is 57344 to 57999, with default being 57400.
+
 ## Collector configuration
-<p align="justify">To establish the TIG configuration, the subsequent topology and steps will be used:</p>
+<p align="justify">The subsequent topology and steps will be used to configure TIG stack:</p>
 
 ![MDT-TIG.png]({{site.baseurl}}/images/MDT-TIG.png)
 
-Step1: Create a following telegraf.conf file.
+Step1: Create a telegraf.conf file.
 
 ```
 # This section defines the  settings for the router that Telegraf will dial-in or connect to.
@@ -87,37 +90,36 @@ Step1: Create a following telegraf.conf file.
    subscription_mode = "sample"    # (one of: "target_defined", "sample", "on_change")
    sample_interval = "30s"		   # Cadence between two consecutive samples.
 
-# This section defines where to store the metric.
+# This section defines where will Telegraf to store the metric.
 [[outputs.influxdb]]
 
    urls = ["http://localhost:8086"]
    database = "mdt-db"
 ```
-Here is the breakdown of this configuration file:
 
 <p align="justify">
-Step2: Create a following docker-compose.yml file.</p> 
+Step2: Create a docker-compose.yml file.</p> 
 ```
-version: '3.6'											# Version of docker-compose file
-services:												# Individual docker services for TIG
-  telegraf:												# telegraf service configuration	
+version: '3.6'							# Version of docker-compose file
+services:							    # Individual docker services for TIG
+  telegraf:							    # telegraf service configuration	
     image: telegraf								
     container_name: telegraf
-    restart: always                                   # Restarts automatically if it crashes
+    restart: always                     # Restarts automatically if it crashes
     volumes:
     - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro  # Mounts telegraf.conf into the container
-    depends_on:									      # Waits until influxdb service is running
+    depends_on:						    # Waits until influxdb service is running
       - influxdb
-    links:											  # Connects this service to influxdb service
+    links:								# Connects this service to influxdb service
       - influxdb
-    ports:											  # Maps port 57100 on host to container.
+    ports:								# Maps port 57100 on host to container.
     - '57100:57100'
        
-  influxdb:											  # influxdb service configuration
+  influxdb:								# influxdb service configuration
     image: influxdb:1.8-alpine
     container_name: influxdb
     restart: always
-    environment:									  # To create a database, user and password.
+    environment:						# To create a database, user and password.
       - INFLUXDB_DB=
       - INFLUXDB_ADMIN_USER=
       - INFLUXDB_ADMIN_PASSWORD=
@@ -126,10 +128,10 @@ services:												# Individual docker services for TIG
     volumes:
       - influxdb_data:/var/lib/influxdb
 
-  grafana:											  # grafana service configuration
+  grafana:								# grafana service configuration
     image: grafana/grafana
     container_name: grafana-server
-    restart: always									  # Restarts automatically if it crashes
+    restart: always						# Restarts automatically if it crashes
     depends_on:
       - influxdb
     environment:
@@ -143,7 +145,7 @@ services:												# Individual docker services for TIG
     volumes:
       - grafana_data:/var/lib/grafana
 
-volumes:											  # To store data persistently on the host
+volumes:								# To store data persistently on the host
   grafana_data: {}									 
   influxdb_data: {}
 
@@ -169,10 +171,7 @@ ea8d09f16378        grafana/grafana                                         "/ru
 9ef752784c05        influxdb:1.8-alpine                                     "/entrypoint.sh infl…"   34 seconds ago      Up 32 seconds                   0.0.0.0:8086->8086/tcp                                                                                                     influxdb
 ```
 
-<p align="justify">Next, the configuration process involves enabling the network device to initiate data streaming.
-<br>
-<br>  
-In order to check if MDT is working or not, execute the following command on the router.</p>
+<p align="justify">In order to check if MDT is working or not, execute the following command on the router.</p>
 
 ```
 RP/0/RP0/CPU0:ios#show telemetry model-driven subscription
@@ -232,7 +231,7 @@ Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/gene
 
 <p align="justify">Next, we'll create graphs utilizing InfluxDB data on Grafana.</p>
 
-<p align="justify">To access the Grafana dashboard, enter 'http://10.30.111.165:3000/' into your browser's URL field. Keep in mind that this IP address corresponds to the server running Grafana, followed by the relevant port number. Your configuration might have a different address and port.</p>
+<p align="justify">To access the Grafana dashboard, enter 'http://10.30.111.165:3000/' into your browser's URL field. Keep in mind that this IP address corresponds to the server running Grafana, followed by the relevant port number. Your setup might have a different address and port.</p>
 
 ![login.png]({{site.baseurl}}/images/login.png)
 
@@ -266,7 +265,7 @@ Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/gene
 
 ![select-data-source.png]({{site.baseurl}}/images/select-data-source.png)
 
-<p align="justify">Select 'select measurement', and the sensor-path configured using the sensor-group will be visible. Choose that sensor-path.</p>
+<p align="justify">Click on 'select measurement', and the sensor-path configured using the sensor-group will be visible. Choose that sensor-path.</p>
 
 ![select-measurement.png]({{site.baseurl}}/images/select-measurement.png)
 
