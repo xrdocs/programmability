@@ -13,7 +13,7 @@ author: Rahul Sharma
 <br>
 <br>
 If you are well-versed with Streaming Telemtry, MDT and YANG models, please follow the steps to establish MDT. Otherwise you might want to go through the following post.</p>
-> **__** https://xrdocs.io/programmability/blogs/Model-Driven-Telemetry/
+> ****(https://xrdocs.io/programmability/blogs/Model-Driven-Telemetry/)
 <br>
 <p align="justify">  
 MDT consists of two main components. Firstly, there's a router equipped with pre-installed YANG models and a running grpc server. Through MDT, this router continuously streams metrics at specified time intervals. Secondly, the TIG stack, which consumes, stores, and presents this metrics visually.
@@ -40,7 +40,7 @@ Let's delve into the individual elements of the TIG stack:</p>
 Since collector is initialing the grpc channel here, the router must be operational and prepared to receive a request for gRPC channel by a collector. In short, gRPC server on the router must be up and running.
 <br>
 <br>  
-The initial focus will be on configuring the router aspect.</p>
+The initial focus will be on configuring the router.</p>
 
 ## Router Configuration
 
@@ -269,10 +269,15 @@ Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/gene
 
 ![select-measurement.png]({{site.baseurl}}/images/select-measurement.png)
 
-<p align="justify">Then, click on 'field(value)', and opt for 'bytes-received'. This action will generate the graph at the top.</p>
+<p align="justify">Finally, click on 'field(value)', and opt for 'bytes-received'. This action will generate the graph at the top.</p>
 
 ![initial-graph.png]({{site.baseurl}}/images/initial-graph.png)
 
 ![final-graph.png]({{site.baseurl}}/images/final-graph.png)
 
-<p align="justify">Feel free to experiment with this query, and you'll observe the graph corresponding to your query modifications.</p>
+<p align="justify">Congrats!! You have successfully established an MDT using dial-in method.
+<br>
+<br>
+Feel free to experiment with this query, and you'll observe the graph corresponding to your query modifications.</p>
+
+
