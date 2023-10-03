@@ -31,6 +31,8 @@ In this new episode, what will see how to use the pyATS NETCONF module. First, w
 
 In today's example we are going to do a traceroute between two IOS XR nodes. As of today, this equivalent parser does not exist on IOS XR. 
 
+![pyATS_NETCONF_module.jpg]({{site.baseurl}}/images/pyATS_NETCONF_module.jpg){: .align-center}
+
 # Network Topology
 
 In today's article, we will use the Segment Routing network topology, based on IOS XRd. It's available [on this github repo](https://github.com/ios-xr/xrd-tools/blob/main/samples/xr_compose_topos/segment-routing/docker-compose.xr.yml).
@@ -193,4 +195,3 @@ Below a few useful pyATS resources.
 - [List of Unicon supported platforms](https://pubhub.devnetcloud.com/media/unicon/docs/user_guide/supported_platforms.html),
 - [Devnet code exchange](https://developer.cisco.com/codeexchange/),
 - [Join the Webex space with the pyATS community](https://eurl.io/#r18UzrQVr).
-
