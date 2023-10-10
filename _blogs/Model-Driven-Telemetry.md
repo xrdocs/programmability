@@ -90,6 +90,8 @@ Interested in establishing Dial-out MDT? Click [here](https://xrdocs.io/programm
 
 <p align="justify">Familiarity with programmability basics is now established, paving the way to delve into the following articles with confidence:</p>
 
-> **[Dial-out Model-Driven Telemetry with TIG Stack](https://xrdocs.io/programmability/blogs/Dial-out-MDT-with-TIG/)
-> **[Dial-in Model-Driven Telemetry with TIG Stack](https://xrdocs.io/programmability/blogs/Dial-in-MDT-with-TIG/)
+> [Dial-out Model-Driven Telemetry with TIG Stack](https://xrdocs.io/programmability/blogs/Dial-out-MDT-with-TIG/)
+<br>
+<br>
+> [Dial-in Model-Driven Telemetry with TIG Stack](https://xrdocs.io/programmability/blogs/Dial-in-MDT-with-TIG/)
 
