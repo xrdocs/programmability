@@ -49,7 +49,6 @@ Now it's time to delve into the individual elements of the TIG stack.
 
 <p align="justify"><b>3. Grafana:</b> Receives metrics from InfluxDB and displays them visually for analysis.</p>
 
-
 # gRPC Dial-out
 
 <p align="justify">The objective is to create a Dial-out MDT, wherein a router initiates a grpc channel with a collector, specifically Telegraf.
@@ -323,8 +322,6 @@ Finally, click on 'field(value)', and opt for 'bytes-received'. This action will
 ![final-graph.png]({{site.baseurl}}/images/final-graph.png)
 
 Congratulations! An MDT has been successfully established using the dial-out method.
-
-Please feel free to experiment with various queries, and observe the graph adjustments corresponding to query modifications.
 
 # TCP Dial-out
 
