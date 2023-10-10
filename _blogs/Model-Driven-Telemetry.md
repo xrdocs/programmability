@@ -39,13 +39,13 @@ Here are some of these limitations:
 
 ![SNMP-vs-ST-tabular.png]({{site.baseurl}}/images/SNMP-vs-ST-tabular.png)
 
-<p align="justify"> <b>gRPC</b> is an open-source protocol led by Google, combines Remote Procedure Calls (RPC) with Protocol Buffers to enable efficient communication between systems. Protocol Buffers define the structure of data, allowing for the generation of code to create or parse byte streams representing the structured data. The binary data format employed by gRPC reduces the size of the actual data by approximately 10 times. This compressed data is transmitted over HTTP/2, which supports multiplexing, facilitating concurrent handling of multiple requests using a request/response mechanism. Additionally, gRPC can utilize TLS encryption to ensure secure communication over HTTP/2.</p>
+## gRPC <p align="justify"> is an open-source protocol led by Google, combines Remote Procedure Calls (RPC) with Protocol Buffers to enable efficient communication between systems. Protocol Buffers define the structure of data, allowing for the generation of code to create or parse byte streams representing the structured data. The binary data format employed by gRPC reduces the size of the actual data by approximately 10 times. This compressed data is transmitted over HTTP/2, which supports multiplexing, facilitating concurrent handling of multiple requests using a request/response mechanism. Additionally, gRPC can utilize TLS encryption to ensure secure communication over HTTP/2.</p>
 
 
 ![gRPC-client-server.png]({{site.baseurl}}/images/gRPC-client-server.png)
 # YANG Models + Streaming Telemetry = Model-Driven Telemetry
 
-**YANG Models**
+## YANG Models
 
 <p align="justify">A YANG model is a hierarchical data structure (like tree) that consists of nodes that can be managed/monitored on network device.</p>
 
@@ -68,7 +68,7 @@ These models are Cisco-exclusive and can only be used with Cisco devices. They a
 They are designed to be vendor-neutral, meaning they can work with any network device regardless of the manufacturer. However, it's important to note that these models have limited coverage in terms of the data they can manage.</p>
 
 
-**Model-Driven Telemetry**
+## Model-Driven Telemetry
 
 <p align="justify">When streaming telemetry is combined with YANG models as a Data Definition Language, it’s known as MDT. In order to establish an MDT, a gRPC channel has to be created between network device and collector.
 <br>
@@ -86,7 +86,7 @@ Interested in establishing Dial-out MDT? Click [here](https://xrdocs.io/programm
 
 ![dial-in-dial-out.png]({{site.baseurl}}/images/dial-in-dial-out.png)
 
-**Conclusion**
+## Conclusion
 
 <p align="justify">Familiarity with programmability basics is now established, paving the way to delve into the following articles with confidence:</p>
 
