@@ -45,7 +45,7 @@ Now it's time to delve into the individual elements of the TIG stack.
 
 <b>1. Telegraf: </b>Collects router metrics and stores them in a Time Series Database (TSDB).
 
-<b>2. InfluxDB: </b><p align="justify">TSDB stores metrics from Telegraf and forwards it to Grafana for visualization.</p>
+<p align="justify"><b>2. InfluxDB: </b>TSDB stores metrics from Telegraf and forwards it to Grafana for visualization.</p>
 
 <p align="justify"><b>3. Grafana:</b> Receives metrics from InfluxDB and displays them visually for analysis.</p>
 
@@ -63,7 +63,7 @@ To establish the TIG configuration, the subsequent topology and steps will be us
 
 ![MDT-TIG.png]({{site.baseurl}}/images/MDT-TIG.png)
 
-Step1: Create a following telegraf.conf file.
+<b>Step1:</b> Create a following telegraf.conf file.
 
 ```
 # This section enables collector to listen to port 57100 using 'grpc' as a transport.
@@ -79,7 +79,7 @@ Step1: Create a following telegraf.conf file.
   
 ```
 
-Step2: Create a following docker-compose.yml file. 
+<b>Step2:</b> Create a following docker-compose.yml file. 
 ```
 version: '3.6'							# Version of docker-compose file
 services:							    # Individual docker services for TIG
@@ -130,7 +130,7 @@ volumes:								# To store data persistently on the host
   grafana_data: {}									 
   influxdb_data: {}
 ```
-<p align="justify">Step3: Navigate to the directory containing both files and utilize the provided command to initiate container deployment.</p>
+<p align="justify"><b>Step3:</b> Navigate to the directory containing both files and utilize the provided command to initiate container deployment.</p>
 
 ```
 docker-compose up
@@ -177,8 +177,7 @@ RP/0/RP0/CPU0:ios(config-model-driven-snsr-grp)# sensor-path Cisco-IOS-XR-infra-
 RP/0/RP0/CPU0:ios(config-model-driven-snsr-grp)# commit
 ```
 <p align="justify">Additional sensor-paths can be incorporated into this sensor-group at a later stage, facilitating the reception of corresponding streamed data by the collector.</p>
-<br>
-<br>  
+
 <p align="justify">Interested in discovering the accurate sensor path for a desired metric to stream? Delve into the following article, which elucidates the process of locating a sensor-path for a CLI.</p>
 
 > [CLI to sensor-path](https://xrdocs.io/programmability/blogs/CLI-to-sensor-path/)
