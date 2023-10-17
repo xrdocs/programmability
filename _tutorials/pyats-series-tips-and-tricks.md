@@ -518,6 +518,9 @@ You can use the `Dialog` and `Statement` Classes of the `unicon.eal.dialogs` pac
 
 In the below example, we are expecting the device to send us `[sudo] password for cisco:` line, when using the command `sudo traceroute 10.3.1.3`. Will will use the action `'fsendline("{source.credentials.default.password.plaintext}")'` which will send the device's password as plaintext.
 
+In the below example, `pattern` will match a regex. Don't forget to escape special characters like `([?` if needed.
+{: .notice--warning}
+
 ```
 from genie import testbed
 from unicon.eal.dialogs import Statement, Dialog
