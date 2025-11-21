@@ -9,7 +9,7 @@ author: Rahul Sharma
 
 OpenConfig’s gNSI PathZ introduces path-level authorization for gNMI, giving network operators fine-grained control over who can access which parts of the system. Traditional approaches authorize entire sessions or interfaces, but PathZ evaluates access on a per-path basis, ensuring that even within a single gNMI session, some paths may be permitted while others are denied.  
 
-PathZ policies are structured around users, groups, and rules. Rules specify whether a particular user or group can read or write to a specific gNMI path. Instead of relying on rule order, PathZ uses a “best match” algorithm that guarantees consistent and predictable decisions. This design allows broad access to be defined for groups, with specific overrides for individual users or narrower paths.  
+PathZ policies are structured around users, groups, and rules. Rules specify whether a particular user or group can read or write to a specific gNMI path. Instead of relying on rule order, PathZ uses a “best match” algorithm that guarantees consistent and predictable decisions. This design allows broad access to be defined for groups, with specific overrides for individual users or narrower paths. 
 
 The framework is built with security and operations in mind. Devices load an initial policy securely during bootstrap and then rely on a dedicated gRPC service to rotate, probe, and retrieve policies. PathZ also includes mechanisms for high availability and recovery, ensuring that valid policies remain in effect even during failures, restarts, or controller transitions.  
 
@@ -146,6 +146,166 @@ gnsi path authorization <implicit-no-match> [allow | deny]
 Syslog integration is not yet available in the current phase.  
 
 # Hands-on with PathZ
+
+In this section, the use of PathZ is demonstrated with a gRPC-based client called gRPCurl. For additional information about this tool and its installation steps, refer to this [link] (https://github.com/fullstorydev/grpcurl)
+
+The following CLI command is used to list all RPCs available under the PathZ service.
+➜  pathz git:(main) ✗ grpcurl  -plaintext -import-path ../pathz -proto pathz.proto  -H username:cisco -H password:cisco123! 172.20.163.107:57400  list gnsi.pathz.v1.Pathz
+
+gnsi.pathz.v1.Pathz.Get
+gnsi.pathz.v1.Pathz.Probe
+gnsi.pathz.v1.Pathz.Rotate
+
+### 1. Get () RPC
+
+Retreives the current authorization policy, including its metadata (version and timestamp).
+
+```
+➜  pathz git:(main) ✗ grpcurl  -vv -plaintext -d '{
+            "policy_instance": "POLICY_INSTANCE_ACTIVE"
+        }' -import-path ../pathz -proto pathz.proto  -H username:cisco -H password:cisco123! 172.20.163.107:57400 gnsi.pathz.v1.Pathz.Get
+
+Resolved method descriptor:
+rpc Get ( .gnsi.pathz.v1.GetRequest ) returns ( .gnsi.pathz.v1.GetResponse );
+
+Request metadata to send:
+password: cisco123!
+username: cisco
+
+Response headers received:
+content-type: application/grpc
+
+Estimated response size: 144 bytes
+
+Response contents:
+{
+  "version": "Creating PathZ policy through gRPCurl",
+  "createdOn": "171321154967868",
+  "policy": {
+    "rules": [
+      {
+        "id": "allow user rahul to perform get on",
+        "user": "rahul",
+        "path": {
+          "origin": "openconfig",
+          "elem": [
+            {
+              "name": "system"
+            },
+            {
+              "name": "config"
+            },
+            {
+              "name": "hostname"
+            }
+          ]
+        },
+        "action": "ACTION_PERMIT",
+        "mode": "MODE_READ"
+      }
+    ]
+  }
+}
+
+Response trailers received:
+(empty)
+Sent 1 request and received 1 response
+```
+
+### 2. Rotate () RPC
+
+This RPC changes the existing policy on the system, with each policy identified by its ‘Version’ and ‘Timestamp’. The client: 
+* starts the stream,
+* sends the policy to the target, 
+* performs an optional test and validation, 
+* and finalizes the rotation by sending a FinalizeRequest.
+
+Before final commit, one or more probe requests could be made to validate the ‘candidate’ policy.
+
+After receiving the ‘Finalize Request’, system will keep a backup of the current policy until ‘Finalize Request’ is done.
+
+> NOTE: This is an exclusive RPC, meaning only one Rotate () RPC session can be active at a time. The request for second session is denied until first one continues.
+
+The new policy changes don’t affect active gRPC sessions; it only impacts new sessions coming into the device.
+
+```
+➜  pathz git:(main) ✗ grpcurl  -vv -plaintext -d '{
+    "uploadRequest":
+        {
+            "version": "Creating PathZ policy through gRPCurl",
+            "created_on": 171321154967868,
+            "policy":{
+                "rules":[
+                  {
+                  "id": "allow user rahul to perform get on",
+                  "user": "rahul",
+                  "path": {
+                    "origin":"openconfig",
+                     "elem": {
+                      "name":"system"
+                      },
+                      "elem": {
+                        "name":"state"
+                        },
+                      "elem": {
+                        "name":"hostname"}
+                      },
+                  "action": "ACTION_PERMIT",
+                  "mode": "MODE_READ"
+                  }
+                ]
+                }
+        },
+        "force_overwrite": true
+  }{"finalize_rotation":{}}' -import-path ../pathz -proto pathz.proto  -H username:cisco -H password:cisco123! 172.20.163.107:57400 gnsi.pathz.v1.Pathz.Rotate
+
+Resolved method descriptor:
+rpc Rotate ( stream .gnsi.pathz.v1.RotateRequest ) returns ( stream .gnsi.pathz.v1.RotateResponse );
+
+Request metadata to send:
+password: cisco123!
+username: cisco
+
+Response headers received:
+content-type: application/grpc
+
+Estimated response size: 0 bytes
+
+Response contents:
+{}
+
+Estimated response size: 0 bytes
+
+Response contents:
+{}
+
+Response trailers received:
+(empty)
+Sent 2 requests and received 2 responses
+```
+
+### 3. Probe () RPC
+
+Evaluates if a specific user action is permitted by the current/candidate policy without executing the RPC.
+
+```
+➜  pathz git:(main) ✗ grpcurl -plaintext -d '{
+"user": "rahul",
+"path": {
+          "elem": [
+                    {"name": "system"},
+                    {"name": "config"},
+                    {"name": "hostname"}
+                  ]
+        },
+"mode":"MODE_WRITE",
+"policy_instance":"POLICY_INSTANCE_ACTIVE"
+}' -import-path /Users/rahusha7/Programmability/gnsi/pathz -proto pathz.proto -H username:cisco -H password:cisco123! 172.20.163.107:57400 gnsi.pathz.v1.Pathz.Probe
+{
+  "action": "ACTION_PERMIT",
+  "version": "Updating PathZ policy through gRPCurl"
+}
+```
 
 # Conclusion
 
