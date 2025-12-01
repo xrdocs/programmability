@@ -116,6 +116,7 @@ You can filter outputs with each RPC's status. For example, here we will only pr
 ```python
 success_replies = sotware_version.by_status['SUCCESS']
 ```
+
 Sample output
 ```python
 [SUCCESS] <ExecResponse_ByDevice_ToSingle {2 entries}>
