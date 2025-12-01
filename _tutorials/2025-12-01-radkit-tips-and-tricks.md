@@ -74,4 +74,10 @@ service.inventory.filter("device_type", "IOS_XR")
 
 First the attribute name is looked for in the device parameters, then in the internal attributes, then in the metadata
 
+You can chain multiple filters.
+
+```python
+service.inventory.filter('device_type', 'IOS_XR').filter('description', 'NCS 540')
+```
+
 [Documentation](https://radkit.cisco.com/docs/client_api/client_api.html#radkit_client.sync.DeviceDict.filter)
