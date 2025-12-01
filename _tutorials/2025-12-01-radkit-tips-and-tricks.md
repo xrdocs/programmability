@@ -14,6 +14,8 @@ position: hidden
 
 RADKit is a Software Development Kit (SDK): a set of ready-to-use tools and Python modules allowing efficient and scalable interactions with local or remote equipment. RADKit is available at no additional cost with your existing Support Contracts.
 
+This article combines a list of useful tips and tricks I discovered. I will update it with every new finding. Do you know a cool trick? Feel free to share in the comments.
+
 # Useful links
 
 | What?         | Link                                             |
