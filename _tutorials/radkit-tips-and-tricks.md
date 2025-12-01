@@ -88,7 +88,7 @@ It also accepts regex to filter, for example on the device name.
 
 ## Sending a command on the (filtered) inventory
 
-Once filtered (if needed), you can send a command on the inventory. Radkit client will take care of the parallelization for you. `wait` method allows to wait for all subsequent RPC to be completed.
+Once filtered (if needed), you can send a command on the inventory. RADKit client will take care of the parallelization for you. `wait` method allows to wait for all subsequent RPC to be completed.
 
 ```python
 iosxr = service.inventory.filter("device_type", "IOS_XR")
@@ -145,7 +145,7 @@ Sample output
 
 ## Iterating through results
 
-Now that we have collected the command, we might want to iterate through results to do something (here, we will just print the output). Yet, in Radkit 1.9.0, there is no elegant want to do it. The easiest way I found is this one:
+Now that we have collected the command, we might want to iterate through results to do something (here, we will just print the output). Yet, in RADKit 1.9.0, there is no elegant want to do it. The easiest way I found is this one:
 
 ```python
 for name, result in software_version.items():
@@ -154,7 +154,7 @@ for name, result in software_version.items():
 
 ## Combining with Genie parsers
 
-From Radkit 1.9.0, you can combine with Genie parsers. It's only available with the pip install, not with the installer.
+From RADKit 1.9.0, you can combine with Genie parsers. It's only available with the pip install, not with the installer.
 
 ```python
 import radkit_genie as rkg
