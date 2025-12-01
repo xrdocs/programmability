@@ -30,6 +30,10 @@ This [documentation](https://www.cisco.com/c/en/us/support/docs/unified-communic
 
 # Tips and tricks
 
+## Navigation in RADKit client
+
+Radkit client navigation is based on emacs REPL. Useful and good-to-know shortcuts are listed in this [documentation](https://www.cs.colostate.edu/helpdocs/emacs.html)
+
 ## Printing device information
 
 ```python
