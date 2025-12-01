@@ -154,7 +154,7 @@ for name, result in software_version.items():
 
 ## Combining with Genie parsers
 
-From Radkit 1.9.0, you can combine with Genie parsers.
+From Radkit 1.9.0, you can combine with Genie parsers. It's only available with the pip install, not with the installer.
 
 ```python
 import radkit_genie as rkg
