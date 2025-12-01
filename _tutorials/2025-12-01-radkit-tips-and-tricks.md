@@ -80,4 +80,34 @@ You can chain multiple filters.
 service.inventory.filter('device_type', 'IOS_XR').filter('description', 'NCS 540')
 ```
 
+It also accepts regex to filter, for example on the device name.
+
 [Documentation](https://radkit.cisco.com/docs/client_api/client_api.html#radkit_client.sync.DeviceDict.filter)
+
+## Sending a command on the (filtered) inventory
+
+Once filtered (if needed), you can send a command on the inventory. Radkit client will take care of the parallelization for you. `wait` method allows to wait for all subsequent RPC to be completed.
+
+```python
+iosxr = service.inventory.filter("device_type", "IOS_XR")
+software_version = iosxr.exec("show version").wait()
+```
+
+When printing `software_version`, it will look like below. Note the result is `PARTIAL_SUCCESS` meaning we had an error collecting the command for some devices.
+
+```
+[PARTIAL_SUCCESS] <ExecResponse_ByDevice_ToSingle {3 entries}>
+status    index    service_id      device                   command       sudo    data                                                      
+                                      
+--------  -------  --------------  -----------------------  ------------  ------  ----------------------------------------------------------
+------------------------
+FAILURE   0        service1  device1  show version  False   (error: Device action failed: Permission error while prepa
+ring connection)        
+SUCCESS   1        service1  device2      show version  False   RP/0/RP0/CPU0:device1#show version\nMon Dec  1
+ 13:19:05.317 CET\nCi...
+SUCCESS   2        service1  device3       show version  False   RP/0/RP0/CPU0:device2#show version\nMon Dec  1 
+13:19:05.308 CET\nCis...
+```
+
+## Extracting 
+
