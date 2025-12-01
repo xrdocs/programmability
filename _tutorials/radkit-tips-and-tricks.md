@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2025-12-01 11:39 +0100'
-title: Radkit - Tips and tricks
+title: Cisco Radkit - Tips and tricks
 author: Antoine Orsoni
 tags:
   - cisco
@@ -12,7 +12,7 @@ position: top
 
 # Introduction
 
-RADKit is a Software Development Kit (SDK): a set of ready-to-use tools and Python modules allowing efficient and scalable interactions with local or remote equipment. RADKit is available at no additional cost with your existing Support Contracts.
+Cisco RADKit is a Software Development Kit (SDK): a set of ready-to-use tools and Python modules allowing efficient and scalable interactions with local or remote equipment. RADKit is available at no additional cost with your existing Support Contracts.
 
 This article combines a list of useful tips and tricks I discovered. I will update it with every new finding. Do you know a cool trick? Feel free to share in the comments.
 
