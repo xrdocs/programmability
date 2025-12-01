@@ -20,9 +20,9 @@ This article combines a list of useful tips and tricks I discovered. I will upda
 
 | What?         | Link                                             |
 |---------------|--------------------------------------------------|
-| Documentation | https://radkit.cisco.com/docs/index.html         |
-| Download      | https://radkit.cisco.com/downloads/              |
-| Installation  | https://radkit.cisco.com/docs/install/index.html |
+| Documentation | [Link](https://radkit.cisco.com/docs/index.html)         |
+| Download      | [Link](https://radkit.cisco.com/downloads/)           |
+| Installation  | [Link](https://radkit.cisco.com/docs/install/index.html) |
 
 # Tips and tricks
 
