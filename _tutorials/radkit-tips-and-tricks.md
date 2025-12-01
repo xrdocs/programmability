@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2025-12-01 11:39 +0100'
 title: Radkit - Tips and tricks
 author: Antoine Orsoni
