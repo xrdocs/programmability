@@ -24,6 +24,10 @@ This article combines a list of useful tips and tricks I discovered. I will upda
 | Download      | [Link](https://radkit.cisco.com/downloads/)           |
 | Installation  | [Link](https://radkit.cisco.com/docs/install/index.html) |
 
+# How to install and get started with RADKit?
+
+This [documentation](https://www.cisco.com/c/en/us/support/docs/unified-communications/unified-communications-manager-version-14/222048-set-up-radkit-applied-in-the-collaborati.html) should provide everything you need to install and connect to RADKit; including screenshots!
+
 # Tips and tricks
 
 ## Printing device information
@@ -163,5 +167,3 @@ software_version_parsed = rkg.parse(software_version)
 for result in software_version_parsed.values():
     print(f'{result.device.name}: {result.data['version']['version']}')
 ```
-
-
