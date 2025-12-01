@@ -109,5 +109,17 @@ SUCCESS   2        service1  device3       show version  False   RP/0/RP0/CPU0:d
 13:19:05.308 CET\nCis...
 ```
 
-## Extracting 
+## Extracting and filtering outputs
+
+You can filter outputs with each RPC's status. For example, here we will only print the `success` entries.
+
+```python
+success_replies = sotware_version.by_status['SUCCESS']
+```
+
+You can print the associated device names like below.
+
+```python
+>>> list(success.by_device.keys())
+['device1', 'device2']
 
