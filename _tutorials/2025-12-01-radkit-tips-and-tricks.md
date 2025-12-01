@@ -139,4 +139,27 @@ list(success.by_device.keys())
 Sample output
 ```python
 ['device1', 'device2']
+```
+
+## Iterating through results
+
+Now that we have collected the command, we might want to iterate through results to do something (here, we will just print the output). Yet, in Radkit 1.9.0, there is no elegant want to do it. The easiest way I found is this one:
+
+```python
+for name, result in software_version.items():
+    print(f"{name}: {result.data}")
+```
+
+## Combining with Genie parsers
+
+From Radkit 1.9.0, you can combine with Genie parsers.
+
+```python
+import radkit_genie as rkg
+
+software_version_parsed = rkg.parse(software_version)
+for result in software_version_parsed.values():
+    print(f'{result.device.name}: {result.data['version']['version']}')
+```
+
 
