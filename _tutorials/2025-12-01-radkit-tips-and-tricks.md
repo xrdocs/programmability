@@ -116,10 +116,26 @@ You can filter outputs with each RPC's status. For example, here we will only pr
 ```python
 success_replies = sotware_version.by_status['SUCCESS']
 ```
+Sample output
+```python
+[SUCCESS] <ExecResponse_ByDevice_ToSingle {2 entries}>
+status    index    service_id      device                   command       sudo    data                                                      
+                                      
+--------  -------  --------------  -----------------------  ------------  ------  ----------------------------------------------------------
+------------------------
+SUCCESS   1        service1  device1      show version  False   RP/0/RP0/CPU0:device1#show version\nMon Dec  1
+ 13:19:05.317 CET\nCi...
+SUCCESS   2        service1  device2      show version  False   RP/0/RP0/CPU0:device2#show version\nMon Dec  1 
+13:19:05.308 CET\nCis...
+```
 
 You can print the associated device names like below.
 
 ```python
->>> list(success.by_device.keys())
+list(success.by_device.keys())
+```
+
+Sample output
+```python
 ['device1', 'device2']
 
