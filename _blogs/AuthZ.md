@@ -78,7 +78,7 @@ This blog focuses on [AuthZ](https://github.com/openconfig/gnsi/tree/main/authz)
 }
 ```
 
-## Key Terminoligies
+## Key Terminologies
 
 1. <b>Name</b>: Identifier for the policy or individual rule.
 2. <b>Source/Principal</b>: The subject of the policy (e.g./ username or [SPIFFE ID](https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/#spiffe-id))
