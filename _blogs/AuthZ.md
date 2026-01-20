@@ -1,5 +1,4 @@
 ---
-published: true
 date: '2024-03-05 13:13 -0500'
 title: gRPC Authorization using gNSI Authz
 position: hidden
@@ -12,6 +11,7 @@ tags:
   - gNSI
   - Authz
   - gRPC
+published: true
 ---
 
 This blog focuses on [AuthZ](https://github.com/openconfig/gnsi/tree/main/authz), a gNSI service that manages Authorization at gRPC service level. It is supported from XR 7.11.
