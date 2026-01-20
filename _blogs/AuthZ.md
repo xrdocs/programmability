@@ -4,6 +4,14 @@ date: '2024-03-05 13:13 -0500'
 title: gRPC Authorization using gNSI Authz
 position: hidden
 author: Rahul Sharma
+excerpt: An introduction to AuthZ with hands-on gRPC authorization using gRPCurl.
+tags:
+  - iosxr
+  - cisco
+  - Programmability
+  - gNSI
+  - Authz
+  - gRPC
 ---
 
 This blog focuses on [AuthZ](https://github.com/openconfig/gnsi/tree/main/authz), a gNSI service that manages Authorization at gRPC service level. It is supported from XR 7.11.
